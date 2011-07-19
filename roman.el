@@ -1,5 +1,6 @@
 (setq elpa-packages
-      '(clojure-mode
+      '(auto-complete
+        clojure-mode
         clojure-test-mode
         closure-template-html-mode
         css-mode
@@ -35,7 +36,7 @@
         (package-install package)))))
 
 ;; Install ELPA packages.
-;; (install-elpa-packages)
+; (install-elpa-packages)
 
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -91,5 +92,7 @@
 ;; Do not add a final newline when saving.
 (setq require-final-newline nil)
 
-
-
+;; AUTO-COMPLETE
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
