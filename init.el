@@ -1,3 +1,5 @@
+(require 'package)
+
 ;; Set the package sources.
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -32,8 +34,10 @@
         yasnippet-bundle))
 
 ;; Initialize the package system.
-(require 'package)
 (package-initialize)
+
+(unless (file-exists-p "~/.emacs.d/elpa/archives")
+  (package-refresh-contents))
 
 ;; Install all packages.
 (dolist (package elpa-packages)
