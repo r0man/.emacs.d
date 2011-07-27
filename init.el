@@ -78,7 +78,7 @@
 ;; Show the menu-bar.
 (if (fboundp 'menu-bar-mode) (menu-bar-mode t))
 
-;; Use custom color theme.
+;; ;; Use custom color theme.
 (require 'color-theme)
 (load-file "~/.emacs.d/color-theme-roman.el")
 (color-theme-roman)
@@ -210,9 +210,6 @@ server."
         try-complete-file-name))
 
 ;; RCIRC
-(require 'rcirc-color)
-(require 'rcirc-late-fix)
-(require 'rcirc-notify)
 (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
 (setq rcirc-default-nick "r0man"
       rcirc-default-user-name "r0man"
