@@ -20,6 +20,7 @@
         ruby-test-mode
         rvm
         sass-mode
+        scss-mode
         slime-repl
         smart-tab
         starter-kit
@@ -202,9 +203,6 @@
             (set (make-local-variable 'scroll-conservatively) 8192)
             (rcirc-track-minor-mode 1)
             (flyspell-mode 1)))
-
-;; SASS
-(add-to-list 'auto-mode-alist '("\\.scss$" . sass-mode))
 
 ;; SMART-TAB
 (setq smart-tab-using-hippie-expand t)
