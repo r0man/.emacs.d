@@ -202,8 +202,7 @@
 (setq smart-tab-using-hippie-expand t)
 (dolist
     (hook
-     '(
-       LaTeX-mode-hook
+     '(LaTeX-mode-hook
        c-mode-hook
        css-mode-hook
        coffee-mode-hook
@@ -223,16 +222,6 @@
  "ssh"
  '((tramp-parse-shosts "~/.ssh/known_hosts")
    (tramp-parse-hosts "/etc/hosts")))
-
-;; COMINT MODE
-(custom-set-variables
- '(comint-scroll-to-bottom-on-input t)  ; always insert at the bottom
- '(comint-scroll-to-bottom-on-output t) ; always add output at the bottom
- '(comint-scroll-show-maximum-output t) ; scroll to show max possible output
- '(comint-completion-autolist t)        ; show completion list when ambiguous
- '(comint-input-ignoredups t)           ; no duplicates in command history
- '(comint-completion-addsuffix t)       ; insert space/slash after file completion
- )
 
 ;; RUBY-TEST MODE
 (require 'ruby-test-mode)
