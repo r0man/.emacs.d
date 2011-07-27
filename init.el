@@ -36,6 +36,7 @@
 ;; Initialize the package system.
 (package-initialize)
 
+;; Refresh package archives when necessary.
 (unless (file-exists-p "~/.emacs.d/elpa/archives")
   (package-refresh-contents))
 
@@ -145,9 +146,6 @@
   (define-clojure-indent (user-test 1)))
 
 (add-hook 'clojure-mode-hook 'define-clojure-indent-words)
-
-;; CLOSURE-LINT-MODE
-(require 'closure-lint-mode)
 
 ;; CLOSURE-TEMPLATE-HTML-MODE
 (require 'closure-template-html-mode)
