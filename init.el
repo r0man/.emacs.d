@@ -148,9 +148,6 @@
 ;; CLOSURE-TEMPLATE-HTML-MODE
 (require 'closure-template-html-mode)
 
-;; DURENDAL
-(require 'durendal)
-
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
 
@@ -162,9 +159,6 @@
 (set 'rvm-executable (if (file-exists-p "~/.rvm/bin/rvm") "~/.rvm/bin/rvm" "/usr/local/bin/rvm"))
 (rvm-use-default)
 (setenv "rvm_path" "/usr/local/rvm")
-
-;; MAGIT
-(require 'magit)
 
 ;; GIT-BLAME-MODE
 (dolist (filename '("/usr/share/emacs/site-lisp/git-blame.el"
@@ -266,12 +260,6 @@
 
 (ad-activate 'rails/compile/single-file)
 
-(defadvice paredit-open-round (after paredit-open-round-js-advice) ()
-  "Delete the whitespace before when using Paredit in Javascript modes."
-  (backward-char)
-  (delete-backward-char 1)
-  (forward-char))
-
 ;; YASNIPPET
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
@@ -279,4 +267,6 @@
 ;; Jump into eshell
 (eshell)
 
+;; Load keyboard bindings (after everything else).
+(load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
 

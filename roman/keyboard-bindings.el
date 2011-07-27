@@ -11,3 +11,5 @@
 (global-set-key (kbd "C-x I") 'indent-buffer)
 (global-set-key (kbd "C-x TAB") 'indent-rigidly)
 (global-set-key [f5] 'compile)
+
+(provide 'keyboard-bindings)
