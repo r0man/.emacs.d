@@ -63,5 +63,3 @@
                                   'keymap ted-eshell-ls-keymap)
                             ad-return-value)
        ad-return-value)))
-
-(provide 'eshell-ext)

@@ -147,9 +147,6 @@
 ;; CLOSURE-TEMPLATE-HTML-MODE
 (require 'closure-template-html-mode)
 
-;; ESHELL
-(require 'eshell-ext)
-
 ;; LEININGEN
 (defun lein-deps ()
   "Run lein deps and update all dependencies of the current
