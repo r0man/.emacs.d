@@ -261,6 +261,14 @@
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
 
+;; Fix pretty fns for javascript.
+(eval-after-load 'js
+  '(font-lock-add-keywords
+    'js-mode `(("\\(function *\\)("
+                (0 (progn (compose-region (match-beginning 1)
+                                          (match-end 1) "\u0192")
+                          nil))))))
+
 ;; Jump into eshell
 (eshell)
 
