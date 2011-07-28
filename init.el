@@ -26,6 +26,7 @@
         scss-mode
         slime-repl
         smart-tab
+        smex
         starter-kit
         starter-kit-bindings
         starter-kit-js
@@ -226,6 +227,11 @@
        slime-mode-hook
        yaml-mode-hook))
   (add-hook hook (lambda () (smart-tab-mode t))))
+
+;; SMEX
+(when (require 'smex nil t)
+  (global-set-key (kbd "M-x") 'smex)
+  (smex-initialize))
 
 ;; TRAMP
 (require 'tramp)
