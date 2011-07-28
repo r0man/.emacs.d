@@ -64,6 +64,11 @@
         (setenv "S3_ACCESS_KEY" aws-access-key-id)
         (setenv "S3_SECRET_KEY" aws-secret-access-key))))
 
+(defun indent-buffer ()
+  "Indent the whole buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
 (defun swap-windows ()
   "If you have 2 windows, it swaps them."
   (interactive)
