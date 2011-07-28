@@ -1,3 +1,6 @@
+;; Set file for customizations.
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+
 (require 'package)
 
 ;; Set the package sources.
@@ -51,9 +54,6 @@
 
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; Set file for customizations.
-(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 
 ;; AMAZON WEB SERVICES
 (let ((aws-credentials (expand-file-name "~/.aws.el")))
