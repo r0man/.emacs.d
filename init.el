@@ -51,6 +51,9 @@
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Set file for customizations.
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+
 ;; AMAZON WEB SERVICES
 (let ((aws-credentials (expand-file-name "~/.aws.el")))
   (if (file-exists-p aws-credentials)
