@@ -18,6 +18,7 @@
         find-file-in-project
         gist
         haml-mode
+        inf-ruby
         json
         ruby-test-mode
         rvm
