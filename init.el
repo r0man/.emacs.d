@@ -160,6 +160,9 @@
 ;; CLOSURE-TEMPLATE-HTML-MODE
 (require 'closure-template-html-mode)
 
+;; DURENDAL
+(require 'durendal)
+
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
 
