@@ -233,6 +233,11 @@
   (global-set-key (kbd "M-x") 'smex)
   (smex-initialize))
 
+;; SQL-MODE
+(let ((filename "~/.sql.el"))
+  (when (file-exists-p filename)
+    (load-file filename)))
+
 ;; TRAMP
 (require 'tramp)
 (tramp-set-completion-function
