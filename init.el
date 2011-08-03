@@ -55,6 +55,9 @@
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Whether to add a newline automatically at the end of the file.
+(setq require-final-newline t)
+
 ;; AMAZON WEB SERVICES
 (let ((aws-credentials (expand-file-name "~/.aws.el")))
   (if (file-exists-p aws-credentials)
