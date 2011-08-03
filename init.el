@@ -55,6 +55,12 @@
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Enable display of time, load level, and mail flag in mode lines.
+(display-time)
+
+;; If non-nil, `next-line' inserts newline to avoid `end of buffer' error.
+(setq next-line-add-newlines nil)
+
 ;; Whether to add a newline automatically at the end of the file.
 (setq require-final-newline t)
 
