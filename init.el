@@ -17,6 +17,7 @@
         closure-template-html-mode
         color-theme
         css-mode
+        elein
         durendal
         find-file-in-project
         gist
