@@ -55,6 +55,15 @@
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Enable display of time, load level, and mail flag in mode lines.
+(display-time)
+
+;; If non-nil, `next-line' inserts newline to avoid `end of buffer' error.
+(setq next-line-add-newlines nil)
+
+;; Whether to add a newline automatically at the end of the file.
+(setq require-final-newline t)
+
 ;; AMAZON WEB SERVICES
 (let ((aws-credentials (expand-file-name "~/.aws.el")))
   (if (file-exists-p aws-credentials)
@@ -159,6 +168,9 @@
 
 ;; CLOSURE-TEMPLATE-HTML-MODE
 (require 'closure-template-html-mode)
+
+;; DURENDAL
+(require 'durendal)
 
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
