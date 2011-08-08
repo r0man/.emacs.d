@@ -209,6 +209,16 @@
         try-complete-file-name-partially
         try-complete-file-name))
 
+;; JAVA
+
+;; Indent Java annotaions: http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
+(add-hook
+ 'java-mode-hook
+ '(lambda ()
+    (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
+    (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
+
+
 ;; RCIRC
 (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
 (setq rcirc-default-nick "r0man"
