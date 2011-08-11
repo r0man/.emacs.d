@@ -209,6 +209,17 @@
         try-complete-file-name-partially
         try-complete-file-name))
 
+;; JAVA
+
+;; Indent Java annotaions.
+;; http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
+(add-hook
+ 'java-mode-hook
+ '(lambda ()
+    (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
+    (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
+
+
 ;; PAREDIT-MODE
 (defadvice paredit-open-round (after paredit-open-round) ()
   "Don't insert space via paredit-open-round in non-lisp modes."
