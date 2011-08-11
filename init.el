@@ -209,6 +209,16 @@
         try-complete-file-name-partially
         try-complete-file-name))
 
+;; PAREDIT-MODE
+(defadvice paredit-open-round (after paredit-open-round) ()
+  "Don't insert space via paredit-open-round in non-lisp modes."
+  (when (memq major-mode '(coffee-mode js2-mode))
+    (backward-char)
+    (backward-delete-char-untabify 1)
+    (forward-char)))
+
+(ad-activate 'paredit-open-round)
+
 ;; RCIRC
 (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
 (setq rcirc-default-nick "r0man"
@@ -301,4 +311,5 @@
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
+
 
