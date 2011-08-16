@@ -169,6 +169,9 @@
 ;; CLOSURE-TEMPLATE-HTML-MODE
 (require 'closure-template-html-mode)
 
+;; CSS-MODE
+(setq css-indent-offset 2)
+
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
 
