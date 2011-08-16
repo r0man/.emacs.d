@@ -240,6 +240,9 @@
             (rcirc-track-minor-mode 1)
             (flyspell-mode 1)))
 
+;; SCSS-MODE
+(setq scss-compile-at-save nil)
+
 ;; SMART-TAB
 (setq smart-tab-using-hippie-expand t)
 (dolist
