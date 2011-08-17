@@ -181,6 +181,10 @@
 (require 'emms-player-mpd)
 (add-to-list 'emms-player-list 'emms-player-mpd)
 
+(require 'emms-source-file)
+(setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+(setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
+
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
 
