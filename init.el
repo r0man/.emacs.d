@@ -18,6 +18,7 @@
         color-theme
         css-mode
         elein
+        emms
         find-file-in-project
         gist
         haml-mode
@@ -171,6 +172,14 @@
 
 ;; CSS-MODE
 (setq css-indent-offset 2)
+
+;;; EMMS
+(require 'emms-setup)
+(emms-all)
+(emms-default-players)
+
+(require 'emms-player-mpd)
+(add-to-list 'emms-player-list 'emms-player-mpd)
 
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
