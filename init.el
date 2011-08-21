@@ -169,8 +169,6 @@
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
-(setq inferior-lisp-program
-      (concat (expand-file-name (getenv "CLOJURESCRIPT_HOME")) "/script/repl"))
 
 ;; CLOSURE-TEMPLATE-HTML-MODE
 (require 'closure-template-html-mode)
