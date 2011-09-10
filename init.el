@@ -11,7 +11,8 @@
 
 ;; The packages.
 (setq elpa-packages
-      '(auto-complete
+      '(auctex
+        auto-complete
         clojure-mode
         clojure-test-mode
         closure-template-html-mode
