@@ -304,6 +304,7 @@
       ruby-test-rspec-executables '("/usr/local/rvm/gems/ruby-1.9.2-p136/bin/rspec"))
 
 ;; EMACS RAILS RELOADED
+(setq rails/rspec-bundle/command "bundle exec rspec")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-rails-reloaded"))
 (setq rails/webserver-bundle/default-type "webrick")
 (require 'rails-autoload)
@@ -342,4 +343,5 @@
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
 
-
+;; Don't use ido-ubiquitous yet. Breaks rgrep.
+(setq ido-ubiquitous-enabled nil)
