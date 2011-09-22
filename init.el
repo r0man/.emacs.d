@@ -11,7 +11,8 @@
 
 ;; The packages.
 (setq elpa-packages
-      '(auto-complete
+      '(auctex
+        auto-complete
         clojure-mode
         clojure-test-mode
         closure-template-html-mode
@@ -188,6 +189,10 @@
 (require 'emms-source-file)
 (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
 (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
+
+(let ((filename "~/.emms.el"))
+  (when (file-exists-p filename)
+    (load-file filename)))
 
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
