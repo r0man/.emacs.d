@@ -53,6 +53,7 @@
     (package-install package)))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
