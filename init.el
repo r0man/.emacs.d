@@ -80,11 +80,6 @@
         (setenv "S3_ACCESS_KEY" aws-access-key-id)
         (setenv "S3_SECRET_KEY" aws-secret-access-key))))
 
-(defun indent-buffer ()
-  "Indent the whole buffer."
-  (interactive)
-  (indent-region (point-min) (point-max)))
-
 (defun swap-windows ()
   "If you have 2 windows, it swaps them."
   (interactive)
@@ -310,6 +305,7 @@
       ruby-test-rspec-executables '("/usr/local/rvm/gems/ruby-1.9.2-p136/bin/rspec"))
 
 ;; EMACS RAILS RELOADED
+(setq rails/rspec-bundle/command "bundle exec rspec")
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-rails-reloaded"))
 (setq rails/webserver-bundle/default-type "webrick")
 (require 'rails-autoload)
