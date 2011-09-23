@@ -347,4 +347,4 @@
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
 
-
+(setq inferior-lisp-program (expand-file-name "~/workspace/burningswell/burningswell-cljs/bin/repl"))
