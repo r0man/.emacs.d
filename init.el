@@ -338,10 +338,11 @@
                                           (match-end 1) "\u0192")
                           nil))))))
 
+;; Don't use ido-ubiquitous yet. Breaks rgrep.
+(setq ido-ubiquitous-enabled nil)
+
 ;; Jump into eshell
 (eshell)
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
-
-(setq inferior-lisp-program (expand-file-name "~/workspace/burningswell/burningswell-cljs/bin/repl"))
