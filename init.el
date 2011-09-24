@@ -98,9 +98,6 @@
            (set-window-start w2 s1))))
   (other-window 1))
 
-;; Show the menu-bar.
-(if (fboundp 'menu-bar-mode) (menu-bar-mode t))
-
 ;; ;; Use custom color theme.
 (require 'color-theme)
 (load-file "~/.emacs.d/color-theme-roman.el")
