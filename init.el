@@ -165,6 +165,7 @@
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
+(setq inferior-lisp-program "browser-repl")
 
 ;; CLOSURE-TEMPLATE-HTML-MODE
 (require 'closure-template-html-mode)
