@@ -53,6 +53,7 @@
     (package-install package)))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -96,9 +97,6 @@
            (set-window-start w1 s2)
            (set-window-start w2 s1))))
   (other-window 1))
-
-;; Show the menu-bar.
-(if (fboundp 'menu-bar-mode) (menu-bar-mode t))
 
 ;; ;; Use custom color theme.
 (require 'color-theme)
@@ -177,10 +175,10 @@
 (require 'emms-setup)
 (emms-all)
 (emms-default-players)
-(emms-mode-line -1)
 
 (require 'emms-player-mpd)
 (add-to-list 'emms-player-list 'emms-player-mpd)
+(emms-player-mpd-connect)
 
 (require 'emms-source-file)
 (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
@@ -338,11 +336,11 @@
                                           (match-end 1) "\u0192")
                           nil))))))
 
+;; Don't use ido-ubiquitous yet. Breaks rgrep.
+(setq ido-ubiquitous-enabled nil)
+
 ;; Jump into eshell
 (eshell)
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
-
-;; Don't use ido-ubiquitous yet. Breaks rgrep.
-(setq ido-ubiquitous-enabled nil)
