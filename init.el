@@ -248,7 +248,7 @@
 (add-hook 'javascript-mode-hook 'enable-moz-minor-mode)
 (add-hook 'js-mode-hook 'enable-moz-minor-mode)
 
-(defun reload-firefox-on-after-save-hook ()
+(defun reload-firefox-after-save-hook ()
   (add-hook
    'after-save-hook
    '(lambda ()
@@ -259,9 +259,9 @@
       (message (format "Firefox reloaded via MozRepl. Take a look at your browser, for a shiny new world!")))
    'append 'local))
 
-(add-hook 'coffee-mode-hook 'reload-firefox-on-after-save-hook)
-(add-hook 'css-mode-hook 'reload-firefox-on-after-save-hook)
-(add-hook 'html-mode-hook 'reload-firefox-on-after-save-hook)
+(add-hook 'coffee-mode-hook 'reload-firefox-after-save-hook)
+(add-hook 'css-mode-hook 'reload-firefox-after-save-hook)
+(add-hook 'html-mode-hook 'reload-firefox-after-save-hook)
 
 ;; PAREDIT-MODE
 (defadvice paredit-open-round (after paredit-open-round) ()
