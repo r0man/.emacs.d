@@ -171,6 +171,9 @@
 ;; CSS-MODE
 (setq css-indent-offset 2)
 
+;; EMACS STARTER KIT
+(defun run-coding-hook ())
+
 ;;; EMMS
 (require 'emms-setup)
 (emms-all)
@@ -234,6 +237,16 @@
     (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 
+;; MOZ-REPL
+(autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
+
+(defun enable-moz-minor-mode ()
+  (moz-minor-mode 1)
+  (message "Moz minor mode enabled."))
+
+(add-hook 'espresso-mode-hook 'enable-moz-minor-mode)
+(add-hook 'javascript-mode-hook 'enable-moz-minor-mode)
+(add-hook 'js-mode-hook 'enable-moz-minor-mode)
 
 ;; PAREDIT-MODE
 (defadvice paredit-open-round (after paredit-open-round) ()
