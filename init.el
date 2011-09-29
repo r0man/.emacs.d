@@ -248,6 +248,21 @@
 (add-hook 'javascript-mode-hook 'enable-moz-minor-mode)
 (add-hook 'js-mode-hook 'enable-moz-minor-mode)
 
+(defun reload-firefox-on-after-save-hook ()
+  (add-hook
+   'after-save-hook
+   '(lambda ()
+      (interactive)
+      (require 'moz)
+      (require 'slime)
+      (comint-send-string (inferior-moz-process) "BrowserReload();")
+      (message (format "Firefox reloaded via MozRepl. Take a look at your browser, for a shiny new world!")))
+   'append 'local))
+
+(add-hook 'coffee-mode-hook 'reload-firefox-on-after-save-hook)
+(add-hook 'css-mode-hook 'reload-firefox-on-after-save-hook)
+(add-hook 'html-mode-hook 'reload-firefox-on-after-save-hook)
+
 ;; PAREDIT-MODE
 (defadvice paredit-open-round (after paredit-open-round) ()
   "Don't insert space via paredit-open-round in non-lisp modes."
