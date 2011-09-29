@@ -259,9 +259,9 @@
       (message (format "Firefox reloaded via MozRepl. Take a look at your browser, for a shiny new world!")))
    'append 'local))
 
-(add-hook 'coffee-mode-hook 'reload-firefox-after-save-hook)
-(add-hook 'css-mode-hook 'reload-firefox-after-save-hook)
-(add-hook 'html-mode-hook 'reload-firefox-after-save-hook)
+;; (add-hook 'coffee-mode-hook 'reload-firefox-after-save-hook)
+;; (add-hook 'css-mode-hook 'reload-firefox-after-save-hook)
+;; (add-hook 'html-mode-hook 'reload-firefox-after-save-hook)
 
 ;; PAREDIT-MODE
 (defadvice paredit-open-round (after paredit-open-round) ()
@@ -317,6 +317,39 @@
 (let ((filename "~/.sql.el"))
   (when (file-exists-p filename)
     (load-file filename)))
+
+;; SWANK-JS
+(let ((directory "/usr/share/emacs/site-lisp/slime"))
+  (when (file-exists-p directory)
+    (add-to-list 'load-path directory)
+    (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+    (load-file (concat directory "/slime.el"))
+    (slime-setup '(slime-repl slime-js))))
+
+(defun slime-js-refresh-css ()
+  (interactive)
+  (require 'find-file-in-project)
+  (when (buffer-file-name)
+    (let* ((basename (replace-regexp-in-string "\.scss$" ".css" (file-name-nondirectory (buffer-file-name))))
+           (ffip-patterns '("*.css"))
+           (filename (cdr (car (remove-if-not
+                                (lambda (candidate) (string= basename (car candidate)))
+                                (ffip-project-files))))))
+      (progn
+        (if filename (delete-file filename))
+        (slime-js-eval
+         (format "SwankJS.refreshCSS(); setTimeout('SwankJS.refreshCSS()', 3000);")
+         #'(lambda (v) (message "Reloading stylesheets via swank-js.")))))))
+
+(defun slime-js-refresh-css-after-save-hook ()
+  (add-hook
+   'after-save-hook
+   '(lambda ()
+      (interactive)
+      (slime-js-refresh-css))
+   'append 'local))
+
+(add-hook 'css-mode-hook 'slime-js-refresh-css-after-save-hook)
 
 ;; TRAMP
 (require 'tramp)
