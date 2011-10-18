@@ -199,7 +199,7 @@
 
 ;; RVM
 (require 'rvm)
-(set 'rvm-executable (if (file-exists-p "~/.rvm/bin/rvm") "~/.rvm/bin/rvm" "/usr/local/bin/rvm"))
+(set 'rvm-executable (if (file-exists-p "~/.rvm/bin/rvm") "~/.rvm/bin/rvm" "/usr/local/rvm/bin/rvm"))
 (rvm-use-default)
 (setenv "rvm_path" "/usr/local/rvm")
 
@@ -326,30 +326,28 @@
     (load-file (concat directory "/slime.el"))
     (slime-setup '(slime-repl slime-js))))
 
-(defun slime-js-refresh-css ()
+(defun slime-js-refresh-stylesheets ()
   (interactive)
-  (require 'find-file-in-project)
-  (when (buffer-file-name)
-    (let* ((basename (replace-regexp-in-string "\.scss$" ".css" (file-name-nondirectory (buffer-file-name))))
-           (ffip-patterns '("*.css"))
-           (filename (cdr (car (remove-if-not
-                                (lambda (candidate) (string= basename (car candidate)))
-                                (ffip-project-files))))))
-      (progn
-        (if filename (delete-file filename))
-        (slime-js-eval
-         (format "SwankJS.refreshCSS(); setTimeout('SwankJS.refreshCSS()', 3000);")
-         #'(lambda (v) (message "Reloading stylesheets via swank-js.")))))))
+  (slime-js-eval
+   (format "SwankJS.refreshCSS('%s')"
+           (replace-regexp-in-string
+            "(')" "\\\\\\1"
+            (if (string-match "\\.s?css$" (buffer-file-name))
+                (replace-regexp-in-string
+                 "\.css\.s?css$" ".css"
+                 (replace-regexp-in-string "^.*/" "" (buffer-file-name)))
+              "")))
+   #'(lambda (v) (message "Reloading stylesheets."))))
 
-(defun slime-js-refresh-css-after-save-hook ()
+(defun slime-js-refresh-stylesheets-after-save-hook ()
   (add-hook
    'after-save-hook
    '(lambda ()
       (interactive)
-      (slime-js-refresh-css))
+      (slime-js-refresh-stylesheets))
    'append 'local))
 
-(add-hook 'css-mode-hook 'slime-js-refresh-css-after-save-hook)
+(add-hook 'css-mode-hook 'slime-js-refresh-stylesheets-after-save-hook)
 
 ;; TRAMP
 (require 'tramp)
