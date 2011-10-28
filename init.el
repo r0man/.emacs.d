@@ -163,6 +163,7 @@
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
+(setq inferior-lisp-program "browser-repl")
 
 ;; CLOSURE-TEMPLATE-HTML-MODE
 (require 'closure-template-html-mode)
@@ -188,16 +189,17 @@
     (load-file filename)))
 
 ;; FIND-FILE-IN-PROJECT
-(setq ffip-patterns '("*.coffee" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
+(setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
 
 ;; GIST
 (setq gist-view-gist t)
 
 ;; RVM
-(require 'rvm)
-(set 'rvm-executable (if (file-exists-p "~/.rvm/bin/rvm") "~/.rvm/bin/rvm" "/usr/local/bin/rvm"))
-(rvm-use-default)
-(setenv "rvm_path" "/usr/local/rvm")
+(when (file-exists-p "/usr/local/rvm")
+  (require 'rvm)
+  (set 'rvm-executable (if (file-exists-p "~/.rvm/bin/rvm") "~/.rvm/bin/rvm" "/usr/local/bin/rvm"))
+  (rvm-use-default)
+  (setenv "rvm_path" "/usr/local/rvm"))
 
 ;; GIT-BLAME-MODE
 (dolist (filename '("/usr/share/emacs/site-lisp/git-blame.el"
