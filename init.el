@@ -235,6 +235,31 @@
     (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 
+;; MOZ-REPL
+(autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
+
+(defun enable-moz-minor-mode ()
+  (moz-minor-mode 1)
+  (message "Moz minor mode enabled."))
+
+(add-hook 'espresso-mode-hook 'enable-moz-minor-mode)
+(add-hook 'javascript-mode-hook 'enable-moz-minor-mode)
+(add-hook 'js-mode-hook 'enable-moz-minor-mode)
+
+(defun reload-firefox-after-save-hook ()
+  (add-hook
+   'after-save-hook
+   '(lambda ()
+      (interactive)
+      (require 'moz)
+      (require 'slime)
+      (comint-send-string (inferior-moz-process) "BrowserReload();")
+      (message (format "Firefox reloaded via MozRepl. Take a look at your browser, for a shiny new world!")))
+   'append 'local))
+
+;; (add-hook 'coffee-mode-hook 'reload-firefox-after-save-hook)
+;; (add-hook 'css-mode-hook 'reload-firefox-after-save-hook)
+;; (add-hook 'html-mode-hook 'reload-firefox-after-save-hook)
 
 ;; PAREDIT-MODE
 (defadvice paredit-open-round (after paredit-open-round) ()
@@ -290,6 +315,37 @@
 (let ((filename "~/.sql.el"))
   (when (file-exists-p filename)
     (load-file filename)))
+
+;; SWANK-JS
+(let ((directory "/usr/share/emacs/site-lisp/slime"))
+  (when (file-exists-p directory)
+    (add-to-list 'load-path directory)
+    (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+    (load-file (concat directory "/slime.el"))
+    (slime-setup '(slime-repl slime-js))))
+
+(defun slime-js-refresh-stylesheets ()
+  (interactive)
+  (slime-js-eval
+   (format "SwankJS.refreshCSS('%s')"
+           (replace-regexp-in-string
+            "(')" "\\\\\\1"
+            (if (string-match "\\.s?css$" (buffer-file-name))
+                (replace-regexp-in-string
+                 "\.css\.s?css$" ".css"
+                 (replace-regexp-in-string "^.*/" "" (buffer-file-name)))
+              "")))
+   #'(lambda (v) (message "Reloading stylesheets."))))
+
+(defun slime-js-refresh-stylesheets-after-save-hook ()
+  (add-hook
+   'after-save-hook
+   '(lambda ()
+      (interactive)
+      (slime-js-refresh-stylesheets))
+   'append 'local))
+
+(add-hook 'css-mode-hook 'slime-js-refresh-stylesheets-after-save-hook)
 
 ;; TRAMP
 (require 'tramp)
