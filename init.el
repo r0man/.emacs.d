@@ -244,28 +244,6 @@
     (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 
-;; MOZ-REPL
-(autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
-
-(defun enable-moz-minor-mode ()
-  (moz-minor-mode 1)
-  (message "Moz minor mode enabled."))
-
-(add-hook 'espresso-mode-hook 'enable-moz-minor-mode)
-(add-hook 'javascript-mode-hook 'enable-moz-minor-mode)
-(add-hook 'js-mode-hook 'enable-moz-minor-mode)
-
-(defun reload-firefox-after-save-hook ()
-  (add-hook
-   'after-save-hook
-   '(lambda ()
-      (interactive)
-      (require 'moz)
-      (require 'slime)
-      (comint-send-string (inferior-moz-process) "BrowserReload();")
-      (message (format "Firefox reloaded via MozRepl. Take a look at your browser, for a shiny new world!")))
-   'append 'local))
-
 ;; MULTI-TERM
 (require 'multi-term)
 (setq multi-term-program "/bin/bash"
