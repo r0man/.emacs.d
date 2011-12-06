@@ -266,9 +266,10 @@
       (message (format "Firefox reloaded via MozRepl. Take a look at your browser, for a shiny new world!")))
    'append 'local))
 
-;; (add-hook 'coffee-mode-hook 'reload-firefox-after-save-hook)
-;; (add-hook 'css-mode-hook 'reload-firefox-after-save-hook)
-;; (add-hook 'html-mode-hook 'reload-firefox-after-save-hook)
+;; MULTI-TERM
+(require 'multi-term)
+(setq multi-term-program "/bin/bash"
+      multi-term-dedicated-select-after-open-p t)
 
 ;; PAREDIT-MODE
 (defadvice paredit-open-round (after paredit-open-round) ()
@@ -408,7 +409,7 @@
 (setq ido-ubiquitous-enabled nil)
 
 ;; Start an ANSI terminal.
-(switch-to-ansi-term)
+(multi-term-dedicated-open)
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
