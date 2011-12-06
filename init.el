@@ -115,6 +115,15 @@
 ;; Do not add a final newline when saving.
 (setq require-final-newline nil)
 
+;; ANSI TERM - http://stackoverflow.com/a/3284268
+;; C-x C-j - term line mode
+;; C-c C-k - character mode
+(defun switch-to-ansi-term ()
+  (interactive)
+  (let ((buffer (get-buffer "\*shell\*")))
+    (if buffer (switch-to-buffer buffer)
+      (ansi-term "/bin/bash" "shell"))))
+
 ;; AUTO-COMPLETE
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -345,7 +354,7 @@
       (slime-js-refresh-stylesheets))
    'append 'local))
 
-(add-hook 'css-mode-hook 'slime-js-refresh-stylesheets-after-save-hook)
+;; (add-hook 'css-mode-hook 'slime-js-refresh-stylesheets-after-save-hook)
 
 ;; TRAMP
 (require 'tramp)
@@ -396,8 +405,8 @@
 ;; Don't use ido-ubiquitous yet. Breaks rgrep.
 (setq ido-ubiquitous-enabled nil)
 
-;; Jump into eshell
-(eshell)
+(switch-to-ansi-term)
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
+(put 'ido-exit-minibuffer 'disabled nil)
