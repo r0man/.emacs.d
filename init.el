@@ -118,11 +118,7 @@
 ;; ANSI TERM - http://stackoverflow.com/a/3284268
 ;; C-x C-j - term line mode
 ;; C-c C-k - character mode
-(defun switch-to-ansi-term ()
-  (interactive)
-  (let ((buffer (get-buffer "\*shell\*")))
-    (if buffer (switch-to-buffer buffer)
-      (ansi-term "/bin/bash" "shell"))))
+(setq term-buffer-maximum-size (* 10 2048))
 
 ;; AUTO-COMPLETE
 (require 'auto-complete-config)
