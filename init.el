@@ -407,6 +407,7 @@
 ;; Don't use ido-ubiquitous yet. Breaks rgrep.
 (setq ido-ubiquitous-enabled nil)
 
+;; Start an ANSI terminal.
 (switch-to-ansi-term)
 
 ;; Load keyboard bindings (after everything else).
