@@ -294,7 +294,7 @@
        yaml-mode-hook))
   (add-hook hook (lambda () (smart-tab-mode t))))
 
-;; SMEX
+;; SMEX: M-x interface with Ido-style fuzzy matching.
 (when (require 'smex nil t)
   (global-set-key (kbd "M-x") 'smex)
   (smex-initialize))
@@ -304,38 +304,8 @@
   (when (file-exists-p filename)
     (load-file filename)))
 
+;; Truncate long lines in sql-mode.
 (add-hook 'sql-interactive-mode-hook '(lambda () (setq truncate-lines t)))
-
-;; SWANK-JS
-(let ((directory "/usr/share/emacs/site-lisp/slime"))
-  (when (file-exists-p directory)
-    (add-to-list 'load-path directory)
-    (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-    (load-file (concat directory "/slime.el"))
-    (slime-setup '(slime-repl slime-js))))
-
-(defun slime-js-refresh-stylesheets ()
-  (interactive)
-  (slime-js-eval
-   (format "SwankJS.refreshCSS('%s')"
-           (replace-regexp-in-string
-            "(')" "\\\\\\1"
-            (if (string-match "\\.s?css$" (buffer-file-name))
-                (replace-regexp-in-string
-                 "\.css\.s?css$" ".css"
-                 (replace-regexp-in-string "^.*/" "" (buffer-file-name)))
-              "")))
-   #'(lambda (v) (message "Reloading stylesheets."))))
-
-(defun slime-js-refresh-stylesheets-after-save-hook ()
-  (add-hook
-   'after-save-hook
-   '(lambda ()
-      (interactive)
-      (slime-js-refresh-stylesheets))
-   'append 'local))
-
-;; (add-hook 'css-mode-hook 'slime-js-refresh-stylesheets-after-save-hook)
 
 ;; TRAMP
 (require 'tramp)
