@@ -325,6 +325,8 @@
   (when (file-exists-p filename)
     (load-file filename)))
 
+(add-hook 'sql-interactive-mode-hook '(lambda () (setq truncate-lines t)))
+
 ;; SWANK-JS
 (let ((directory "/usr/share/emacs/site-lisp/slime"))
   (when (file-exists-p directory)
