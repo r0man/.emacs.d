@@ -244,6 +244,9 @@
 (require 'multi-term)
 (setq multi-term-program "/bin/bash"
       multi-term-dedicated-select-after-open-p t)
+(add-to-list 'term-bind-key-alist '("C-z" . term-stop-subjob))
+(add-to-list 'term-bind-key-alist '("C-c C-k" . term-char-mode))
+(add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
 
 ;; PAREDIT-MODE
 (defadvice paredit-open-round (after paredit-open-round) ()
