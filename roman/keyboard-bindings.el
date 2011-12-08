@@ -9,6 +9,7 @@
 (global-set-key (kbd "C-x ^") 'enlarge-window)
 (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 (global-set-key (kbd "C-x m") 'multi-term-dedicated-toggle)
+(global-set-key (kbd "C-x M") 'multi-term)
 (global-set-key [f5] 'compile)
 
 (global-unset-key (kbd "C-x g"))

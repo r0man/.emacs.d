@@ -112,13 +112,11 @@
 ;; Controls the operation of the TAB key.
 (setq tab-always-indent 'complete)
 
+;; The maximum size in lines for term buffers.
+(setq term-buffer-maximum-size (* 10 2048))
+
 ;; Do not add a final newline when saving.
 (setq require-final-newline nil)
-
-;; ANSI TERM - http://stackoverflow.com/a/3284268
-;; C-x C-j - term line mode
-;; C-c C-k - character mode
-(setq term-buffer-maximum-size (* 10 2048))
 
 ;; AUTO-COMPLETE
 (require 'auto-complete-config)
@@ -361,3 +359,7 @@
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
 (put 'ido-exit-minibuffer 'disabled nil)
+
+;; EMACS RESOURCES
+
+;; - http://stackoverflow.com/a/3284268
