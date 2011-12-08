@@ -241,7 +241,9 @@
 ;; MULTI-TERM
 (require 'multi-term)
 (setq multi-term-program "/bin/bash"
-      multi-term-dedicated-select-after-open-p t)
+      multi-term-dedicated-select-after-open-p t
+      multi-term-dedicated-window-height 25)
+
 (add-to-list 'term-bind-key-alist '("C-z" . term-stop-subjob))
 (add-to-list 'term-bind-key-alist '("C-c C-k" . term-char-mode))
 (add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
