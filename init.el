@@ -248,6 +248,21 @@
 (add-to-list 'term-bind-key-alist '("C-c C-k" . term-char-mode))
 (add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
 
+(defun last-term-mode-buffer (list-of-buffers)
+  "Returns the most recently used term-mode buffer."
+  (when list-of-buffers
+    (if (eq 'term-mode (with-current-buffer (car list-of-buffers) major-mode))
+        (car list-of-buffers) (last-term-mode-buffer (cdr list-of-buffers)))))
+
+(defun switch-to-term-mode-buffer ()
+  "Switch to the most recently used term-mode buffer, or create a
+new one."
+  (interactive)
+  (let ((buffer (last-term-mode-buffer (buffer-list))))
+    (if (not buffer)
+        (multi-term)
+      (switch-to-buffer buffer))))
+
 ;; PAREDIT-MODE
 (defadvice paredit-open-round (after paredit-open-round) ()
   "Don't insert space via paredit-open-round in non-lisp modes."
@@ -355,8 +370,8 @@
 ;; Don't use ido-ubiquitous yet. Breaks rgrep.
 (setq ido-ubiquitous-enabled nil)
 
-;; Start an ANSI terminal.
-(multi-term-dedicated-open)
+;; Start a terminal.
+(multi-term)
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
