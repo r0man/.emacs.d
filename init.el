@@ -380,3 +380,4 @@ new one."
 ;; EMACS RESOURCES
 
 ;; - http://stackoverflow.com/a/3284268
+;; - http://stackoverflow.com/questions/60367/the-single-most-useful-emacs-feature
