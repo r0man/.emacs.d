@@ -162,6 +162,11 @@
   (define-clojure-indent (uncountable 1))
   (define-clojure-indent (user-test 1)))
 
+(put 'defcontrol 'clojure-backtracking-indent '((2)))
+(put 'defcomponent 'clojure-backtracking-indent '((2)))
+(put 'defrenderer 'clojure-backtracking-indent '((2)))
+(put 'defclass 'clojure-backtracking-indent '(4 (2)))
+
 (add-hook 'clojure-mode-hook 'define-clojure-indent-words)
 
 ;; CLOJURESCRIPT
