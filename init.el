@@ -25,6 +25,7 @@
         haml-mode
         inf-ruby
         json
+        multi-term
         ruby-test-mode
         rvm
         sass-mode
