@@ -206,9 +206,7 @@
 ;; RVM
 (when (file-exists-p "/usr/local/rvm")
   (require 'rvm)
-  (set 'rvm-executable (if (file-exists-p "~/.rvm/bin/rvm") "~/.rvm/bin/rvm" "/usr/local/rvm/bin/rvm"))
-  (rvm-use-default)
-  (setenv "rvm_path" "/usr/local/rvm"))
+  (rvm-use-default))
 
 ;; GIT-BLAME-MODE
 (dolist (filename '("/usr/share/emacs/site-lisp/git-blame.el"
