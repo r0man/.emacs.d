@@ -318,9 +318,6 @@ new one."
   (when (file-exists-p filename)
     (load-file filename)))
 
-;; Truncate long lines in sql-mode.
-(add-hook 'sql-interactive-mode-hook '(lambda () (setq truncate-lines t)))
-
 ;; TRAMP
 (require 'tramp)
 (tramp-set-completion-function
