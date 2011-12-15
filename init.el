@@ -15,7 +15,6 @@
         auto-complete
         clojure-mode
         clojure-test-mode
-        closure-template-html-mode
         color-theme
         css-mode
         elein
@@ -173,9 +172,6 @@
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 (setq inferior-lisp-program "browser-repl")
-
-;; CLOSURE-TEMPLATE-HTML-MODE
-(require 'closure-template-html-mode)
 
 ;; CSS-MODE
 (setq css-indent-offset 2)
