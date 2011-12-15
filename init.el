@@ -244,9 +244,21 @@
       multi-term-dedicated-select-after-open-p t
       multi-term-dedicated-window-height 25)
 
-(add-to-list 'term-bind-key-alist '("C-z" . term-stop-subjob))
-(add-to-list 'term-bind-key-alist '("C-c C-k" . term-char-mode))
-(add-to-list 'term-bind-key-alist '("C-c C-j" . term-line-mode))
+(dolist
+    (bind '(
+            ("<S-down>" . multi-term)
+            ("<S-left>" . multi-term-prev)
+            ("<S-right>" . multi-term-next)
+            ("C-<backspace>" . term-send-backward-kill-word)
+            ("C-<delete>" . term-send-forward-kill-word)
+            ("C-<left>" . term-send-backward-word)
+            ("C-<right>" . term-send-forward-word)
+            ("C-c C-j" . term-line-mode)
+            ("C-c C-k" . term-char-mode)
+            ("C-y" . term-paste)
+            ("C-z" . term-stop-subjob)
+            ("M-DEL" . term-send-backward-kill-word)))
+  (add-to-list 'term-bind-key-alist bind))
 
 (defun last-term-mode-buffer (list-of-buffers)
   "Returns the most recently used term-mode buffer."
