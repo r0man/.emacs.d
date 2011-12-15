@@ -230,7 +230,7 @@
 
 ;; JAVA
 
-;; Indent Java annotaions.
+;; Indent Java annotations.
 ;; http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
 (add-hook
  'java-mode-hook
