@@ -296,13 +296,13 @@ new one."
     (hook
      '(LaTeX-mode-hook
        c-mode-hook
-       css-mode-hook
        coffee-mode-hook
+       css-mode-hook
        emacs-lisp-mode-hook
        haml-mode-hook
        html-mode-hook
        java-mode-hook
-       paredit-mode
+       paredit-mode-hook
        ruby-mode-hook
        slime-mode-hook
        yaml-mode-hook))
