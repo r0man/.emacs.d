@@ -257,6 +257,7 @@
             ("C-c C-k" . term-char-mode)
             ("C-y" . term-paste)
             ("C-z" . term-stop-subjob)
+            ("M-d" . term-send-forward-kill-word)
             ("M-DEL" . term-send-backward-kill-word)))
   (add-to-list 'term-bind-key-alist bind))
 
