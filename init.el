@@ -193,6 +193,21 @@
   (when (file-exists-p filename)
     (load-file filename)))
 
+;; ERLANG
+(let ((directory "/usr/lib/erlang/lib/tools-2.6.6.5/emacs/"))
+  (when (file-exists-p directory)
+    (add-to-list 'load-path directory)
+    (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
+    (setq erlang-root-dir "/usr/lib/erlang")
+    (setq inferior-erlang-machine-options '("-sname" "emacs"))))
+
+;; DISTEL
+(let ((directory "/usr/share/distel/elisp"))
+  (when (file-exists-p directory)
+    (add-to-list 'load-path directory)
+    (require 'distel)
+    (distel-setup)))
+
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
 
