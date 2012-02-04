@@ -166,12 +166,13 @@
 (put 'defcomponent 'clojure-backtracking-indent '((2)))
 (put 'defrenderer 'clojure-backtracking-indent '((2)))
 (put 'defclass 'clojure-backtracking-indent '(4 (2)))
+(put 'defprovider 'clojure-backtracking-indent '(4 (2)))
 
 (add-hook 'clojure-mode-hook 'define-clojure-indent-words)
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
-(setq inferior-lisp-program "browser-repl")
+(setq inferior-lisp-program "lein repl")
 
 ;; CSS-MODE
 (setq css-indent-offset 2)
@@ -381,3 +382,21 @@ new one."
 
 ;; - http://stackoverflow.com/a/3284268
 ;; - http://stackoverflow.com/questions/60367/the-single-most-useful-emacs-feature
+
+;; EMAIL
+(setq user-full-name "Roman Scherer")
+(setq user-mail-address "roman@burningswell.com")
+
+;; GNUS
+(setq gnus-select-method
+      '(nnimap "gmail"
+               (nnimap-address "imap.gmail.com")
+               (nnimap-server-port 993)
+               (nnimap-stream ssl)))
+
+;; Send mail via sendmail.
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+
+;; Set the sendmail program.
+(setq sendmail-program "msmtp"
+      smtpmail-debug-info t)
