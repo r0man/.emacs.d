@@ -4,3 +4,6 @@
 [submodule "coffee-mode"]
 	path = coffee-mode
 	url = git://github.com/defunkt/coffee-mode.git
+[submodule "mingus"]
+	path = mingus
+	url = https://github.com/pft/mingus.git

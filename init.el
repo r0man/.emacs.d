@@ -239,6 +239,10 @@
     (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 
+;; MINGUS
+(add-to-list 'load-path "~/.emacs.d/mingus")
+(autoload 'mingus "mingus-stays-home" nil t)
+
 ;; MULTI-TERM
 (require 'multi-term)
 (setq multi-term-program "/bin/bash"
