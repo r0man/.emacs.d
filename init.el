@@ -55,6 +55,9 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
+;; Show menu bar
+(menu-bar-mode t)
+
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
