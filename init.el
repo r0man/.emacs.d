@@ -55,6 +55,9 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
+;; Show menu bar
+(menu-bar-mode t)
+
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -193,6 +196,25 @@
 (let ((filename "~/.emms.el"))
   (when (file-exists-p filename)
     (load-file filename)))
+
+(add-to-list
+ 'emms-stream-default-list
+ '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
+
+;; ERLANG
+(let ((directory "/usr/lib/erlang/lib/tools-2.6.6.5/emacs/"))
+  (when (file-exists-p directory)
+    (add-to-list 'load-path directory)
+    (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
+    (setq erlang-root-dir "/usr/lib/erlang")
+    (setq inferior-erlang-machine-options '("-sname" "emacs"))))
+
+;; DISTEL
+(let ((directory "/usr/share/distel/elisp"))
+  (when (file-exists-p directory)
+    (add-to-list 'load-path directory)
+    (require 'distel)
+    (distel-setup)))
 
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
