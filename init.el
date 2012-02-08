@@ -196,6 +196,10 @@
   (when (file-exists-p filename)
     (load-file filename)))
 
+(add-to-list
+ 'emms-stream-default-list
+ '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
+
 ;; ERLANG
 (let ((directory "/usr/lib/erlang/lib/tools-2.6.6.5/emacs/"))
   (when (file-exists-p directory)
