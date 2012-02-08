@@ -174,7 +174,7 @@
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
-(setq inferior-lisp-program "browser-repl")
+(setq inferior-lisp-program "lein repl")
 
 ;; CSS-MODE
 (setq css-indent-offset 2)
