@@ -169,6 +169,7 @@
 (put 'defcomponent 'clojure-backtracking-indent '((2)))
 (put 'defrenderer 'clojure-backtracking-indent '((2)))
 (put 'defclass 'clojure-backtracking-indent '(4 (2)))
+(put 'defprovider 'clojure-backtracking-indent '(4 (2)))
 
 (add-hook 'clojure-mode-hook 'define-clojure-indent-words)
 
@@ -259,6 +260,10 @@
  '(lambda ()
     (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
+
+;; MINGUS
+(add-to-list 'load-path "~/.emacs.d/mingus")
+(autoload 'mingus "mingus-stays-home" nil t)
 
 ;; MULTI-TERM
 (require 'multi-term)
@@ -403,3 +408,21 @@ new one."
 
 ;; - http://stackoverflow.com/a/3284268
 ;; - http://stackoverflow.com/questions/60367/the-single-most-useful-emacs-feature
+
+;; EMAIL
+(setq user-full-name "Roman Scherer")
+(setq user-mail-address "roman@burningswell.com")
+
+;; GNUS
+(setq gnus-select-method
+      '(nnimap "gmail"
+               (nnimap-address "imap.gmail.com")
+               (nnimap-server-port 993)
+               (nnimap-stream ssl)))
+
+;; Send mail via sendmail.
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+
+;; Set the sendmail program.
+(setq sendmail-program "msmtp"
+      smtpmail-debug-info t)
