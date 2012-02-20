@@ -216,7 +216,7 @@
     (distel-setup)))
 
 ;; FIND-FILE-IN-PROJECT
-(setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml"))
+(setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java"))
 
 ;; GIST
 (setq gist-view-gist t)
