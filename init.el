@@ -19,6 +19,7 @@
         css-mode
         elein
         emms
+        expand-region
         find-file-in-project
         gist
         haml-mode
@@ -208,6 +209,10 @@
     (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
     (setq erlang-root-dir "/usr/lib/erlang")
     (setq inferior-erlang-machine-options '("-sname" "emacs"))))
+
+;; EXPAND-REGION
+(require 'expand-region)
+(global-set-key (kbd "C-@") 'er/expand-region)
 
 ;; DISTEL
 (let ((directory "/usr/share/distel/elisp"))
