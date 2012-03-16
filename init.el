@@ -59,9 +59,6 @@
 ;; Show menu bar
 (menu-bar-mode t)
 
-;; Show trailing whitespaces
-(setq-default show-trailing-whitespace t)
-
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -410,7 +407,7 @@ new one."
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
-(put 'ido-exit-minibuffer 'disabled nil)
+;; (put 'ido-exit-minibuffer 'disabled nil)
 
 ;; EMACS RESOURCES
 
