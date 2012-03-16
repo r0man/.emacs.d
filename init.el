@@ -59,6 +59,9 @@
 ;; Show menu bar
 (menu-bar-mode t)
 
+;; Show trailing whitespaces
+(setq-default show-trailing-whitespace t)
+
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
