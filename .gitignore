@@ -4,3 +4,6 @@ elpa
 /ac-comphist.dat
 /auto-save-list
 /url/cookies
+/swank
+/.smex-items
+/tramp
