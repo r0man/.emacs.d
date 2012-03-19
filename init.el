@@ -308,6 +308,11 @@ new one."
         (multi-term)
       (switch-to-buffer buffer))))
 
+;; NUGG.AD
+(let ((filename "~/.nuggad.el"))
+  (when (file-exists-p filename)
+    (load-file filename)))
+
 ;; RCIRC
 (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
 (setq rcirc-default-nick "r0man"
@@ -362,8 +367,8 @@ new one."
 
 ;; RUBY-TEST MODE
 (require 'ruby-test-mode)
-(setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p136/bin/ruby")
-      ruby-test-rspec-executables '("/usr/local/rvm/gems/ruby-1.9.2-p136/bin/rspec"))
+(setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
+      ruby-test-rspec-executables '("/usr/local/rvm/gems/ruby-1.9.2-p180/bin/rspec"))
 
 ;; EMACS RAILS RELOADED
 (setq rails/rspec-bundle/command "bundle exec rspec")
@@ -407,7 +412,6 @@ new one."
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
-;; (put 'ido-exit-minibuffer 'disabled nil)
 
 ;; EMACS RESOURCES
 
