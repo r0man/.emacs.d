@@ -20,7 +20,7 @@
         elein
         emms
         expand-region
-        find-file-in-project
+        find-file-in-git-repo
         gist
         haml-mode
         inf-ruby
@@ -60,7 +60,7 @@
 (menu-bar-mode t)
 
 ;; Delete trailing whitespace when saving.
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Enable display of time, load level, and mail flag in mode lines.
 (display-time)
@@ -221,6 +221,9 @@
     (require 'distel)
     (distel-setup)))
 
+;; FIND-FILE-IN-GIT-REPO
+(require 'find-file-in-git-repo)
+
 ;; FIND-FILE-IN-PROJECT
 (setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java"))
 
@@ -368,7 +371,7 @@ new one."
 ;; RUBY-TEST MODE
 (require 'ruby-test-mode)
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
-      ruby-test-rspec-executables '("/usr/local/rvm/gems/ruby-1.9.2-p180/bin/rspec"))
+      ruby-test-rspec-executables '("bundle exec rspec"))
 
 ;; EMACS RAILS RELOADED
 (setq rails/rspec-bundle/command "bundle exec rspec")
