@@ -40,6 +40,7 @@
         starter-kit-lisp
         starter-kit-ruby
         rainbow-delimiters
+        undo-tree
         volatile-highlights
         yaml-mode
         yasnippet-bundle))
@@ -379,6 +380,9 @@ new one."
 (require 'ruby-test-mode)
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
       ruby-test-rspec-executables '("bundle exec rspec"))
+
+;; UNDO TREE
+(require 'undo-tree)
 
 ;; VOLATILE HIGHLIGHTS
 (require 'volatile-highlights)
