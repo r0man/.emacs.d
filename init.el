@@ -59,7 +59,9 @@
 (add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
 ;; Show menu bar
-(menu-bar-mode t)
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
