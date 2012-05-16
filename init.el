@@ -375,6 +375,7 @@ new one."
       ruby-test-rspec-executables '("bundle exec rspec"))
 
 ;; VOLATILE HIGHLIGHTS
+(require 'volatile-highlights)
 (volatile-highlights-mode t)
 
 ;; EMACS RAILS RELOADED
