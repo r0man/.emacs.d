@@ -21,6 +21,7 @@
         emms
         expand-region
         find-file-in-project
+        find-file-in-git-repo
         gist
         haml-mode
         inf-ruby
@@ -77,12 +78,10 @@
       (progn
         (load-file aws-credentials)
         (setenv "AWS_ACCOUNT_NUMBER" aws-account-number)
-        (setenv "AWS_ACCESS_KEY_ID" aws-access-key-id)
-        (setenv "AWS_SECRET_ACCESS_KEY" aws-secret-access-key)
+        (setenv "AWS_ACCESS_KEY" aws-access-key)
+        (setenv "AWS_SECRET_KEY" aws-secret-key)
         (setenv "EC2_PRIVATE_KEY" (expand-file-name ec2-private-key))
-        (setenv "EC2_CERT" (expand-file-name ec2-cert))
-        (setenv "S3_ACCESS_KEY" aws-access-key-id)
-        (setenv "S3_SECRET_KEY" aws-secret-access-key))))
+        (setenv "EC2_CERT" (expand-file-name ec2-cert)))))
 
 (defun swap-windows ()
   "If you have 2 windows, it swaps them."
@@ -156,6 +155,7 @@
   (define-clojure-indent (context 1))
   (define-clojure-indent (controller-test 1))
   (define-clojure-indent (database-test 1))
+  (define-clojure-indent (web-test 1))
   (define-clojure-indent (datastore-test 1))
   (define-clojure-indent (dbtest 1))
   (define-clojure-indent (emits-once 1))
@@ -176,7 +176,7 @@
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
-(setq inferior-lisp-program "lein repl")
+(setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
 
 ;; CSS-MODE
 (setq css-indent-offset 2)
