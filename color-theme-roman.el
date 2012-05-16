@@ -2,18 +2,15 @@
 
 ;;;###autoload
 (defun color-theme-roman ()
-  "Color theme base on Sam Aaron, based off BlackBoard by JD
-Huntington based off the TextMate Blackboard theme, created
-2008-11-27"
+  "Color theme by Sam Aaron, based off BlackBoard by JD Huntington based off the TextMate Blackboard theme, created 2008-11-27"
   (interactive)
   (color-theme-install
    '(color-theme-roman
-     ((background-color . "333333")
+     ((background-color . "black")
       (background-mode . dark)
       (border-color . "black")
       (cursor-color . "yellow")
-      (foreground-color . "#EDEDED")
-      (mouse-color . "sienna1"))
+      (foreground-color . "#EDEDED"))
 
      (default ((t (:background "black" :foreground "light gray"))))
      (blue ((t (:foreground "blue"))))
@@ -40,12 +37,12 @@ Huntington based off the TextMate Blackboard theme, created
      (font-lock-warning-face ((t (:bold t :foreground "Pink"))))
 
      (gui-element ((t (:background "#333333" :foreground "#96CBFE"))))
-     ;;     (region ((t (:foreground "black" :background "#7F073F"))))
+;;     (region ((t (:foreground "black" :background "#7F073F"))))
      (region ((t ( :background "#7F073F"))))
      (mode-line ((t (:background "gray10" :foreground "#4c83ff"))))
      (mode-line-inactive ((t (:background "gray10" :foreground "gray30"))))
 
-     (highlight ((t (:background "333333"))))
+     (highlight ((t (:background "#333333"))))
      (isearch ((t (:background "deep pink" :foreground "black"))))
      (isearch-fail ((t (:background "red4"))))
      (lazy-highlight ((t (:background "yellow" :foreground "black"))))
@@ -130,9 +127,9 @@ Huntington based off the TextMate Blackboard theme, created
      (erc-notice-face ((t (:bold t :foreground "grey26"))))
 
      (erc-action-face ((t (:foreground "#FF6400"))))
-     ;;     (erc-bold-face ((t (:bold t :weight bold))))
-     ;;     (erc-button ((t (:bold t :weight bold))))
-     ;;     (erc-command-indicator-face ((t (:bold t :weight bold))))
+;;     (erc-bold-face ((t (:bold t :weight bold))))
+;;     (erc-button ((t (:bold t :weight bold))))
+;;     (erc-command-indicator-face ((t (:bold t :weight bold))))
      (erc-current-nick-face ((t (:foreground "#FBDE2D"))))
      (erc-dangerous-host-face ((t (:foreground "red"))))
      (erc-default-face ((t (:foreground "#61CE3C"))))
@@ -168,13 +165,13 @@ Huntington based off the TextMate Blackboard theme, created
  '(ediff-odd-diff-A ((((class color) (background dark)) (:background "dark green"))))
  '(ediff-odd-diff-B ((((class color) (background dark)) (:background "dark red"))))
  '(ediff-even-diff-B ((((class color) (background dark)) (:background "dark red"))))
-                                        ; '(ediff-current-diff-B ((((class color)) (:background "white"))))
-                                        ; '(ediff-even-diff-A ((((class color)) nil)))
-                                        ; '(ediff-even-diff-B ((((class color)) nil)))
-                                        ; '(ediff-fine-diff-A ((((class color)) (:background "cyan"))))
-                                        ; '(ediff-fine-diff-B ((((class color)) (:background "cyan"))))
-                                        ; '(ediff-odd-diff-A ((((class color)) nil)))
-                                        ; '(ediff-odd-diff-B ((((class color)) nil)))
+; '(ediff-current-diff-B ((((class color)) (:background "white"))))
+; '(ediff-even-diff-A ((((class color)) nil)))
+; '(ediff-even-diff-B ((((class color)) nil)))
+; '(ediff-fine-diff-A ((((class color)) (:background "cyan"))))
+; '(ediff-fine-diff-B ((((class color)) (:background "cyan"))))
+; '(ediff-odd-diff-A ((((class color)) nil)))
+; '(ediff-odd-diff-B ((((class color)) nil)))
  )
 
 (setq term-default-bg-color "black")
