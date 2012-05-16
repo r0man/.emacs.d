@@ -39,6 +39,7 @@
         starter-kit-js
         starter-kit-lisp
         starter-kit-ruby
+        volatile-highlights
         yaml-mode
         yasnippet-bundle))
 
@@ -372,6 +373,9 @@ new one."
 (require 'ruby-test-mode)
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
       ruby-test-rspec-executables '("bundle exec rspec"))
+
+;; VOLATILE HIGHLIGHTS
+(volatile-highlights-mode t)
 
 ;; EMACS RAILS RELOADED
 (setq rails/rspec-bundle/command "bundle exec rspec")
