@@ -39,6 +39,7 @@
         starter-kit-js
         starter-kit-lisp
         starter-kit-ruby
+        rainbow-delimiters
         volatile-highlights
         yaml-mode
         yasnippet-bundle))
@@ -370,6 +371,9 @@ new one."
  "ssh"
  '((tramp-parse-shosts "~/.ssh/known_hosts")
    (tramp-parse-hosts "/etc/hosts")))
+
+;; RAINBOW DELIMITERS
+(global-rainbow-delimiters-mode)
 
 ;; RUBY-TEST MODE
 (require 'ruby-test-mode)
