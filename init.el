@@ -409,6 +409,9 @@ new one."
 ;; YASNIPPET
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
+(yas/initialize)
+(setq yas/root-directory "~/.emacs.d/roman/snippets")
+(yas/load-directory yas/root-directory)
 
 ;; Fix pretty fns for javascript.
 (eval-after-load 'js
