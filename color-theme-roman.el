@@ -42,6 +42,13 @@
      (mode-line ((t (:background "gray10" :foreground "#4c83ff"))))
      (mode-line-inactive ((t (:background "gray10" :foreground "gray30"))))
 
+     ;; This face is used for the vertical divider between windows. By
+     ;; default this face inherits from the mode-line-inactive face on
+     ;; character terminals. On graphical displays the foreground
+     ;; color of this face is used for the vertical line between
+     ;; windows without scrollbars.
+     (fringe ((t (:background "black"))))
+
      (highlight ((t (:background "#333333"))))
      (isearch ((t (:background "deep pink" :foreground "black"))))
      (isearch-fail ((t (:background "red4"))))
