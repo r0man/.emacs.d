@@ -57,6 +57,11 @@
   (when (not (package-installed-p package))
     (package-install package)))
 
+;; ;; Use custom color theme.
+(require 'color-theme)
+(load-file "~/.emacs.d/color-theme-roman.el")
+(color-theme-roman)
+
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
@@ -105,11 +110,6 @@
            (set-window-start w1 s2)
            (set-window-start w2 s1))))
   (other-window 1))
-
-;; ;; Use custom color theme.
-(require 'color-theme)
-(load-file "~/.emacs.d/color-theme-roman.el")
-(color-theme-roman)
 
 ;; Highlight trailing whitespace
 (setq show-trailing-whitespace t)
