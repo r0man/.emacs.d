@@ -60,7 +60,7 @@
 (menu-bar-mode t)
 
 ;; Delete trailing whitespace when saving.
-;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Enable display of time, load level, and mail flag in mode lines.
 (display-time)
