@@ -5,4 +5,5 @@ elpa
 /auto-save-list
 /url/cookies
 /swank
+/.smex-items
 /tramp

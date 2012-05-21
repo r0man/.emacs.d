@@ -20,6 +20,7 @@
         elein
         emms
         expand-region
+        find-file-in-project
         find-file-in-git-repo
         gist
         haml-mode
@@ -38,6 +39,9 @@
         starter-kit-js
         starter-kit-lisp
         starter-kit-ruby
+        rainbow-delimiters
+        undo-tree
+        volatile-highlights
         yaml-mode
         yasnippet-bundle))
 
@@ -57,7 +61,9 @@
 (add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
 ;; Show menu bar
-(menu-bar-mode t)
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -77,12 +83,10 @@
       (progn
         (load-file aws-credentials)
         (setenv "AWS_ACCOUNT_NUMBER" aws-account-number)
-        (setenv "AWS_ACCESS_KEY_ID" aws-access-key-id)
-        (setenv "AWS_SECRET_ACCESS_KEY" aws-secret-access-key)
+        (setenv "AWS_ACCESS_KEY" aws-access-key)
+        (setenv "AWS_SECRET_KEY" aws-secret-key)
         (setenv "EC2_PRIVATE_KEY" (expand-file-name ec2-private-key))
-        (setenv "EC2_CERT" (expand-file-name ec2-cert))
-        (setenv "S3_ACCESS_KEY" aws-access-key-id)
-        (setenv "S3_SECRET_KEY" aws-secret-access-key))))
+        (setenv "EC2_CERT" (expand-file-name ec2-cert)))))
 
 (defun swap-windows ()
   "If you have 2 windows, it swaps them."
@@ -156,6 +160,7 @@
   (define-clojure-indent (context 1))
   (define-clojure-indent (controller-test 1))
   (define-clojure-indent (database-test 1))
+  (define-clojure-indent (web-test 1))
   (define-clojure-indent (datastore-test 1))
   (define-clojure-indent (dbtest 1))
   (define-clojure-indent (emits-once 1))
@@ -176,7 +181,7 @@
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
-(setq inferior-lisp-program "lein repl")
+(setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
 
 ;; CSS-MODE
 (setq css-indent-offset 2)
@@ -368,12 +373,22 @@ new one."
  '((tramp-parse-shosts "~/.ssh/known_hosts")
    (tramp-parse-hosts "/etc/hosts")))
 
+;; RAINBOW DELIMITERS
+(global-rainbow-delimiters-mode)
+
 ;; RUBY-TEST MODE
 (require 'ruby-test-mode)
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
       ruby-test-rspec-executables '("bundle exec rspec"))
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby")
       ruby-test-rspec-executables '("bundle exec rspec"))
+
+;; UNDO TREE
+(require 'undo-tree)
+
+;; VOLATILE HIGHLIGHTS
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
 
 ;; EMACS RAILS RELOADED
 (setq rails/rspec-bundle/command "bundle exec rspec")
@@ -400,6 +415,9 @@ new one."
 ;; YASNIPPET
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
+(yas/initialize)
+(setq yas/root-directory "~/.emacs.d/roman/snippets")
+(yas/load-directory yas/root-directory)
 
 ;; Fix pretty fns for javascript.
 (eval-after-load 'js
@@ -440,4 +458,3 @@ new one."
 ;; Set the sendmail program.
 (setq sendmail-program "msmtp"
       smtpmail-debug-info t)
-(put 'ido-exit-minibuffer 'disabled nil)
