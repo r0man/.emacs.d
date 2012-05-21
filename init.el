@@ -203,7 +203,7 @@
  '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
 
 ;; ERLANG
-(let ((directory "/usr/lib/erlang/lib/tools-2.6.6.5/emacs/"))
+(let ((directory "/usr/lib/erlang/lib/tools-2.6.7/emacs/"))
   (when (file-exists-p directory)
     (add-to-list 'load-path directory)
     (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
