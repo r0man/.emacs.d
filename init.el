@@ -208,7 +208,7 @@
  '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
 
 ;; ERLANG
-(let ((directory "/usr/lib/erlang/lib/tools-2.6.6.5/emacs/"))
+(let ((directory "/usr/lib/erlang/lib/tools-2.6.7/emacs/"))
   (when (file-exists-p directory)
     (add-to-list 'load-path directory)
     (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
@@ -379,6 +379,8 @@ new one."
 ;; RUBY-TEST MODE
 (require 'ruby-test-mode)
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
+      ruby-test-rspec-executables '("bundle exec rspec"))
+(setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby")
       ruby-test-rspec-executables '("bundle exec rspec"))
 
 ;; UNDO TREE
