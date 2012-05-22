@@ -8,7 +8,8 @@
    '(color-theme-roman
      ()
      ()
-     (mode-line ((t (:background "black" :foreground "white" :box (:line-width -1 :style released-button))))))))
+     (mode-line ((t (:background "black" :foreground "white" :box (:line-width -1 :style released-button)))))
+     (fringe ((t (:background "white")))))))
 
 (add-to-list 'color-themes '(color-theme-roman  "Roman" "Roman Scherer"))
 
