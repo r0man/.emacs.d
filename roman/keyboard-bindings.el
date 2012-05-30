@@ -9,6 +9,7 @@
 (global-set-key (kbd "C-x ^") 'enlarge-window)
 (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 (global-set-key (kbd "C-x m") 'switch-to-term-mode-buffer)
+(global-set-key (kbd "C-c C-.") 'clojure-test-run-test)
 (global-set-key [f5] 'compile)
 
 (global-unset-key (kbd "C-x g"))
