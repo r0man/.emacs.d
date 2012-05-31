@@ -370,6 +370,12 @@ new one."
 (require 'sql-indent)
 (setq sql-indent-offset 2)
 
+;; SQL-TRANSFORM
+(require 'sql-transform)
+(add-hook 'sql-mode-hook (function (lambda () (local-set-key "\C-cd" 'sql-to-delete))))
+(add-hook 'sql-mode-hook (function (lambda () (local-set-key "\C-cu" 'sql-to-update))))
+(add-hook 'sql-mode-hook (function (lambda () (local-set-key "\C-cs" 'sql-to-select))))
+
 ;; TRAMP
 (require 'tramp)
 (tramp-set-completion-function
