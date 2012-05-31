@@ -375,13 +375,11 @@ new one."
 (add-hook 'sql-mode-hook (function (lambda () (local-set-key "\C-cd" 'sql-to-delete))))
 (add-hook 'sql-mode-hook (function (lambda () (local-set-key "\C-cu" 'sql-to-update))))
 (add-hook 'sql-mode-hook (function (lambda () (local-set-key "\C-cs" 'sql-to-select))))
-
-;; MASTER-MODE
-(require 'master)
 (add-hook 'sql-mode-hook
           (function (lambda ()
                       (master-mode t)
                       (master-set-slave sql-buffer))))
+
 (add-hook 'sql-set-sqli-hook (function (lambda () (master-set-slave sql-buffer))))
 
 ;; TRAMP
