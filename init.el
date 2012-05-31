@@ -286,7 +286,7 @@
 
 ;; Enable compilation-shell-minor-mode in multi term.
 ;; http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/
-(add-hook 'term-mode-hook 'compilation-shell-minor-mode)
+;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
 
 (dolist
     (bind '(
