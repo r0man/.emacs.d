@@ -366,6 +366,10 @@ new one."
   (when (file-exists-p filename)
     (load-file filename)))
 
+;; SQL-INDENT
+(require 'sql-indent)
+(setq sql-indent-offset 2)
+
 ;; TRAMP
 (require 'tramp)
 (tramp-set-completion-function
