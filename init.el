@@ -226,6 +226,17 @@
     (require 'distel)
     (distel-setup)))
 
+;; FIND-DIRED
+(defun find-dired-clojure (dir)
+  "Run find-dired on Clojure files."
+  (interactive (list (read-directory-name "Run find (Clojure) in directory: " nil "" t)))
+  (find-dired dir "-name \"*.clj\""))
+
+(defun find-dired-ruby (dir)
+  "Run find-dired on Ruby files."
+  (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
+  (find-dired dir "-name \"*.rb\""))
+
 ;; FIND-FILE-IN-GIT-REPO
 (require 'find-file-in-git-repo)
 
@@ -353,6 +364,7 @@ new one."
        paredit-mode-hook
        ruby-mode-hook
        slime-mode-hook
+       sql-mode-hook
        yaml-mode-hook))
   (add-hook hook (lambda () (smart-tab-mode t))))
 
@@ -381,6 +393,10 @@ new one."
                       (master-set-slave sql-buffer))))
 
 (add-hook 'sql-set-sqli-hook (function (lambda () (master-set-slave sql-buffer))))
+
+;; If you don’t like window splittings related to the SQL buffer, try
+;; the following, per Force Same Window (Manual).
+;; (add-to-list 'same-window-buffer-names "*SQL*")
 
 ;; TRAMP
 (require 'tramp)
