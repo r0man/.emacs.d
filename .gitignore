@@ -1,9 +1,10 @@
 backups
+image-dired
 elpa
-/places
-/ac-comphist.dat
-/auto-save-list
+places
+ac-comphist.dat
+auto-save-list
+swank
+.smex-items
+tramp
 /url/cookies
-/swank
-/.smex-items
-/tramp

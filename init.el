@@ -478,7 +478,7 @@ new one."
 ;; - http://stackoverflow.com/questions/60367/the-single-most-useful-emacs-feature
 
 ;; EMAIL
-(setq user-full-name "Roman Scherer")
+
 (setq user-mail-address "roman@burningswell.com")
 
 ;; GNUS
