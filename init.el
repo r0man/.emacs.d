@@ -477,10 +477,6 @@ new one."
 ;; - http://stackoverflow.com/a/3284268
 ;; - http://stackoverflow.com/questions/60367/the-single-most-useful-emacs-feature
 
-;; EMAIL
-
-(setq user-mail-address "roman@burningswell.com")
-
 ;; GNUS
 (setq gnus-select-method
       '(nnimap "gmail"
