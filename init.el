@@ -413,28 +413,6 @@ new one."
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
 
-;; EMACS RAILS RELOADED
-(setq rails/rspec-bundle/command "bundle exec rspec")
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-rails-reloaded"))
-(setq rails/webserver-bundle/default-type "webrick")
-(require 'rails-autoload)
-
-(defun switch-to-rails-runner-buffer ()
-  (switch-to-buffer-other-window rails/runner/buffer-name)
-  (other-window -1))
-
-(defadvice rails/compile/current-method (after rails/compile/current-method-advice) ()
-  "Switch to the rails runner buffer after running the method test."
-  (switch-to-rails-runner-buffer))
-
-(ad-activate 'rails/compile/current-method)
-
-(defadvice rails/compile/single-file (after rails/compile/single-file-advice) ()
-  "Switch to the rails runner buffer after running the file test."
-  (switch-to-rails-runner-buffer))
-
-(ad-activate 'rails/compile/single-file)
-
 ;; YASNIPPET
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
