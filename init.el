@@ -1,3 +1,9 @@
+
+;; EMACS RESOURCES
+
+;; - http://stackoverflow.com/a/3284268
+;; - http://stackoverflow.com/questions/60367/the-single-most-useful-emacs-feature
+
 ;; Set file for customizations.
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 
@@ -57,7 +63,10 @@
   (when (not (package-installed-p package))
     (package-install package)))
 
-;; ;; Use custom color theme.
+;; Enter debugger if an error is signaled.
+(setq debug-on-error t)
+
+;; Use custom color theme.
 (require 'color-theme)
 (load-file "~/.emacs.d/color-theme-roman.el")
 (color-theme-roman)
@@ -372,15 +381,10 @@ new one."
        yaml-mode-hook))
   (add-hook hook (lambda () (smart-tab-mode t))))
 
-;; SMEX: M-x interface with Ido-style fuzzy matching.
-(when (require 'smex nil t)
-  (global-set-key (kbd "M-x") 'smex)
-  (smex-initialize))
-
 ;; SQL-MODE
-(let ((filename "~/.sql.el"))
-  (when (file-exists-p filename)
-    (load-file filename)))
+;; (let ((filename "~/.sql.el"))
+;;   (when (file-exists-p filename)
+;;     (load-file filename)))
 
 ;; SQL-INDENT
 (require 'sql-indent)
@@ -463,30 +467,32 @@ new one."
                                           (match-end 1) "\u0192")
                           nil))))))
 
-;; Don't use ido-ubiquitous yet. Breaks rgrep.
-(setq ido-ubiquitous-enabled nil)
+;; EMAIL
 
-;; Start a terminal.
-(multi-term)
+;; Send mail via sendmail.
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
 
-;; Load keyboard bindings (after everything else).
-(load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
+;; Program used to send messages.
+(setq sendmail-program "msmtp")
 
-;; EMACS RESOURCES
+;; SMTP debugging.
+(setq smtpmail-debug-info t)
 
-;; - http://stackoverflow.com/a/3284268
-;; - http://stackoverflow.com/questions/60367/the-single-most-useful-emacs-feature
 
 ;; GNUS
+
+;; Default method for selecting a newsgroup.
 (setq gnus-select-method
       '(nnimap "gmail"
                (nnimap-address "imap.gmail.com")
                (nnimap-server-port 993)
                (nnimap-stream ssl)))
 
-;; Send mail via sendmail.
-(setq message-send-mail-function 'message-send-mail-with-sendmail)
+;; A regexp to match uninteresting newsgroups. Use blank string for Gmail.
+(setq gnus-ignored-newsgroups "")
 
-;; Set the sendmail program.
-(setq sendmail-program "msmtp"
-      smtpmail-debug-info t)
+;; Start a terminal.
+(multi-term)
+
+;; Load keyboard bindings (after everything else).
+(load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
