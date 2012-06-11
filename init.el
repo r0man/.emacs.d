@@ -140,18 +140,6 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
-;; COFFEE MODE
-(let ((coffee-mode-directory "~/.emacs.d/coffee-mode"))
-  (when (file-directory-p coffee-mode-directory)
-    (add-to-list 'load-path coffee-mode-directory)
-    (require 'coffee-mode)
-    (defun coffee-mode-customization ()
-      (setq coffee-tab-width 2
-            tab-width 2)
-      (define-key coffee-mode-map "\C-c\C-k" 'coffee-compile-buffer)
-      (define-key coffee-mode-map "\C-c\C-r" 'coffee-compile-region))
-    (add-hook 'coffee-mode-hook '(lambda () (coffee-mode-customization)))))
-
 ;;; COMPILE-MODE
 (setq compilation-scroll-output 't)
 
