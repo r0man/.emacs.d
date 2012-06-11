@@ -1,9 +1,4 @@
 
-;; EMACS RESOURCES
-
-;; - http://stackoverflow.com/a/3284268
-;; - http://stackoverflow.com/questions/60367/the-single-most-useful-emacs-feature
-
 ;; Set file for customizations.
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 
