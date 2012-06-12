@@ -430,15 +430,20 @@ new one."
 
 ;; EMAIL
 
-;; Send mail via sendmail.
-(setq message-send-mail-function 'message-send-mail-with-sendmail)
+;; Send mail via smtpmail.
+(setq send-mail-function 'smtpmail-send-it)
 
-;; Program used to send messages.
-(setq sendmail-program "msmtp")
+;; The name of the host running SMTP server.
+(setq smtpmail-smtp-server "smtp.gmail.com")
 
-;; SMTP debugging.
-(setq smtpmail-debug-info t)
+;; SMTP service port number.
+(setq smtpmail-smtp-service 587)
 
+;; Type of SMTP connections to use.
+(setq smtpmail-stream-type 'starttls)
+
+;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
+(setq smtpmail-debug-info nil)
 
 ;; GNUS
 
