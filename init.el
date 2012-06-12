@@ -445,6 +445,9 @@ new one."
 ;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
 (setq smtpmail-debug-info t)
 
+;; User name to use when looking up credentials in the authinfo file.
+(setq smtpmail-smtp-user user-mail-address)
+
 ;; GNUS
 
 ;; Default method for selecting a newsgroup.
