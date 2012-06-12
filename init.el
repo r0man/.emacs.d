@@ -365,9 +365,9 @@ new one."
   (add-hook hook (lambda () (smart-tab-mode t))))
 
 ;; SQL-MODE
-;; (let ((filename "~/.sql.el"))
-;;   (when (file-exists-p filename)
-;;     (load-file filename)))
+(let ((filename "~/.sql.el"))
+  (when (file-exists-p filename)
+    (load-file filename)))
 
 ;; SQL-INDENT
 (require 'sql-indent)
