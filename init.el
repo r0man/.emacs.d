@@ -443,7 +443,7 @@ new one."
 (setq smtpmail-stream-type 'starttls)
 
 ;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
-(setq smtpmail-debug-info nil)
+(setq smtpmail-debug-info t)
 
 ;; GNUS
 
