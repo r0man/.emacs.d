@@ -178,6 +178,11 @@
 ;; CSS-MODE
 (setq css-indent-offset 2)
 
+;; DIRED
+
+;; Switches passed to `ls' for Dired.  MUST contain the `l' option.
+s(setq dired-listing-switches "-alh")
+
 ;;; EMMS
 (require 'emms-setup)
 (emms-all)
