@@ -181,7 +181,7 @@
 ;; DIRED
 
 ;; Switches passed to `ls' for Dired.  MUST contain the `l' option.
-s(setq dired-listing-switches "-alh")
+(setq dired-listing-switches "-alh")
 
 ;;; EMMS
 (require 'emms-setup)
