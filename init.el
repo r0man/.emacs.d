@@ -12,7 +12,8 @@
 
 ;; The packages.
 (setq elpa-packages
-      '(auctex
+      '(ace-jump-mode
+        auctex
         auto-complete
         clojure-mode
         clojure-test-mode
@@ -129,6 +130,10 @@
 
 ;; Do not add a final newline when saving.
 (setq require-final-newline nil)
+
+;; ACE-JUMP-MODE
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; AUTO-COMPLETE
 (require 'auto-complete-config)
