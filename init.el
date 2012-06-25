@@ -138,6 +138,17 @@
 ;;; COMPILE-MODE
 (setq compilation-scroll-output 't)
 
+;; Show colors in compilation buffers.
+;; http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
+(require 'ansi-color)
+
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (toggle-read-only))
+
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
 ;; CLOJURE-MODE
 (defun define-clojure-indent-words ()
   (define-clojure-indent (DELETE 1))
@@ -174,6 +185,7 @@
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 (setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
+;; (setq inferior-lisp-program "lein trampoline cljsbuild repl-launch firefox")
 
 ;; CSS-MODE
 (setq css-indent-offset 2)
@@ -345,6 +357,26 @@ new one."
 ;; SCSS-MODE
 (setq scss-compile-at-save nil)
 
+;; SLIME
+(defun slime-common-lisp ()
+  (interactive)
+  (setq inferior-lisp-program "sbcl")
+  (delete (expand-file-name "~/.emacs.d/elpa/slime-20100404.1") load-path)
+  (delete (expand-file-name "~/.emacs.d/elpa/slime-repl-20100404") load-path)
+  (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
+  (load-file "/usr/share/emacs/site-lisp/slime/slime.el")
+  (slime-setup '(slime-repl))
+  (slime))
+
+(defun slime-clojure ()
+  (interactive)
+  (delete (expand-file-name "/usr/share/emacs/site-lisp/slime") load-path)
+  (add-to-list 'load-path "~/.emacs.d/elpa/slime-20100404.1")
+  (add-to-list 'load-path "~/.emacs.d/elpa/slime-repl-20100404")
+  (load-file "~/.emacs.d/elpa/slime-20100404.1/slime.el")
+  (slime-setup '(slime-repl))
+  (slime-connect "localhost" 4005))
+
 ;; SMART-TAB
 (setq smart-tab-using-hippie-expand t)
 (dolist
@@ -457,3 +489,7 @@ new one."
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
+
+(defun build-clojurescript ()
+  (interactive)
+  (compile "lein clean; lein cljsbuild auto"))
