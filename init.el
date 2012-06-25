@@ -12,7 +12,8 @@
 
 ;; The packages.
 (setq elpa-packages
-      '(auctex
+      '(ace-jump-mode
+        auctex
         auto-complete
         clojure-mode
         clojure-test-mode
@@ -130,6 +131,10 @@
 ;; Do not add a final newline when saving.
 (setq require-final-newline nil)
 
+;; ACE-JUMP-MODE
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
 ;; AUTO-COMPLETE
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -189,6 +194,11 @@
 
 ;; CSS-MODE
 (setq css-indent-offset 2)
+
+;; DIRED
+
+;; Switches passed to `ls' for Dired.  MUST contain the `l' option.
+(setq dired-listing-switches "-alh")
 
 ;;; EMMS
 (require 'emms-setup)
@@ -397,9 +407,9 @@ new one."
   (add-hook hook (lambda () (smart-tab-mode t))))
 
 ;; SQL-MODE
-;; (let ((filename "~/.sql.el"))
-;;   (when (file-exists-p filename)
-;;     (load-file filename)))
+(let ((filename "~/.sql.el"))
+  (when (file-exists-p filename)
+    (load-file filename)))
 
 ;; SQL-INDENT
 (require 'sql-indent)
@@ -462,15 +472,23 @@ new one."
 
 ;; EMAIL
 
-;; Send mail via sendmail.
-(setq message-send-mail-function 'message-send-mail-with-sendmail)
+;; Send mail via smtpmail.
+(setq send-mail-function 'smtpmail-send-it)
 
-;; Program used to send messages.
-(setq sendmail-program "msmtp")
+;; The name of the host running SMTP server.
+(setq smtpmail-smtp-server "smtp.gmail.com")
 
-;; SMTP debugging.
+;; SMTP service port number.
+(setq smtpmail-smtp-service 587)
+
+;; Type of SMTP connections to use.
+(setq smtpmail-stream-type 'starttls)
+
+;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
 (setq smtpmail-debug-info t)
 
+;; User name to use when looking up credentials in the authinfo file.
+(setq smtpmail-smtp-user user-mail-address)
 
 ;; GNUS
 
