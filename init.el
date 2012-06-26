@@ -59,8 +59,8 @@
   (when (not (package-installed-p package))
     (package-install package)))
 
-;; Enter debugger if an error is signaled.
-(setq debug-on-error t)
+;; Enter debugger if an error is signaled?
+(setq debug-on-error nil)
 
 ;; Use custom color theme.
 (require 'color-theme)
