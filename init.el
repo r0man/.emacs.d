@@ -140,6 +140,11 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
+;; BIG BROTHER DATABASE
+(require 'bbdb)
+(bbdb-initialize 'gnus 'message)
+(bbdb-insinuate-gnus)
+
 ;;; COMPILE-MODE
 (setq compilation-scroll-output 't)
 
@@ -190,7 +195,10 @@
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 (setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
-;; (setq inferior-lisp-program "lein trampoline cljsbuild repl-launch firefox")
+
+(defun lein-cljs-build ()
+  (interactive)
+  (compile "lein clean; lein cljsbuild auto"))
 
 ;; CSS-MODE
 (setq css-indent-offset 2)
@@ -507,7 +515,3 @@ new one."
 
 ;; Load keyboard bindings (after everything else).
 (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
-
-(defun build-clojurescript ()
-  (interactive)
-  (compile "lein clean; lein cljsbuild auto"))
