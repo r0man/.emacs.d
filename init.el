@@ -500,6 +500,15 @@ new one."
 
 ;; GNUS
 
+;; Which information should be exposed in the User-Agent header.
+(setq mail-user-agent 'gnus-user-agent)
+
+;; Fuck the NSA.
+(setq mail-signature
+      '(progn
+         (insert "\n\n--------------------------------------------------------------------------------")
+         (spook)))
+
 ;; Default method for selecting a newsgroup.
 (setq gnus-select-method
       '(nnimap "gmail"
