@@ -268,6 +268,21 @@
 ;; GIST
 (setq gist-view-gist t)
 
+;; GNUS
+
+;; Which information should be exposed in the User-Agent header.
+(setq mail-user-agent 'gnus-user-agent)
+
+;; Default method for selecting a newsgroup.
+(setq gnus-select-method
+      '(nnimap "gmail"
+               (nnimap-address "imap.gmail.com")
+               (nnimap-server-port 993)
+               (nnimap-stream ssl)))
+
+;; A regexp to match uninteresting newsgroups. Use blank string for Gmail.
+(setq gnus-ignored-newsgroups "")
+
 ;; RVM
 (when (file-exists-p "/usr/local/rvm")
   (require 'rvm)
@@ -414,6 +429,32 @@ new one."
        yaml-mode-hook))
   (add-hook hook (lambda () (smart-tab-mode t))))
 
+;; SMTPMAIL
+
+;; Send mail via smtpmail.
+(setq send-mail-function 'smtpmail-send-it)
+
+;; The name of the host running SMTP server.
+(setq smtpmail-smtp-server "smtp.gmail.com")
+
+;; SMTP service port number.
+(setq smtpmail-smtp-service 587)
+
+;; Type of SMTP connections to use.
+(setq smtpmail-stream-type 'starttls)
+
+;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
+(setq smtpmail-debug-info t)
+
+;; User name to use when looking up credentials in the authinfo file.
+(setq smtpmail-smtp-user user-mail-address)
+
+;; Fuck the NSA.
+(setq mail-signature
+      '(progn
+         (insert "\n\n--------------------------------------------------------------------------------")
+         (spook)))
+
 ;; SQL-MODE
 (let ((filename "~/.sql.el"))
   (when (file-exists-p filename)
@@ -477,49 +518,6 @@ new one."
                 (0 (progn (compose-region (match-beginning 1)
                                           (match-end 1) "\u0192")
                           nil))))))
-
-;; EMAIL
-
-;; Send mail via smtpmail.
-(setq send-mail-function 'smtpmail-send-it)
-
-;; SMTPMAIL
-
-;; The name of the host running SMTP server.
-(setq smtpmail-smtp-server "smtp.gmail.com")
-
-;; SMTP service port number.
-(setq smtpmail-smtp-service 587)
-
-;; Type of SMTP connections to use.
-(setq smtpmail-stream-type 'starttls)
-
-;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
-(setq smtpmail-debug-info t)
-
-;; User name to use when looking up credentials in the authinfo file.
-(setq smtpmail-smtp-user user-mail-address)
-
-;; GNUS
-
-;; Which information should be exposed in the User-Agent header.
-(setq mail-user-agent 'gnus-user-agent)
-
-;; Fuck the NSA.
-(setq mail-signature
-      '(progn
-         (insert "\n\n--------------------------------------------------------------------------------")
-         (spook)))
-
-;; Default method for selecting a newsgroup.
-(setq gnus-select-method
-      '(nnimap "gmail"
-               (nnimap-address "imap.gmail.com")
-               (nnimap-server-port 993)
-               (nnimap-stream ssl)))
-
-;; A regexp to match uninteresting newsgroups. Use blank string for Gmail.
-(setq gnus-ignored-newsgroups "")
 
 ;; Start a terminal.
 (multi-term)
