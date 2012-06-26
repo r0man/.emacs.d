@@ -483,6 +483,8 @@ new one."
 ;; Send mail via smtpmail.
 (setq send-mail-function 'smtpmail-send-it)
 
+;; SMTPMAIL
+
 ;; The name of the host running SMTP server.
 (setq smtpmail-smtp-server "smtp.gmail.com")
 
