@@ -22,10 +22,11 @@
         elein
         emms
         expand-region
-        find-file-in-project
         find-file-in-git-repo
+        find-file-in-project
         gist
         haml-mode
+        haskell-mode
         inf-ruby
         json
         multi-term
