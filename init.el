@@ -234,7 +234,10 @@
 
 (require 'emms-player-mpd)
 (add-to-list 'emms-player-list 'emms-player-mpd)
-(emms-player-mpd-connect)
+(condition-case nil
+    (emms-player-mpd-connect)
+  (error
+   (message "Can't connecto to music player daemon.")))
 
 (require 'emms-source-file)
 (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
