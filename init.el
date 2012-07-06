@@ -141,6 +141,10 @@
 (ac-config-default)
 
 ;; BIG BROTHER DATABASE
+(let ((directory "~/local/bbdb-2.35/lisp"))
+  (when (file-exists-p directory)
+    (add-to-list 'load-path directory)))
+
 (require 'bbdb)
 (bbdb-initialize 'gnus 'message)
 (bbdb-insinuate-gnus)
