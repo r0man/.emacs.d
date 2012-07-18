@@ -117,6 +117,14 @@
            (set-window-start w2 s1))))
   (other-window 1))
 
+;; This variable describes the behavior of the command key.
+(setq mac-command-modifier 'meta)
+
+;; This variable describes the behavior of the alternate or option key.
+(setq mac-option-modifier nil)
+
+(push "/usr/local/bin" exec-path)
+
 ;; Highlight trailing whitespace
 (setq show-trailing-whitespace t)
 
