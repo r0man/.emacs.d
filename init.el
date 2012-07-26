@@ -271,7 +271,8 @@
 
 ;; EXPAND-REGION
 (require 'expand-region)
-(global-set-key (kbd "C-@") 'er/expand-region)
+(global-set-key (kbd "C-c C-+") 'er/expand-region)
+(global-set-key (kbd "C-c C--") 'er/contract-region)
 
 ;; DISTEL
 (let ((directory "/usr/share/distel/elisp"))
