@@ -324,6 +324,18 @@
 ;; A regexp to match uninteresting newsgroups. Use blank string for Gmail.
 (setq gnus-ignored-newsgroups "")
 
+;; Add daemonic server disconnection to Gnus.
+(gnus-demon-add-disconnection)
+
+;; Add daemonic nntp server disconnection to Gnus.
+(gnus-demon-add-nntp-close-connection)
+
+;; Add daemonic scanning of mail from the mail backends.
+(gnus-demon-add-scanmail)
+
+;; Initialize the Gnus daemon.
+(gnus-demon-init)
+
 ;; RVM
 (when (file-exists-p "/usr/local/rvm")
   (require 'rvm)
