@@ -117,13 +117,21 @@
            (set-window-start w2 s1))))
   (other-window 1))
 
+(defun setup-path-via-login-shell ()
+  "Setup the `exec-path' variable and the PATH environment within
+Emacs to the same value as the user's shell."
+  (interactive)
+  (let* ((path-string (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))
+         (path-string (replace-regexp-in-string "[ \t\n]*$" "" path-string)))
+    (setenv "PATH" path-string)
+    (setq exec-path (split-string path-string path-separator))))
+
+;; Setup path for Mac OSX.
+(setup-path-via-login-shell)
+
 ;; This variable describes the behavior of the command key.
-(setq mac-command-modifier 'meta)
-
-;; This variable describes the behavior of the alternate or option key.
-(setq mac-option-modifier nil)
-
-(push "/usr/local/bin" exec-path)
+(setq mac-option-key-is-meta t)
+(setq mac-right-option-modifier nil)
 
 ;; Highlight trailing whitespace
 (setq show-trailing-whitespace t)
