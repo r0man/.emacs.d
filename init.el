@@ -355,6 +355,7 @@ Emacs to the same value as the user's shell."
   (if (file-exists-p filename) (load-file filename)))
 
 ;; HASKELL-MODE
+(require 'haskell-cabal)
 (require 'haskell-mode)
 (require 'inf-haskell)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
