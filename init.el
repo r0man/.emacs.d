@@ -7,6 +7,7 @@
 ;; Set the package sources.
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.milkbox.net/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")
         ("elpa" . "http://tromey.com/elpa/")))
 
@@ -90,6 +91,10 @@
 
 ;; Whether to add a newline automatically at the end of the file.
 (setq require-final-newline t)
+
+;; (require 'hlinum)
+;; (setq linum-format "%4d ")
+;; (global-linum-mode)
 
 ;; AMAZON WEB SERVICES
 (let ((aws-credentials (expand-file-name "~/.aws.el")))
