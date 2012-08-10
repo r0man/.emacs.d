@@ -81,7 +81,10 @@
 (if (fboundp 'menu-bar-mode) (menu-bar-mode t))
 
 ;; Delete trailing whitespace when saving.
-;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Toggle column number display in the mode line.
+(column-number-mode)
 
 ;; Enable display of time, load level, and mail flag in mode lines.
 (display-time)
@@ -91,10 +94,6 @@
 
 ;; Whether to add a newline automatically at the end of the file.
 (setq require-final-newline t)
-
-;; (require 'hlinum)
-;; (setq linum-format "%4d ")
-;; (global-linum-mode)
 
 ;; AMAZON WEB SERVICES
 (let ((aws-credentials (expand-file-name "~/.aws.el")))
