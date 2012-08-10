@@ -120,13 +120,21 @@
            (set-window-start w2 s1))))
   (other-window 1))
 
+(defun setup-path-via-login-shell ()
+  "Setup the `exec-path' variable and the PATH environment within
+Emacs to the same value as the user's shell."
+  (interactive)
+  (let* ((path-string (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))
+         (path-string (replace-regexp-in-string "[ \t\n]*$" "" path-string)))
+    (setenv "PATH" path-string)
+    (setq exec-path (split-string path-string path-separator))))
+
+;; Setup path for Mac OSX.
+(setup-path-via-login-shell)
+
 ;; This variable describes the behavior of the command key.
-(setq mac-command-modifier 'meta)
-
-;; This variable describes the behavior of the alternate or option key.
-(setq mac-option-modifier nil)
-
-(push "/usr/local/bin" exec-path)
+(setq mac-option-key-is-meta t)
+(setq mac-right-option-modifier nil)
 
 ;; Highlight trailing whitespace
 (setq show-trailing-whitespace t)
@@ -282,7 +290,8 @@
 
 ;; EXPAND-REGION
 (require 'expand-region)
-(global-set-key (kbd "C-@") 'er/expand-region)
+(global-set-key (kbd "C-c C-+") 'er/expand-region)
+(global-set-key (kbd "C-c C--") 'er/contract-region)
 
 ;; DISTEL
 (let ((directory "/usr/share/distel/elisp"))
@@ -326,6 +335,18 @@
 ;; A regexp to match uninteresting newsgroups. Use blank string for Gmail.
 (setq gnus-ignored-newsgroups "")
 
+;; Add daemonic server disconnection to Gnus.
+(gnus-demon-add-disconnection)
+
+;; Add daemonic nntp server disconnection to Gnus.
+(gnus-demon-add-nntp-close-connection)
+
+;; Add daemonic scanning of mail from the mail backends.
+(gnus-demon-add-scanmail)
+
+;; Initialize the Gnus daemon.
+(gnus-demon-init)
+
 ;; RVM
 (when (file-exists-p "/usr/local/rvm")
   (require 'rvm)
@@ -337,6 +358,7 @@
   (if (file-exists-p filename) (load-file filename)))
 
 ;; HASKELL-MODE
+(require 'haskell-cabal)
 (require 'haskell-mode)
 (require 'inf-haskell)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
