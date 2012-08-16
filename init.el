@@ -157,6 +157,11 @@ Emacs to the same value as the user's shell."
   (with-current-buffer reb-target-buffer
     (query-replace-regexp (reb-target-binding reb-regexp) to-string)))
 
+;; ABBREV MODE
+(setq abbrev-file-name "~/.emacs.d/abbrev_defs")
+(setq default-abbrev-mode t)
+(setq save-abbrevs t)
+
 ;; ACE-JUMP-MODE
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
