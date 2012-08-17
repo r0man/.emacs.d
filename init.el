@@ -35,7 +35,6 @@
         sass-mode
         scss-mode
         slime-repl
-        smart-tab
         smex
         starter-kit
         starter-kit-bindings
@@ -375,16 +374,6 @@ Emacs to the same value as the user's shell."
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
 
-;; HIPPIE EXPAND
-(setq hippie-expand-try-functions-list
-      '(yas/hippie-try-expand
-        try-expand-all-abbrevs
-        try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-complete-file-name-partially
-        try-complete-file-name))
-
 ;; JAVA
 
 ;; Indent Java annotations.
@@ -482,25 +471,6 @@ new one."
   (load-file "~/.emacs.d/elpa/slime-20100404.1/slime.el")
   (slime-setup '(slime-repl))
   (slime-connect "localhost" 4005))
-
-;; SMART-TAB
-(setq smart-tab-using-hippie-expand t)
-(dolist
-    (hook
-     '(LaTeX-mode-hook
-       c-mode-hook
-       coffee-mode-hook
-       css-mode-hook
-       emacs-lisp-mode-hook
-       haml-mode-hook
-       html-mode-hook
-       java-mode-hook
-       paredit-mode-hook
-       ruby-mode-hook
-       slime-mode-hook
-       sql-mode-hook
-       yaml-mode-hook))
-  (add-hook hook (lambda () (smart-tab-mode t))))
 
 ;; SMTPMAIL
 
