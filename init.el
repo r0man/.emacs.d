@@ -263,6 +263,18 @@ Emacs to the same value as the user's shell."
 ;; Switches passed to `ls' for Dired.  MUST contain the `l' option.
 (setq dired-listing-switches "-alh")
 
+(defun dired-do-shell-command-in-background (command)
+  "In dired, do shell command in background on the file or directory named on
+ this line."
+  (interactive
+   (list (dired-read-shell-command (concat "& on " "%s: ") nil (list (dired-get-filename)))))
+  (call-process command nil 0 nil (dired-get-filename)))
+
+(add-hook 'dired-load-hook
+          (function (lambda ()
+                      (load "dired-x")
+                      (define-key dired-mode-map "&" 'dired-do-shell-command-in-background))))
+
 ;;; EMMS
 (require 'emms-setup)
 (emms-all)
