@@ -35,7 +35,7 @@
         sass-mode
         scss-mode
         slime-repl
-        smex
+        ;; smex
         starter-kit
         starter-kit-bindings
         starter-kit-js
