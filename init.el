@@ -60,7 +60,7 @@
     (package-install package)))
 
 ;; Enter debugger if an error is signaled?
-(setq debug-on-error nil)
+(setq debug-on-error t)
 
 ;; Use custom color theme.
 (require 'color-theme)
