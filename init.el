@@ -416,6 +416,18 @@ new one."
   (when (file-exists-p filename)
     (load-file filename)))
 
+;; OCTAVE
+(autoload 'octave-mode "octave-mod" nil t)
+(setq auto-mode-alist
+      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+(add-hook 'octave-mode-hook
+          (lambda ()
+            (abbrev-mode 1)
+            (auto-fill-mode 1)
+            (if (eq window-system 'x)
+                (font-lock-mode 1))))
+
 ;; RCIRC
 (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
 (setq rcirc-default-nick "r0man"
