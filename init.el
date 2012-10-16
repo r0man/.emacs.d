@@ -206,14 +206,15 @@
 (require 'clojure-mode)
 
 (define-clojure-indent
-  (defroutes 'defun)
+  (ANY 2)
+  (DELETE 2)
   (GET 2)
+  (HEAD 2)
   (POST 2)
   (PUT 2)
-  (DELETE 2)
-  (HEAD 2)
-  (ANY 2)
-  (context 2))
+  (context 2)
+  (database-test 1)
+  (defroutes 'defun))
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
