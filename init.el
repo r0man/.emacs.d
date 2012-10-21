@@ -13,7 +13,8 @@
 
 ;; The packages.
 (setq elpa-packages
-      '(ace-jump-mode
+      '(ac-nrepl
+        ace-jump-mode
         auctex
         auto-complete
         clojure-mode
@@ -31,18 +32,18 @@
         inf-ruby
         json
         multi-term
+        nrepl
+        rainbow-delimiters
         ruby-test-mode
         rvm
         sass-mode
         scss-mode
         slime-repl
-        ;; smex
         starter-kit
         starter-kit-bindings
         starter-kit-js
         starter-kit-lisp
         starter-kit-ruby
-        rainbow-delimiters
         undo-tree
         volatile-highlights
         yaml-mode
