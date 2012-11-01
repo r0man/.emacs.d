@@ -229,12 +229,13 @@
 
 ;; DIRED
 
+;; Switches passed to `ls' for Dired.  MUST contain the `l' option.
+(setq dired-listing-switches "-alh")
+
+;; User-defined alist of rules for suggested commands.
 (setq dired-guess-shell-alist-user
       (list
        (list "\\.pdf$" "evince")))
-
-;; Switches passed to `ls' for Dired.  MUST contain the `l' option.
-(setq dired-listing-switches "-alh")
 
 (defun dired-do-shell-command-in-background (command)
   "In dired, do shell command in background on the file or directory named on
