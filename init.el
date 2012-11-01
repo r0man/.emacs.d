@@ -229,6 +229,10 @@
 
 ;; DIRED
 
+(setq dired-guess-shell-alist-user
+      (list
+       (list "\\.pdf$" "evince")))
+
 ;; Switches passed to `ls' for Dired.  MUST contain the `l' option.
 (setq dired-listing-switches "-alh")
 
