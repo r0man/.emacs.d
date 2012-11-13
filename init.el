@@ -232,11 +232,6 @@
 ;; Switches passed to `ls' for Dired.  MUST contain the `l' option.
 (setq dired-listing-switches "-alh")
 
-;; User-defined alist of rules for suggested commands.
-(setq dired-guess-shell-alist-user
-      (list
-       (list "\\.pdf$" "evince")))
-
 (defun dired-do-shell-command-in-background (command)
   "In dired, do shell command in background on the file or directory named on
  this line."
@@ -244,10 +239,22 @@
    (list (dired-read-shell-command (concat "& on " "%s: ") nil (list (dired-get-filename)))))
   (call-process command nil 0 nil (dired-get-filename)))
 
+;; DIRED-X
 (add-hook 'dired-load-hook
-          (function (lambda ()
-                      (load "dired-x")
-                      (define-key dired-mode-map "&" 'dired-do-shell-command-in-background))))
+          (lambda ()
+            (load "dired-x")
+            (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
+
+(add-hook 'dired-mode-hook
+          (lambda ()
+            ;; Set dired-x buffer-local variables here.  For example:
+            ;; (dired-omit-mode 1)
+            ))
+
+;; User-defined alist of rules for suggested commands.
+(setq dired-guess-shell-alist-user
+      (list
+       (list "\\.pdf$" "evince")))
 
 ;;; EMMS
 (require 'emms-setup)
