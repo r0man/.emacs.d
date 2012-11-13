@@ -29,6 +29,7 @@
         haskell-mode
         inf-ruby
         json
+        markdown-mode
         multi-term
         ruby-test-mode
         rvm
