@@ -29,7 +29,6 @@
         expand-region
         find-file-in-git-repo
         find-file-in-project
-        gist
         haml-mode
         haskell-mode
         inf-ruby
