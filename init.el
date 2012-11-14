@@ -260,13 +260,15 @@
     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 
 ;; MULTI-TERM
-(setq multi-term-program "/bin/bash"
-      multi-term-dedicated-select-after-open-p t
-      multi-term-dedicated-window-height 25)
+(setq multi-term-dedicated-select-after-open-p t
+      multi-term-dedicated-window-height 25
+      multi-term-program "/bin/bash")
 
 ;; Enable compilation-shell-minor-mode in multi term.
 ;; http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/
-(add-hook 'term-mode-hook 'compilation-shell-minor-mode)
+
+;; TODO: WTF? Turns off colors in terminal.
+;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
 
 (add-hook 'multi-term-hook
           (lambda ()
@@ -382,18 +384,22 @@ new one."
  'after-init-hook
  (lambda ()
 
-   ;; Use custom color theme.
-   (color-theme-roman)
-
    ;; Hide scroll and tool bar, and show menu.
    (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
    (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
    (if (fboundp 'menu-bar-mode) (menu-bar-mode t))
 
+   ;; Refresh package archives when necessary.
+   (unless (file-exists-p "~/.emacs.d/elpa/archives")
+     (package-refresh-contents))
+
    ;; Install all packages.
    (dolist (package elpa-packages)
      (when (not (package-installed-p package))
        (package-install package)))
+
+   ;; Use custom color theme.
+   (color-theme-roman)
 
    ;; AUTO-COMPLETE
    (require 'auto-complete-config)
@@ -429,5 +435,3 @@ new one."
 
    ;; Load keyboard bindings (after everything else).
    (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))))
-
-;; (put 'ido-exit-minibuffer 'disabled nil)
