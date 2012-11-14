@@ -6,13 +6,18 @@
 
 ;; Set the package sources.
 (setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
+      '(("elpa" . "http://tromey.com/elpa/")
+        ("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")
-        ("elpa" . "http://tromey.com/elpa/")))
+        ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+(setq package-archive-enable-alist
+      '(("melpa" clojure-mode clojure-test-mode ac-nrepl nrepl)))
 
 ;; The packages.
 (setq elpa-packages
-      '(ace-jump-mode
+      '(ac-nrepl
+        ace-jump-mode
         auctex
         auto-complete
         clojure-mode
@@ -31,53 +36,28 @@
         json
         markdown-mode
         multi-term
+        nrepl
         ruby-test-mode
         rvm
         sass-mode
         scss-mode
-        slime-repl
-        ;; smex
         starter-kit
         starter-kit-bindings
         starter-kit-js
         starter-kit-lisp
         starter-kit-ruby
-        rainbow-delimiters
         undo-tree
-        volatile-highlights
         yaml-mode
         yasnippet-bundle))
 
-;; Initialize the package system.
-(package-initialize)
-
-;; Refresh package archives when necessary.
-(unless (file-exists-p "~/.emacs.d/elpa/archives")
-  (package-refresh-contents))
-
-;; Install all packages.
-(dolist (package elpa-packages)
-  (when (not (package-installed-p package))
-    (package-install package)))
-
 ;; Enter debugger if an error is signaled?
 (setq debug-on-error t)
-
-;; Use custom color theme.
-(require 'color-theme)
-(load-file "~/.emacs.d/color-theme-roman.el")
-(color-theme-roman)
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
 ;; Use cat as pager.
 (setenv "PAGER" "cat")
-
-;; Hide scroll and tool bar, and show menu.
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode t))
 
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -156,45 +136,40 @@
 (setq default-abbrev-mode t)
 (setq save-abbrevs t)
 
-;; ACE-JUMP-MODE
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;; ;; AUTO-COMPLETE
+;; (require 'auto-complete-config)
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;; (ac-config-default)
 
-;; AUTO-COMPLETE
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
+;; ;; BIG BROTHER DATABASE
+;; (let ((directory "~/local/bbdb-2.35/lisp"))
+;;   (when (file-exists-p directory)
+;;     (add-to-list 'load-path directory)))
 
-;; BIG BROTHER DATABASE
-(let ((directory "~/local/bbdb-2.35/lisp"))
-  (when (file-exists-p directory)
-    (add-to-list 'load-path directory)))
+;; (require 'bbdb)
+;; (bbdb-initialize 'gnus 'message)
+;; (bbdb-insinuate-gnus)
 
-(require 'bbdb)
-(bbdb-initialize 'gnus 'message)
-(bbdb-insinuate-gnus)
+;; ;; Complete on anything.
+;; (setq bbdb-completion-type nil)
 
-;; Complete on anything.
-(setq bbdb-completion-type nil)
+;; ;; Cycle through matches (works sometimes).
+;; (setq bbdb-complete-name-allow-cycling t)
 
-;; Cycle through matches (works sometimes).
-(setq bbdb-complete-name-allow-cycling t)
+;; ;; Use AKA, alternate names.
+;; (setq bbdb-use-alternate-names t)
 
-;; Use AKA, alternate names.
-(setq bbdb-use-alternate-names t)
+;; ;; Single-line addresses.
+;; (setq bbdb-elided-display t)
 
-;; Single-line addresses.
-(setq bbdb-elided-display t)
-
-;; Automatically create addresses from emails.
-(setq bbdb/mail-auto-create-p 'bbdb-ignore-some-messages-hook)
+;; ;; Automatically create addresses from emails.
+;; (setq bbdb/mail-auto-create-p 'bbdb-ignore-some-messages-hook)
 
 ;;; COMPILE-MODE
 (setq compilation-scroll-output 't)
 
 ;; Show colors in compilation buffers.
 ;; http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
-(require 'ansi-color)
 
 (defun colorize-compilation-buffer ()
   (toggle-read-only)
@@ -204,18 +179,18 @@
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 ;; CLOJURE-MODE
-(require 'clojure-mode)
-
-(define-clojure-indent
-  (ANY 2)
-  (DELETE 2)
-  (GET 2)
-  (HEAD 2)
-  (POST 2)
-  (PUT 2)
-  (context 2)
-  (database-test 1)
-  (defroutes 'defun))
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (define-clojure-indent
+              (ANY 2)
+              (DELETE 2)
+              (GET 2)
+              (HEAD 2)
+              (POST 2)
+              (PUT 2)
+              (context 2)
+              (database-test 1)
+              (defroutes 'defun))))
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
@@ -257,49 +232,42 @@
       (list
        (list "\\.pdf$" "evince")))
 
-;;; EMMS
-(require 'emms-setup)
-(emms-all)
-(emms-default-players)
+;; ;;; EMMS
+;; (require 'emms-setup)
+;; (emms-all)
+;; (emms-default-players)
 
-(require 'emms-player-mpd)
-(add-to-list 'emms-player-list 'emms-player-mpd)
-(condition-case nil
-    (emms-player-mpd-connect)
-  (error
-   (message "Can't connecto to music player daemon.")))
+;; (require 'emms-player-mpd)
+;; (add-to-list 'emms-player-list 'emms-player-mpd)
+;; (condition-case nil
+;;     (emms-player-mpd-connect)
+;;   (error
+;;    (message "Can't connecto to music player daemon.")))
 
-(require 'emms-source-file)
-(setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
-(setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
+;; (require 'emms-source-file)
+;; (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+;; (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
 
-(let ((filename "~/.emms.el"))
-  (when (file-exists-p filename)
-    (load-file filename)))
+;; (let ((filename "~/.emms.el"))
+;;   (when (file-exists-p filename)
+;;     (load-file filename)))
 
-(add-to-list
- 'emms-stream-default-list
- '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
+;; (add-to-list
+;;  'emms-stream-default-list
+;;  '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
 
-;; ERLANG
-(let ((directory "/usr/lib/erlang/lib/tools-2.6.7/emacs/"))
-  (when (file-exists-p directory)
-    (add-to-list 'load-path directory)
-    (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
-    (setq erlang-root-dir "/usr/lib/erlang")
-    (setq inferior-erlang-machine-options '("-sname" "emacs"))))
+;; ;; ERLANG
+;; (let ((directory "/usr/lib/erlang/lib/tools-2.6.7/emacs/"))
+;;   (when (file-exists-p directory)
+;;     (add-to-list 'load-path directory)
+;;     (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
+;;     (setq erlang-root-dir "/usr/lib/erlang")
+;;     (setq inferior-erlang-machine-options '("-sname" "emacs"))))
 
-;; EXPAND-REGION
-(require 'expand-region)
-(global-set-key (kbd "C-c C-+") 'er/expand-region)
-(global-set-key (kbd "C-c C--") 'er/contract-region)
-
-;; DISTEL
-(let ((directory "/usr/share/distel/elisp"))
-  (when (file-exists-p directory)
-    (add-to-list 'load-path directory)
-    (require 'distel)
-    (distel-setup)))
+;; ;; EXPAND-REGION
+;; (require 'expand-region)
+;; (global-set-key (kbd "C-c C-+") 'er/expand-region)
+;; (global-set-key (kbd "C-c C--") 'er/contract-region)
 
 ;; FIND-DIRED
 (defun find-dired-clojure (dir)
@@ -312,16 +280,14 @@
   (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
   (find-dired dir "-name \"*.rb\""))
 
-;; FIND-FILE-IN-GIT-REPO
-(require 'find-file-in-git-repo)
+;; ;; FIND-FILE-IN-GIT-REPO
+;; (require 'find-file-in-git-repo)
 
-;; FIND-FILE-IN-PROJECT
-(setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java"))
-
-;; GIST
-(setq gist-view-gist t)
+;; ;; FIND-FILE-IN-PROJECT
+;; (setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java"))
 
 ;; GNUS
+(require 'gnus)
 
 ;; Which information should be exposed in the User-Agent header.
 (setq mail-user-agent 'gnus-user-agent)
@@ -348,25 +314,21 @@
 ;; Initialize the Gnus daemon.
 (gnus-demon-init)
 
-;; RVM
-(when (file-exists-p "/usr/local/rvm")
-  (require 'rvm)
-  (rvm-use-default))
+;; ;; RVM
+;; (when (file-exists-p "/usr/local/rvm")
+;;   (require 'rvm)
+;;   (rvm-use-default))
 
-;; GIT-BLAME-MODE
-(dolist (filename '("/usr/share/emacs/site-lisp/git-blame.el"
-                    "/usr/share/git/emacs/git-blame.el"))
-  (if (file-exists-p filename) (load-file filename)))
+;; ;; GIT-BLAME-MODE
+;; (dolist (filename '("/usr/share/emacs/site-lisp/git-blame.el"
+;;                     "/usr/share/git/emacs/git-blame.el"))
+;;   (if (file-exists-p filename) (load-file filename)))
 
-;; HASKELL-MODE
-(require 'haskell-cabal)
-(require 'haskell-mode)
-(require 'inf-haskell)
+;; ;; HASKELL-MODE
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
 
 ;; JAVA
 
@@ -378,36 +340,32 @@
     (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 
-;; MINGUS
-(add-to-list 'load-path "~/.emacs.d/mingus")
-(autoload 'mingus "mingus-stays-home" nil t)
-
 ;; MULTI-TERM
-(require 'multi-term)
 (setq multi-term-program "/bin/bash"
       multi-term-dedicated-select-after-open-p t
       multi-term-dedicated-window-height 25)
 
 ;; Enable compilation-shell-minor-mode in multi term.
 ;; http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/
-;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
+(add-hook 'term-mode-hook 'compilation-shell-minor-mode)
 
-(dolist
-    (bind '(
-            ("<S-down>" . multi-term)
-            ("<S-left>" . multi-term-prev)
-            ("<S-right>" . multi-term-next)
-            ("C-<backspace>" . term-send-backward-kill-word)
-            ("C-<delete>" . term-send-forward-kill-word)
-            ("C-<left>" . term-send-backward-word)
-            ("C-<right>" . term-send-forward-word)
-            ("C-c C-j" . term-line-mode)
-            ("C-c C-k" . term-char-mode)
-            ("C-y" . term-paste)
-            ("C-z" . term-stop-subjob)
-            ("M-d" . term-send-forward-kill-word)
-            ("M-DEL" . term-send-backward-kill-word)))
-  (add-to-list 'term-bind-key-alist bind))
+(add-hook 'multi-term-hook
+          (lambda ()
+            (dolist
+                (bind '(("<S-down>" . multi-term)
+                        ("<S-left>" . multi-term-prev)
+                        ("<S-right>" . multi-term-next)
+                        ("C-<backspace>" . term-send-backward-kill-word)
+                        ("C-<delete>" . term-send-forward-kill-word)
+                        ("C-<left>" . term-send-backward-word)
+                        ("C-<right>" . term-send-forward-word)
+                        ("C-c C-j" . term-line-mode)
+                        ("C-c C-k" . term-char-mode)
+                        ("C-y" . term-paste)
+                        ("C-z" . term-stop-subjob)
+                        ("M-d" . term-send-forward-kill-word)
+                        ("M-DEL" . term-send-backward-kill-word)))
+              (add-to-list 'term-bind-key-alist bind))))
 
 (defun last-term-mode-buffer (list-of-buffers)
   "Returns the most recently used term-mode buffer."
@@ -424,15 +382,8 @@ new one."
         (multi-term)
       (switch-to-buffer buffer))))
 
-;; NUGG.AD
-(let ((filename "~/.nuggad.el"))
-  (when (file-exists-p filename)
-    (load-file filename)))
-
 ;; OCTAVE
-(autoload 'octave-mode "octave-mod" nil t)
-(setq auto-mode-alist
-      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
 (add-hook 'octave-mode-hook
           (lambda ()
@@ -449,6 +400,7 @@ new one."
       rcirc-server-alist '(("irc.freenode.net" :channels ("#clojure" "#pallet")))
       rcirc-private-chat t
       rcirc-debug-flag t)
+
 (add-hook 'rcirc-mode-hook
           (lambda ()
             (set (make-local-variable 'scroll-conservatively) 8192)
@@ -457,26 +409,6 @@ new one."
 
 ;; SCSS-MODE
 (setq scss-compile-at-save nil)
-
-;; SLIME
-(defun slime-common-lisp ()
-  (interactive)
-  (setq inferior-lisp-program "sbcl")
-  (delete (expand-file-name "~/.emacs.d/elpa/slime-20100404.1") load-path)
-  (delete (expand-file-name "~/.emacs.d/elpa/slime-repl-20100404") load-path)
-  (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime")
-  (load-file "/usr/share/emacs/site-lisp/slime/slime.el")
-  (slime-setup '(slime-repl))
-  (slime))
-
-(defun slime-clojure ()
-  (interactive)
-  (delete (expand-file-name "/usr/share/emacs/site-lisp/slime") load-path)
-  (add-to-list 'load-path "~/.emacs.d/elpa/slime-20100404.1")
-  (add-to-list 'load-path "~/.emacs.d/elpa/slime-repl-20100404")
-  (load-file "~/.emacs.d/elpa/slime-20100404.1/slime.el")
-  (slime-setup '(slime-repl))
-  (slime-connect "localhost" 4005))
 
 ;; SMTPMAIL
 
@@ -511,82 +443,57 @@ new one."
     (load-file filename)))
 
 ;; SQL-INDENT
-(require 'sql-indent)
 (setq sql-indent-offset 2)
 
-;; SQL-TRANSFORM
-(require 'sql-transform)
-(add-hook 'sql-mode-hook (function (lambda () (local-set-key "\C-cd" 'sql-to-delete))))
-(add-hook 'sql-mode-hook (function (lambda () (local-set-key "\C-cu" 'sql-to-update))))
-(add-hook 'sql-mode-hook (function (lambda () (local-set-key "\C-cs" 'sql-to-select))))
-(add-hook 'sql-mode-hook
-          (function (lambda ()
-                      (master-mode t)
-                      (master-set-slave sql-buffer))))
-
-(add-hook 'sql-set-sqli-hook (function (lambda () (master-set-slave sql-buffer))))
-
-;; If you don’t like window splittings related to the SQL buffer, try
-;; the following, per Force Same Window (Manual).
-;; (add-to-list 'same-window-buffer-names "*SQL*")
-
 ;; TRAMP
-(require 'tramp)
-(tramp-set-completion-function
- "ssh"
- '((tramp-parse-shosts "~/.ssh/known_hosts")
-   (tramp-parse-hosts "/etc/hosts")))
-
-;; RAINBOW DELIMITERS
-(global-rainbow-delimiters-mode)
+(eval-after-load "tramp"
+  '(progn
+     (tramp-set-completion-function
+      "ssh"
+      '((tramp-parse-shosts "~/.ssh/known_hosts")
+        (tramp-parse-hosts "/etc/hosts")))))
 
 ;; RUBY-TEST MODE
-(require 'ruby-test-mode)
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
       ruby-test-rspec-executables '("bundle exec rspec"))
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby")
       ruby-test-rspec-executables '("bundle exec rspec"))
 
-;; UNDO TREE
-(require 'undo-tree)
+(add-hook
+ 'after-init-hook
+ (lambda ()
 
-;; VOLATILE HIGHLIGHTS
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
+   ;; Use custom color theme.
+   (color-theme-roman)
 
-;; YASNIPPET
-(require 'dropdown-list)
-(setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/completing-prompt))
-(yas/initialize)
-(setq yas/root-directory "~/.emacs.d/roman/snippets")
-(yas/load-directory yas/root-directory)
+   ;; Hide scroll and tool bar, and show menu.
+   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+   (if (fboundp 'menu-bar-mode) (menu-bar-mode t))
 
-;; Fix pretty fns for javascript.
-(eval-after-load 'js
-  '(font-lock-add-keywords
-    'js-mode `(("\\(function *\\)("
-                (0 (progn (compose-region (match-beginning 1)
-                                          (match-end 1) "\u0192")
-                          nil))))))
+   ;; Start a terminal.
+   (multi-term)
 
-;; Start a terminal.
-(multi-term)
+   ;; Install all packages.
+   (dolist (package elpa-packages)
+     (when (not (package-installed-p package))
+       (package-install package)))))
 
-;; Load keyboard bindings (after everything else).
-(load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
-(put 'ido-exit-minibuffer 'disabled nil)
+;; ;; Load keyboard bindings (after everything else).
+;; (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
+;; (put 'ido-exit-minibuffer 'disabled nil)
 
-(defun ragtime-create-migration (name)
-  "Create a Ragtime SQL migration."
-  (interactive "sMigration name: ")
-  (if (string-match "^\\s-*$" name)
-      (error "Migration name can't be blank!"))
-  (let ((root (locate-dominating-file (or buffer-file-name default-directory) "src")))
-    (unless root
-      (error "Can't find migrations directory!"))
-    (let* ((timestamp (format-time-string "%Y%m%d%H%M%S"))
-           (name (replace-regexp-in-string "[^a-z]" "-" (downcase name)))
-           (up (format "%smigrations/%s-%s.up.sql" root timestamp name))
-           (down (format "%smigrations/%s-%s.down.sql" root timestamp name)))
-      (find-file down)
-      (find-file up))))
+;; (defun ragtime-create-migration (name)
+;;   "Create a Ragtime SQL migration."
+;;   (interactive "sMigration name: ")
+;;   (if (string-match "^\\s-*$" name)
+;;       (error "Migration name can't be blank!"))
+;;   (let ((root (locate-dominating-file (or buffer-file-name default-directory) "src")))
+;;     (unless root
+;;       (error "Can't find migrations directory!"))
+;;     (let* ((timestamp (format-time-string "%Y%m%d%H%M%S"))
+;;            (name (replace-regexp-in-string "[^a-z]" "-" (downcase name)))
+;;            (up (format "%smigrations/%s-%s.up.sql" root timestamp name))
+;;            (down (format "%smigrations/%s-%s.down.sql" root timestamp name)))
+;;       (find-file down)
+;;       (find-file up))))
