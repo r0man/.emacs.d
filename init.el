@@ -309,11 +309,6 @@
 ;; Initialize the Gnus daemon.
 (gnus-demon-init)
 
-;; ;; RVM
-;; (when (file-exists-p "/usr/local/rvm")
-;;   (require 'rvm)
-;;   (rvm-use-default))
-
 ;; ;; GIT-BLAME-MODE
 ;; (dolist (filename '("/usr/share/emacs/site-lisp/git-blame.el"
 ;;                     "/usr/share/git/emacs/git-blame.el"))
@@ -475,6 +470,10 @@ new one."
    (require 'auto-complete-config)
    (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
    (ac-config-default)
+
+   ;; RVM
+   (when (file-exists-p "/usr/local/rvm")
+     (rvm-use-default))
 
    ;; Start a terminal.
    (multi-term)
