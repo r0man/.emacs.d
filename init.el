@@ -134,30 +134,6 @@
 (setq default-abbrev-mode t)
 (setq save-abbrevs t)
 
-;; ;; BIG BROTHER DATABASE
-;; (let ((directory "~/local/bbdb-2.35/lisp"))
-;;   (when (file-exists-p directory)
-;;     (add-to-list 'load-path directory)))
-
-;; (require 'bbdb)
-;; (bbdb-initialize 'gnus 'message)
-;; (bbdb-insinuate-gnus)
-
-;; ;; Complete on anything.
-;; (setq bbdb-completion-type nil)
-
-;; ;; Cycle through matches (works sometimes).
-;; (setq bbdb-complete-name-allow-cycling t)
-
-;; ;; Use AKA, alternate names.
-;; (setq bbdb-use-alternate-names t)
-
-;; ;; Single-line addresses.
-;; (setq bbdb-elided-display t)
-
-;; ;; Automatically create addresses from emails.
-;; (setq bbdb/mail-auto-create-p 'bbdb-ignore-some-messages-hook)
-
 ;;; COMPILE-MODE
 (setq compilation-scroll-output 't)
 
