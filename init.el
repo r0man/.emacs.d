@@ -136,11 +136,6 @@
 (setq default-abbrev-mode t)
 (setq save-abbrevs t)
 
-;; ;; AUTO-COMPLETE
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-;; (ac-config-default)
-
 ;; ;; BIG BROTHER DATABASE
 ;; (let ((directory "~/local/bbdb-2.35/lisp"))
 ;;   (when (file-exists-p directory)
@@ -471,13 +466,20 @@ new one."
    (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
    (if (fboundp 'menu-bar-mode) (menu-bar-mode t))
 
-   ;; Start a terminal.
-   (multi-term)
-
    ;; Install all packages.
    (dolist (package elpa-packages)
      (when (not (package-installed-p package))
-       (package-install package)))))
+       (package-install package)))
+
+   ;; AUTO-COMPLETE
+   (require 'auto-complete-config)
+   (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+   (ac-config-default)
+
+   ;; Start a terminal.
+   (multi-term)
+
+   ))
 
 ;; ;; Load keyboard bindings (after everything else).
 ;; (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
