@@ -270,7 +270,7 @@
 ;; TODO: WTF? Turns off colors in terminal.
 ;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
 
-(add-hook 'multi-term-hook
+(add-hook 'term-mode-hook
           (lambda ()
             (dolist
                 (bind '(("<S-down>" . multi-term)
