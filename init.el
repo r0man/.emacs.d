@@ -309,11 +309,6 @@
 ;; Initialize the Gnus daemon.
 (gnus-demon-init)
 
-;; ;; GIT-BLAME-MODE
-;; (dolist (filename '("/usr/share/emacs/site-lisp/git-blame.el"
-;;                     "/usr/share/git/emacs/git-blame.el"))
-;;   (if (file-exists-p filename) (load-file filename)))
-
 ;; ;; HASKELL-MODE
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
