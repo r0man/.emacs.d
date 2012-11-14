@@ -227,14 +227,6 @@
       (list
        (list "\\.pdf$" "evince")))
 
-;; ;; ERLANG
-;; (let ((directory "/usr/lib/erlang/lib/tools-2.6.7/emacs/"))
-;;   (when (file-exists-p directory)
-;;     (add-to-list 'load-path directory)
-;;     (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
-;;     (setq erlang-root-dir "/usr/lib/erlang")
-;;     (setq inferior-erlang-machine-options '("-sname" "emacs"))))
-
 ;; ;; EXPAND-REGION
 ;; (require 'expand-region)
 ;; (global-set-key (kbd "C-c C-+") 'er/expand-region)
