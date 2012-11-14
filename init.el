@@ -479,8 +479,7 @@ new one."
    ;; Start a terminal.
    (multi-term)
 
-   ))
+   ;; Load keyboard bindings (after everything else).
+   (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))))
 
-;; ;; Load keyboard bindings (after everything else).
-;; (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
 ;; (put 'ido-exit-minibuffer 'disabled nil)
