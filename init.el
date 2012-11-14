@@ -227,30 +227,6 @@
       (list
        (list "\\.pdf$" "evince")))
 
-;; ;;; EMMS
-;; (require 'emms-setup)
-;; (emms-all)
-;; (emms-default-players)
-
-;; (require 'emms-player-mpd)
-;; (add-to-list 'emms-player-list 'emms-player-mpd)
-;; (condition-case nil
-;;     (emms-player-mpd-connect)
-;;   (error
-;;    (message "Can't connecto to music player daemon.")))
-
-;; (require 'emms-source-file)
-;; (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
-;; (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
-
-;; (let ((filename "~/.emms.el"))
-;;   (when (file-exists-p filename)
-;;     (load-file filename)))
-
-;; (add-to-list
-;;  'emms-stream-default-list
-;;  '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
-
 ;; ;; ERLANG
 ;; (let ((directory "/usr/lib/erlang/lib/tools-2.6.7/emacs/"))
 ;;   (when (file-exists-p directory)
@@ -465,6 +441,26 @@ new one."
    (require 'auto-complete-config)
    (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
    (ac-config-default)
+
+   ;; EMMS
+   (emms-all)
+   (emms-default-players)
+
+   (add-to-list 'emms-player-list 'emms-player-mpd)
+   (condition-case nil
+       (emms-player-mpd-connect)
+     (error
+      (message "Can't connecto to music player daemon.")))
+
+   (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+   (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
+
+   (let ((filename "~/.emms.el"))
+     (when (file-exists-p filename)
+       (load-file filename)))
+
+   (add-to-list 'emms-stream-default-list
+                '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
 
    ;; RVM
    (when (file-exists-p "/usr/local/rvm")
