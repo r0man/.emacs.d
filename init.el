@@ -199,7 +199,7 @@
 
 ;; DIRED
 
-;; Switches passed to `ls' for Dired.  MUST contain the `l' option.
+;; Switches passed to `ls' for Dired. MUST contain the `l' option.
 (setq dired-listing-switches "-alh")
 
 (defun dired-do-shell-command-in-background (command)
@@ -225,11 +225,6 @@
 (setq dired-guess-shell-alist-user
       (list
        (list "\\.pdf$" "evince")))
-
-;; ;; EXPAND-REGION
-;; (require 'expand-region)
-;; (global-set-key (kbd "C-c C-+") 'er/expand-region)
-;; (global-set-key (kbd "C-c C--") 'er/contract-region)
 
 ;; FIND-DIRED
 (defun find-dired-clojure (dir)
