@@ -484,18 +484,3 @@ new one."
 ;; ;; Load keyboard bindings (after everything else).
 ;; (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))
 ;; (put 'ido-exit-minibuffer 'disabled nil)
-
-;; (defun ragtime-create-migration (name)
-;;   "Create a Ragtime SQL migration."
-;;   (interactive "sMigration name: ")
-;;   (if (string-match "^\\s-*$" name)
-;;       (error "Migration name can't be blank!"))
-;;   (let ((root (locate-dominating-file (or buffer-file-name default-directory) "src")))
-;;     (unless root
-;;       (error "Can't find migrations directory!"))
-;;     (let* ((timestamp (format-time-string "%Y%m%d%H%M%S"))
-;;            (name (replace-regexp-in-string "[^a-z]" "-" (downcase name)))
-;;            (up (format "%smigrations/%s-%s.up.sql" root timestamp name))
-;;            (down (format "%smigrations/%s-%s.down.sql" root timestamp name)))
-;;       (find-file down)
-;;       (find-file up))))
