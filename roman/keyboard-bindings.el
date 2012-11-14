@@ -2,8 +2,6 @@
 (global-set-key (kbd "C-c C-s") 'swap-windows)
 (global-set-key (kbd "C-x C-g b") 'mo-git-blame-current)
 (global-set-key (kbd "C-x C-g s") 'magit-status)
-(global-set-key (kbd "C-x C-g f") 'find-file-in-git-repo)
-(global-set-key (kbd "C-x C-g C-f") 'find-file-in-git-repo)
 (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
 (global-set-key (kbd "C-x M") 'multi-term)
 (global-set-key (kbd "C-x TAB") 'indent-rigidly)

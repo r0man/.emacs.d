@@ -27,7 +27,6 @@
         elein
         emms
         expand-region
-        find-file-in-git-repo
         find-file-in-project
         haml-mode
         haskell-mode
@@ -237,11 +236,8 @@
   (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
   (find-dired dir "-name \"*.rb\""))
 
-;; ;; FIND-FILE-IN-GIT-REPO
-;; (require 'find-file-in-git-repo)
-
-;; ;; FIND-FILE-IN-PROJECT
-;; (setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java"))
+;; FIND-FILE-IN-PROJECT
+(setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java" "*.sql"))
 
 ;; GNUS
 (require 'gnus)
