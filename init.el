@@ -16,37 +16,39 @@
 
 ;; The packages.
 (setq elpa-packages
-      '(ac-nrepl
-        ace-jump-mode
-        auctex
+      '(
+        ;; ac-nrepl
+        ;; ace-jump-mode
+        ;; auctex
         auto-complete
         clojure-mode
         clojure-test-mode
         color-theme
-        css-mode
-        elein
+        ;; css-mode
+        ;; elein
         emms
-        expand-region
-        find-file-in-project
-        haml-mode
-        haskell-mode
-        inf-ruby
-        json
-        markdown-mode
+        ;; expand-region
+        ;; find-file-in-project
+        ;; haml-mode
+        ;; haskell-mode
+        ;; inf-ruby
+        ;; json
+        ;; markdown-mode
         multi-term
         nrepl
-        ruby-test-mode
+        ;; ruby-test-mode
         rvm
-        sass-mode
-        scss-mode
+        ;; sass-mode
+        ;; scss-mode
         starter-kit
         starter-kit-bindings
         starter-kit-js
         starter-kit-lisp
         starter-kit-ruby
-        undo-tree
-        yaml-mode
-        yasnippet-bundle))
+        ;; undo-tree
+        ;; yaml-mode
+        ;; yasnippet-bundle
+        ))
 
 ;; Enter debugger if an error is signaled?
 (setq debug-on-error t)
