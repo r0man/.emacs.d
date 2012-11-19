@@ -16,39 +16,36 @@
 
 ;; The packages.
 (setq elpa-packages
-      '(
-        ;; ac-nrepl
-        ;; ace-jump-mode
-        ;; auctex
+      '(ac-nrepl
+        ace-jump-mode
+        auctex
         auto-complete
         clojure-mode
         clojure-test-mode
         color-theme
-        ;; css-mode
-        ;; elein
+        css-mode
         emms
-        ;; expand-region
-        ;; find-file-in-project
-        ;; haml-mode
-        ;; haskell-mode
-        ;; inf-ruby
-        ;; json
-        ;; markdown-mode
+        expand-region
+        find-file-in-project
+        haml-mode
+        haskell-mode
+        inf-ruby
+        json
+        markdown-mode
         multi-term
         nrepl
-        ;; ruby-test-mode
+        ruby-test-mode
         rvm
-        ;; sass-mode
-        ;; scss-mode
+        sass-mode
+        scss-mode
         starter-kit
         starter-kit-bindings
         starter-kit-js
         starter-kit-lisp
         starter-kit-ruby
-        ;; undo-tree
-        ;; yaml-mode
-        ;; yasnippet-bundle
-        ))
+        undo-tree
+        yaml-mode
+        yasnippet-bundle))
 
 ;; Enter debugger if an error is signaled?
 (setq debug-on-error t)
@@ -130,6 +127,12 @@
                                        "Query replace"  t))))
   (with-current-buffer reb-target-buffer
     (query-replace-regexp (reb-target-binding reb-regexp) to-string)))
+
+;; AC-NREPL
+(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'nrepl-mode))
 
 ;; ABBREV MODE
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
