@@ -310,6 +310,11 @@ new one."
         (multi-term)
       (switch-to-buffer buffer))))
 
+;; NREPL
+(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
+(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'nrepl-mode-hook 'subword-mode)
+
 ;; NREPL-RITZ
 (defun my-nrepl-mode-setup ()
   (require 'nrepl-ritz))
