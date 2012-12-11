@@ -26,7 +26,7 @@
         css-mode
         emms
         expand-region
-        find-file-in-project
+        find-file-in-repository
         haml-mode
         haskell-mode
         inf-ruby
@@ -446,6 +446,8 @@ new one."
    ;; RVM
    (when (file-exists-p "/usr/local/rvm")
      (rvm-use-default))
+
+   (require 'ruby-test-mode)
 
    ;; Start a terminal.
    (multi-term)

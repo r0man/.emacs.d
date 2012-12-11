@@ -11,6 +11,7 @@
 (global-set-key (kbd "C-c C-.") 'clojure-test-run-test)
 (global-set-key (kbd "C-c C-+") 'er/expand-region)
 (global-set-key (kbd "C-c C--") 'er/contract-region)
+(global-set-key (kbd "C-x f") 'find-file-in-repository)
 (global-set-key [f5] 'compile)
 
 (global-unset-key (kbd "C-x g"))
