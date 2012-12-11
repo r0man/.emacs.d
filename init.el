@@ -12,7 +12,7 @@
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (setq package-archive-enable-alist
-      '(("melpa" clojure-mode clojure-test-mode ac-nrepl nrepl nrepl-ritz)))
+      '(("melpa" ace-jump-mode clojure-mode clojure-test-mode ac-nrepl nrepl nrepl-ritz)))
 
 ;; The packages.
 (setq elpa-packages
@@ -135,6 +135,9 @@
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'nrepl-mode))
+
+;; ACE-JUMP-MODE
+(setq ace-jump-mode-gray-background nil)
 
 ;; ABBREV MODE
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
