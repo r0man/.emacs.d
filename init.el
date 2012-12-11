@@ -12,7 +12,7 @@
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (setq package-archive-enable-alist
-      '(("melpa" clojure-mode clojure-test-mode ac-nrepl nrepl)))
+      '(("melpa" clojure-mode clojure-test-mode ac-nrepl nrepl nrepl-ritz)))
 
 ;; The packages.
 (setq elpa-packages
@@ -34,6 +34,7 @@
         markdown-mode
         multi-term
         nrepl
+        nrepl-ritz
         ruby-test-mode
         rvm
         sass-mode
@@ -307,6 +308,11 @@ new one."
     (if (not buffer)
         (multi-term)
       (switch-to-buffer buffer))))
+
+;; NREPL-RITZ
+(defun my-nrepl-mode-setup ()
+  (require 'nrepl-ritz))
+(add-hook 'nrepl-interaction-mode-hook 'my-nrepl-mode-setup)
 
 ;; OCTAVE
 (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
