@@ -35,6 +35,7 @@
         multi-term
         nrepl
         nrepl-ritz
+        rainbow-delimiters
         ruby-test-mode
         rvm
         sass-mode
