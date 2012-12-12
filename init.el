@@ -12,7 +12,7 @@
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (setq package-archive-enable-alist
-      '(("melpa" clojure-mode clojure-test-mode ac-nrepl nrepl)))
+      '(("melpa" ace-jump-mode clojure-mode clojure-test-mode ac-nrepl nrepl nrepl-ritz)))
 
 ;; The packages.
 (setq elpa-packages
@@ -26,7 +26,7 @@
         css-mode
         emms
         expand-region
-        find-file-in-project
+        find-file-in-repository
         haml-mode
         haskell-mode
         inf-ruby
@@ -34,6 +34,8 @@
         markdown-mode
         multi-term
         nrepl
+        nrepl-ritz
+        rainbow-delimiters
         ruby-test-mode
         rvm
         sass-mode
@@ -133,6 +135,9 @@
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'nrepl-mode))
+
+;; ACE-JUMP-MODE
+(setq ace-jump-mode-gray-background nil)
 
 ;; ABBREV MODE
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
@@ -308,6 +313,16 @@ new one."
         (multi-term)
       (switch-to-buffer buffer))))
 
+;; NREPL
+(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
+(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'nrepl-mode-hook 'subword-mode)
+
+;; NREPL-RITZ
+(defun my-nrepl-mode-setup ()
+  (require 'nrepl-ritz))
+(add-hook 'nrepl-interaction-mode-hook 'my-nrepl-mode-setup)
+
 ;; OCTAVE
 (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
@@ -445,6 +460,8 @@ new one."
    ;; RVM
    (when (file-exists-p "/usr/local/rvm")
      (rvm-use-default))
+
+   (require 'ruby-test-mode)
 
    ;; Start a terminal.
    (multi-term)
