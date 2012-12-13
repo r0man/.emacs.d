@@ -29,7 +29,6 @@
         find-file-in-repository
         haml-mode
         haskell-mode
-        inf-ruby
         json
         magit
         markdown-mode
