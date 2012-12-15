@@ -318,6 +318,10 @@ new one."
 (add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'nrepl-mode-hook 'subword-mode)
 
+(add-hook 'nrepl-interaction-mode-hook
+          (lambda ()
+            (define-key nrepl-interaction-mode-map (kbd "C-c C-s") 'clojure-jump-between-tests-and-code)))
+
 ;; NREPL-RITZ
 (defun my-nrepl-mode-setup ()
   (require 'nrepl-ritz))

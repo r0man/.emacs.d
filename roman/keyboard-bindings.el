@@ -1,5 +1,4 @@
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
-(global-set-key (kbd "C-c C-s") 'swap-windows)
 (global-set-key (kbd "C-x C-g b") 'mo-git-blame-current)
 (global-set-key (kbd "C-x C-g s") 'magit-status)
 (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
