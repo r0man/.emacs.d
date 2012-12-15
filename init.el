@@ -22,7 +22,7 @@
         auto-complete
         clojure-mode
         clojure-test-mode
-        color-theme
+        ;; color-theme
         css-mode
         emms
         expand-region
@@ -433,8 +433,16 @@ new one."
      (when (not (package-installed-p package))
        (package-install package)))
 
-   ;; Use custom color theme.
-   (color-theme-roman)
+   ;; SOLARIZED
+   (let ((solarized (getenv "SOLARIZED")))
+     (cond ((string-equal solarized "light" )
+            (color-theme-solarized-light))
+           ((string-equal solarized "dark" )
+            (color-theme-solarized-dark))))
+
+   ;; Fix background/foreground colors in term-mode.
+   (setq term-default-bg-color (face-attribute 'default :background))
+   (setq term-default-fg-color (face-attribute 'default :foreground))
 
    ;; AUTO-COMPLETE
    (require 'auto-complete-config)
@@ -469,6 +477,7 @@ new one."
 
    ;; Start a terminal.
    (multi-term)
+
 
    ;; Load keyboard bindings (after everything else).
    (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))))
