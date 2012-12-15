@@ -12,7 +12,7 @@
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (setq package-archive-enable-alist
-      '(("melpa" ace-jump-mode clojure-mode clojure-test-mode ac-nrepl nrepl nrepl-ritz)))
+      '(("melpa" ace-jump-mode clojure-mode clojure-test-mode ac-nrepl magit nrepl nrepl-ritz ruby-test-mode)))
 
 ;; The packages.
 (setq elpa-packages
@@ -29,8 +29,8 @@
         find-file-in-repository
         haml-mode
         haskell-mode
-        inf-ruby
         json
+        magit
         markdown-mode
         multi-term
         nrepl
