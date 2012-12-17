@@ -168,8 +168,15 @@
               (POST 2)
               (PUT 2)
               (context 2)
+              (api-test 1)
               (database-test 1)
-              (defroutes 'defun))))
+              (defroutes 'defun)
+              ;; SQLingvo
+              (copy 2)
+              (insert 2)
+              (select 1)
+              (update 2)
+              (delete 1))))
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
