@@ -397,17 +397,6 @@ new one."
   (when (file-exists-p filename)
     (load-file filename)))
 
-(defun sql-add-newline-first (output)
-  "Add newline to beginning of OUTPUT for `comint-preoutput-filter-functions'"
-  (concat "\n" output))
-
-(defun sqli-add-hooks ()
-  "Add hooks to `sql-interactive-mode-hook'."
-  (add-hook 'comint-preoutput-filter-functions
-            'sql-add-newline-first))
-
-(add-hook 'sql-interactive-mode-hook 'sqli-add-hooks)
-
 ;; SQL-INDENT
 (setq sql-indent-offset 2)
 
