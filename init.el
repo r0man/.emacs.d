@@ -174,12 +174,12 @@
               ;; SQLingvo
               (copy 2)
               (create-table 1)
-              (insert 2)
-              (select 1)
-              (update 2)
               (delete 1)
               (drop-table 1)
-              (truncate 1))))
+              (insert 2)
+              (select 1)
+              (truncate 1)
+              (update 2))))
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
