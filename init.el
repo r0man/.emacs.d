@@ -173,10 +173,13 @@
               (defroutes 'defun)
               ;; SQLingvo
               (copy 2)
+              (create-table 1)
               (insert 2)
               (select 1)
               (update 2)
-              (delete 1))))
+              (delete 1)
+              (drop-table 1)
+              (truncate 1))))
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
@@ -429,7 +432,7 @@ new one."
    ;; Hide scroll and tool bar, and show menu.
    (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
    (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-   (if (fboundp 'menu-bar-mode) (menu-bar-mode t))
+   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
    ;; Refresh package archives when necessary.
    (unless (file-exists-p "~/.emacs.d/elpa/archives")
