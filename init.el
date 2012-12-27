@@ -456,7 +456,7 @@ new one."
    (condition-case nil
        (emms-player-mpd-connect)
      (error
-      (message "Can't connecto to music player daemon.")))
+      (message "Can't connect to music player daemon.")))
 
    (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
    (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
