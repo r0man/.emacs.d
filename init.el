@@ -22,7 +22,8 @@
         auto-complete
         clojure-mode
         clojure-test-mode
-        ;; color-theme
+        color-theme
+        color-theme-solarized
         css-mode
         emms
         expand-region
@@ -42,7 +43,6 @@
         scss-mode
         starter-kit
         starter-kit-bindings
-        starter-kit-js
         starter-kit-lisp
         starter-kit-ruby
         undo-tree
@@ -173,10 +173,13 @@
               (defroutes 'defun)
               ;; SQLingvo
               (copy 2)
+              (create-table 1)
+              (delete 1)
+              (drop-table 1)
               (insert 2)
               (select 1)
-              (update 2)
-              (delete 1))))
+              (truncate 1)
+              (update 2))))
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
@@ -430,11 +433,11 @@ new one."
        (package-install package)))
 
    ;; SOLARIZED
-   (let ((solarized (getenv "SOLARIZED")))
-     (cond ((string-equal solarized "light" )
-            (color-theme-solarized-light))
-           ((string-equal solarized "dark" )
-            (color-theme-solarized-dark))))
+   ;; (let ((solarized (getenv "SOLARIZED")))
+   ;;   (cond ((string-equal solarized "light")
+   ;;          (load-theme 'solarized-light t))
+   ;;         ((string-equal solarized "dark" )
+   ;;          (load-theme 'solarized-dark t))))
 
    ;; Fix background/foreground colors in term-mode.
    (setq term-default-bg-color (face-attribute 'default :background))
@@ -453,7 +456,7 @@ new one."
    (condition-case nil
        (emms-player-mpd-connect)
      (error
-      (message "Can't connecto to music player daemon.")))
+      (message "Can't connect to music player daemon.")))
 
    (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
    (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
@@ -474,6 +477,21 @@ new one."
    ;; Start a terminal.
    (multi-term)
 
+   ;; Load keyboard bindings.
+   (global-set-key (kbd "C-c C-+") 'er/expand-region)
+   (global-set-key (kbd "C-c C--") 'er/contract-region)
+   (global-set-key (kbd "C-c C-.") 'clojure-test-run-test)
+   (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+   (global-set-key (kbd "C-x C-g b") 'mo-git-blame-current)
+   (global-set-key (kbd "C-x C-g s") 'magit-status)
+   (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
+   (global-set-key (kbd "C-x M") 'multi-term)
+   (global-set-key (kbd "C-x TAB") 'indent-rigidly)
+   (global-set-key (kbd "C-x ^") 'enlarge-window)
+   (global-set-key (kbd "C-x f") 'find-file-in-repository)
+   (global-set-key (kbd "C-x h") 'mark-whole-buffer)
+   (global-set-key (kbd "C-x m") 'switch-to-term-mode-buffer)
+   (global-set-key [f5] 'compile)
 
-   ;; Load keyboard bindings (after everything else).
-   (load-file (expand-file-name "~/.emacs.d/roman/keyboard-bindings.el"))))
+   ;; Unload some keyboard bindings.
+   (global-unset-key (kbd "C-x g"))))
