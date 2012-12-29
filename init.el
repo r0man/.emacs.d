@@ -43,6 +43,7 @@
         rvm
         sass-mode
         scss-mode
+	smex
         undo-tree
         yaml-mode
         yasnippet-bundle))
@@ -488,11 +489,29 @@ new one."
 	 ido-handle-duplicate-virtual-buffers 2
 	 ido-max-prospects 10)
 
+   ;; PAREDIT
+  (autoload 'enable-paredit-mode "paredit"
+    "Turn on pseudo-structural editing of Lisp code."
+    t)
+
+   (eval-after-load 'paredit
+     ;; need a binding that works in the terminal
+     '(progn
+	(define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
+	(define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp)))
+
+   (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
+     (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
+   	       'enable-paredit-mode))
+
    ;; RVM
    (when (file-exists-p "/usr/local/rvm")
      (rvm-use-default))
 
    (require 'ruby-test-mode)
+
+   ;; SMEX
+   (smex-initialize)
 
    ;; Start a terminal.
    (multi-term)
@@ -508,7 +527,7 @@ new one."
    (global-set-key (kbd "C-x M") 'multi-term)
    (global-set-key (kbd "C-x TAB") 'indent-rigidly)
    (global-set-key (kbd "C-x ^") 'enlarge-window)
-   (global-set-key (kbd "C-x n") 'indent-buffer)
+   (global-set-key (kbd "C-c n") 'indent-buffer)
    (global-set-key (kbd "C-x f") 'find-file-in-repository)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
    (global-set-key (kbd "C-x m") 'switch-to-term-mode-buffer)
