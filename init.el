@@ -111,6 +111,9 @@
 ;; Highlight trailing whitespace
 (setq show-trailing-whitespace t)
 
+;; Highlight matching parentheses when the point is on them.
+(show-paren-mode 1)
+
 ;; Enable cut-and-paste between Emacs and X clipboard.
 (setq x-select-enable-clipboard t)
 
