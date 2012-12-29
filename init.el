@@ -36,15 +36,12 @@
         multi-term
         nrepl
         nrepl-ritz
+	paredit
         rainbow-delimiters
         ruby-test-mode
         rvm
         sass-mode
         scss-mode
-        starter-kit
-        starter-kit-bindings
-        starter-kit-lisp
-        starter-kit-ruby
         undo-tree
         yaml-mode
         yasnippet-bundle))
@@ -83,6 +80,10 @@
         (setenv "AWS_SECRET_KEY" aws-secret-key)
         (setenv "EC2_PRIVATE_KEY" (expand-file-name ec2-private-key))
         (setenv "EC2_CERT" (expand-file-name ec2-cert)))))
+
+(defun indent-buffer ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
 
 (defun swap-windows ()
   "If you have 2 windows, it swaps them."
@@ -488,6 +489,7 @@ new one."
    (global-set-key (kbd "C-x M") 'multi-term)
    (global-set-key (kbd "C-x TAB") 'indent-rigidly)
    (global-set-key (kbd "C-x ^") 'enlarge-window)
+   (global-set-key (kbd "C-x n") 'indent-buffer)
    (global-set-key (kbd "C-x f") 'find-file-in-repository)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
    (global-set-key (kbd "C-x m") 'switch-to-term-mode-buffer)
