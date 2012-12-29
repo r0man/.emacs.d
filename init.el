@@ -484,18 +484,18 @@ new one."
    (ido-mode t)
    (ido-ubiquitous t)
    (setq ido-enable-prefix nil
-	 ido-enable-flex-matching t
-	 ido-auto-merge-work-directories-length nil
-	 ido-create-new-buffer 'always
-	 ido-use-filename-at-point 'guess
-	 ido-use-virtual-buffers t
-	 ido-handle-duplicate-virtual-buffers 2
-	 ido-max-prospects 10)
+   	 ido-enable-flex-matching t
+   	 ido-auto-merge-work-directories-length nil
+   	 ido-create-new-buffer 'always
+   	 ido-use-filename-at-point 'guess
+   	 ido-use-virtual-buffers t
+   	 ido-handle-duplicate-virtual-buffers 2
+   	 ido-max-prospects 10)
 
    ;; PAREDIT
-  (autoload 'enable-paredit-mode "paredit"
-    "Turn on pseudo-structural editing of Lisp code."
-    t)
+   (autoload 'enable-paredit-mode "paredit"
+     "Turn on pseudo-structural editing of Lisp code."
+     t)
 
    (eval-after-load 'paredit
      ;; need a binding that works in the terminal
@@ -515,6 +515,15 @@ new one."
 
    ;; SMEX
    (smex-initialize)
+
+   ;; SQL-MODE
+   (defun sql-read-connection (prompt &optional initial default)
+     "Read a connection name."
+     (let ((completion-ignore-case t))
+       (completing-read prompt
+			(mapcar (lambda (c) (car c))
+				sql-connection-alist)
+			nil t initial 'sql-connection-history '())))
 
    ;; Start a terminal.
    (multi-term)
