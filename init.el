@@ -108,6 +108,9 @@
 (setq mac-option-key-is-meta t)
 (setq mac-right-option-modifier nil)
 
+;; Always ask user a "y or n" question.
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; Highlight trailing whitespace
 (setq show-trailing-whitespace t)
 
