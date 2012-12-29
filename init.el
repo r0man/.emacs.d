@@ -54,6 +54,9 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
+;; Don't show the startup screen.
+(seqt inhibit-startup-message t)
+
 ;; Use cat as pager.
 (setenv "PAGER" "cat")
 
