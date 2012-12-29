@@ -486,7 +486,7 @@ new one."
 
    ;; IDO
    (ido-mode t)
-   (ido-ubiquitous t)
+   ;; (ido-ubiquitous t)
    (setq ido-enable-prefix nil
          ido-enable-flex-matching t
          ido-auto-merge-work-directories-length nil
@@ -521,13 +521,9 @@ new one."
    (smex-initialize)
 
    ;; SQL-MODE
-   (defun sql-read-connection (prompt &optional initial default)
-     "Read a connection name."
-     (let ((completion-ignore-case t))
-       (completing-read prompt
-                        (mapcar (lambda (c) (car c))
-                                sql-connection-alist)
-                        nil t initial 'sql-connection-history '())))
+   (defadvice sql-read-connection (before sql-read-connection-fix (prompt &optional initial default))
+     (setq default '()))
+   (ad-activate 'sql-read-connection)
 
    ;; Start a terminal.
    (multi-term)
