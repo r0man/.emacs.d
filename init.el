@@ -11,10 +11,7 @@
         ("marmalade" . "http://marmalade-repo.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-(setq package-archive-enable-alist
-      '(("melpa" ace-jump-mode clojure-mode clojure-test-mode ac-nrepl magit nrepl nrepl-ritz ruby-test-mode)))
-
-;; The packages.
+;; The ELPA packages.
 (setq elpa-packages
       '(ac-nrepl
         ace-jump-mode
@@ -30,23 +27,27 @@
         find-file-in-repository
         haml-mode
         haskell-mode
-	ido-ubiquitous
+        ido-ubiquitous
         json
         magit
         markdown-mode
         multi-term
         nrepl
         nrepl-ritz
-	paredit
+        paredit
         rainbow-delimiters
         ruby-test-mode
         rvm
         sass-mode
         scss-mode
-	smex
+        smex
         undo-tree
         yaml-mode
         yasnippet-bundle))
+
+;; The MELPA packages.
+(setq package-archive-enable-alist
+      '(("melpa" ace-jump-mode clojure-mode clojure-test-mode ac-nrepl magit nrepl nrepl-ritz ruby-test-mode)))
 
 ;; Enter debugger if an error is signaled?
 (setq debug-on-error t)
@@ -56,6 +57,9 @@
 
 ;; Don't show the startup screen.
 (setq inhibit-startup-message t)
+
+;; Use spaces, not tabs.
+(setq-default indent-tabs-mode nil)
 
 ;; Use cat as pager.
 (setenv "PAGER" "cat")
@@ -484,13 +488,13 @@ new one."
    (ido-mode t)
    (ido-ubiquitous t)
    (setq ido-enable-prefix nil
-   	 ido-enable-flex-matching t
-   	 ido-auto-merge-work-directories-length nil
-   	 ido-create-new-buffer 'always
-   	 ido-use-filename-at-point 'guess
-   	 ido-use-virtual-buffers t
-   	 ido-handle-duplicate-virtual-buffers 2
-   	 ido-max-prospects 10)
+         ido-enable-flex-matching t
+         ido-auto-merge-work-directories-length nil
+         ido-create-new-buffer 'always
+         ido-use-filename-at-point 'guess
+         ido-use-virtual-buffers t
+         ido-handle-duplicate-virtual-buffers 2
+         ido-max-prospects 10)
 
    ;; PAREDIT
    (autoload 'enable-paredit-mode "paredit"
@@ -500,12 +504,12 @@ new one."
    (eval-after-load 'paredit
      ;; need a binding that works in the terminal
      '(progn
-	(define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
-	(define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp)))
+        (define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
+        (define-key paredit-mode-map (kbd "M-(") 'paredit-backward-slurp-sexp)))
 
    (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
      (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
-   	       'enable-paredit-mode))
+               'enable-paredit-mode))
 
    ;; RVM
    (when (file-exists-p "/usr/local/rvm")
@@ -521,9 +525,9 @@ new one."
      "Read a connection name."
      (let ((completion-ignore-case t))
        (completing-read prompt
-			(mapcar (lambda (c) (car c))
-				sql-connection-alist)
-			nil t initial 'sql-connection-history '())))
+                        (mapcar (lambda (c) (car c))
+                                sql-connection-alist)
+                        nil t initial 'sql-connection-history '())))
 
    ;; Start a terminal.
    (multi-term)
