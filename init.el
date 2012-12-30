@@ -477,6 +477,12 @@ new one."
    ;; Start a terminal.
    (multi-term)
 
+   ;; Turn off hl-line-mode
+   (remove-hook 'prog-mode-hook 'esk-turn-on-hl-line-mode)
+
+   ;; Disable pretty lambda.
+   (remove-hook 'prog-mode-hook 'esk-pretty-lambdas)
+
    ;; Load keyboard bindings.
    (global-set-key (kbd "C-c C-+") 'er/expand-region)
    (global-set-key (kbd "C-c C--") 'er/contract-region)
