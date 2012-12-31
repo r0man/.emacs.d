@@ -86,8 +86,7 @@
 
 (defun swap-windows ()
   "If you have 2 windows, it swaps them."
-  (interactive)
-  (cond ((/= (count-windows) 2)
+  (interactive) (cond ((/= (count-windows) 2)
          (message "You need exactly 2 windows to do this."))
         (t
          (let* ((w1 (first (window-list)))
@@ -428,6 +427,7 @@ new one."
      (package-refresh-contents))
 
    ;; Install all packages.
+   (package-initialize)
    (dolist (package elpa-packages)
      (when (not (package-installed-p package))
        (package-install package)))
