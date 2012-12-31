@@ -1,3 +1,6 @@
 [submodule "mingus"]
 	path = mingus
 	url = https://github.com/pft/mingus.git
+[submodule "emacs-color-theme-solarized"]
+	path = emacs-color-theme-solarized
+	url = git@github.com:r0man/emacs-color-theme-solarized.git
