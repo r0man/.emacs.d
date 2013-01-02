@@ -11,10 +11,7 @@
         ("marmalade" . "http://marmalade-repo.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-(setq package-archive-enable-alist
-      '(("melpa" ace-jump-mode clojure-mode clojure-test-mode ac-nrepl magit nrepl nrepl-ritz ruby-test-mode)))
-
-;; The packages.
+;; The ELPA packages.
 (setq elpa-packages
       '(ac-nrepl
         ace-jump-mode
@@ -22,8 +19,6 @@
         auto-complete
         clojure-mode
         clojure-test-mode
-        color-theme
-        color-theme-solarized
         css-mode
         emms
         expand-region
@@ -49,11 +44,22 @@
         yaml-mode
         yasnippet-bundle))
 
+;; The bleeding edge packages to fetch from MELPA.
+(setq package-archive-enable-alist
+      '(("melpa"
+         ac-nrepl
+         ace-jump-mode
+         clojure-mode
+         clojure-test-mode
+         magit
+         nrepl
+         nrepl-ritz
+         ruby-test-mode)))
+
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
+
 ;; Enter debugger if an error is signaled?
 (setq debug-on-error t)
-
-(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-(add-to-list 'load-path (expand-file-name "~/workspace/soundcloud-el"))
 
 ;; Use cat as pager.
 (setenv "PAGER" "cat")
@@ -433,15 +439,21 @@ new one."
        (package-install package)))
 
    ;; SOLARIZED
-   ;; (let ((solarized (getenv "SOLARIZED")))
-   ;;   (cond ((string-equal solarized "light")
-   ;;          (load-theme 'solarized-light t))
-   ;;         ((string-equal solarized "dark" )
-   ;;          (load-theme 'solarized-dark t))))
+   (let ((solarized (getenv "SOLARIZED")))
+     (setq solarized-termtrans t
+           ;; solarized-degrade t
+           ;; solarized-termcolor 256
+           )
+     (require 'solarized-dark-theme)
+     (require 'solarized-light-theme)
+     (cond ((string-equal solarized "light")
+            (load-theme 'solarized-light t))
+           ((string-equal solarized "dark" )
+            (load-theme 'solarized-dark t))))
 
-   ;; Fix background/foreground colors in term-mode.
-   (setq term-default-bg-color (face-attribute 'default :background))
-   (setq term-default-fg-color (face-attribute 'default :foreground))
+   ;; ;; Fix background/foreground colors in term-mode.
+   ;; ;; (setq term-default-bg-color (face-attribute 'default :background))
+   ;; ;; (setq term-default-fg-color (face-attribute 'default :foreground))
 
    ;; AUTO-COMPLETE
    (require 'auto-complete-config)
