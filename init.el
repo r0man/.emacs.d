@@ -486,6 +486,9 @@ new one."
 
    (require 'ruby-test-mode)
 
+   ;; WINNER-MODE
+   (winner-mode)
+
    ;; Start a terminal.
    (multi-term)
 
