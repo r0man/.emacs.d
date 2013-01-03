@@ -202,6 +202,8 @@
 ;; Switches passed to `ls' for Dired. MUST contain the `l' option.
 (setq dired-listing-switches "-alh")
 
+(setq dired-dwim-target t)
+
 (defun dired-do-shell-command-in-background (command)
   "In dired, do shell command in background on the file or directory named on
  this line."
