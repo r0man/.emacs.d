@@ -114,6 +114,16 @@
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
 
+(defun compass-watch ()
+  "Find the project root and run compass watch."
+  (interactive)
+  (let ((directory (locate-dominating-file (expand-file-name (directory-file-name ".")) "config.rb"))
+        (compilation-ask-about-save nil)
+        (compilation-buffer-name-function (lambda (mode) "*compass*")))
+    (if directory
+        (compile (message (format "cd %s; compass watch" directory)))
+      (message "Can't find compass project root."))))
+
 (defun toggle-window-split ()
   (interactive)
   (if (= (count-windows) 2)
