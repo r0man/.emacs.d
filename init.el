@@ -216,6 +216,7 @@
               (PUT 2)
               (context 2)
               (api-test 1)
+              (web-test 1)
               (database-test 1)
               (defroutes 'defun)
               ;; SQLingvo
@@ -380,6 +381,8 @@ new one."
 (add-hook 'nrepl-interaction-mode-hook
           (lambda ()
             (define-key nrepl-interaction-mode-map (kbd "C-c C-s") 'clojure-jump-between-tests-and-code)))
+
+(setq nrepl-port "5000")
 
 ;; NREPL-RITZ
 (defun my-nrepl-mode-setup ()
