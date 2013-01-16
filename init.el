@@ -52,6 +52,7 @@
          clojure-mode
          clojure-test-mode
          magit
+         melpa
          nrepl
          nrepl-ritz
          ruby-test-mode)))
