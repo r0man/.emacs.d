@@ -58,6 +58,7 @@
          ruby-test-mode)))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
+(add-to-list 'load-path (expand-file-name "~/workspace/hive-el"))
 
 ;; Enter debugger if an error is signaled?
 (setq debug-on-error t)
@@ -418,22 +419,10 @@ new one."
 ;; SMTPMAIL
 
 ;; Send mail via smtpmail.
-(setq send-mail-function 'smtpmail-send-it)
-
-;; The name of the host running SMTP server.
-(setq smtpmail-smtp-server "smtp.gmail.com")
-
-;; SMTP service port number.
-(setq smtpmail-smtp-service 587)
-
-;; Type of SMTP connections to use.
-(setq smtpmail-stream-type 'starttls)
+(setq send-mail-function 'sendmail-send-it)
 
 ;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
 (setq smtpmail-debug-info t)
-
-;; User name to use when looking up credentials in the authinfo file.
-(setq smtpmail-smtp-user user-mail-address)
 
 ;; Fuck the NSA.
 (setq mail-signature
@@ -561,3 +550,4 @@ new one."
 
    ;; Unload some keyboard bindings.
    (global-unset-key (kbd "C-x g"))))
+(put 'upcase-region 'disabled nil)
