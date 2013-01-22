@@ -214,6 +214,7 @@
               (HEAD 2)
               (POST 2)
               (PUT 2)
+              (domonad 1)
               (context 2)
               (api-test 1)
               (web-test 1)
@@ -231,7 +232,7 @@
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
-(setq inferior-lisp-program "lein trampoline noderepl")
+(setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
 
 (defun lein-cljs-build ()
   (interactive)
