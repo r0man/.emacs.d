@@ -20,6 +20,7 @@
         clojure-mode
         clojure-test-mode
         css-mode
+        citrus-mode
         emms
         expand-region
         find-file-in-repository
@@ -55,7 +56,11 @@
          melpa
          nrepl
          nrepl-ritz
-         ruby-test-mode)))
+         ruby-test-mode
+         starter-kit
+         starter-kit-bindings
+         starter-kit-lisp
+         starter-kit-ruby)))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
 (add-to-list 'load-path (expand-file-name "~/workspace/hive-el"))
@@ -178,6 +183,9 @@
                                        "Query replace"  t))))
   (with-current-buffer reb-target-buffer
     (query-replace-regexp (reb-target-binding reb-regexp) to-string)))
+
+;; Fixes inf-ruby until starter-kit changed.
+(defalias 'inf-ruby-keys 'inf-ruby-setup-keybindings)
 
 ;; AC-NREPL
 (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
