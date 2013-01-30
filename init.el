@@ -242,6 +242,7 @@
 
 ;; DATOMIC
 (add-to-list 'auto-mode-alist '("\\.dtm$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
