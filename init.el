@@ -240,6 +240,9 @@
               (truncate 1)
               (update 2))))
 
+;; DATOMIC
+(add-to-list 'auto-mode-alist '("\\.dtm$" . clojure-mode))
+
 ;; CLOJURESCRIPT
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 (setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
@@ -560,6 +563,12 @@ new one."
    (global-set-key (kbd "C-x m") 'switch-to-term-mode-buffer)
    (global-set-key [f5] 'compile)
 
+   (global-set-key (kbd "C-c ,") 'ruby-test-run)
+   (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
+
    ;; Unload some keyboard bindings.
-   (global-unset-key (kbd "C-x g"))))
-(put 'upcase-region 'disabled nil)
+   (global-unset-key (kbd "C-x g"))
+
+
+   ;; EOF
+   ))
