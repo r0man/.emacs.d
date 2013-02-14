@@ -367,10 +367,11 @@
                         ("C-<right>" . term-send-forward-word)
                         ("C-c C-j" . term-line-mode)
                         ("C-c C-k" . term-char-mode)
+                        ("C-v" . scroll-up)
                         ("C-y" . term-paste)
                         ("C-z" . term-stop-subjob)
-                        ("M-d" . term-send-forward-kill-word)
-                        ("M-DEL" . term-send-backward-kill-word)))
+                        ("M-DEL" . term-send-backward-kill-word)
+                        ("M-d" . term-send-forward-kill-word)))
               (add-to-list 'term-bind-key-alist bind))))
 
 (defun last-term-mode-buffer (list-of-buffers)
