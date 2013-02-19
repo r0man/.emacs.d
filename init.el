@@ -278,8 +278,8 @@
             (load "dired-x")
             (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
 
- ;; User-defined alist of rules for suggested commands.
- (setq dired-guess-shell-alist-user
+;; User-defined alist of rules for suggested commands.
+(setq dired-guess-shell-alist-user
       '(("\\.pdf$" "evince")
         ("\\.xlsx?$" "libreoffice")))
 
@@ -325,7 +325,7 @@
 ;; Initialize the Gnus daemon.
 (gnus-demon-init)
 
-;; ;; HASKELL-MODE
+;; HASKELL-MODE
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -392,8 +392,7 @@ new one."
 (add-hook 'nrepl-mode-hook 'subword-mode)
 
 (add-hook 'nrepl-interaction-mode-hook
-          (lambda ()
-            (define-key nrepl-interaction-mode-map (kbd "C-c C-s") 'clojure-jump-between-tests-and-code)))
+          (lambda () (define-key nrepl-interaction-mode-map (kbd "C-c C-s") 'clojure-jump-between-tests-and-code)))
 
 (setq nrepl-port "5000")
 
@@ -515,8 +514,7 @@ new one."
    (add-to-list 'emms-player-list 'emms-player-mpd)
    (condition-case nil
        (emms-player-mpd-connect)
-     (error
-      (message "Can't connect to music player daemon.")))
+     (error (message "Can't connect to music player daemon.")))
 
    (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
    (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
@@ -527,6 +525,9 @@ new one."
 
    (add-to-list 'emms-stream-default-list
                 '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
+
+   ;; IDO-UBIQUITOUS
+   (add-to-list 'ido-ubiquitous-command-exceptions 'sql-connect)
 
    ;; RVM
    (when (file-exists-p "/usr/local/rvm")
@@ -567,7 +568,6 @@ new one."
 
    ;; Unload some keyboard bindings.
    (global-unset-key (kbd "C-x g"))
-
 
    ;; EOF
    ))
