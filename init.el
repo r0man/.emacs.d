@@ -278,14 +278,8 @@
             (load "dired-x")
             (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
 
-(add-hook 'dired-mode-hook
-          (lambda ()
-            ;; Set dired-x buffer-local variables here.  For example:
-            ;; (dired-omit-mode 1)
-            ))
-
-;; User-defined alist of rules for suggested commands.
-(setq dired-guess-shell-alist-user
+ ;; User-defined alist of rules for suggested commands.
+ (setq dired-guess-shell-alist-user
       '(("\\.pdf$" "evince")
         ("\\.xlsx?$" "libreoffice")))
 
