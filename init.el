@@ -445,9 +445,13 @@ new one."
          (spook)))
 
 ;; SQL-MODE
-(let ((filename "~/.sql.el"))
-  (when (file-exists-p filename)
-    (load-file filename)))
+(eval-after-load "sql"
+  '(progn
+     (require 'hive)
+     (require 'vertica)
+     (let ((filename "~/.sql.el"))
+       (when (file-exists-p filename)
+         (load-file filename)))))
 
 ;; SQL-INDENT
 (setq sql-indent-offset 2)
