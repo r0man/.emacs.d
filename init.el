@@ -9,7 +9,8 @@
       '(("elpa" . "http://tromey.com/elpa/")
         ("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")
-        ("melpa" . "http://melpa.milkbox.net/packages/")))
+        ;; ("melpa" . "http://melpa.milkbox.net/packages/")
+        ))
 
 ;; The ELPA packages.
 (setq elpa-packages
@@ -17,15 +18,16 @@
         ace-jump-mode
         auctex
         auto-complete
+        citrus-mode
         clojure-mode
         clojure-test-mode
         css-mode
-        citrus-mode
         emms
         expand-region
         find-file-in-repository
         haml-mode
         haskell-mode
+        hive
         json
         magit
         markdown-mode
@@ -42,25 +44,26 @@
         starter-kit-lisp
         starter-kit-ruby
         undo-tree
+        vertica
         yaml-mode
         yasnippet-bundle))
 
 ;; The bleeding edge packages to fetch from MELPA.
-(setq package-archive-enable-alist
-      '(("melpa"
-         ac-nrepl
-         ace-jump-mode
-         clojure-mode
-         clojure-test-mode
-         magit
-         melpa
-         nrepl
-         nrepl-ritz
-         ruby-test-mode
-         starter-kit
-         starter-kit-bindings
-         starter-kit-lisp
-         starter-kit-ruby)))
+;; (setq package-archive-enable-alist
+;;       '(("melpa"
+;;          ace-jump-mode
+;;          magit
+;;          melpa
+;;          ruby-test-mode
+;;          starter-kit
+;;          starter-kit-bindings
+;;          starter-kit-lisp
+;;          starter-kit-ruby)
+;;         ("marmalade"
+;;          ac-nrepl
+;;          nrepl
+;;          clojure-mode
+;;          clojure-test-mode)))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
 (add-to-list 'load-path (expand-file-name "~/workspace/hive-el"))
@@ -283,8 +286,8 @@
 
 ;; User-defined alist of rules for suggested commands.
 (setq dired-guess-shell-alist-user
-      (list
-       (list "\\.pdf$" "evince")))
+      '(("\\.pdf$" "evince")
+        ("\\.xlsx?$" "libreoffice")))
 
 ;; FIND-DIRED
 (defun find-dired-clojure (dir)
