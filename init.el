@@ -66,7 +66,6 @@
 ;;          clojure-test-mode)))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
-(add-to-list 'load-path (expand-file-name "~/workspace/hive-el"))
 
 ;; Enter debugger if an error is signaled?
 (setq debug-on-error t)
