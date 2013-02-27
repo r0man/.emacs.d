@@ -394,9 +394,9 @@ new one."
 (setq nrepl-port "5000")
 
 ;; NREPL-RITZ
-(defun my-nrepl-mode-setup ()
+(defun nrepl-setup-ritz ()
   (require 'nrepl-ritz))
-(add-hook 'nrepl-interaction-mode-hook 'my-nrepl-mode-setup)
+(add-hook 'nrepl-interaction-mode-hook 'nrepl-setup-ritz)
 
 ;; OCTAVE
 (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
