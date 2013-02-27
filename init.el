@@ -252,6 +252,11 @@
   (interactive)
   (compile "lein clean; lein cljsbuild auto"))
 
+(defun lein-node-repl ()
+  "Start a NodeJS repl via Leiningen."
+  (interactive)
+  (run-lisp "lein trampoline noderepl"))
+
 ;; CSS-MODE
 (setq css-indent-offset 2)
 
