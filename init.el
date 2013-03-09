@@ -28,6 +28,7 @@
         haml-mode
         haskell-mode
         hive
+        erlang
         json
         magit
         markdown-mode
