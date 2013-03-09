@@ -516,6 +516,8 @@ new one."
            ((string-equal solarized "dark" )
             (load-theme 'solarized-dark t))))
 
+   (load custom-file)
+
    ;; ;; Fix background/foreground colors in term-mode.
    ;; ;; (setq term-default-bg-color (face-attribute 'default :background))
    ;; ;; (setq term-default-fg-color (face-attribute 'default :foreground))
