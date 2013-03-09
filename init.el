@@ -218,6 +218,8 @@
 (add-hook 'clojure-mode-hook
           (lambda ()
             (define-clojure-indent
+              (defcontrol 2)
+              (defrenderer 2)
               (ANY 2)
               (DELETE 2)
               (GET 2)
@@ -248,9 +250,19 @@
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 (setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
 
-(defun lein-cljs-build ()
+(defun lein-cljsbuild ()
   (interactive)
   (compile "lein clean; lein cljsbuild auto"))
+
+(defun lein-chrome-repl ()
+  "Start a Chrome Browser repl via Leiningen."
+  (interactive)
+  (run-lisp "lein trampoline cljsbuild repl-launch chromium"))
+
+(defun lein-rhino-repl ()
+  "Start a Rhino repl via Leiningen."
+  (interactive)
+  (run-lisp "lein trampoline cljsbuild repl-rhino"))
 
 (defun lein-node-repl ()
   "Start a NodeJS repl via Leiningen."
