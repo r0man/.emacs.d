@@ -219,8 +219,6 @@
 (add-hook 'clojure-mode-hook
           (lambda ()
             (define-clojure-indent
-              (defcontrol 2)
-              (defrenderer 2)
               (ANY 2)
               (DELETE 2)
               (GET 2)
@@ -242,6 +240,8 @@
               (select 1)
               (truncate 1)
               (update 2))))
+
+(put 'defclass 'clojure-backtracking-indent '(4 (2)))
 
 ;; DATOMIC
 (add-to-list 'auto-mode-alist '("\\.dtm$" . clojure-mode))
