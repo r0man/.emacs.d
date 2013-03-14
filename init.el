@@ -479,6 +479,10 @@ new one."
       '((tramp-parse-shosts "~/.ssh/known_hosts")
         (tramp-parse-hosts "/etc/hosts")))))
 
+;; UNIQUIFY
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
+
 ;; RUBY-TEST MODE
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
       ruby-test-rspec-executables '("bundle exec rspec"))
