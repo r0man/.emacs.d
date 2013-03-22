@@ -157,6 +157,11 @@
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
 
+(defun xresources ()
+  (interactive)
+  (shell-command "xrdb -merge ~/.Xresources ")
+  (message "X resources reloaded."))
+
 ;; This variable describes the behavior of the command key.
 (setq mac-option-key-is-meta t)
 (setq mac-right-option-modifier nil)
