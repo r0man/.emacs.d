@@ -8,9 +8,7 @@
 (setq package-archives
       '(("elpa" . "http://tromey.com/elpa/")
         ("gnu" . "http://elpa.gnu.org/packages/")
-        ("marmalade" . "http://marmalade-repo.org/packages/")
-        ;; ("melpa" . "http://melpa.milkbox.net/packages/")
-        ))
+        ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 ;; The ELPA packages.
 (setq elpa-packages
@@ -48,23 +46,6 @@
         vertica
         yaml-mode
         yasnippet-bundle))
-
-;; The bleeding edge packages to fetch from MELPA.
-;; (setq package-archive-enable-alist
-;;       '(("melpa"
-;;          ace-jump-mode
-;;          magit
-;;          melpa
-;;          ruby-test-mode
-;;          starter-kit
-;;          starter-kit-bindings
-;;          starter-kit-lisp
-;;          starter-kit-ruby)
-;;         ("marmalade"
-;;          ac-nrepl
-;;          nrepl
-;;          clojure-mode
-;;          clojure-test-mode)))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
 
@@ -483,6 +464,10 @@ new one."
       "ssh"
       '((tramp-parse-shosts "~/.ssh/known_hosts")
         (tramp-parse-hosts "/etc/hosts")))))
+
+;; UNIQUIFY
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
 
 ;; RUBY-TEST MODE
 (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
