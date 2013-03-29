@@ -50,7 +50,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
 
 ;; Enter debugger if an error is signaled?
-(setq debug-on-error t)
+(setq debug-on-error nil)
 
 ;; Use cat as pager.
 (setenv "PAGER" "cat")
@@ -175,10 +175,15 @@
 (defalias 'inf-ruby-keys 'inf-ruby-setup-keybindings)
 
 ;; AC-NREPL
-(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'nrepl-mode))
+
+;; NREPL-RITZ
+(defun nrepl-ritz-mode-setup ()
+  (require 'nrepl-ritz))
+(add-hook 'nrepl-interaction-mode-hook 'nrepl-ritz-mode-setup)
 
 ;; ACE-JUMP-MODE
 (setq ace-jump-mode-gray-background nil)
