@@ -251,6 +251,11 @@
   (interactive)
   (run-lisp "lein trampoline cljsbuild repl-launch chromium"))
 
+(defun lein-firefox-repl ()
+  "Start a Chrome Browser repl via Leiningen."
+  (interactive)
+  (run-lisp "lein trampoline cljsbuild repl-launch firefox"))
+
 (defun lein-rhino-repl ()
   "Start a Rhino repl via Leiningen."
   (interactive)
