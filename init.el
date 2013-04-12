@@ -45,7 +45,8 @@
         undo-tree
         vertica
         yaml-mode
-        yasnippet-bundle))
+        yasnippet-bundle
+        win-switch))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
 
@@ -567,6 +568,9 @@ new one."
 
    ;; Disable pretty lambda.
    (remove-hook 'prog-mode-hook 'esk-pretty-lambdas)
+
+   ;; WIN-SWITCH
+   (win-switch-setup-keys-ijkl "\C-xo")
 
    ;; Load keyboard bindings.
    (global-set-key (kbd "C-c C-+") 'er/expand-region)
