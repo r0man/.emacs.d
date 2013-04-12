@@ -38,6 +38,7 @@
         rvm
         sass-mode
         scss-mode
+        smooth-scrolling
         starter-kit
         starter-kit-bindings
         starter-kit-lisp
