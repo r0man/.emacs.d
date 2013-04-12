@@ -520,10 +520,6 @@ new one."
 
    (load custom-file)
 
-   ;; ;; Fix background/foreground colors in term-mode.
-   ;; ;; (setq term-default-bg-color (face-attribute 'default :background))
-   ;; ;; (setq term-default-fg-color (face-attribute 'default :foreground))
-
    ;; AUTO-COMPLETE
    (require 'auto-complete-config)
    (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -571,6 +567,11 @@ new one."
 
    ;; WIN-SWITCH
    (win-switch-setup-keys-ijkl "\C-xo")
+
+   ;; ZONE
+   (require 'zone)
+   (setq zone-programs [zone-pgm-putz-with-case])
+   (zone-when-idle 120)
 
    ;; Load keyboard bindings.
    (global-set-key (kbd "C-c C-+") 'er/expand-region)
