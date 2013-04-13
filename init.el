@@ -21,16 +21,17 @@
         clojure-test-mode
         css-mode
         emms
+        erlang
         expand-region
         find-file-in-repository
         haml-mode
         haskell-mode
         hive
-        erlang
         json
         magit
         markdown-mode
         multi-term
+        multiple-cursors
         nrepl
         nrepl-ritz
         popwin
@@ -549,10 +550,12 @@ new one."
    ;; IDO-UBIQUITOUS
    (add-to-list 'ido-ubiquitous-command-exceptions 'sql-connect)
 
+   ;; MULTIPLE CURSORS
+   (require 'multiple-cursors)
+
    ;; POPWIN
    (require 'popwin)
    (setq display-buffer-function 'popwin:display-buffer)
-
    (setq popwin:special-display-config
          '(("*Help*"  :height 30)
            ("*Completions*" :noselect t)
