@@ -1,4 +1,26 @@
 
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(el-get 'sync
+        'ace-jump-mode
+        'clojure-mode
+        'expand-region
+        'multi-term
+        'multiple-cursors
+        'nrepl
+        'rainbow-delimiters
+        'rvm
+        'sass-mode
+        'scss-mode
+        )
+
 ;; Set file for customizations.
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 
@@ -13,16 +35,12 @@
 ;; The ELPA packages.
 (setq elpa-packages
       '(ac-nrepl
-        ace-jump-mode
         auctex
         auto-complete
         citrus-mode
-        clojure-mode
-        clojure-test-mode
         css-mode
         emms
         erlang
-        expand-region
         find-file-in-repository
         haml-mode
         haskell-mode
@@ -30,16 +48,9 @@
         json
         magit
         markdown-mode
-        multi-term
-        multiple-cursors
-        nrepl
         nrepl-ritz
         popwin
-        rainbow-delimiters
         ruby-test-mode
-        rvm
-        sass-mode
-        scss-mode
         smooth-scrolling
         starter-kit
         starter-kit-bindings
