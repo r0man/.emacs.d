@@ -1,4 +1,14 @@
 
+;; Set the package sources.
+(setq package-archives
+      '(("elpa" . "http://tromey.com/elpa/")
+        ("gnu" . "http://elpa.gnu.org/packages/")
+        ("marmalade" . "http://marmalade-repo.org/packages/")))
+
+;; (setq el-get-user-package-directory "~/.emacs.d/el-get-user")
+
+;; EL-GET
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -9,6 +19,9 @@
     (eval-print-last-sexp)))
 
 (el-get 'sync
+        'auto-complete
+        'auto-complete-emacs-lisp
+        'auto-complete-etags
         'ace-jump-mode
         'clojure-mode
         'expand-region
@@ -18,25 +31,16 @@
         'rainbow-delimiters
         'rvm
         'sass-mode
-        'scss-mode
-        )
+        'scss-mode)
 
-;; Set file for customizations.
-(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+;; ELPA
 
 (require 'package)
-
-;; Set the package sources.
-(setq package-archives
-      '(("elpa" . "http://tromey.com/elpa/")
-        ("gnu" . "http://elpa.gnu.org/packages/")
-        ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 ;; The ELPA packages.
 (setq elpa-packages
       '(ac-nrepl
         auctex
-        auto-complete
         citrus-mode
         css-mode
         emms
@@ -63,6 +67,9 @@
         win-switch))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
+
+;; Set file for customizations.
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 
 ;; Enter debugger if an error is signaled?
 (setq debug-on-error nil)
@@ -615,11 +622,6 @@ new one."
 
    ;; WIN-SWITCH
    (win-switch-setup-keys-ijkl "\C-xo")
-
-   ;; ZONE
-   (require 'zone)
-   (setq zone-programs [zone-pgm-putz-with-case])
-   (zone-when-idle 120)
 
    ;; Load keyboard bindings.
    (global-set-key (kbd "C-c C-+") 'er/expand-region)
