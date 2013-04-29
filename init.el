@@ -19,12 +19,14 @@
     (eval-print-last-sexp)))
 
 (el-get 'sync
+        'ace-jump-mode
         'auto-complete
         'auto-complete-emacs-lisp
         'auto-complete-etags
-        'ace-jump-mode
         'clojure-mode
         'expand-region
+        'haskell-mode
+        'haskell-mode-exts
         'multi-term
         'multiple-cursors
         'nrepl
@@ -39,7 +41,7 @@
 
 ;; The ELPA packages.
 (setq elpa-packages
-      '(ac-nrepl
+      '(;ac-nrepl
         auctex
         citrus-mode
         css-mode
@@ -47,7 +49,6 @@
         erlang
         find-file-in-repository
         haml-mode
-        haskell-mode
         hive
         json
         magit
@@ -198,10 +199,10 @@
 (defalias 'inf-ruby-keys 'inf-ruby-setup-keybindings)
 
 ;; AC-NREPL
-(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'nrepl-mode))
+;; (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+;; (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+;; (eval-after-load "auto-complete"
+;;   '(add-to-list 'ac-modes 'nrepl-mode))
 
 ;; NREPL-RITZ
 (defun nrepl-ritz-mode-setup ()
