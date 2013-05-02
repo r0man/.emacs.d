@@ -50,10 +50,13 @@
  'multiple-cursors
  'nrepl
  'paredit
+ 'popwin
+ 'ruby-test-mode
  'rvm
  'sass-mode
  'scss-mode
  'smex
+ 'smooth-scrolling
  )
 
 ;; ;; ELPA
@@ -204,20 +207,6 @@
 ;; The maximum size in lines for term buffers.
 (setq term-buffer-maximum-size (* 10 2048))
 
-;; ;; AC-NREPL
-;; ;; (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-;; ;; (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
-;; ;; (eval-after-load "auto-complete"
-;; ;;   '(add-to-list 'ac-modes 'nrepl-mode))
-
-;; ;; NREPL-RITZ
-;; (defun nrepl-ritz-mode-setup ()
-;;   (require 'nrepl-ritz))
-;; (add-hook 'nrepl-interaction-mode-hook 'nrepl-ritz-mode-setup)
-
-;; ;; ACE-JUMP-MODE
-;; (setq ace-jump-mode-gray-background nil)
-
 ;; ABBREV MODE
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 (setq default-abbrev-mode t)
@@ -261,8 +250,6 @@
               (select 1)
               (truncate 1)
               (update 2))))
-
-;; (put 'defclass 'clojure-backtracking-indent '(4 (2)))
 
 ;; EDN
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
@@ -337,49 +324,49 @@
 ;; ;; FIND-FILE-IN-PROJECT
 ;; (setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java" "*.sql"))
 
-;; ;; GNUS
-;; (require 'gnus)
+;; GNUS
+(require 'gnus)
 
-;; ;; Which information should be exposed in the User-Agent header.
-;; (setq mail-user-agent 'gnus-user-agent)
+;; Which information should be exposed in the User-Agent header.
+(setq mail-user-agent 'gnus-user-agent)
 
-;; ;; Default method for selecting a newsgroup.
-;; (setq gnus-select-method
-;;       '(nnimap "gmail"
-;;                (nnimap-address "imap.gmail.com")
-;;                (nnimap-server-port 993)
-;;                (nnimap-stream ssl)))
+;; Default method for selecting a newsgroup.
+(setq gnus-select-method
+      '(nnimap "gmail"
+               (nnimap-address "imap.gmail.com")
+               (nnimap-server-port 993)
+               (nnimap-stream ssl)))
 
-;; ;; A regexp to match uninteresting newsgroups. Use blank string for Gmail.
-;; (setq gnus-ignored-newsgroups "")
+;; A regexp to match uninteresting newsgroups. Use blank string for Gmail.
+(setq gnus-ignored-newsgroups "")
 
-;; ;; Add daemonic server disconnection to Gnus.
-;; (gnus-demon-add-disconnection)
+;; Add daemonic server disconnection to Gnus.
+(gnus-demon-add-disconnection)
 
-;; ;; Add daemonic nntp server disconnection to Gnus.
-;; (gnus-demon-add-nntp-close-connection)
+;; Add daemonic nntp server disconnection to Gnus.
+(gnus-demon-add-nntp-close-connection)
 
-;; ;; Add daemonic scanning of mail from the mail backends.
-;; (gnus-demon-add-scanmail)
+;; Add daemonic scanning of mail from the mail backends.
+(gnus-demon-add-scanmail)
 
-;; ;; Initialize the Gnus daemon.
-;; (gnus-demon-init)
+;; Initialize the Gnus daemon.
+(gnus-demon-init)
 
-;; ;; HASKELL-MODE
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+;; HASKELL-MODE
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
-;; ;; JAVA
+;; JAVA
 
-;; ;; Indent Java annotations.
-;; ;; http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
-;; (add-hook
-;;  'java-mode-hook
-;;  '(lambda ()
-;;     (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
-;;     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
+;; Indent Java annotations.
+;; http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
+(add-hook
+ 'java-mode-hook
+ '(lambda ()
+    (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
+    (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 
 ;; ;; MULTI-TERM
 ;; (setq multi-term-dedicated-select-after-open-p t
@@ -392,24 +379,24 @@
 ;; ;; TODO: WTF? Turns off colors in terminal.
 ;; ;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
 
-;; (add-hook 'term-mode-hook
-;;           (lambda ()
-;;             (dolist
-;;                 (bind '(("<S-down>" . multi-term)
-;;                         ("<S-left>" . multi-term-prev)
-;;                         ("<S-right>" . multi-term-next)
-;;                         ("C-<backspace>" . term-send-backward-kill-word)
-;;                         ("C-<delete>" . term-send-forward-kill-word)
-;;                         ("C-<left>" . term-send-backward-word)
-;;                         ("C-<right>" . term-send-forward-word)
-;;                         ("C-c C-j" . term-line-mode)
-;;                         ("C-c C-k" . term-char-mode)
-;;                         ("C-v" . scroll-up)
-;;                         ("C-y" . term-paste)
-;;                         ("C-z" . term-stop-subjob)
-;;                         ("M-DEL" . term-send-backward-kill-word)
-;;                         ("M-d" . term-send-forward-kill-word)))
-;;               (add-to-list 'term-bind-key-alist bind))))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (dolist
+                (bind '(("<S-down>" . multi-term)
+                        ("<S-left>" . multi-term-prev)
+                        ("<S-right>" . multi-term-next)
+                        ("C-<backspace>" . term-send-backward-kill-word)
+                        ("C-<delete>" . term-send-forward-kill-word)
+                        ("C-<left>" . term-send-backward-word)
+                        ("C-<right>" . term-send-forward-word)
+                        ("C-c C-j" . term-line-mode)
+                        ("C-c C-k" . term-char-mode)
+                        ("C-v" . scroll-up)
+                        ("C-y" . term-paste)
+                        ("C-z" . term-stop-subjob)
+                        ("M-DEL" . term-send-backward-kill-word)
+                        ("M-d" . term-send-forward-kill-word)))
+              (add-to-list 'term-bind-key-alist bind))))
 
 (defun last-term-mode-buffer (list-of-buffers)
   "Returns the most recently used term-mode buffer."
@@ -426,109 +413,87 @@ new one."
         (multi-term)
       (switch-to-buffer buffer))))
 
-;; ;; NREPL
-;; (add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-;; (add-hook 'nrepl-mode-hook 'subword-mode)
+;; NREPL
+(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
+(add-hook 'nrepl-mode-hook 'subword-mode)
 
-;; (add-hook 'nrepl-interaction-mode-hook
-;;           (lambda () (define-key nrepl-interaction-mode-map (kbd "C-c C-s") 'clojure-jump-between-tests-and-code)))
+(add-hook 'nrepl-interaction-mode-hook
+          (lambda () (define-key nrepl-interaction-mode-map (kbd "C-c C-s") 'clojure-jump-between-tests-and-code)))
 
-;; (setq nrepl-port "5000")
+(setq nrepl-port "5000")
 
-;; ;; NREPL-RITZ
-;; (defun nrepl-setup-ritz ()
-;;   (require 'nrepl-ritz))
-;; (add-hook 'nrepl-interaction-mode-hook 'nrepl-setup-ritz)
+;; OCTAVE
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
-;; ;; OCTAVE
-;; (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+(add-hook 'octave-mode-hook
+          (lambda ()
+            (abbrev-mode 1)
+            (auto-fill-mode 1)
+            (if (eq window-system 'x)
+                (font-lock-mode 1))))
 
-;; (add-hook 'octave-mode-hook
-;;           (lambda ()
-;;             (abbrev-mode 1)
-;;             (auto-fill-mode 1)
-;;             (if (eq window-system 'x)
-;;                 (font-lock-mode 1))))
+;; RCIRC
+(if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
+(setq rcirc-default-nick "r0man"
+      rcirc-default-user-name "r0man"
+      rcirc-default-full-name "Roman Scherer"
+      rcirc-server-alist '(("irc.freenode.net" :channels ("#clojure")))
+      rcirc-private-chat t
+      rcirc-debug-flag t)
 
-;; ;; RCIRC
-;; (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
-;; (setq rcirc-default-nick "r0man"
-;;       rcirc-default-user-name "r0man"
-;;       rcirc-default-full-name "Roman Scherer"
-;;       rcirc-server-alist '(("irc.freenode.net" :channels ("#clojure" "#pallet")))
-;;       rcirc-private-chat t
-;;       rcirc-debug-flag t)
+(add-hook 'rcirc-mode-hook
+          (lambda ()
+            (set (make-local-variable 'scroll-conservatively) 8192)
+            (rcirc-track-minor-mode 1)
+            (flyspell-mode 1)))
 
-;; (add-hook 'rcirc-mode-hook
-;;           (lambda ()
-;;             (set (make-local-variable 'scroll-conservatively) 8192)
-;;             (rcirc-track-minor-mode 1)
-;;             (flyspell-mode 1)))
+;; SCSS-MODE
+(setq scss-compile-at-save nil)
 
-;; ;; SCSS-MODE
-;; (setq scss-compile-at-save nil)
+;; SMTPMAIL
 
-;; ;; SMTPMAIL
+;; Send mail via smtpmail.
+(setq send-mail-function 'sendmail-send-it)
 
-;; ;; Send mail via smtpmail.
-;; (setq send-mail-function 'sendmail-send-it)
+;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
+(setq smtpmail-debug-info t)
 
-;; ;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
-;; (setq smtpmail-debug-info t)
+;; Fuck the NSA.
+(setq mail-signature
+      '(progn
+         (goto-char (point-max))
+         (insert "\n\n--------------------------------------------------------------------------------")
+         (spook)))
 
-;; ;; Fuck the NSA.
-;; (setq mail-signature
-;;       '(progn
-;;          (goto-char (point-max))
-;;          (insert "\n\n--------------------------------------------------------------------------------")
-;;          (spook)))
+;; SQL-MODE
+(eval-after-load "sql"
+  '(progn
+     (require 'hive)
+     (require 'vertica)
+     (let ((filename "~/.sql.el"))
+       (when (file-exists-p filename)
+         (load-file filename)))))
 
-;; ;; SQL-MODE
-;; (eval-after-load "sql"
-;;   '(progn
-;;      (require 'hive)
-;;      (require 'vertica)
-;;      (let ((filename "~/.sql.el"))
-;;        (when (file-exists-p filename)
-;;          (load-file filename)))))
+;; SQL-INDENT
+(setq sql-indent-offset 2)
 
-;; ;; SQL-INDENT
-;; (setq sql-indent-offset 2)
+;; TRAMP
+(eval-after-load "tramp"
+  '(progn
+     (tramp-set-completion-function
+      "ssh"
+      '((tramp-parse-shosts "~/.ssh/known_hosts")
+        (tramp-parse-hosts "/etc/hosts")))))
 
-;; ;; TRAMP
-;; (eval-after-load "tramp"
-;;   '(progn
-;;      (tramp-set-completion-function
-;;       "ssh"
-;;       '((tramp-parse-shosts "~/.ssh/known_hosts")
-;;         (tramp-parse-hosts "/etc/hosts")))))
-
-;; ;; UNIQUIFY
-;; (require 'uniquify)
-;; (setq uniquify-buffer-name-style 'post-forward)
-
-;; ;; RUBY-TEST MODE
-;; (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
-;;       ruby-test-rspec-executables '("bundle exec rspec"))
-;; (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby")
-;;       ruby-test-rspec-executables '("bundle exec rspec"))
+;; UNIQUIFY
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
 
 (add-hook
  'after-init-hook
  (lambda ()
 
-   ;; ;; Refresh package archives when necessary.
-   ;; (unless (file-exists-p "~/.emacs.d/elpa/archives")
-   ;;   (package-refresh-contents))
-
-   ;; ;; Install all packages.
-   ;; (package-initialize)
-   ;; (dolist (package elpa-packages)
-   ;;   (when (not (package-installed-p package))
-   ;;     (package-install package)))
-
    ;; (load custom-file)
-
 
    ;; ;; AUTO-COMPLETE
    ;; (require 'auto-complete-config)
@@ -576,58 +541,57 @@ new one."
      (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
 	       'paredit-mode))
 
-   ;; ;; POPWIN
-   ;; (require 'popwin)
-   ;; (setq display-buffer-function 'popwin:display-buffer)
-   ;; (setq popwin:special-display-config
-   ;;       '(("*Help*"  :height 30)
-   ;;         ("*Completions*" :noselect t)
-   ;;         ("*Messages*" :noselect t :height 30)
-   ;;         ("*Apropos*" :noselect t :height 30)
-   ;;         ("*compilation*" :noselect t)
-   ;;         ("*Backtrace*" :height 30)
-   ;;         ("*Messages*" :height 30)
-   ;;         ("*Occur*" :noselect t)
-   ;;         ("*Ido Completions*" :noselect t :height 30)
-   ;;         ("*magit-commit*" :noselect t :height 40 :width 80 :stick t)
-   ;;         ("*magit-diff*" :noselect t :height 40 :width 80)
-   ;;         ("*magit-edit-log*" :noselect t :height 15 :width 80)
-   ;;         ("\\*ansi-term\\*.*" :regexp t :height 30)
-   ;;         ("*shell*" :height 30)
-   ;;         (".*overtone.log" :regexp t :height 30)
-   ;;         ("*gists*" :height 30)
-   ;;         ("*sldb.*":regexp t :height 30)
-   ;;         ("*nrepl-error*" :height 30 :stick t)
-   ;;         ("*nrepl-doc*" :height 30 :stick t)
-   ;;         ("*nrepl-src*" :height 30 :stick t)
-   ;;         ("*nrepl-result*" :height 30 :stick t)
-   ;;         ("*nrepl-macroexpansion*" :height 30 :stick t)
-   ;;         ("*Kill Ring*" :height 30)
-   ;;         ("*Compile-Log*" :height 30 :stick t)
-   ;;         ("*git-gutter:diff*" :height 30 :stick t)))
+   ;; POPWIN
+   (require 'popwin)
+   (setq display-buffer-function 'popwin:display-buffer)
+   (setq popwin:special-display-config
+         '(("*Help*"  :height 30)
+           ("*Completions*" :noselect t)
+           ("*Messages*" :noselect t :height 30)
+           ("*Apropos*" :noselect t :height 30)
+           ("*compilation*" :noselect t)
+           ("*Backtrace*" :height 30)
+           ("*Messages*" :height 30)
+           ("*Occur*" :noselect t)
+           ("*Ido Completions*" :noselect t :height 30)
+           ("*magit-commit*" :noselect t :height 40 :width 80 :stick t)
+           ("*magit-diff*" :noselect t :height 40 :width 80)
+           ("*magit-edit-log*" :noselect t :height 15 :width 80)
+           ("\\*ansi-term\\*.*" :regexp t :height 30)
+           ("*shell*" :height 30)
+           (".*overtone.log" :regexp t :height 30)
+           ("*gists*" :height 30)
+           ("*sldb.*":regexp t :height 30)
+           ("*nrepl-error*" :height 30 :stick t)
+           ("*nrepl-doc*" :height 30 :stick t)
+           ("*nrepl-src*" :height 30 :stick t)
+           ("*nrepl-result*" :height 30 :stick t)
+           ("*nrepl-macroexpansion*" :height 30 :stick t)
+           ("*Kill Ring*" :height 30)
+           ("*Compile-Log*" :height 30 :stick t)
+           ("*git-gutter:diff*" :height 30 :stick t)))
 
-   ;; ;; RVM
-   ;; (when (file-exists-p "/usr/local/rvm")
-   ;;   (rvm-use-default))
+   ;; RVM
+   (when (file-exists-p "/usr/local/rvm")
+     (rvm-use-default))
 
-   ;; (require 'ruby-test-mode)
+   ;; RUBY-TEST-MODE
+   (require 'ruby-test-mode)
+   (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
+	 ruby-test-rspec-executables '("bundle exec rspec"))
+   (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby")
+	 ruby-test-rspec-executables '("bundle exec rspec"))
 
    ;; SMEX
    (global-set-key (kbd "M-x") 'smex)
    (global-set-key (kbd "M-X") 'smex-major-mode-commands)
    (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-   ;; ;; WINNER-MODE
-   ;; (winner-mode)
+   ;; WINNER-MODE
+   (winner-mode)
 
    ;; Start a terminal.
    (multi-term)
-
-   ;; ;; Turn off hl-line-mode
-   ;; (remove-hook 'prog-mode-hook 'esk-turn-on-hl-line-mode)
-
-   ;; ;; Disable pretty lambda.
-   ;; (remove-hook 'prog-mode-hook 'esk-pretty-lambdas)
 
    ;; WIN-SWITCH
    ;; (win-switch-setup-keys-ijkl "\C-xo")
@@ -655,5 +619,4 @@ new one."
    ;; Unload some keyboard bindings.
    (global-unset-key (kbd "C-x g"))
 
-   ;; EOF
    ))
