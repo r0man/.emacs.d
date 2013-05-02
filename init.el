@@ -20,7 +20,8 @@
 (custom-set-faces
  '(cursor ((t (:background "orange red" :foreground "white"))))
  '(mode-line ((t (:background "white smoke" :foreground "black"))))
- '(mode-line-inactive ((t (:background "dark gray" :foreground "black")))))
+ '(mode-line-inactive ((t (:background "dark gray" :foreground "black"))))
+ '(vertical-border ((t (:foreground "black")))))
 
 ;; Set the package sources.
 (setq package-archives
