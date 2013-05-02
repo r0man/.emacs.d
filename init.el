@@ -1,3 +1,17 @@
+;; Hide scroll, tool and menu bars.
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; SOLARIZED
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
+(require 'solarized-dark-theme)
+(load-theme 'solarized-dark t)
+
+;; Transparency
+(set-frame-parameter (selected-frame) 'alpha '(85 50))
+(add-to-list 'default-frame-alist '(alpha 85 50))
+
 ;; Set file for customizations.
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 
@@ -73,8 +87,6 @@
 ;;         yaml-mode
 ;;         yasnippet-bundle
 ;;         win-switch))
-
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
 
 (defun compass-watch ()
   "Find the project root and run compass watch."
@@ -531,11 +543,6 @@ new one."
  'after-init-hook
  (lambda ()
 
-   ;; Hide scroll and tool bar, and show menu.
-   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-
    ;; ;; Refresh package archives when necessary.
    ;; (unless (file-exists-p "~/.emacs.d/elpa/archives")
    ;;   (package-refresh-contents))
@@ -546,15 +553,8 @@ new one."
    ;;   (when (not (package-installed-p package))
    ;;     (package-install package)))
 
-   ;; SOLARIZED
-   (require 'solarized-dark-theme)
-   (load-theme 'solarized-dark t)
-
    ;; (load custom-file)
 
-   ;; Transparency
-   (set-frame-parameter (selected-frame) 'alpha '(85 50))
-   (add-to-list 'default-frame-alist '(alpha 85 50))
 
    ;; ;; AUTO-COMPLETE
    ;; (require 'auto-complete-config)
