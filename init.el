@@ -90,6 +90,17 @@
   (interactive)
   (indent-region (point-min) (point-max)))
 
+(defun untabify-buffer ()
+  "Remove all tabs from the current buffer."
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(defun cleanup-buffer ()
+  "Cleanup the current buffer."
+  (interactive)
+  (indent-buffer)
+  (delete-trailing-whitespace))
+
 (defun swap-windows ()
   "Swap your windows."
   (interactive)
@@ -151,6 +162,9 @@
 
 ;; Enter debugger if an error is signaled?
 (setq debug-on-error nil)
+
+;; Don't show startup message.
+(setq inhibit-startup-message t)
 
 ;; ;; Use cat as pager.
 ;; (setenv "PAGER" "cat")
@@ -655,7 +669,7 @@ new one."
    (global-set-key [f5] 'compile)
 
    (global-set-key (kbd "C-c ,") 'ruby-test-run)
-   (global-set-key (kbd "C-c n") 'indent-buffer)
+   (global-set-key (kbd "C-c n") 'cleanup-buffer)
    (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
 
    ;; Unload some keyboard bindings.
