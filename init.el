@@ -34,7 +34,9 @@
  'rainbow-delimiters
  'rvm
  'sass-mode
- 'scss-mode)
+ 'scss-mode
+ 'smex
+)
 
 ;; ;; ELPA
 
@@ -609,6 +611,11 @@ new one."
    ;;   (rvm-use-default))
 
    ;; (require 'ruby-test-mode)
+
+   ;; SMEX
+   (global-set-key (kbd "M-x") 'smex)
+   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
    ;; ;; WINNER-MODE
    ;; (winner-mode)
