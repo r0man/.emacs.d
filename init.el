@@ -52,6 +52,7 @@
  'auto-complete-etags
  'clojure-mode
  'expand-region
+ 'find-file-in-project
  'haskell-mode
  'haskell-mode-exts
  'magit
@@ -580,7 +581,7 @@ new one."
    (global-set-key (kbd "C-x M") 'multi-term)
    (global-set-key (kbd "C-x TAB") 'indent-rigidly)
    (global-set-key (kbd "C-x ^") 'enlarge-window)
-   (global-set-key (kbd "C-x f") 'find-file-in-repository)
+   (global-set-key (kbd "C-x f") 'find-file-in-project)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
    (global-set-key (kbd "C-x m") 'switch-to-term-mode-buffer)
    (global-set-key (kbd "M-X") 'smex-major-mode-commands)
