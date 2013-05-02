@@ -14,6 +14,7 @@
 
 ;; Set file for customizations.
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+(load custom-file)
 
 ;; Set the package sources.
 (setq package-archives
