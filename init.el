@@ -39,7 +39,7 @@
  'sass-mode
  'scss-mode
  'smex
-)
+ )
 
 ;; ;; ELPA
 
@@ -84,6 +84,11 @@
     (if directory
         (compile (message (format "cd %s; compass watch" directory)))
       (message "Can't find compass project root."))))
+
+(defun indent-buffer ()
+  "Indent the whole buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
 
 (defun swap-windows ()
   "Swap your windows."
@@ -631,7 +636,7 @@ new one."
    ;; (remove-hook 'prog-mode-hook 'esk-pretty-lambdas)
 
    ;; WIN-SWITCH
-   (win-switch-setup-keys-ijkl "\C-xo")
+   ;; (win-switch-setup-keys-ijkl "\C-xo")
 
    ;; Load keyboard bindings.
    (global-set-key (kbd "C-c C-+") 'er/expand-region)
@@ -650,6 +655,7 @@ new one."
    (global-set-key [f5] 'compile)
 
    (global-set-key (kbd "C-c ,") 'ruby-test-run)
+   (global-set-key (kbd "C-c n") 'indent-buffer)
    (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
 
    ;; Unload some keyboard bindings.
