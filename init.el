@@ -16,10 +16,7 @@
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 (load custom-file)
 
-;; (set-face-background 'modeline "#4466aa")
-;; (set-face-background 'modeline-inactive "#99aaff")
-;; (set-face-background 'fringe "#809088")
-
+;; Custom faces.
 (custom-set-faces
  '(cursor ((t (:background "orange red" :foreground "white"))))
  '(mode-line ((t (:background "white smoke" :foreground "black"))))
@@ -67,8 +64,7 @@
  'sass-mode
  'scss-mode
  'smex
- 'smooth-scrolling
- )
+ 'smooth-scrolling)
 
 (defun compass-watch ()
   "Find the project root and run compass watch."
@@ -562,25 +558,21 @@ new one."
    (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby")
 	 ruby-test-rspec-executables '("bundle exec rspec"))
 
-   ;; SMEX
-   (global-set-key (kbd "M-x") 'smex)
-   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
    ;; WINNER-MODE
    (winner-mode)
 
    ;; Start a terminal.
    (multi-term)
 
-   ;; WIN-SWITCH
-   ;; (win-switch-setup-keys-ijkl "\C-xo")
-
    ;; Load keyboard bindings.
+   (global-set-key (kbd "C-c ,") 'ruby-test-run)
    (global-set-key (kbd "C-c C-+") 'er/expand-region)
    (global-set-key (kbd "C-c C--") 'er/contract-region)
    (global-set-key (kbd "C-c C-.") 'clojure-test-run-test)
+   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+   (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
    (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+   (global-set-key (kbd "C-c n") 'cleanup-buffer)
    (global-set-key (kbd "C-x C-g b") 'mo-git-blame-current)
    (global-set-key (kbd "C-x C-g s") 'magit-status)
    (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
@@ -590,13 +582,7 @@ new one."
    (global-set-key (kbd "C-x f") 'find-file-in-repository)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
    (global-set-key (kbd "C-x m") 'switch-to-term-mode-buffer)
-   (global-set-key [f5] 'compile)
-
-   (global-set-key (kbd "C-c ,") 'ruby-test-run)
-   (global-set-key (kbd "C-c n") 'cleanup-buffer)
-   (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
-
-   ;; Unload some keyboard bindings.
-   (global-unset-key (kbd "C-x g"))
+   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+   (global-set-key (kbd "M-x") 'smex)
 
    ))
