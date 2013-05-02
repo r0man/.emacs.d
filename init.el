@@ -1,3 +1,6 @@
+;; Set file for customizations.
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+
 ;; Set the package sources.
 (setq package-archives
       '(("elpa" . "http://tromey.com/elpa/")
@@ -72,119 +75,108 @@
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
 
-;; ;; Set file for customizations.
-;; (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+(defun compass-watch ()
+  "Find the project root and run compass watch."
+  (interactive)
+  (let ((directory (locate-dominating-file (expand-file-name (directory-file-name ".")) "config.rb"))
+        (compilation-ask-about-save nil)
+        (compilation-buffer-name-function (lambda (mode) "*compass*")))
+    (if directory
+        (compile (message (format "cd %s; compass watch" directory)))
+      (message "Can't find compass project root."))))
 
-;; ;; Enter debugger if an error is signaled?
-;; (setq debug-on-error nil)
+(defun swap-windows ()
+  "Swap your windows."
+  (interactive)
+  (cond ((not (> (count-windows)1))
+         (message "You can't rotate a single window!"))
+        (t
+         (setq i 1)
+         (setq numWindows (count-windows))
+         (while  (< i numWindows)
+           (let* ((w1 (elt (window-list) i))
+                  (w2 (elt (window-list) (+ (% i numWindows) 1)))
+                  (b1 (window-buffer w1))
+                  (b2 (window-buffer w2))
+                  (s1 (window-start w1))
+                  (s2 (window-start w2)))
+             (set-window-buffer w1  b2)
+             (set-window-buffer w2 b1)
+             (set-window-start w1 s2)
+             (set-window-start w2 s1)
+             (setq i (1+ i)))))))
 
-;; ;; Use cat as pager.
-;; (setenv "PAGER" "cat")
+(defun rotate-windows ()
+  "Rotate your windows."
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
 
-;; ;; Delete trailing whitespace when saving.
-;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; ;; Toggle column number display in the mode line.
-;; (column-number-mode)
-
-;; ;; Enable display of time, load level, and mail flag in mode lines.
-;; (display-time)
-
-;; ;; If non-nil, `next-line' inserts newline to avoid `end of buffer' error.
-;; (setq next-line-add-newlines nil)
-
-;; ;; Whether to add a newline automatically at the end of the file.
-;; (setq require-final-newline t)
-
-;; ;; AMAZON WEB SERVICES
-;; (let ((aws-credentials (expand-file-name "~/.aws.el")))
-;;   (if (file-exists-p aws-credentials)
-;;       (progn
-;;         (load-file aws-credentials)
-;;         (setenv "AWS_ACCOUNT_NUMBER" aws-account-number)
-;;         (setenv "AWS_ACCESS_KEY" aws-access-key)
-;;         (setenv "AWS_SECRET_KEY" aws-secret-key)
-;;         (setenv "EC2_PRIVATE_KEY" (expand-file-name ec2-private-key))
-;;         (setenv "EC2_CERT" (expand-file-name ec2-cert)))))
-
-;; (defun compass-watch ()
-;;   "Find the project root and run compass watch."
-;;   (interactive)
-;;   (let ((directory (locate-dominating-file (expand-file-name (directory-file-name ".")) "config.rb"))
-;;         (compilation-ask-about-save nil)
-;;         (compilation-buffer-name-function (lambda (mode) "*compass*")))
-;;     (if directory
-;;         (compile (message (format "cd %s; compass watch" directory)))
-;;       (message "Can't find compass project root."))))
-
-;; (defun swap-windows ()
-;;   "Swap your windows."
-;;   (interactive)
-;;   (cond ((not (> (count-windows)1))
-;;          (message "You can't rotate a single window!"))
-;;         (t
-;;          (setq i 1)
-;;          (setq numWindows (count-windows))
-;;          (while  (< i numWindows)
-;;            (let* ((w1 (elt (window-list) i))
-;;                   (w2 (elt (window-list) (+ (% i numWindows) 1)))
-;;                   (b1 (window-buffer w1))
-;;                   (b2 (window-buffer w2))
-;;                   (s1 (window-start w1))
-;;                   (s2 (window-start w2)))
-;;              (set-window-buffer w1  b2)
-;;              (set-window-buffer w2 b1)
-;;              (set-window-start w1 s2)
-;;              (set-window-start w2 s1)
-;;              (setq i (1+ i)))))))
-
-;; (defun rotate-windows ()
-;;   "Rotate your windows."
-;;   (interactive)
-;;   (if (= (count-windows) 2)
-;;       (let* ((this-win-buffer (window-buffer))
-;;              (next-win-buffer (window-buffer (next-window)))
-;;              (this-win-edges (window-edges (selected-window)))
-;;              (next-win-edges (window-edges (next-window)))
-;;              (this-win-2nd (not (and (<= (car this-win-edges)
-;;                                          (car next-win-edges))
-;;                                      (<= (cadr this-win-edges)
-;;                                          (cadr next-win-edges)))))
-;;              (splitter
-;;               (if (= (car this-win-edges)
-;;                      (car (window-edges (next-window))))
-;;                   'split-window-horizontally
-;;                 'split-window-vertically)))
-;;         (delete-other-windows)
-;;         (let ((first-win (selected-window)))
-;;           (funcall splitter)
-;;           (if this-win-2nd (other-window 1))
-;;           (set-window-buffer (selected-window) this-win-buffer)
-;;           (set-window-buffer (next-window) next-win-buffer)
-;;           (select-window first-win)
-;;           (if this-win-2nd (other-window 1))))))
-
-;; (defun xresources ()
-;;   "Reload the ~/.Xresources configuration."
-;;   (interactive)
-;;   (shell-command "xrdb -merge ~/.Xresources ")
-;;   (message "X resources reloaded."))
+(defun xresources ()
+  "Reload the ~/.Xresources configuration."
+  (interactive)
+  (shell-command "xrdb -merge ~/.Xresources ")
+  (message "X resources reloaded."))
 
 ;; Ask user a "y or n" question.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; ;; This variable describes the behavior of the command key.
-;; (setq mac-option-key-is-meta t)
-;; (setq mac-right-option-modifier nil)
+;; Highlight matching parentheses when the point is on them.
+(show-paren-mode 1)
 
-;; ;; Highlight trailing whitespace
-;; (setq show-trailing-whitespace t)
+;; Enter debugger if an error is signaled?
+(setq debug-on-error nil)
+
+;; ;; Use cat as pager.
+;; (setenv "PAGER" "cat")
+
+;; Delete trailing whitespace when saving.
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Toggle column number display in the mode line.
+(column-number-mode)
+
+;; Enable display of time, load level, and mail flag in mode lines.
+(display-time)
+
+;; ;; If non-nil, `next-line' inserts newline to avoid `end of buffer' error.
+;; (setq next-line-add-newlines nil)
+
+;; Whether to add a newline automatically at the end of the file.
+(setq require-final-newline t)
+
+;; This variable describes the behavior of the command key.
+(setq mac-option-key-is-meta t)
+(setq mac-right-option-modifier nil)
+
+;; Highlight trailing whitespace
+(setq show-trailing-whitespace t)
 
 ;; ;; Enable cut-and-paste between Emacs and X clipboard.
 ;; (setq x-select-enable-clipboard t)
 
-;; ;; Controls the operation of the TAB key.
-;; (setq tab-always-indent 'complete)
+;; Controls the operation of the TAB key.
+(setq tab-always-indent 'complete)
 
 ;; ;; The maximum size in lines for term buffers.
 ;; (setq term-buffer-maximum-size (* 10 2048))
