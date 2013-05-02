@@ -1,3 +1,27 @@
+;; Hide scroll, tool and menu bars.
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; SOLARIZED
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
+(require 'solarized-dark-theme)
+(load-theme 'solarized-dark t)
+
+;; Transparency
+(set-frame-parameter (selected-frame) 'alpha '(85 50))
+(add-to-list 'default-frame-alist '(alpha 85 50))
+
+;; Set file for customizations.
+(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+(load custom-file)
+
+;; Custom faces.
+(custom-set-faces
+ '(cursor ((t (:background "orange red" :foreground "white"))))
+ '(mode-line ((t (:background "white smoke" :foreground "black"))))
+ '(mode-line-inactive ((t (:background "dark gray" :foreground "black"))))
+ '(vertical-border ((t (:foreground "black")))))
 
 ;; Set the package sources.
 (setq package-archives
@@ -5,7 +29,7 @@
         ("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-;; (setq el-get-user-package-directory "~/.emacs.d/el-get-user")
+(setq el-get-user-package-directory "~/.emacs.d/el-get-user")
 
 ;; EL-GET
 
@@ -15,94 +39,33 @@
   (with-current-buffer
       (url-retrieve-synchronously
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
 
-(el-get 'sync
-        'ace-jump-mode
-        'auto-complete
-        'auto-complete-emacs-lisp
-        'auto-complete-etags
-        'clojure-mode
-        'expand-region
-        'haskell-mode
-        'haskell-mode-exts
-        'multi-term
-        'multiple-cursors
-        'nrepl
-        'rainbow-delimiters
-        'rvm
-        'sass-mode
-        'scss-mode)
-
-;; ELPA
-
-(require 'package)
-
-;; The ELPA packages.
-(setq elpa-packages
-      '(;ac-nrepl
-        auctex
-        citrus-mode
-        css-mode
-        emms
-        erlang
-        find-file-in-repository
-        haml-mode
-        hive
-        json
-        magit
-        markdown-mode
-        nrepl-ritz
-        popwin
-        ruby-test-mode
-        smooth-scrolling
-        starter-kit
-        starter-kit-bindings
-        starter-kit-lisp
-        starter-kit-ruby
-        undo-tree
-        vertica
-        yaml-mode
-        yasnippet-bundle
-        win-switch))
-
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
-
-;; Set file for customizations.
-(setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
-
-;; Enter debugger if an error is signaled?
-(setq debug-on-error nil)
-
-;; Use cat as pager.
-(setenv "PAGER" "cat")
-
-;; Delete trailing whitespace when saving.
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; Toggle column number display in the mode line.
-(column-number-mode)
-
-;; Enable display of time, load level, and mail flag in mode lines.
-(display-time)
-
-;; If non-nil, `next-line' inserts newline to avoid `end of buffer' error.
-(setq next-line-add-newlines nil)
-
-;; Whether to add a newline automatically at the end of the file.
-(setq require-final-newline t)
-
-;; AMAZON WEB SERVICES
-(let ((aws-credentials (expand-file-name "~/.aws.el")))
-  (if (file-exists-p aws-credentials)
-      (progn
-        (load-file aws-credentials)
-        (setenv "AWS_ACCOUNT_NUMBER" aws-account-number)
-        (setenv "AWS_ACCESS_KEY" aws-access-key)
-        (setenv "AWS_SECRET_KEY" aws-secret-key)
-        (setenv "EC2_PRIVATE_KEY" (expand-file-name ec2-private-key))
-        (setenv "EC2_CERT" (expand-file-name ec2-cert)))))
+(el-get
+ 'sync
+ 'ace-jump-mode
+ 'auto-complete
+ 'auto-complete-css
+ 'auto-complete-emacs-lisp
+ 'auto-complete-etags
+ 'clojure-mode
+ 'expand-region
+ 'haskell-mode
+ 'haskell-mode-exts
+ 'magit
+ 'multi-term
+ 'multiple-cursors
+ 'nrepl
+ 'paredit
+ 'popwin
+ 'ruby-test-mode
+ 'rvm
+ 'sass-mode
+ 'scss-mode
+ 'smex
+ 'smooth-scrolling)
 
 (defun compass-watch ()
   "Find the project root and run compass watch."
@@ -113,6 +76,22 @@
     (if directory
         (compile (message (format "cd %s; compass watch" directory)))
       (message "Can't find compass project root."))))
+
+(defun indent-buffer ()
+  "Indent the whole buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun untabify-buffer ()
+  "Remove all tabs from the current buffer."
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(defun cleanup-buffer ()
+  "Cleanup the current buffer."
+  (interactive)
+  (indent-buffer)
+  (delete-trailing-whitespace))
 
 (defun swap-windows ()
   "Swap your windows."
@@ -167,6 +146,30 @@
   (shell-command "xrdb -merge ~/.Xresources ")
   (message "X resources reloaded."))
 
+;; Ask user a "y or n" question.
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Highlight matching parentheses when the point is on them.
+(show-paren-mode 1)
+
+;; Enter debugger if an error is signaled?
+(setq debug-on-error nil)
+
+;; Don't show startup message.
+(setq inhibit-startup-message t)
+
+;; Delete trailing whitespace when saving.
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Toggle column number display in the mode line.
+(column-number-mode)
+
+;; Enable display of time, load level, and mail flag in mode lines.
+(display-time)
+
+;; Whether to add a newline automatically at the end of the file.
+(setq require-final-newline t)
+
 ;; This variable describes the behavior of the command key.
 (setq mac-option-key-is-meta t)
 (setq mac-right-option-modifier nil)
@@ -174,43 +177,11 @@
 ;; Highlight trailing whitespace
 (setq show-trailing-whitespace t)
 
-;; Enable cut-and-paste between Emacs and X clipboard.
-(setq x-select-enable-clipboard t)
-
 ;; Controls the operation of the TAB key.
 (setq tab-always-indent 'complete)
 
 ;; The maximum size in lines for term buffers.
 (setq term-buffer-maximum-size (* 10 2048))
-
-;; Do not add a final newline when saving.
-(setq require-final-newline nil)
-
-(defun reb-query-replace (to-string)
-  "Replace current RE from point with `query-replace-regexp'."
-  (interactive
-   (progn (barf-if-buffer-read-only)
-          (list (query-replace-read-to (reb-target-binding reb-regexp)
-                                       "Query replace"  t))))
-  (with-current-buffer reb-target-buffer
-    (query-replace-regexp (reb-target-binding reb-regexp) to-string)))
-
-;; Fixes inf-ruby until starter-kit changed.
-(defalias 'inf-ruby-keys 'inf-ruby-setup-keybindings)
-
-;; AC-NREPL
-;; (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-;; (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
-;; (eval-after-load "auto-complete"
-;;   '(add-to-list 'ac-modes 'nrepl-mode))
-
-;; NREPL-RITZ
-(defun nrepl-ritz-mode-setup ()
-  (require 'nrepl-ritz))
-(add-hook 'nrepl-interaction-mode-hook 'nrepl-ritz-mode-setup)
-
-;; ACE-JUMP-MODE
-(setq ace-jump-mode-gray-background nil)
 
 ;; ABBREV MODE
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
@@ -220,15 +191,15 @@
 ;;; COMPILE-MODE
 (setq compilation-scroll-output 't)
 
-;; Show colors in compilation buffers.
-;; http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
+;; ;; Show colors in compilation buffers.
+;; ;; http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
 
-(defun colorize-compilation-buffer ()
-  (toggle-read-only)
-  (ansi-color-apply-on-region (point-min) (point-max))
-  (toggle-read-only))
+;; (defun colorize-compilation-buffer ()
+;;   (toggle-read-only)
+;;   (ansi-color-apply-on-region (point-min) (point-max))
+;;   (toggle-read-only))
 
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+;; (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 ;; CLOJURE-MODE
 (add-hook 'clojure-mode-hook
@@ -256,10 +227,7 @@
               (truncate 1)
               (update 2))))
 
-(put 'defclass 'clojure-backtracking-indent '(4 (2)))
-
-;; DATOMIC
-(add-to-list 'auto-mode-alist '("\\.dtm$" . clojure-mode))
+;; EDN
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 
 ;; CLOJURESCRIPT
@@ -329,8 +297,8 @@
   (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
   (find-dired dir "-name \"*.rb\""))
 
-;; FIND-FILE-IN-PROJECT
-(setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java" "*.sql"))
+;; ;; FIND-FILE-IN-PROJECT
+;; (setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java" "*.sql"))
 
 ;; GNUS
 (require 'gnus)
@@ -376,16 +344,16 @@
     (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 
-;; MULTI-TERM
-(setq multi-term-dedicated-select-after-open-p t
-      multi-term-dedicated-window-height 25
-      multi-term-program "/bin/bash")
+;; ;; MULTI-TERM
+;; (setq multi-term-dedicated-select-after-open-p t
+;;       multi-term-dedicated-window-height 25
+;;       multi-term-program "/bin/bash")
 
-;; Enable compilation-shell-minor-mode in multi term.
-;; http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/
+;; ;; Enable compilation-shell-minor-mode in multi term.
+;; ;; http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/
 
-;; TODO: WTF? Turns off colors in terminal.
-;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
+;; ;; TODO: WTF? Turns off colors in terminal.
+;; ;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
 
 (add-hook 'term-mode-hook
           (lambda ()
@@ -423,18 +391,12 @@ new one."
 
 ;; NREPL
 (add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'nrepl-mode-hook 'subword-mode)
 
 (add-hook 'nrepl-interaction-mode-hook
           (lambda () (define-key nrepl-interaction-mode-map (kbd "C-c C-s") 'clojure-jump-between-tests-and-code)))
 
 (setq nrepl-port "5000")
-
-;; NREPL-RITZ
-(defun nrepl-setup-ritz ()
-  (require 'nrepl-ritz))
-(add-hook 'nrepl-interaction-mode-hook 'nrepl-setup-ritz)
 
 ;; OCTAVE
 (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
@@ -451,7 +413,7 @@ new one."
 (setq rcirc-default-nick "r0man"
       rcirc-default-user-name "r0man"
       rcirc-default-full-name "Roman Scherer"
-      rcirc-server-alist '(("irc.freenode.net" :channels ("#clojure" "#pallet")))
+      rcirc-server-alist '(("irc.freenode.net" :channels ("#clojure")))
       rcirc-private-chat t
       rcirc-debug-flag t)
 
@@ -503,75 +465,58 @@ new one."
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
 
-;; RUBY-TEST MODE
-(setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
-      ruby-test-rspec-executables '("bundle exec rspec"))
-(setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby")
-      ruby-test-rspec-executables '("bundle exec rspec"))
-
 (add-hook
  'after-init-hook
  (lambda ()
 
-   ;; Hide scroll and tool bar, and show menu.
-   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+   ;; (load custom-file)
 
-   ;; Refresh package archives when necessary.
-   (unless (file-exists-p "~/.emacs.d/elpa/archives")
-     (package-refresh-contents))
+   ;; ;; AUTO-COMPLETE
+   ;; (require 'auto-complete-config)
+   ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+   ;; (ac-config-default)
 
-   ;; Install all packages.
-   (package-initialize)
-   (dolist (package elpa-packages)
-     (when (not (package-installed-p package))
-       (package-install package)))
 
-   ;; SOLARIZED
-   (let ((solarized (getenv "SOLARIZED")))
-     (setq solarized-termtrans t
-           ;; solarized-degrade t
-           ;; solarized-termcolor 256
-           )
-     (require 'solarized-dark-theme)
-     (require 'solarized-light-theme)
-     (cond ((string-equal solarized "light")
-            (load-theme 'solarized-light t))
-           ((string-equal solarized "dark" )
-            (load-theme 'solarized-dark t))))
+   ;; ;; EMMS
+   ;; (emms-all)
+   ;; (emms-default-players)
 
-   (load custom-file)
+   ;; (add-to-list 'emms-player-list 'emms-player-mpd)
+   ;; (condition-case nil
+   ;;     (emms-player-mpd-connect)
+   ;;   (error (message "Can't connect to music player daemon.")))
 
-   ;; AUTO-COMPLETE
-   (require 'auto-complete-config)
-   (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-   (ac-config-default)
+   ;; (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+   ;; (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
 
-   ;; EMMS
-   (emms-all)
-   (emms-default-players)
+   ;; (let ((filename "~/.emms.el"))
+   ;;   (when (file-exists-p filename)
+   ;;     (load-file filename)))
 
-   (add-to-list 'emms-player-list 'emms-player-mpd)
-   (condition-case nil
-       (emms-player-mpd-connect)
-     (error (message "Can't connect to music player daemon.")))
+   ;; (add-to-list 'emms-stream-default-list
+   ;;              '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
 
-   (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
-   (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
+   ;; IDO-MODE
+   (ido-mode t)
+   (setq ido-auto-merge-work-directories-length nil
+	 ido-create-new-buffer 'always
+	 ido-enable-flex-matching t
+	 ido-enable-prefix nil
+	 ido-handle-duplicate-virtual-buffers 2
+	 ido-max-prospects 10
+	 ido-use-filename-at-point 'guess
+	 ido-use-virtual-buffers t)
 
-   (let ((filename "~/.emms.el"))
-     (when (file-exists-p filename)
-       (load-file filename)))
-
-   (add-to-list 'emms-stream-default-list
-                '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
-
-   ;; IDO-UBIQUITOUS
-   (add-to-list 'ido-ubiquitous-command-exceptions 'sql-connect)
+   ;; ;; IDO-UBIQUITOUS
+   ;; (add-to-list 'ido-ubiquitous-command-exceptions 'sql-connect)
 
    ;; MULTIPLE CURSORS
    (require 'multiple-cursors)
+
+   ;; PAREDIT
+   (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
+     (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
+	       'paredit-mode))
 
    ;; POPWIN
    (require 'popwin)
@@ -607,7 +552,12 @@ new one."
    (when (file-exists-p "/usr/local/rvm")
      (rvm-use-default))
 
+   ;; RUBY-TEST-MODE
    (require 'ruby-test-mode)
+   (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
+	 ruby-test-rspec-executables '("bundle exec rspec"))
+   (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby")
+	 ruby-test-rspec-executables '("bundle exec rspec"))
 
    ;; WINNER-MODE
    (winner-mode)
@@ -615,20 +565,15 @@ new one."
    ;; Start a terminal.
    (multi-term)
 
-   ;; Turn off hl-line-mode
-   (remove-hook 'prog-mode-hook 'esk-turn-on-hl-line-mode)
-
-   ;; Disable pretty lambda.
-   (remove-hook 'prog-mode-hook 'esk-pretty-lambdas)
-
-   ;; WIN-SWITCH
-   (win-switch-setup-keys-ijkl "\C-xo")
-
    ;; Load keyboard bindings.
+   (global-set-key (kbd "C-c ,") 'ruby-test-run)
    (global-set-key (kbd "C-c C-+") 'er/expand-region)
    (global-set-key (kbd "C-c C--") 'er/contract-region)
    (global-set-key (kbd "C-c C-.") 'clojure-test-run-test)
+   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+   (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
    (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+   (global-set-key (kbd "C-c n") 'cleanup-buffer)
    (global-set-key (kbd "C-x C-g b") 'mo-git-blame-current)
    (global-set-key (kbd "C-x C-g s") 'magit-status)
    (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
@@ -638,13 +583,7 @@ new one."
    (global-set-key (kbd "C-x f") 'find-file-in-repository)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
    (global-set-key (kbd "C-x m") 'switch-to-term-mode-buffer)
-   (global-set-key [f5] 'compile)
+   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+   (global-set-key (kbd "M-x") 'smex)
 
-   (global-set-key (kbd "C-c ,") 'ruby-test-run)
-   (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
-
-   ;; Unload some keyboard bindings.
-   (global-unset-key (kbd "C-x g"))
-
-   ;; EOF
    ))
