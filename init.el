@@ -568,7 +568,16 @@ new one."
    ;; (add-to-list 'emms-stream-default-list
    ;;              '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
 
+   ;; IDO-MODE
    (ido-mode t)
+   (setq ido-auto-merge-work-directories-length nil
+	 ido-create-new-buffer 'always
+	 ido-enable-flex-matching t
+	 ido-enable-prefix nil
+	 ido-handle-duplicate-virtual-buffers 2
+	 ido-max-prospects 10
+	 ido-use-filename-at-point 'guess
+	 ido-use-virtual-buffers t)
 
    ;; ;; IDO-UBIQUITOUS
    ;; (add-to-list 'ido-ubiquitous-command-exceptions 'sql-connect)
