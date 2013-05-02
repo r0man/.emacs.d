@@ -210,23 +210,8 @@
 ;; Controls the operation of the TAB key.
 (setq tab-always-indent 'complete)
 
-;; ;; The maximum size in lines for term buffers.
-;; (setq term-buffer-maximum-size (* 10 2048))
-
-;; ;; Do not add a final newline when saving.
-;; (setq require-final-newline nil)
-
-;; (defun reb-query-replace (to-string)
-;;   "Replace current RE from point with `query-replace-regexp'."
-;;   (interactive
-;;    (progn (barf-if-buffer-read-only)
-;;           (list (query-replace-read-to (reb-target-binding reb-regexp)
-;;                                        "Query replace"  t))))
-;;   (with-current-buffer reb-target-buffer
-;;     (query-replace-regexp (reb-target-binding reb-regexp) to-string)))
-
-;; ;; Fixes inf-ruby until starter-kit changed.
-;; (defalias 'inf-ruby-keys 'inf-ruby-setup-keybindings)
+;; The maximum size in lines for term buffers.
+(setq term-buffer-maximum-size (* 10 2048))
 
 ;; ;; AC-NREPL
 ;; ;; (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
@@ -242,13 +227,13 @@
 ;; ;; ACE-JUMP-MODE
 ;; (setq ace-jump-mode-gray-background nil)
 
-;; ;; ABBREV MODE
-;; (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
-;; (setq default-abbrev-mode t)
-;; (setq save-abbrevs t)
+;; ABBREV MODE
+(setq abbrev-file-name "~/.emacs.d/abbrev_defs")
+(setq default-abbrev-mode t)
+(setq save-abbrevs t)
 
-;; ;;; COMPILE-MODE
-;; (setq compilation-scroll-output 't)
+;;; COMPILE-MODE
+(setq compilation-scroll-output 't)
 
 ;; ;; Show colors in compilation buffers.
 ;; ;; http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
@@ -260,104 +245,103 @@
 
 ;; (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
-;; ;; CLOJURE-MODE
-;; (add-hook 'clojure-mode-hook
-;;           (lambda ()
-;;             (define-clojure-indent
-;;               (ANY 2)
-;;               (DELETE 2)
-;;               (GET 2)
-;;               (HEAD 2)
-;;               (POST 2)
-;;               (PUT 2)
-;;               (domonad 1)
-;;               (context 2)
-;;               (api-test 1)
-;;               (web-test 1)
-;;               (database-test 1)
-;;               (defroutes 'defun)
-;;               ;; SQLingvo
-;;               (copy 2)
-;;               (create-table 1)
-;;               (delete 1)
-;;               (drop-table 1)
-;;               (insert 2)
-;;               (select 1)
-;;               (truncate 1)
-;;               (update 2))))
+;; CLOJURE-MODE
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (define-clojure-indent
+              (ANY 2)
+              (DELETE 2)
+              (GET 2)
+              (HEAD 2)
+              (POST 2)
+              (PUT 2)
+              (domonad 1)
+              (context 2)
+              (api-test 1)
+              (web-test 1)
+              (database-test 1)
+              (defroutes 'defun)
+              ;; SQLingvo
+              (copy 2)
+              (create-table 1)
+              (delete 1)
+              (drop-table 1)
+              (insert 2)
+              (select 1)
+              (truncate 1)
+              (update 2))))
 
 ;; (put 'defclass 'clojure-backtracking-indent '(4 (2)))
 
-;; ;; DATOMIC
-;; (add-to-list 'auto-mode-alist '("\\.dtm$" . clojure-mode))
-;; (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
+;; EDN
+(add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 
-;; ;; CLOJURESCRIPT
-;; (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
-;; (setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
+;; CLOJURESCRIPT
+(add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
+(setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
 
-;; (defun lein-cljsbuild ()
-;;   (interactive)
-;;   (compile "lein clean; lein cljsbuild auto"))
+(defun lein-cljsbuild ()
+  (interactive)
+  (compile "lein clean; lein cljsbuild auto"))
 
-;; (defun lein-chrome-repl ()
-;;   "Start a Chrome Browser repl via Leiningen."
-;;   (interactive)
-;;   (run-lisp "lein trampoline cljsbuild repl-launch chromium"))
+(defun lein-chrome-repl ()
+  "Start a Chrome Browser repl via Leiningen."
+  (interactive)
+  (run-lisp "lein trampoline cljsbuild repl-launch chromium"))
 
-;; (defun lein-firefox-repl ()
-;;   "Start a Chrome Browser repl via Leiningen."
-;;   (interactive)
-;;   (run-lisp "lein trampoline cljsbuild repl-launch firefox"))
+(defun lein-firefox-repl ()
+  "Start a Chrome Browser repl via Leiningen."
+  (interactive)
+  (run-lisp "lein trampoline cljsbuild repl-launch firefox"))
 
-;; (defun lein-rhino-repl ()
-;;   "Start a Rhino repl via Leiningen."
-;;   (interactive)
-;;   (run-lisp "lein trampoline cljsbuild repl-rhino"))
+(defun lein-rhino-repl ()
+  "Start a Rhino repl via Leiningen."
+  (interactive)
+  (run-lisp "lein trampoline cljsbuild repl-rhino"))
 
-;; (defun lein-node-repl ()
-;;   "Start a NodeJS repl via Leiningen."
-;;   (interactive)
-;;   (run-lisp "lein trampoline noderepl"))
+(defun lein-node-repl ()
+  "Start a NodeJS repl via Leiningen."
+  (interactive)
+  (run-lisp "lein trampoline noderepl"))
 
-;; ;; CSS-MODE
-;; (setq css-indent-offset 2)
+;; CSS-MODE
+(setq css-indent-offset 2)
 
-;; ;; DIRED
+;; DIRED
 
-;; ;; Switches passed to `ls' for Dired. MUST contain the `l' option.
-;; (setq dired-listing-switches "-alh")
+;; Switches passed to `ls' for Dired. MUST contain the `l' option.
+(setq dired-listing-switches "-alh")
 
-;; (setq dired-dwim-target t)
+(setq dired-dwim-target t)
 
-;; (defun dired-do-shell-command-in-background (command)
-;;   "In dired, do shell command in background on the file or directory named on
-;;  this line."
-;;   (interactive
-;;    (list (dired-read-shell-command (concat "& on " "%s: ") nil (list (dired-get-filename)))))
-;;   (call-process command nil 0 nil (dired-get-filename)))
+(defun dired-do-shell-command-in-background (command)
+  "In dired, do shell command in background on the file or directory named on
+ this line."
+  (interactive
+   (list (dired-read-shell-command (concat "& on " "%s: ") nil (list (dired-get-filename)))))
+  (call-process command nil 0 nil (dired-get-filename)))
 
-;; ;; DIRED-X
-;; (add-hook 'dired-load-hook
-;;           (lambda ()
-;;             (load "dired-x")
-;;             (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
+;; DIRED-X
+(add-hook 'dired-load-hook
+          (lambda ()
+            (load "dired-x")
+            (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
 
-;; ;; User-defined alist of rules for suggested commands.
-;; (setq dired-guess-shell-alist-user
-;;       '(("\\.pdf$" "evince")
-;;         ("\\.xlsx?$" "libreoffice")))
+;; User-defined alist of rules for suggested commands.
+(setq dired-guess-shell-alist-user
+      '(("\\.pdf$" "evince")
+        ("\\.xlsx?$" "libreoffice")))
 
-;; ;; FIND-DIRED
-;; (defun find-dired-clojure (dir)
-;;   "Run find-dired on Clojure files."
-;;   (interactive (list (read-directory-name "Run find (Clojure) in directory: " nil "" t)))
-;;   (find-dired dir "-name \"*.clj\""))
+;; FIND-DIRED
+(defun find-dired-clojure (dir)
+  "Run find-dired on Clojure files."
+  (interactive (list (read-directory-name "Run find (Clojure) in directory: " nil "" t)))
+  (find-dired dir "-name \"*.clj\""))
 
-;; (defun find-dired-ruby (dir)
-;;   "Run find-dired on Ruby files."
-;;   (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
-;;   (find-dired dir "-name \"*.rb\""))
+(defun find-dired-ruby (dir)
+  "Run find-dired on Ruby files."
+  (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
+  (find-dired dir "-name \"*.rb\""))
 
 ;; ;; FIND-FILE-IN-PROJECT
 ;; (setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java" "*.sql"))
@@ -594,8 +578,8 @@ new one."
    ;; ;; IDO-UBIQUITOUS
    ;; (add-to-list 'ido-ubiquitous-command-exceptions 'sql-connect)
 
-   ;; ;; MULTIPLE CURSORS
-   ;; (require 'multiple-cursors)
+   ;; MULTIPLE CURSORS
+   (require 'multiple-cursors)
 
    ;; PAREDIT
    (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
