@@ -38,6 +38,7 @@
  'sync
  'ace-jump-mode
  'auto-complete
+ 'auto-complete-css
  'auto-complete-emacs-lisp
  'auto-complete-etags
  'clojure-mode
@@ -49,7 +50,6 @@
  'multiple-cursors
  'nrepl
  'paredit
- 'rainbow-delimiters
  'rvm
  'sass-mode
  'scss-mode
@@ -179,9 +179,6 @@
 ;; Don't show startup message.
 (setq inhibit-startup-message t)
 
-;; ;; Use cat as pager.
-;; (setenv "PAGER" "cat")
-
 ;; Delete trailing whitespace when saving.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -190,9 +187,6 @@
 
 ;; Enable display of time, load level, and mail flag in mode lines.
 (display-time)
-
-;; ;; If non-nil, `next-line' inserts newline to avoid `end of buffer' error.
-;; (setq next-line-add-newlines nil)
 
 ;; Whether to add a newline automatically at the end of the file.
 (setq require-final-newline t)
@@ -203,9 +197,6 @@
 
 ;; Highlight trailing whitespace
 (setq show-trailing-whitespace t)
-
-;; ;; Enable cut-and-paste between Emacs and X clipboard.
-;; (setq x-select-enable-clipboard t)
 
 ;; Controls the operation of the TAB key.
 (setq tab-always-indent 'complete)
@@ -437,7 +428,6 @@ new one."
 
 ;; ;; NREPL
 ;; (add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-;; (add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
 ;; (add-hook 'nrepl-mode-hook 'subword-mode)
 
 ;; (add-hook 'nrepl-interaction-mode-hook
