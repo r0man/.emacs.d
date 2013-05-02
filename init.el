@@ -31,8 +31,9 @@
   (with-current-buffer
       (url-retrieve-synchronously
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
 
 (el-get
  'sync
@@ -58,38 +59,6 @@
  'smex
  'smooth-scrolling
  )
-
-;; ;; ELPA
-
-;; (require 'package)
-
-;; ;; The ELPA packages.
-;; (setq elpa-packages
-;;       '(;ac-nrepl
-;;         auctex
-;;         citrus-mode
-;;         css-mode
-;;         emms
-;;         erlang
-;;         find-file-in-repository
-;;         haml-mode
-;;         hive
-;;         json
-;;         magit
-;;         markdown-mode
-;;         nrepl-ritz
-;;         popwin
-;;         ruby-test-mode
-;;         smooth-scrolling
-;;         starter-kit
-;;         starter-kit-bindings
-;;         starter-kit-lisp
-;;         starter-kit-ruby
-;;         undo-tree
-;;         vertica
-;;         yaml-mode
-;;         yasnippet-bundle
-;;         win-switch))
 
 (defun compass-watch ()
   "Find the project root and run compass watch."
@@ -499,6 +468,7 @@ new one."
    ;; (require 'auto-complete-config)
    ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
    ;; (ac-config-default)
+
 
    ;; ;; EMMS
    ;; (emms-all)
