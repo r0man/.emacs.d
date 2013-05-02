@@ -16,6 +16,15 @@
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 (load custom-file)
 
+;; (set-face-background 'modeline "#4466aa")
+;; (set-face-background 'modeline-inactive "#99aaff")
+;; (set-face-background 'fringe "#809088")
+
+(custom-set-faces
+ '(cursor ((t (:background "orange red" :foreground "white"))))
+ '(mode-line ((t (:background "white smoke" :foreground "black"))))
+ '(mode-line-inactive ((t (:background "dark gray" :foreground "black")))))
+
 ;; Set the package sources.
 (setq package-archives
       '(("elpa" . "http://tromey.com/elpa/")
