@@ -11,3 +11,4 @@ tramp
 /emms/history
 /emms/cache
 /el-get
+/el-get-init-files/*.elc
