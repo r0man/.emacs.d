@@ -29,7 +29,7 @@
         ("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-(setq el-get-user-package-directory "~/.emacs.d/el-get-user")
+(setq el-get-user-package-directorys "~/.emacs.d/el-get-init-files")
 
 ;; EL-GET
 
@@ -498,14 +498,6 @@ new one."
  'after-init-hook
  (lambda ()
 
-   ;; (load custom-file)
-
-   ;; ;; AUTO-COMPLETE
-   ;; (require 'auto-complete-config)
-   ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-   ;; (ac-config-default)
-
-
    ;; ;; EMMS
    ;; (emms-all)
    ;; (emms-default-players)
@@ -541,41 +533,6 @@ new one."
 
    ;; MULTIPLE CURSORS
    (require 'multiple-cursors)
-
-   ;; PAREDIT
-   (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
-     (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
-	       'paredit-mode))
-
-   ;; POPWIN
-   (require 'popwin)
-   (setq display-buffer-function 'popwin:display-buffer)
-   (setq popwin:special-display-config
-         '(("*Help*"  :height 30)
-           ("*Completions*" :noselect t)
-           ("*Messages*" :noselect t :height 30)
-           ("*Apropos*" :noselect t :height 30)
-           ("*compilation*" :noselect t)
-           ("*Backtrace*" :height 30)
-           ("*Messages*" :height 30)
-           ("*Occur*" :noselect t)
-           ("*Ido Completions*" :noselect t :height 30)
-           ("*magit-commit*" :noselect t :height 40 :width 80 :stick t)
-           ("*magit-diff*" :noselect t :height 40 :width 80)
-           ("*magit-edit-log*" :noselect t :height 15 :width 80)
-           ("\\*ansi-term\\*.*" :regexp t :height 30)
-           ("*shell*" :height 30)
-           (".*overtone.log" :regexp t :height 30)
-           ("*gists*" :height 30)
-           ("*sldb.*":regexp t :height 30)
-           ("*nrepl-error*" :height 30 :stick t)
-           ("*nrepl-doc*" :height 30 :stick t)
-           ("*nrepl-src*" :height 30 :stick t)
-           ("*nrepl-result*" :height 30 :stick t)
-           ("*nrepl-macroexpansion*" :height 30 :stick t)
-           ("*Kill Ring*" :height 30)
-           ("*Compile-Log*" :height 30 :stick t)
-           ("*git-gutter:diff*" :height 30 :stick t)))
 
    ;; RVM
    (when (file-exists-p "/usr/local/rvm")
@@ -619,3 +576,5 @@ new one."
    (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 
    ))
+
+(add-to-list 'load-path "~/workspace/soundcloud-el")
