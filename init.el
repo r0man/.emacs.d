@@ -51,6 +51,7 @@
  'auto-complete-emacs-lisp
  'auto-complete-etags
  'clojure-mode
+ 'elisp-slime-nav
  'expand-region
  'find-file-in-project
  'haskell-mode
@@ -286,6 +287,10 @@
 (setq dired-guess-shell-alist-user
       '(("\\.pdf$" "evince")
         ("\\.xlsx?$" "libreoffice")))
+
+;; EMACS LISP
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
 
 ;; FIND-DIRED
 (defun find-dired-clojure (dir)
