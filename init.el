@@ -467,8 +467,6 @@ new one."
 ;; SQL-MODE
 (eval-after-load "sql"
   '(progn
-     (require 'hive)
-     (require 'vertica)
      (let ((filename "~/.sql.el"))
        (when (file-exists-p filename)
          (load-file filename)))))
