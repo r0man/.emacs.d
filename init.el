@@ -43,6 +43,21 @@
       (goto-char (point-max))
       (eval-print-last-sexp))))
 
+(setq el-get-sources
+      '(el-get
+	(:name hive
+	       :type github
+	       :pkgname "r0man/hive-el"
+	       :description "Hive SQL mode extension for Emacs"
+	       :load "hive.el"
+	       :compile ("hive.el"))
+	(:name vertica
+	       :type github
+	       :pkgname "r0man/vertica-el"
+	       :description "Vertica SQL mode extension for Emacs"
+	       :load "vertica.el"
+	       :compile ("vertica.el"))))
+
 (el-get
  'sync
  'ace-jump-mode
@@ -56,6 +71,7 @@
  'find-file-in-project
  'haskell-mode
  'haskell-mode-exts
+ 'hive
  'magit
  'multi-term
  'multiple-cursors
@@ -67,7 +83,8 @@
  'sass-mode
  'scss-mode
  'smex
- 'smooth-scrolling)
+ 'smooth-scrolling
+ 'vertica)
 
 (defun compass-watch ()
   "Find the project root and run compass watch."
