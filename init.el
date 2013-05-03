@@ -215,6 +215,23 @@
 (setq default-abbrev-mode t)
 (setq save-abbrevs t)
 
+;; BACKUP
+
+;; Put all backup files in a separate directory.
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+;; If t, delete excess backup versions silently.
+(setq delete-old-versions t)
+
+;; Number of newest versions to keep when a new numbered backup is made.
+(setq kept-new-versions 6)
+
+;; Number of oldest versions to keep when a new numbered backup is made.
+(setq kept-old-versions 2)
+
+;; Make numeric backup versions unconditionally.
+(setq version-control t)
+
 ;;; COMPILE-MODE
 (setq compilation-scroll-output 't)
 
