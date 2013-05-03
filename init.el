@@ -411,15 +411,6 @@ new one."
         (multi-term)
       (switch-to-buffer buffer))))
 
-;; NREPL
-(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-(add-hook 'nrepl-mode-hook 'subword-mode)
-
-(add-hook 'nrepl-interaction-mode-hook
-          (lambda () (define-key nrepl-interaction-mode-map (kbd "C-c C-s") 'clojure-jump-between-tests-and-code)))
-
-(setq nrepl-port "5000")
-
 ;; OCTAVE
 (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
