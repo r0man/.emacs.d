@@ -508,10 +508,6 @@ new one."
    ;; (add-to-list 'emms-stream-default-list
    ;;              '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
 
-   ;; RVM
-   (when (file-exists-p "/usr/local/rvm")
-     (rvm-use-default))
-
    ;; WINNER-MODE
    (winner-mode)
 
