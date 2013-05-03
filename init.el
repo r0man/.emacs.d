@@ -56,7 +56,13 @@
 	       :pkgname "r0man/vertica-el"
 	       :description "Vertica SQL mode extension for Emacs"
 	       :load "vertica.el"
-	       :compile ("vertica.el"))))
+	       :compile ("vertica.el"))
+	(:name emacs-request
+	       :type github
+	       :pkgname "tkf/emacs-request"
+	       :description "Easy HTTP request for Emacs Lisp"
+	       :load "request.el"
+	       :compile ("request.el"))))
 
 (el-get
  'sync
@@ -67,6 +73,8 @@
  'auto-complete-etags
  'clojure-mode
  'elisp-slime-nav
+ 'emacs-request
+ 'elnode
  'expand-region
  'find-file-in-project
  'haskell-mode
