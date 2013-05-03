@@ -345,6 +345,17 @@
 ;; Initialize the Gnus daemon.
 (gnus-demon-init)
 
+;; IDO-MODE
+(ido-mode t)
+(setq ido-auto-merge-work-directories-length nil
+      ido-create-new-buffer 'always
+      ido-enable-flex-matching t
+      ido-enable-prefix nil
+      ido-handle-duplicate-virtual-buffers 2
+      ido-max-prospects 10
+      ido-use-filename-at-point 'guess
+      ido-use-virtual-buffers t)
+
 ;; JAVA
 
 ;; Indent Java annotations.
@@ -496,53 +507,6 @@ new one."
 
    ;; (add-to-list 'emms-stream-default-list
    ;;              '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
-
-   ;; IDO-MODE
-   (ido-mode t)
-   (setq ido-auto-merge-work-directories-length nil
-	 ido-create-new-buffer 'always
-	 ido-enable-flex-matching t
-	 ido-enable-prefix nil
-	 ido-handle-duplicate-virtual-buffers 2
-	 ido-max-prospects 10
-	 ido-use-filename-at-point 'guess
-	 ido-use-virtual-buffers t)
-
-   ;; ;; IDO-UBIQUITOUS
-   ;; (add-to-list 'ido-ubiquitous-command-exceptions 'sql-connect)
-
-   ;; MULTIPLE CURSORS
-   (require 'multiple-cursors)
-
-   ;; POPWIN
-   (require 'popwin)
-   (setq display-buffer-function 'popwin:display-buffer)
-   (setq popwin:special-display-config
-         '(("*Help*"  :height 30)
-           ("*Completions*" :noselect t)
-           ("*Messages*" :noselect t :height 30)
-           ("*Apropos*" :noselect t :height 30)
-           ("*compilation*" :noselect t)
-           ("*Backtrace*" :height 30)
-           ("*Messages*" :height 30)
-           ("*Occur*" :noselect t)
-           ("*Ido Completions*" :noselect t :height 30)
-           ("*magit-commit*" :noselect t :height 40 :width 80 :stick t)
-           ("*magit-diff*" :noselect t :height 40 :width 80)
-           ("*magit-edit-log*" :noselect t :height 15 :width 80)
-           ("\\*ansi-term\\*.*" :regexp t :height 30)
-           ("*shell*" :height 30)
-           (".*overtone.log" :regexp t :height 30)
-           ("*gists*" :height 30)
-           ("*sldb.*":regexp t :height 30)
-           ("*nrepl-error*" :height 30 :stick t)
-           ("*nrepl-doc*" :height 30 :stick t)
-           ("*nrepl-src*" :height 30 :stick t)
-           ("*nrepl-result*" :height 30 :stick t)
-           ("*nrepl-macroexpansion*" :height 30 :stick t)
-           ("*Kill Ring*" :height 30)
-           ("*Compile-Log*" :height 30 :stick t)
-           ("*git-gutter:diff*" :height 30 :stick t)))
 
    ;; RVM
    (when (file-exists-p "/usr/local/rvm")
