@@ -92,7 +92,8 @@
  'scss-mode
  'smex
  'smooth-scrolling
- 'vertica)
+ 'vertica
+ 'yasnippet)
 
 (defun compass-watch ()
   "Find the project root and run compass watch."
