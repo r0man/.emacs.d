@@ -29,7 +29,7 @@
         ("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-(setq el-get-user-package-directorys "~/.emacs.d/el-get-init-files")
+(setq el-get-user-package-directory "~/.emacs.d/el-get-user")
 
 ;; EL-GET
 
@@ -228,7 +228,37 @@
 
 ;; (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+;; CLOJURE-MODE
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (define-clojure-indent
+              (ANY 2)
+              (DELETE 2)
+              (GET 2)
+              (HEAD 2)
+              (POST 2)
+              (PUT 2)
+              (domonad 1)
+              (context 2)
+              (api-test 1)
+              (web-test 1)
+              (database-test 1)
+              (defroutes 'defun)
+              ;; SQLingvo
+              (copy 2)
+              (create-table 1)
+              (delete 1)
+              (drop-table 1)
+              (insert 2)
+              (select 1)
+              (truncate 1)
+              (update 2))))
+
+;; EDN
+(add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
+
 ;; CLOJURESCRIPT
+(add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 (setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
 
 (defun lein-cljsbuild ()
@@ -328,6 +358,12 @@
 
 ;; Initialize the Gnus daemon.
 (gnus-demon-init)
+
+;; HASKELL-MODE
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
 ;; JAVA
 
@@ -462,6 +498,14 @@ new one."
  'after-init-hook
  (lambda ()
 
+   ;; (load custom-file)
+
+   ;; ;; AUTO-COMPLETE
+   ;; (require 'auto-complete-config)
+   ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+   ;; (ac-config-default)
+
+
    ;; ;; EMMS
    ;; (emms-all)
    ;; (emms-default-players)
@@ -491,6 +535,58 @@ new one."
 	 ido-max-prospects 10
 	 ido-use-filename-at-point 'guess
 	 ido-use-virtual-buffers t)
+
+   ;; ;; IDO-UBIQUITOUS
+   ;; (add-to-list 'ido-ubiquitous-command-exceptions 'sql-connect)
+
+   ;; MULTIPLE CURSORS
+   (require 'multiple-cursors)
+
+   ;; PAREDIT
+   (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
+     (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
+	       'paredit-mode))
+
+   ;; POPWIN
+   (require 'popwin)
+   (setq display-buffer-function 'popwin:display-buffer)
+   (setq popwin:special-display-config
+         '(("*Help*"  :height 30)
+           ("*Completions*" :noselect t)
+           ("*Messages*" :noselect t :height 30)
+           ("*Apropos*" :noselect t :height 30)
+           ("*compilation*" :noselect t)
+           ("*Backtrace*" :height 30)
+           ("*Messages*" :height 30)
+           ("*Occur*" :noselect t)
+           ("*Ido Completions*" :noselect t :height 30)
+           ("*magit-commit*" :noselect t :height 40 :width 80 :stick t)
+           ("*magit-diff*" :noselect t :height 40 :width 80)
+           ("*magit-edit-log*" :noselect t :height 15 :width 80)
+           ("\\*ansi-term\\*.*" :regexp t :height 30)
+           ("*shell*" :height 30)
+           (".*overtone.log" :regexp t :height 30)
+           ("*gists*" :height 30)
+           ("*sldb.*":regexp t :height 30)
+           ("*nrepl-error*" :height 30 :stick t)
+           ("*nrepl-doc*" :height 30 :stick t)
+           ("*nrepl-src*" :height 30 :stick t)
+           ("*nrepl-result*" :height 30 :stick t)
+           ("*nrepl-macroexpansion*" :height 30 :stick t)
+           ("*Kill Ring*" :height 30)
+           ("*Compile-Log*" :height 30 :stick t)
+           ("*git-gutter:diff*" :height 30 :stick t)))
+
+   ;; RVM
+   (when (file-exists-p "/usr/local/rvm")
+     (rvm-use-default))
+
+   ;; RUBY-TEST-MODE
+   (require 'ruby-test-mode)
+   (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby")
+	 ruby-test-rspec-executables '("bundle exec rspec"))
+   (setq ruby-test-ruby-executables '("/usr/local/rvm/rubies/ruby-1.9.3-p194/bin/ruby")
+	 ruby-test-rspec-executables '("bundle exec rspec"))
 
    ;; WINNER-MODE
    (winner-mode)
@@ -523,5 +619,3 @@ new one."
    (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 
    ))
-
-(add-to-list 'load-path "~/workspace/soundcloud-el")
