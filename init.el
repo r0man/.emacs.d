@@ -587,4 +587,7 @@ new one."
    (global-set-key (kbd "M-X") 'smex-major-mode-commands)
    (global-set-key (kbd "M-x") 'smex)
 
+   (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
+   (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
+
    ))
