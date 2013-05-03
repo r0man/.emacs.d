@@ -29,7 +29,7 @@
         ("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-(setq el-get-user-package-directory "~/.emacs.d/el-get-user")
+(setq el-get-user-package-directory "~/.emacs.d/el-get-init-files")
 
 ;; EL-GET
 
@@ -497,14 +497,6 @@ new one."
 (add-hook
  'after-init-hook
  (lambda ()
-
-   ;; (load custom-file)
-
-   ;; ;; AUTO-COMPLETE
-   ;; (require 'auto-complete-config)
-   ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-   ;; (ac-config-default)
-
 
    ;; ;; EMMS
    ;; (emms-all)
