@@ -503,11 +503,6 @@ new one."
    ;; MULTIPLE CURSORS
    (require 'multiple-cursors)
 
-   ;; PAREDIT
-   (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
-     (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
-	       'paredit-mode))
-
    ;; POPWIN
    (require 'popwin)
    (setq display-buffer-function 'popwin:display-buffer)
