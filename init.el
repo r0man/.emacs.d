@@ -67,14 +67,15 @@
 (el-get
  'sync
  'ace-jump-mode
+ 'ack-and-a-half
  'auto-complete
  'auto-complete-css
  'auto-complete-emacs-lisp
  'auto-complete-etags
  'clojure-mode
  'elisp-slime-nav
- 'emacs-request
  'elnode
+ 'emacs-request
  'expand-region
  'find-file-in-project
  'haskell-mode
@@ -86,6 +87,7 @@
  'nrepl
  'paredit
  'popwin
+ 'projectile
  'ruby-test-mode
  'rvm
  'sass-mode
