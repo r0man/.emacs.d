@@ -3,11 +3,6 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-;; SOLARIZED
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/emacs-color-theme-solarized"))
-(require 'solarized-dark-theme)
-(load-theme 'solarized-dark t)
-
 ;; Transparency
 (set-frame-parameter (selected-frame) 'alpha '(85 50))
 (add-to-list 'default-frame-alist '(alpha 85 50))
@@ -57,6 +52,11 @@
 	       :description "Vertica SQL mode extension for Emacs"
 	       :load "vertica.el"
 	       :compile ("vertica.el"))
+	(:name emacs-color-theme-solarized-r0man
+	       :type github
+	       :pkgname "r0man/emacs-color-theme-solarized"
+	       :description "Emacs highlighting using Ethan Schoonover’s Solarized color scheme "
+	       :prepare (add-to-list 'custom-theme-load-path default-directory))
 	(:name emacs-request
 	       :type github
 	       :pkgname "tkf/emacs-request"
@@ -76,6 +76,7 @@
  'elisp-slime-nav
  'elnode
  'emacs-request
+ 'emacs-color-theme-solarized-r0man
  'expand-region
  'find-file-in-project
  'haskell-mode
@@ -440,6 +441,9 @@
 (add-hook
  'after-init-hook
  (lambda ()
+
+   ;; (require 'solarized-dark-theme)
+   (load-theme 'solarized-dark t)
 
    ;; Start a terminal.
    (multi-term)
