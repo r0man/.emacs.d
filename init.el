@@ -49,20 +49,25 @@
 	       :type github
 	       :pkgname "r0man/hive-el"
 	       :description "Hive SQL mode extension for Emacs"
-	       :load "hive.el"
 	       :compile ("hive.el"))
 	(:name vertica
 	       :type github
 	       :pkgname "r0man/vertica-el"
 	       :description "Vertica SQL mode extension for Emacs"
-	       :load "vertica.el"
 	       :compile ("vertica.el"))
 	(:name emacs-request
 	       :type github
 	       :pkgname "tkf/emacs-request"
 	       :description "Easy HTTP request for Emacs Lisp"
 	       :load "request.el"
-	       :compile ("request.el"))))
+	       :compile ("request.el"))
+	(:name jss
+	       :type github
+	       :pkgname "segv/jss"
+	       :depends websocket
+	       :description "jsSlime - An emacs toolkit for developing and debugging in-browser javascript code "
+	       :load "jss.el"
+	       :compile ("jss.el" "jss-browser-webkit.el"))))
 
 (el-get
  'sync
@@ -81,6 +86,8 @@
  'haskell-mode
  'haskell-mode-exts
  'hive
+ 'js2-mode
+ 'jss
  'magit
  'multi-term
  'multiple-cursors
