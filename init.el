@@ -96,6 +96,7 @@
  'smex
  'smooth-scrolling
  'vertica
+ 'websocket
  'yasnippet)
 
 (defun compass-watch ()
