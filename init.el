@@ -62,7 +62,12 @@
 	       :pkgname "tkf/emacs-request"
 	       :description "Easy HTTP request for Emacs Lisp"
 	       :load "request.el"
-	       :compile ("request.el"))))
+	       :compile ("request.el"))
+	(:name jss
+	       :type github
+	       :pkgname "segv/jss"
+	       :description "jsSlime - An emacs toolkit for developing and debugging in-browser javascript code"
+	       :compile ("jss.el"))))
 
 (el-get
  'sync
@@ -75,13 +80,14 @@
  'clojure-mode
  'elisp-slime-nav
  'elnode
- 'emacs-request
  'emacs-color-theme-solarized-r0man
+ 'emacs-request
  'expand-region
  'find-file-in-project
  'haskell-mode
  'haskell-mode-exts
  'hive
+ 'jss
  'magit
  'multi-term
  'multiple-cursors
