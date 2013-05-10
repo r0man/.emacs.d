@@ -190,6 +190,9 @@
 ;; Ask user a "y or n" question.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Enable desktop saving (Desktop Save mode).
+(desktop-save-mode 1)
+
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
