@@ -86,6 +86,7 @@
  'find-file-in-project
  'haskell-mode
  'haskell-mode-exts
+ 'highlight-cl
  'hive
  'js2-mode
  'jss
