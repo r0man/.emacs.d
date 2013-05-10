@@ -78,6 +78,7 @@
  'auto-complete-emacs-lisp
  'auto-complete-etags
  'clojure-mode
+ 'dired-toggle-sudo
  'elisp-slime-nav
  'elnode
  'emacs-request
