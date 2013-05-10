@@ -234,6 +234,9 @@
 ;; Put all backup files in a separate directory.
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+;; Make backups for files under version control as well.
+(setq vc-make-backup-files t)
+
 ;; If t, delete excess backup versions silently.
 (setq delete-old-versions t)
 
