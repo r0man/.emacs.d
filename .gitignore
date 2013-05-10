@@ -12,3 +12,6 @@ tramp
 /emms/cache
 /el-get
 /el-get-init-files/*.elc
+/%backup%~
+/.emacs.desktop
+/.emacs.desktop.lock
