@@ -455,9 +455,6 @@
  'after-init-hook
  (lambda ()
 
-   ;; (require 'solarized-dark-theme)
-   (load-theme 'solarized-dark t)
-
    ;; Start a terminal.
    (multi-term)
 
@@ -478,6 +475,4 @@
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
    (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
-   (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
-
-   ))
+   (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)))
