@@ -96,6 +96,7 @@
  'paredit
  'popwin
  'projectile
+ 'pretty-lambdada
  'ruby-test-mode
  'rvm
  'sass-mode
