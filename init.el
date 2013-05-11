@@ -484,5 +484,15 @@
    (global-set-key (kbd "C-x f") 'find-file-in-project)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
+   (let ((mode-map emacs-lisp-mode-map))
+     (define-key (kbd "C-c e E") 'elint-current-buffer)
+     (define-key (kbd "C-c e c") 'cancel-debug-on-entry)
+     (define-key (kbd "C-c e d") 'debug-on-entry)
+     (define-key (kbd "C-c e e") 'toggle-debug-on-error)
+     (define-key (kbd "C-c e f") 'emacs-lisp-byte-compile-and-load)
+     (define-key (kbd "C-c e l") 'find-library)
+     (define-key (kbd "C-c e r") 'eval-region)
+     (deinfe-key (kbd "C-c e b") 'eval-buffer))
+
    (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
    (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)))
