@@ -40,16 +40,6 @@
 
 (setq el-get-sources
       '(el-get
-	(:name hive
-	       :type github
-	       :pkgname "r0man/hive-el"
-	       :description "Hive SQL mode extension for Emacs"
-	       :compile ("hive.el"))
-	(:name vertica
-	       :type github
-	       :pkgname "r0man/vertica-el"
-	       :description "Vertica SQL mode extension for Emacs"
-	       :compile ("vertica.el"))
 	(:name emacs-color-theme-solarized-r0man
 	       :type github
 	       :pkgname "r0man/emacs-color-theme-solarized"
@@ -67,7 +57,12 @@
 	       :depends websocket
 	       :description "jsSlime - An emacs toolkit for developing and debugging in-browser javascript code "
 	       :load "jss.el"
-	       :compile ("jss.el" "jss-browser-webkit.el"))))
+	       :compile ("jss.el" "jss-browser-webkit.el"))
+	(:name macrostep
+	       :type github
+	       :pkgname "joddie/macrostep"
+	       :description "Elisp macro stepper"
+	       :compile ("macrostep.el"))))
 
 (el-get
  'sync
@@ -91,6 +86,7 @@
  'hive
  'js2-mode
  'jss
+ 'macrostep
  'magit
  'multi-term
  'multiple-cursors
@@ -204,7 +200,7 @@
 (show-paren-mode 1)
 
 ;; Enter debugger if an error is signaled?
-(setq debug-on-error nil)
+(setq debug-on-error t)
 
 ;; Don't show startup message.
 (setq inhibit-startup-message t)
@@ -465,6 +461,25 @@
  'after-init-hook
  (lambda ()
 
+   (emms-all)
+   (emms-default-players)
+
+   (add-to-list 'emms-player-list 'emms-player-mpd)
+   (condition-case nil
+       (emms-player-mpd-connect)
+     (error (message "Can't connect to music player daemon.")))
+
+   (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+   (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
+
+   (let ((filename "~/.emms.el"))
+     (when (file-exists-p filename)
+       (load-file filename)))
+
+   (add-to-list 'emms-stream-default-list
+		'("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
+
+
    ;; Start a terminal.
    (multi-term)
 
@@ -484,15 +499,18 @@
    (global-set-key (kbd "C-x f") 'find-file-in-project)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
-   (let ((mode-map emacs-lisp-mode-map))
-     (define-key (kbd "C-c e E") 'elint-current-buffer)
-     (define-key (kbd "C-c e c") 'cancel-debug-on-entry)
-     (define-key (kbd "C-c e d") 'debug-on-entry)
-     (define-key (kbd "C-c e e") 'toggle-debug-on-error)
-     (define-key (kbd "C-c e f") 'emacs-lisp-byte-compile-and-load)
-     (define-key (kbd "C-c e l") 'find-library)
-     (define-key (kbd "C-c e r") 'eval-region)
-     (deinfe-key (kbd "C-c e b") 'eval-buffer))
+   (let ((mode emacs-lisp-mode-map))
+     (define-key mode (kbd "C-c m") 'macrostep-expand)
+     (define-key mode (kbd "C-c e E") 'elint-current-buffer)
+     (define-key mode (kbd "C-c e c") 'cancel-debug-on-entry)
+     (define-key mode (kbd "C-c e d") 'debug-on-entry)
+     (define-key mode (kbd "C-c e e") 'toggle-debug-on-error)
+     (define-key mode (kbd "C-c e f") 'emacs-lisp-byte-compile-and-load)
+     (define-key mode (kbd "C-c e l") 'find-library)
+     (define-key mode (kbd "C-c e r") 'eval-region)
+     (define-key mode (kbd "C-c C-k") 'eval-buffer)
+     (define-key mode (kbd "C-c ,") 'ert)
+     (define-key mode (kbd "C-c C-,") 'ert))
 
    (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
    (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)))
