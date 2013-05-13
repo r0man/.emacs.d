@@ -45,6 +45,11 @@
 	       :pkgname "r0man/emacs-color-theme-solarized"
 	       :description "Emacs highlighting using Ethan Schoonover’s Solarized color scheme "
 	       :prepare (add-to-list 'custom-theme-load-path default-directory))
+	(:name inflect
+	       :type github
+	       :pkgname "r0man/inflect-el"
+	       :description "Emacs Lisp Inflection Library."
+	       :compile ("inflect.el"))
 	(:name emacs-request
 	       :type github
 	       :pkgname "tkf/emacs-request"
@@ -84,6 +89,7 @@
  'haskell-mode-exts
  'highlight-cl
  'hive
+ 'inflect
  'js2-mode
  'jss
  'macrostep
