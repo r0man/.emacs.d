@@ -196,6 +196,8 @@
   (shell-command "xrdb -merge ~/.Xresources ")
   (message "X resources reloaded."))
 
+(setq user-full-name "Roman Scherer")
+
 ;; Ask user a "y or n" question.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
