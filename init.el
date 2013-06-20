@@ -101,6 +101,7 @@
  'popwin
  'projectile
  'pretty-lambdada
+ 'ruby-mode
  'ruby-test-mode
  'rvm
  'sass-mode
