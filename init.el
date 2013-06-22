@@ -85,8 +85,8 @@
  'emacs-color-theme-solarized-r0man
  'expand-region
  'find-file-in-project
- 'haskell-mode
- 'haskell-mode-exts
+ ;; 'haskell-mode
+ ;; 'haskell-mode-exts
  'highlight-cl
  'hive
  'inflect
