@@ -4,7 +4,6 @@
 	("*Completions*" :noselect t)
 	("*Messages*" :noselect t :height 30)
 	("*Apropos*" :noselect t :height 30)
-	("*compilation*" :noselect t)
 	("*Backtrace*" :height 30)
 	("*Messages*" :height 30)
 	("*Occur*" :noselect t)
