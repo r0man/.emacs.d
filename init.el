@@ -488,9 +488,11 @@
    (add-to-list 'emms-stream-default-list
 		'("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))
 
-
    ;; Start a terminal.
    (multi-term)
+
+   ;; Start the Emacs server.
+   (server-start)
 
    ;; Load keyboard bindings.
    (global-set-key (kbd "C-c ,") 'ruby-test-run)
