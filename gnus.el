@@ -2,6 +2,9 @@
 (setq gnus-select-method
       '(nntp "news.online.de"))
 
+;; Don't check for new newsgroups.
+(setq gnus-check-new-newsgroups nil)
+
 ;; *Integer that says how verbose Gnus should be.
 (setq gnus-verbose 10)
 
