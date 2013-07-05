@@ -87,6 +87,7 @@
  'find-file-in-project
  ;; 'haskell-mode
  ;; 'haskell-mode-exts
+ 'gnus-notify
  'highlight-cl
  'hive
  'inflect
