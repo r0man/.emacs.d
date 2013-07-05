@@ -442,6 +442,11 @@
  'after-init-hook
  (lambda ()
 
+   ;; Load system specific config.
+   (let ((system-config (concat user-emacs-directory system-name ".el")))
+     (when (file-exists-p system-config)
+       (load system-config)))
+
    (emms-all)
    (emms-default-players)
 
