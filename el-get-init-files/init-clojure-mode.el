@@ -28,3 +28,6 @@
      (database-test 1)
      (defroutes 'defun)
      ))
+
+;; More flexible clojure-test-mode regex.
+(setq clojure-test-regex (mapconcat 'identity '("clojure\\.test" "burningswell.*\\.test") "\\|"))
