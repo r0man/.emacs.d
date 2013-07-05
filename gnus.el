@@ -1,6 +1,6 @@
 
 (setq gnus-select-method
-      '(nntp "news.online.de"))
+      '(nntp "textnews.news.cambrium.nl"))
 
 ;; Don't check for new newsgroups.
 (setq gnus-check-new-newsgroups nil)
