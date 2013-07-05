@@ -1,9 +1,10 @@
 
+;; Default method for selecting a newsgroup.
 (setq gnus-select-method
-      '(nntp "textnews.news.cambrium.nl"))
-
-;; Don't check for new newsgroups.
-(setq gnus-check-new-newsgroups nil)
+      '(nnimap "gmail"
+               (nnimap-address "imap.gmail.com")
+               (nnimap-server-port 993)
+               (nnimap-stream ssl)))
 
 ;; *Integer that says how verbose Gnus should be.
 (setq gnus-verbose 10)
@@ -13,13 +14,6 @@
 
 ;; ;; Which information should be exposed in the User-Agent header.
 ;; (setq mail-user-agent 'gnus-user-agent)
-
-;; ;; Default method for selecting a newsgroup.
-;; (setq gnus-select-method
-;;       '(nnimap "gmail"
-;;                (nnimap-address "imap.gmail.com")
-;;                (nnimap-server-port 993)
-;;                (nnimap-stream ssl)))
 
 ;; ;; A regexp to match uninteresting newsgroups. Use blank string for Gmail.
 ;; (setq gnus-ignored-newsgroups "")

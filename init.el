@@ -399,12 +399,19 @@
 (setq scss-compile-at-save nil)
 
 ;; SMTPMAIL
+(require 'smtpmail)
 
 ;; Send mail via smtpmail.
 (setq send-mail-function 'sendmail-send-it)
 
 ;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
 (setq smtpmail-debug-info t)
+
+;; The name of the host running SMTP server.
+(setq smtpmail-smtp-server "smtp.googlemail.com")
+
+;; SMTP service port number.
+(setq smtpmail-smtp-service 465)
 
 ;; Fuck the NSA.
 (setq mail-signature
