@@ -71,6 +71,7 @@
 
 (el-get
  'sync
+ 'ac-nrepl
  'ace-jump-mode
  'ack-and-a-half
  'auto-complete
