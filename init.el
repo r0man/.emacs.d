@@ -111,8 +111,7 @@
  'smex
  'smooth-scrolling
  'vertica
- 'websocket
- 'yasnippet)
+ 'websocket)
 
 (defun compass-watch ()
   "Find the project root and run compass watch."
