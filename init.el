@@ -441,7 +441,9 @@
 
 ;; UNIQUIFY
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-separator "|")
+(setq uniquify-ignore-buffers-re "^\\*")
 
 ;; WINNER-MODE
 (winner-mode)
