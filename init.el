@@ -444,6 +444,7 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-separator "|")
 (setq uniquify-ignore-buffers-re "^\\*")
+(setq uniquify-after-kill-buffer-p t)
 
 ;; WINNER-MODE
 (winner-mode)
