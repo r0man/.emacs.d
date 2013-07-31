@@ -344,8 +344,8 @@
   (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
   (find-dired dir "-name \"*.rb\""))
 
-;; ;; FIND-FILE-IN-PROJECT
-;; (setq ffip-patterns '("*.coffee" "*.clj" "*.cljs" "*.rb" "*.html" "*.el" "*.js" "*.rhtml" "*.java" "*.sql"))
+;; FIND-FILE-IN-PROJECT
+(add-to-list 'ffip-patterns "*.java")
 
 ;; GNUS
 (setq gnus-init-file "~/.emacs.d/gnus.el")
