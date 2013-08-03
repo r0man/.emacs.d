@@ -455,6 +455,7 @@
      (when (file-exists-p system-config)
        (load system-config)))
 
+   (require 'emms-setup)
    (emms-all)
    (emms-default-players)
 
