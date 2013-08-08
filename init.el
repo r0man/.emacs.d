@@ -499,6 +499,8 @@
    (global-set-key (kbd "C-x f") 'find-file-in-project)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
+   (global-set-key (kbd "C-c r") 'rotate-windows)
+
    (let ((mode emacs-lisp-mode-map))
      (define-key mode (kbd "C-c m") 'macrostep-expand)
      (define-key mode (kbd "C-c e E") 'elint-current-buffer)
