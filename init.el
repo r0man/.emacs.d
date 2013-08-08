@@ -145,8 +145,8 @@
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
-(defun swap-windows ()
-  "Swap your windows."
+(defun swap-buffers ()
+  "Swap your buffers."
   (interactive)
   (cond ((not (> (count-windows)1))
          (message "You can't rotate a single window!"))
@@ -166,8 +166,8 @@
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
 
-(defun rotate-windows ()
-  "Rotate your windows."
+(defun rotate-buffers ()
+  "Rotate your buffers."
   (interactive)
   (if (= (count-windows) 2)
       (let* ((this-win-buffer (window-buffer))
@@ -499,7 +499,7 @@
    (global-set-key (kbd "C-x f") 'find-file-in-project)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
-   (global-set-key (kbd "C-c r") 'rotate-windows)
+   (global-set-key (kbd "C-c r") 'rotate-buffers)
 
    (let ((mode emacs-lisp-mode-map))
      (define-key mode (kbd "C-c m") 'macrostep-expand)
