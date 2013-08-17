@@ -30,4 +30,9 @@
      ))
 
 ;; More flexible clojure-test-mode regex.
-(setq clojure-test-regex (mapconcat 'identity '("clojure\\.test" "burningswell.*\\.test") "\\|"))
+(setq clojure-test-regex
+      (mapconcat
+       'identity
+       '("\\(clojure\\.test\\)"
+	 "\\((ns .*-test.*\\)")
+       "\\|"))
