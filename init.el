@@ -95,7 +95,7 @@
  'js2-mode
  'jss
  'macrostep
- 'magit
+ ;; 'magit
  'multi-term
  'multiple-cursors
  'nrepl
@@ -452,6 +452,9 @@
 (add-hook
  'after-init-hook
  (lambda ()
+
+   (require 'magit)
+   (global-set-key (kbd "C-x C-g s") 'magit-status)
 
    ;; Load system specific config.
    (let ((system-config (concat user-emacs-directory system-name ".el")))
