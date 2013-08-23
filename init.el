@@ -97,7 +97,7 @@
  'js2-mode
  'jss
  'macrostep
- ;; 'magit
+ 'magit
  'multi-term
  'multiple-cursors
  'nrepl
