@@ -1,6 +1,5 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(require 'auto-complete-config)
 (ac-config-default)
 
 (setq ac-use-menu-map t)

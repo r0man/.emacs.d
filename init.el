@@ -71,13 +71,15 @@
 
 (el-get
  'sync
- 'ac-nrepl
+ ;; 'ac-nrepl
  'ace-jump-mode
  'ack-and-a-half
  'auto-complete
  'auto-complete-css
  'auto-complete-emacs-lisp
  'auto-complete-etags
+ 'auto-complete-ruby
+ 'auto-complete-yasnippet
  'clojure-mode
  'dired-toggle-sudo
  'elisp-slime-nav
@@ -111,7 +113,8 @@
  'smex
  'smooth-scrolling
  'vertica
- 'websocket)
+ 'websocket
+ 'yasnippet)
 
 (defun compass-watch ()
   "Find the project root and run compass watch."

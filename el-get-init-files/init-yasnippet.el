@@ -1,4 +1,7 @@
 (yas-reload-all)
-(add-hook 'prog-mode-hook
-          '(lambda ()
-             (yas-minor-mode)))
+
+(defun yas-hook ()
+  (yas-minor-mode))
+
+(add-hook 'html-mode-hook 'yas-hook)
+(add-hook 'web-mode-hook 'yas-hook)
