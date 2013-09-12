@@ -14,6 +14,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "orange red" :foreground "#141b23"))))
+ '(magit-item-highlight ((t nil)))
  '(mode-line ((t (:background "white smoke" :foreground "black"))))
  '(mode-line-inactive ((t (:background "dark gray" :foreground "black"))))
  '(vertical-border ((t (:foreground "black")))))
