@@ -88,8 +88,8 @@
  'emacs-color-theme-solarized-r0man
  'expand-region
  'find-file-in-project
- ;; 'haskell-mode
- ;; 'haskell-mode-exts
+ 'haskell-mode
+ 'haskell-mode-exts
  'gnus-notify
  'highlight-cl
  'hive
@@ -455,9 +455,6 @@
 (add-hook
  'after-init-hook
  (lambda ()
-
-   (require 'magit)
-   (global-set-key (kbd "C-x C-g s") 'magit-status)
 
    ;; Load system specific config.
    (let ((system-config (concat user-emacs-directory system-name ".el")))
