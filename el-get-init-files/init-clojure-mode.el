@@ -1,5 +1,6 @@
 (add-to-list 'auto-mode-alist '("\\.edn$" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljx$" . clojure-mode))
 
 (eval-after-load "clojure-mode"
   '(define-clojure-indent
