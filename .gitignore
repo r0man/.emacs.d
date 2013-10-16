@@ -15,3 +15,5 @@ tramp
 /%backup%~
 /.emacs.desktop
 /.emacs.desktop.lock
+/eshell/history
+/projectile-bookmarks.eld
