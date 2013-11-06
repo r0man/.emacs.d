@@ -93,6 +93,7 @@
  'gnus-notify
  'highlight-cl
  'hive
+ 'ido-vertical-mode
  'inflect
  'js2-mode
  'jss
