@@ -100,7 +100,7 @@
  'magit
  'multi-term
  'multiple-cursors
- 'nrepl
+ 'cider
  'paredit
  'popwin
  'projectile
