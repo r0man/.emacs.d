@@ -348,6 +348,22 @@
   (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
   (find-dired dir "-name \"*.rb\""))
 
+;; FLY SPELL
+
+(defun enable-flyspell-mode ()
+  "Enable Flyspell mode."
+  (flyspell-mode 1))
+
+(defun enable-flyspell-prog-mode ()
+  "Enable Flyspell Programming mode."
+  (flyspell-prog-mode))
+
+(dolist (hook '(text-mode-hook))
+  (add-hook hook 'enable-flyspell-mode))
+
+(dolist (hook '(prog-mode-hook))
+  (add-hook hook 'enable-flyspell-prog-mode))
+
 ;; GNUS
 (setq gnus-init-file "~/.emacs.d/gnus.el")
 
