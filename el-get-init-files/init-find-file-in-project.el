@@ -1,3 +1,3 @@
 
-(dolist (extension '("*.java" "*.edn"))
+(dolist (extension '("*.java" "*.edn" "*.sql"))
   (add-to-list 'ffip-patterns extension))
