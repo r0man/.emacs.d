@@ -3,7 +3,7 @@
 
 ;; Hide *nrepl-connection* and *nrepl-server* buffers from appearing
 ;; in some buffer switching commands like switch-to-buffer
-(setq nrepl-hide-special-buffers t)
+(setq nrepl-hide-special-buffers nil)
 
 ;; Enabling CamelCase support for editing commands(like forward-word,
 ;; backward-word, etc) in the REPL is quite useful since we often have
