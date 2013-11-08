@@ -212,7 +212,7 @@
 (show-paren-mode 1)
 
 ;; Enter debugger if an error is signaled?
-(setq debug-on-error t)
+(setq debug-on-error nil)
 
 ;; Don't show startup message.
 (setq inhibit-startup-message t)
