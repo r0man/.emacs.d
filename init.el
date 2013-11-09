@@ -467,10 +467,6 @@
 ;; WINNER-MODE
 (winner-mode)
 
-;; ZONE
-(require 'zone)
-(zone-when-idle (* 5 60))
-
 (add-hook
  'after-init-hook
  (lambda ()
