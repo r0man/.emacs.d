@@ -514,6 +514,8 @@
    (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
    (global-set-key (kbd "C-x TAB") 'indent-rigidly)
    (global-set-key (kbd "C-x ^") 'enlarge-window)
+   (global-set-key (kbd "C-x C-f") 'projectile-find-file)
+   (global-set-key (kbd "C-x f") 'ido-find-file)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
    (global-set-key (kbd "C-c r") 'rotate-buffers)
