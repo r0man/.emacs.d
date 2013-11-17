@@ -81,17 +81,19 @@
  'auto-complete-ruby
  'auto-complete-yasnippet
  'auto-dictionary
+ 'cider
  'clojure-mode
  'dired-toggle-sudo
  'elisp-slime-nav
  'elnode
- 'emacs-request
  'emacs-color-theme-solarized-r0man
+ 'emacs-request
  'expand-region
  'find-file-in-project
+ 'flx
+ 'gnus-notify
  'haskell-mode
  'haskell-mode-exts
- 'gnus-notify
  'highlight-cl
  'hive
  'ido-vertical-mode
@@ -102,11 +104,10 @@
  'magit
  'multi-term
  'multiple-cursors
- 'cider
  'paredit
  'popwin
- 'projectile
  'pretty-lambdada
+ 'projectile
  'ruby-mode
  'ruby-test-mode
  'rvm
@@ -514,10 +515,9 @@
    (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
    (global-set-key (kbd "C-x TAB") 'indent-rigidly)
    (global-set-key (kbd "C-x ^") 'enlarge-window)
-   ;; (global-set-key (kbd "C-x C-f") 'projectile-find-file)
-   ;; (global-set-key (kbd "C-x f") 'ido-find-file)
+   (global-set-key (kbd "C-x C-f") 'projectile-find-file)
+   (global-set-key (kbd "C-x f") 'ido-find-file)
    (global-set-key (kbd "C-x h") 'mark-whole-buffer)
-
    (global-set-key (kbd "C-c r") 'rotate-buffers)
 
    (let ((mode emacs-lisp-mode-map))
