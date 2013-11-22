@@ -71,7 +71,6 @@
 
 (el-get
  'sync
- ;; 'ac-nrepl
  'ace-jump-mode
  'ack-and-a-half
  'auto-complete
@@ -102,6 +101,7 @@
  'jss
  'macrostep
  'magit
+ 'markdown-mode
  'multi-term
  'multiple-cursors
  'paredit
@@ -111,11 +111,11 @@
  'ruby-mode
  'ruby-test-mode
  'rvm
- 'sass-mode
  'scss-mode
  'smex
  'smooth-scrolling
  'vertica
+ 'web-mode
  'websocket
  'yasnippet)
 
