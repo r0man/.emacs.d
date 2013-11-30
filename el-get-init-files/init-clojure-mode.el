@@ -31,9 +31,10 @@
      ))
 
 ;; More flexible clojure-test-mode regex.
-(setq clojure-test-regex
-      (mapconcat
-       'identity
-       '("\\(clojure\\.test\\)"
-	 "\\((ns .*-test.*\\)")
-       "\\|"))
+(eval-after-load "clojure-test-mode"
+  '(setq clojure-test-regex
+	 (mapconcat
+	  'identity
+	  '("\\(clojure\\.test\\)"
+	    "\\((ns .*-test.*\\)")
+	  "\\|")))
