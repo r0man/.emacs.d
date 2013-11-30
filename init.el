@@ -67,7 +67,12 @@
 	       :type github
 	       :pkgname "joddie/macrostep"
 	       :description "Elisp macro stepper"
-	       :compile ("macrostep.el"))))
+	       :compile ("macrostep.el"))
+	(:name slamhound
+	       :type github
+	       :pkgname "technomancy/slamhound"
+	       :description "Slamhound rips your namespace form apart and reconstructs it."
+	       :compile ("slamhound.el"))))
 
 (el-get
  'sync
@@ -112,6 +117,7 @@
  'ruby-test-mode
  'rvm
  'scss-mode
+ 'slamhound
  'smex
  'smooth-scrolling
  'vertica
