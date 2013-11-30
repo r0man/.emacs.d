@@ -206,6 +206,10 @@
 
 (setq user-full-name "Roman Scherer")
 
+;; Global Auto Revert mode is a global minor mode that reverts any
+;; buffer associated with a file when the file changes on disk.
+(global-auto-revert-mode 1)
+
 ;; Ask user a "y or n" question.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
