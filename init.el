@@ -94,7 +94,7 @@
  'emacs-request
  'expand-region
  'find-file-in-project
- ;; 'flx
+ 'flx
  'gnus-notify
  'haskell-mode
  'haskell-mode-exts
