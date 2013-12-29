@@ -16,3 +16,9 @@
 ;; clojure-mode buffers (if you're not you probably should). You might
 ;; also want to enable paredit in the REPL buffer as well.
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
+
+(defun cider-namespace-refresh ()
+  (interactive)
+  (cider-interactive-eval
+   "(require 'clojure.tools.namespace.repl)
+    (clojure.tools.namespace.repl/refresh)"))
