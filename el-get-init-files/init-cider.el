@@ -22,3 +22,10 @@
   (cider-interactive-eval
    "(require 'clojure.tools.namespace.repl)
     (clojure.tools.namespace.repl/refresh)"))
+
+(defun piggiepack-repl ()
+  (interactive)
+  ;; (cider-jack-in)
+  (cider-interactive-eval
+   "(require 'cljs.repl.browser)
+    (cemerick.piggieback/cljs-repl :repl-env (cljs.repl.browser/repl-env :port 9000))"))
