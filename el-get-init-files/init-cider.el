@@ -17,6 +17,9 @@
 ;; also want to enable paredit in the REPL buffer as well.
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
+;; Auto-select the error buffer when it's displayed:
+(setq cider-auto-select-error-buffer t)
+
 (defun cider-namespace-refresh ()
   (interactive)
   (cider-interactive-eval
