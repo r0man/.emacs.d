@@ -72,15 +72,7 @@
 	       :type github
 	       :pkgname "technomancy/slamhound"
 	       :description "Slamhound rips your namespace form apart and reconstructs it."
-	       :compile ("slamhound.el"))
-	(:name structured-haskell-mode
-	       :type github
-	       :pkgname "chrisdone/structured-haskell-mode"
-	       :description "Structured editing minor mode for Haskell in Emacs"
-	       :compile ("elisp/shm.el")
-	       :load-path ("elisp")
-	       :build (("cabal install happy")
-		       ("cabal install")))))
+	       :compile ("slamhound.el"))))
 
 (el-get
  'sync
@@ -129,7 +121,6 @@
  'slamhound
  'smex
  'smooth-scrolling
- 'structured-haskell-mode
  'vertica
  'web-mode
  'websocket
