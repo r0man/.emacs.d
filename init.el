@@ -101,6 +101,7 @@
  'elnode
  'emacs-color-theme-solarized-r0man
  'emacs-request
+ 'emms
  'expand-region
  'find-file-in-project
  'flx
