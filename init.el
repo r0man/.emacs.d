@@ -56,13 +56,6 @@
 	       :description "Easy HTTP request for Emacs Lisp"
 	       :load "request.el"
 	       :compile ("request.el"))
-	(:name jss
-	       :type github
-	       :pkgname "segv/jss"
-	       :depends websocket
-	       :description "jsSlime - An emacs toolkit for developing and debugging in-browser javascript code "
-	       :load "jss.el"
-	       :compile ("jss.el" "jss-browser-webkit.el"))
 	(:name macrostep
 	       :type github
 	       :pkgname "joddie/macrostep"
@@ -105,7 +98,6 @@
  'ido-vertical-mode
  'inflect
  'js2-mode
- 'jss
  'macrostep
  'magit
  'markdown-mode
