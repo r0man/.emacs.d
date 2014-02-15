@@ -476,6 +476,10 @@
  'after-init-hook
  (lambda ()
 
+   ;; Clickable URLs
+   (define-globalized-minor-mode global-goto-address-mode goto-address-mode goto-address-mode)
+   (global-goto-address-mode)
+
    ;; Load system specific config.
    (let ((system-config (concat user-emacs-directory system-name ".el")))
      (when (file-exists-p system-config)
