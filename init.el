@@ -285,7 +285,7 @@
 
 ;; (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
-(setq inferior-lisp-program "lein trampoline cljsbuild repl-launch chromium")
+(setq inferior-lisp-program "sbcl")
 
 (defun lein-cljsbuild ()
   (interactive)
