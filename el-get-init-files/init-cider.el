@@ -32,3 +32,9 @@
   (cider-interactive-eval
    "(require 'cljs.repl.browser)
     (cemerick.piggieback/cljs-repl :repl-env (cljs.repl.browser/repl-env :port 9000))"))
+
+(defun node-repl ()
+  (interactive)
+  (cider-interactive-eval
+   "(require '[cljs.repl.node :as node])
+    (node/run-node-nrepl)"))
