@@ -80,7 +80,6 @@
  'auto-dictionary
  'cider
  'clojure-mode
- 'ac-nrepl
  'dired-toggle-sudo
  'elisp-slime-nav
  'elnode
