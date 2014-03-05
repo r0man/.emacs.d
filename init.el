@@ -475,6 +475,9 @@
  'after-init-hook
  (lambda ()
 
+   ;; Use Chromium as default browser.
+   (setq browse-url-browser-function 'browse-url-chromium)
+
    ;; Clickable URLs
    (define-globalized-minor-mode global-goto-address-mode goto-address-mode goto-address-mode)
    (global-goto-address-mode)
