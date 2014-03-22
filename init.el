@@ -85,6 +85,7 @@
  'auto-dictionary
  'cider
  'clojure-mode
+ 'clj-refactor
  'dired-toggle-sudo
  'elisp-slime-nav
  'elnode
