@@ -17,3 +17,4 @@ tramp
 /.emacs.desktop.lock
 /eshell/history
 /projectile-bookmarks.eld
+/.cask
