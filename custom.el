@@ -14,6 +14,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "orange red" :foreground "#141b23"))))
+ '(ediff-current-diff-C ((t (:background "#888833" :foreground "white"))))
+ '(ediff-fine-diff-B ((t (:background "#22aa22" :foreground "white"))))
+ '(ediff-odd-diff-A ((t (:background "dim gray" :foreground "white"))))
  '(magit-item-highlight ((t nil)))
  '(mode-line ((t (:background "white smoke" :foreground "black"))))
  '(mode-line-inactive ((t (:background "dark gray" :foreground "black"))))
