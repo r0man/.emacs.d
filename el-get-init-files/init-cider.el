@@ -20,6 +20,15 @@
 ;; Auto-select the error buffer when it's displayed:
 (setq cider-auto-select-error-buffer t)
 
+;; Controls whether to pop to the REPL buffer on connect.
+(setq cider-repl-pop-to-buffer-on-connect nil)
+
+;; Controls whether to auto-select the error popup buffer.
+(setq cider-auto-select-error-buffer t)
+
+;; T to wrap history around when the end is reached.
+(setq cider-repl-wrap-history t)
+
 (defun cider-namespace-refresh ()
   (interactive)
   (cider-interactive-eval
