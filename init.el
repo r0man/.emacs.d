@@ -94,7 +94,6 @@
  'auto-complete-etags
  'auto-complete-ruby
  'auto-complete-yasnippet
- 'auto-dictionary
  'cider
  'clojure-mode
  'clj-refactor
