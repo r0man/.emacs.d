@@ -331,6 +331,11 @@
 ;; CSS-MODE
 (setq css-indent-offset 2)
 
+;; DESKTOP-SAVE-MODE
+
+(setq desktop-save t)
+(desktop-save-mode 1)
+
 ;; DIRED
 
 ;; Switches passed to `ls' for Dired. MUST contain the `l' option.
