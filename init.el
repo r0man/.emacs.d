@@ -85,6 +85,7 @@
  'cider
  'clojure-mode
  'clj-refactor
+ 'company-mode
  'dired-toggle-sudo
  'elisp-slime-nav
  'elnode
