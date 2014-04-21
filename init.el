@@ -44,10 +44,6 @@
 
 (setq el-get-sources
       '(el-get
-	(:name ac-cider-compliment
-	       :type github
-	       :pkgname "alexander-yakushev/ac-cider-compliment"
-	       :description "Emacs auto-complete client for Compliment")
 	(:name emacs-color-theme-solarized-r0man
 	       :type github
 	       :pkgname "r0man/emacs-color-theme-solarized"
@@ -84,15 +80,8 @@
 
 (el-get
  'sync
- ;; 'ac-cider-compliment
  'ace-jump-mode
  'ack-and-a-half
- 'auto-complete
- 'auto-complete-css
- 'auto-complete-emacs-lisp
- 'auto-complete-etags
- 'auto-complete-ruby
- 'auto-complete-yasnippet
  'cider
  'clojure-mode
  'clj-refactor
