@@ -85,7 +85,7 @@
 
 (el-get
  'sync
- 'ac-cider-compliment
+ ;; 'ac-cider-compliment
  'ace-jump-mode
  'ack-and-a-half
  'auto-complete
