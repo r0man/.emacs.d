@@ -204,6 +204,13 @@
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
 
+(defun what-face (pos)
+  "Show the face found at the current point."
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+                  (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
+
 (defun xresources ()
   "Reload the ~/.Xresources configuration."
   (interactive)
