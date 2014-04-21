@@ -20,7 +20,8 @@
  '(cursor ((t (:background "orange red" :foreground "white"))))
  '(mode-line ((t (:background "white smoke" :foreground "black"))))
  '(mode-line-inactive ((t (:background "dark gray" :foreground "black"))))
- '(vertical-border ((t (:foreground "black")))))
+ '(vertical-border ((t (:foreground "black"))))
+ '(magit-section-title ((t (:underline t)))))
 
 ;; Set the package sources.
 (setq package-archives
