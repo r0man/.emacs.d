@@ -3,7 +3,6 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-
 ;; (require 'cask "~/.cask/cask.el")
 ;; (cask-initialize)
 ;; (require 'pallet)
@@ -333,7 +332,12 @@
 
 ;; DESKTOP-SAVE-MODE
 
+;; Always save desktop.
 (setq desktop-save t)
+
+;; Load desktop even if it is locked.
+(setq desktop-load-locked-desktop t)
+
 (desktop-save-mode 1)
 
 ;; DIRED
