@@ -780,6 +780,16 @@
          (insert "\n\n--------------------------------------------------------------------------------")
          (spook)))
 #+end_src
+** Save hist mode
+
+   Save the mini buffer history.
+
+#+begin_src emacs-lisp
+  (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+  (setq savehist-file "~/.emacs.d/savehist")
+  (savehist-mode 1)
+#+end_src
+
 ** SQL mode
 #+begin_src emacs-lisp
 (setq sql-indent-offset 2)
@@ -835,11 +845,6 @@
 (add-hook
  'after-init-hook
  (lambda ()
-
-   ;; Save minibuffer history.
-   (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
-   (setq savehist-file "~/.emacs.d/savehist")
-   (savehist-mode 1)
 
    ;; Use Chromium as default browser.
    (setq browse-url-browser-function 'browse-url-chromium)
