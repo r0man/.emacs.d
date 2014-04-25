@@ -159,7 +159,7 @@ Load custom file.
  'websocket
  'yasnippet)
 #+end_src
-** Set the package sources.
+   CEh** Set the package sources.
 #+begin_src emacs-lisp
 (setq package-archives
       '(("elpa" . "http://tromey.com/elpa/")
@@ -317,43 +317,78 @@ Load custom file.
 
 ** Misc
 
+   Answer questions with "y" or "n"..
+
 #+begin_src emacs-lisp
-;; Ask user a "y or n" question.
 (defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
 
-;; Highlight matching parentheses when the point is on them.
+   Highlight matching parentheses when the point is on them.
+
+#+begin_src emacs-lisp
 (show-paren-mode 1)
+#+end_src
 
-;; Enter debugger if an error is signaled?
+   Enter debugger if an error is signaled?
+
+#+begin_src emacs-lisp
 (setq debug-on-error nil)
+#+end_src
 
-;; Don't show startup message.
+   Don't show startup message.
+
+#+begin_src emacs-lisp
 (setq inhibit-startup-message t)
+#+end_src
 
-;; Delete trailing whitespace when saving.
+   Delete trailing whitespace when saving.
+#+begin_src emacs-lisp
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+end_src
 
-;; Toggle column number display in the mode line.
+   Toggle column number display in the mode line.
+
+#+begin_src emacs-lisp
 (column-number-mode)
+#+end_src
 
-;; Enable display of time, load level, and mail flag in mode lines.
+   Enable display of time, load level, and mail flag in mode lines.
+
+#+begin_src emacs-lisp
 (display-time)
+#+end_src
 
-;; Whether to add a newline automatically at the end of the file.
+   Whether to add a newline automatically at the end of the file.
+
+#+begin_src emacs-lisp
 (setq require-final-newline t)
+#+end_src
 
-;; This variable describes the behavior of the command key.
+   Highlight trailing whitespace.
+
+#+begin_src emacs-lisp
+(setq show-trailing-whitespace t)
+#+end_src
+
+   Controls the operation of the TAB key.
+
+#+begin_src emacs-lisp
+(setq tab-always-indent 'complete)
+#+end_src
+
+   The maximum size in lines for term buffers.
+
+#+begin_src emacs-lisp
+(setq term-buffer-maximum-size (* 10 2048))
+#+end_src
+
+** Mac OSX
+
+   This variable describes the behavior of the command key.
+
+#+begin_src emacs-lisp
 (setq mac-option-key-is-meta t)
 (setq mac-right-option-modifier nil)
-
-;; Highlight trailing whitespace
-(setq show-trailing-whitespace t)
-
-;; Controls the operation of the TAB key.
-(setq tab-always-indent 'complete)
-
-;; The maximum size in lines for term buffers.
-(setq term-buffer-maximum-size (* 10 2048))
 #+end_src
 
 ** Abbrev mode
