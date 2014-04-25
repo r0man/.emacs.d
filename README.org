@@ -213,29 +213,49 @@
       (message "Can't find compass project root."))))
 #+end_src
 
+** Functions
+
+   Indent the whole buffer.
+
 #+begin_src emacs-lisp
 (defun indent-buffer ()
   "Indent the whole buffer."
   (interactive)
   (indent-region (point-min) (point-max)))
+#+end_src
 
+   Remove all tabs from the current buffer.
+
+#+begin_src emacs-lisp
 (defun untabify-buffer ()
   "Remove all tabs from the current buffer."
   (interactive)
   (untabify (point-min) (point-max)))
+#+end_src
 
+   Cleanup the current buffer.
+
+#+begin_src emacs-lisp
 (defun cleanup-buffer ()
   "Cleanup the current buffer."
   (interactive)
   (indent-buffer)
   (delete-trailing-whitespace))
+#+end_src
 
+   Find file as root.
+
+#+begin_src emacs-lisp
 (defun sudo-edit (&optional arg)
   (interactive "p")
   (if (or arg (not buffer-file-name))
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+#+end_src
 
+   Swap two buffers.
+
+#+begin_src emacs-lisp
 (defun swap-buffers ()
   "Swap your buffers."
   (interactive)
@@ -256,7 +276,11 @@
              (set-window-start w1 s2)
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
+#+end_src
 
+   Rotate two buffers.
+
+#+begin_src emacs-lisp
 (defun rotate-buffers ()
   "Rotate your buffers."
   (interactive)
@@ -282,14 +306,22 @@
           (set-window-buffer (next-window) next-win-buffer)
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
+#+end_src
 
+   Show the face found at the current point.
+
+#+begin_src emacs-lisp
 (defun what-face (pos)
   "Show the face found at the current point."
   (interactive "d")
   (let ((face (or (get-char-property (point) 'read-face-name)
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
+#+end_src
 
+   Reload the ~/.Xresources configuration.
+
+#+begin_src emacs-lisp
 (defun xresources ()
   "Reload the ~/.Xresources configuration."
   (interactive)
@@ -447,32 +479,30 @@
 
 ** Leiningen
 
-#+begin_src emacs-lisp
+   Auto compile ClojureScript.
 
+#+begin_src emacs-lisp
 (defun lein-cljsbuild ()
   (interactive)
   (compile "lein clean; lein cljsbuild auto"))
+#+end_src
 
-(defun lein-chrome-repl ()
-  "Start a Chrome Browser repl via Leiningen."
-  (interactive)
-  (run-lisp "lein trampoline cljsbuild repl-launch chromium"))
+   Start a Rhino REPL.
 
-(defun lein-firefox-repl ()
-  "Start a Chrome Browser repl via Leiningen."
-  (interactive)
-  (run-lisp "lein trampoline cljsbuild repl-launch firefox"))
-
+#+begin_src emacs-lisp
 (defun lein-rhino-repl ()
   "Start a Rhino repl via Leiningen."
   (interactive)
   (run-lisp "lein trampoline cljsbuild repl-rhino"))
+#+end_src
 
+   Start a Node.js REPL.
+
+#+begin_src emacs-lisp
 (defun lein-node-repl ()
   "Start a NodeJS repl via Leiningen."
   (interactive)
   (run-lisp "lein trampoline noderepl"))
-
 #+end_src
 
 ** CSS mode
@@ -505,7 +535,7 @@
 
 ** Inferior Lisp mode
 
-   Set Steel Bank Common Lisp (SBCL) as inferior-lisp-program.
+   Use Steel Bank Common Lisp (SBCL) as inferior-lisp-program.
 
 #+begin_src emacs-lisp
 (setq inferior-lisp-program "sbcl")
@@ -624,45 +654,45 @@
 ** Ido mode
 
 #+begin_src emacs-lisp
-(setq ido-auto-merge-work-directories-length nil)
+  (setq ido-auto-merge-work-directories-length nil)
 #+end_src
 
    Always create new buffer if no buffer matches substring.
 
 #+begin_src emacs-lisp
-(setq ido-create-new-buffer 'always)
+  (setq ido-create-new-buffer 'always)
 #+end_src
 
    Enable flexible string matching.
 
 #+begin_src emacs-lisp
-(setq ido-enable-flex-matching t)
+  (setq ido-enable-flex-matching t)
 #+end_src
 
 #+begin_src emacs-lisp
-(setq ido-enable-prefix nil)
+  (setq ido-enable-prefix nil)
 #+end_src
 
 #+begin_src emacs-lisp
-(setq ido-handle-duplicate-virtual-buffers 2)
+  (setq ido-handle-duplicate-virtual-buffers 2)
 #+end_src
 
 #+begin_src emacs-lisp
-(setq ido-max-prospects 10)
+  (setq ido-max-prospects 10)
 #+end_src
 
 #+begin_src emacs-lisp
-(setq ido-use-filename-at-point 'guess)
+  (setq ido-use-filename-at-point 'guess)
 #+end_src
 
 #+begin_src emacs-lisp
-(setq ido-use-virtual-buffers t)
+  (setq ido-use-virtual-buffers t)
 #+end_src
 
    Enable IDO mode.
 
 #+begin_src emacs-lisp
-(ido-mode t)
+  (ido-mode t)
 #+end_src
 
 ** Java
@@ -680,51 +710,69 @@
 ** Octave
 
 #+begin_src emacs-lisp
-(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
-(add-hook 'octave-mode-hook
-  (lambda ()
-             (abbrev-mode 1)
-             (auto-fill-mode 1)
-             (if (eq window-system 'x)
-                 (font-lock-mode 1))))
+  (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+  (add-hook 'octave-mode-hook
+            (lambda ()
+              (abbrev-mode 1)
+              (auto-fill-mode 1)
+              (if (eq window-system 'x)
+                  (font-lock-mode 1))))
 #+end_src
 
 ** IRC
 #+begin_src emacs-lisp
-(if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
-(setq rcirc-default-nick "r0man"
-      rcirc-default-user-name "r0man"
-      rcirc-default-full-name "Roman Scherer"
-      rcirc-server-alist '(("irc.freenode.net" :channels ("#clojure")))
-      rcirc-private-chat t
-      rcirc-debug-flag t)
+  (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
 
-(add-hook 'rcirc-mode-hook
-          (lambda ()
-            (set (make-local-variable 'scroll-conservatively) 8192)
-            (rcirc-track-minor-mode 1)
-            (flyspell-mode 1)))
+  (setq rcirc-default-nick "r0man"
+        rcirc-default-user-name "r0man"
+        rcirc-default-full-name "Roman Scherer"
+        rcirc-server-alist '(("irc.freenode.net" :channels ("#clojure")))
+        rcirc-private-chat t
+        rcirc-debug-flag t)
+
+  (add-hook 'rcirc-mode-hook
+            (lambda ()
+              (set (make-local-variable 'scroll-conservatively) 8192)
+              (rcirc-track-minor-mode 1)
+              (flyspell-mode 1)))
 #+end_src
 
 ** Mail
+
+   Load smtpmail
+
 #+begin_src emacs-lisp
-;; SMTPMAIL
-(require 'smtpmail)
+  (require 'smtpmail)
+#+end_src
 
-;; Send mail via smtpmail.
-(setq send-mail-function 'sendmail-send-it)
+   Send mail via smtpmail.
 
-;; Whether to print info in buffer *trace of SMTP session to <somewhere>*.
-(setq smtpmail-debug-info t)
+#+begin_src emacs-lisp
+  (setq send-mail-function 'sendmail-send-it)
+#+end_src
 
-;; The name of the host running SMTP server.
-(setq smtpmail-smtp-server "smtp.googlemail.com")
+   Whether to print info in debug buffer.
 
-;; SMTP service port number.
-(setq smtpmail-smtp-service 465)
+#+begin_src emacs-lisp
+  (setq smtpmail-debug-info t)
+#+end_src
+
+   The name of the host running SMTP server.
+
+#+begin_src emacs-lisp
+  (setq smtpmail-smtp-server "smtp.googlemail.com")
+#+end_src
+
+   SMTP service port number.
+
+#+begin_src emacs-lisp
+   (setq smtpmail-smtp-service 465)
 #+end_src
 
 ** Fuck the NSA
+
+   http://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Amusements.html
+
 #+begin_src emacs-lisp
 (setq mail-signature
       '(progn
@@ -732,7 +780,6 @@
          (insert "\n\n--------------------------------------------------------------------------------")
          (spook)))
 #+end_src
-
 ** SQL mode
 #+begin_src emacs-lisp
 (setq sql-indent-offset 2)
