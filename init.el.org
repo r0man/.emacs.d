@@ -1,8 +1,28 @@
 * init.el
-** Hide scroll, tool and menu bar.
+** Package Sources
+#+begin_src emacs-lisp
+(setq package-archives
+      '(("elpa" . "http://tromey.com/elpa/")
+        ("gnu" . "http://elpa.gnu.org/packages/")
+        ("marmalade" . "http://marmalade-repo.org/packages/")))
+#+end_src
+** Scroll, tool and menu bar.
+
+   Hide scroll bar.
+
 #+begin_src emacs-lisp
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+#+end_src
+
+   Hide tool bar.
+
+#+begin_src emacs-lisp
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+#+end_src
+
+   Hide menu bar.
+
+#+begin_src emacs-lisp
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 #+end_src
 
@@ -10,13 +30,6 @@
 #+begin_src emacs-lisp
 (set-frame-parameter (selected-frame) 'alpha '(85 50))
 (add-to-list 'default-frame-alist '(alpha 85 50))
-#+end_src
-
-** Cask
-#+begin_src emacs-lisp
-;; (require 'cask "~/.cask/cask.el")
-;; (cask-initialize)
-;; (require 'pallet)
 #+end_src
 
 ** Custom
@@ -33,15 +46,35 @@
 (load custom-file)
 #+end_src
 
-   Set custom faces.
+** Faces
 
+*** Cursor
 #+begin_src emacs-lisp
-(custom-set-faces
- '(cursor ((t (:background "orange red" :foreground "white"))))
- '(mode-line ((t (:background "white smoke" :foreground "black"))))
- '(mode-line-inactive ((t (:background "dark gray" :foreground "black"))))
- '(vertical-border ((t (:foreground "black"))))
- '(magit-section-title ((t (:underline t)))))
+  (custom-set-faces
+   '(cursor ((t (:background "orange red" :foreground "white")))))
+#+end_src
+
+*** Magit
+#+begin_src emacs-lisp
+  (custom-set-faces
+   '(magit-section-title ((t (:underline t)))))
+#+end_src
+*** Mode Line
+#+begin_src emacs-lisp
+  (custom-set-faces
+   '(mode-line ((t (:background "white smoke" :foreground "black"))))
+   '(mode-line-inactive ((t (:background "dark gray" :foreground "black")))))
+#+end_src
+*** Vertical Border
+#+begin_src emacs-lisp
+  (custom-set-faces
+   '(vertical-border ((t (:foreground "black")))))
+#+end_src
+** Cask
+#+begin_src emacs-lisp
+;; (require 'cask "~/.cask/cask.el")
+;; (cask-initialize)
+;; (require 'pallet)
 #+end_src
 
 ** el-get
@@ -159,14 +192,6 @@
  'web-mode
  'websocket
  'yasnippet)
-#+end_src
-
-** Set the package sources.
-#+begin_src emacs-lisp
-(setq package-archives
-      '(("elpa" . "http://tromey.com/elpa/")
-        ("gnu" . "http://elpa.gnu.org/packages/")
-        ("marmalade" . "http://marmalade-repo.org/packages/")))
 #+end_src
 
 ** Compass
