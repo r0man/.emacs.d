@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("postgresql.conf"
+(("init.el"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . ";; Hide scroll, ")
+ (rear-context-string)
+ (position . 1))
+("postgresql.conf"
  (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
  (front-context-string . "# --------------")
  (rear-context-string)
