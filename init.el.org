@@ -21,19 +21,20 @@
 
 ** Custom
 
-Set location of custom file.
+   Set location of custom file.
 
 #+begin_src emacs-lisp
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 #+end_src
 
-Load custom file.
+   Load custom file.
 
 #+begin_src emacs-lisp
 (load custom-file)
 #+end_src
 
-** Set custom faces.
+   Set custom faces.
+
 #+begin_src emacs-lisp
 (custom-set-faces
  '(cursor ((t (:background "orange red" :foreground "white"))))
