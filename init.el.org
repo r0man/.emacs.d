@@ -1,5 +1,4 @@
 * init.el
-
 ** Hide scroll, tool and menu bar.
 #+begin_src emacs-lisp
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -44,23 +43,15 @@ Load custom file.
  '(magit-section-title ((t (:underline t)))))
 #+end_src
 
-** Set the package sources.
-#+begin_src emacs-lisp
-(setq package-archives
-      '(("elpa" . "http://tromey.com/elpa/")
-        ("gnu" . "http://elpa.gnu.org/packages/")
-        ("marmalade" . "http://marmalade-repo.org/packages/")))
-#+end_src
-
 ** el-get
 
-Add el-get to load path.
+   Add el-get to load path.
 
 #+begin_src emacs-lisp
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 #+end_src
 
-Require el-get master branch.
+   Require el-get master branch.
 
 #+begin_src emacs-lisp
 (unless (require 'el-get nil 'noerror)
@@ -72,13 +63,13 @@ Require el-get master branch.
       (eval-print-last-sexp))))
 #+end_src
 
-Define where to look for init-pkgname.el configurations. Disabled if nil.
+   Define where to look for init-pkgname.el configurations. Disabled if nil.
 
 #+begin_src emacs-lisp
 (setq el-get-user-package-directory "~/.emacs.d/el-get-init-files")
 #+end_src
 
-Additional package recipes.
+   Additional package recipes.
 
 #+begin_src emacs-lisp
 (setq el-get-sources
@@ -118,7 +109,7 @@ Additional package recipes.
 	       :compile ("slamhound.el"))))
 #+end_src
 
-Load el-get packages
+   Load el-get packages
 
 #+begin_src emacs-lisp
 (el-get
@@ -167,6 +158,13 @@ Load el-get packages
  'web-mode
  'websocket
  'yasnippet)
+#+end_src
+** Set the package sources.
+#+begin_src emacs-lisp
+(setq package-archives
+      '(("elpa" . "http://tromey.com/elpa/")
+        ("gnu" . "http://elpa.gnu.org/packages/")
+        ("marmalade" . "http://marmalade-repo.org/packages/")))
 #+end_src
 
 ** Compass
@@ -404,6 +402,10 @@ Load el-get packages
 #+begin_src emacs-lisp
 (setq css-indent-offset 2)
 #+end_src
+** SCSS mode
+#+begin_src emacs-lisp
+(setq scss-compile-at-save nil)
+#+end_src
 ** Desktop save mode
 
    Always save desktop.
@@ -459,6 +461,24 @@ Load el-get packages
             (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
 #+end_src
 
+   Find Clojure files in dired mode.
+
+#+begin_src emacs-lisp
+(defun find-dired-clojure (dir)
+  "Run find-dired on Clojure files."
+  (interactive (list (read-directory-name "Run find (Clojure) in directory: " nil "" t)))
+  (find-dired dir "-name \"*.clj\""))
+#+end_src
+
+   Find Rube files in dired mode.
+
+#+begin_src emacs-lisp
+(defun find-dired-ruby (dir)
+  "Run find-dired on Ruby files."
+  (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
+  (find-dired dir "-name \"*.rb\""))
+#+end_src
+
 ** Dired-x mode
 
    User-defined alist of rules for suggested commands.
@@ -469,55 +489,48 @@ Load el-get packages
         ("\\.xlsx?$" "libreoffice")))
 #+end_src
 
+** Emacs Lisp mode
 #+begin_src emacs-lisp
-#+end_src
-
-#+begin_src emacs-lisp
-#+end_src
-
-#+begin_src emacs-lisp
-#+end_src
-
-#+begin_src emacs-lisp
-
-
-
-;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+#+end_src
 
-;; FIND-DIRED
-(defun find-dired-clojure (dir)
-  "Run find-dired on Clojure files."
-  (interactive (list (read-directory-name "Run find (Clojure) in directory: " nil "" t)))
-  (find-dired dir "-name \"*.clj\""))
+** Fly Spell mode
 
-(defun find-dired-ruby (dir)
-  "Run find-dired on Ruby files."
-  (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
-  (find-dired dir "-name \"*.rb\""))
+   Enable flyspell in text mode.
 
-;; FLY SPELL
+#+begin_src emacs-lisp
 
 (defun enable-flyspell-mode ()
   "Enable Flyspell mode."
   (flyspell-mode 1))
 
+(dolist (hook '(text-mode-hook))
+  (add-hook hook 'enable-flyspell-mode))
+
+#+end_src
+
+   Enable flyspell in programming mode.
+
+#+begin_src emacs-lisp
+
 (defun enable-flyspell-prog-mode ()
   "Enable Flyspell Programming mode."
   (flyspell-prog-mode))
 
-(dolist (hook '(text-mode-hook))
-  (add-hook hook 'enable-flyspell-mode))
-
 (dolist (hook '(prog-mode-hook))
   (add-hook hook 'enable-flyspell-prog-mode))
 
-;; GNUS
-(setq gnus-init-file "~/.emacs.d/gnus.el")
+#+end_src
 
-;; IDO-MODE
+** Gnus
+#+begin_src emacs-lisp
+(setq gnus-init-file "~/.emacs.d/gnus.el")
+#+end_src
+
+** Ido mode
+#+begin_src emacs-lisp
 (ido-mode t)
 (setq ido-auto-merge-work-directories-length nil
       ido-create-new-buffer 'always
@@ -527,28 +540,34 @@ Load el-get packages
       ido-max-prospects 10
       ido-use-filename-at-point 'guess
       ido-use-virtual-buffers t)
+#+end_src
 
-;; JAVA
+** Java
 
-;; Indent Java annotations.
-;; http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
-(add-hook
- 'java-mode-hook
- '(lambda ()
-    (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
-    (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
+   Indent Java annotations. See http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
 
-;; OCTAVE
+#+begin_src emacs-lisp
+  (add-hook
+   'java-mode-hook
+   '(lambda ()
+      (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
+      (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
+#+end_src
+
+** Octave
+
+#+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
-
 (add-hook 'octave-mode-hook
-          (lambda ()
-            (abbrev-mode 1)
-            (auto-fill-mode 1)
-            (if (eq window-system 'x)
-                (font-lock-mode 1))))
+  (lambda ()
+             (abbrev-mode 1)
+             (auto-fill-mode 1)
+             (if (eq window-system 'x)
+                 (font-lock-mode 1))))
+#+end_src
 
-;; RCIRC
+** IRC
+#+begin_src emacs-lisp
 (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
 (setq rcirc-default-nick "r0man"
       rcirc-default-user-name "r0man"
@@ -562,10 +581,10 @@ Load el-get packages
             (set (make-local-variable 'scroll-conservatively) 8192)
             (rcirc-track-minor-mode 1)
             (flyspell-mode 1)))
+#+end_src
 
-;; SCSS-MODE
-(setq scss-compile-at-save nil)
-
+** Mail
+#+begin_src emacs-lisp
 ;; SMTPMAIL
 (require 'smtpmail)
 
@@ -580,41 +599,53 @@ Load el-get packages
 
 ;; SMTP service port number.
 (setq smtpmail-smtp-service 465)
+#+end_src
 
-;; Fuck the NSA.
+** Fuck the NSA
+#+begin_src emacs-lisp
 (setq mail-signature
       '(progn
          (goto-char (point-max))
          (insert "\n\n--------------------------------------------------------------------------------")
          (spook)))
+#+end_src
 
-;; SQL-MODE
+** SQL mode
+#+begin_src emacs-lisp
+(setq sql-indent-offset 2)
 (eval-after-load "sql"
   '(progn
      (let ((filename "~/.sql.el"))
        (when (file-exists-p filename)
          (load-file filename)))))
+#+end_src
 
-;; SQL-INDENT
-(setq sql-indent-offset 2)
-
-;; TRAMP
+** Tramp
+#+begin_src emacs-lisp
 (eval-after-load "tramp"
   '(progn
      (tramp-set-completion-function
       "ssh"
       '((tramp-parse-shosts "~/.ssh/known_hosts")
         (tramp-parse-hosts "/etc/hosts")))))
+#+end_src
 
-;; UNIQUIFY
+** Uniquify
+#+begin_src emacs-lisp
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-separator "|")
 (setq uniquify-ignore-buffers-re "^\\*")
 (setq uniquify-after-kill-buffer-p t)
+#+end_src
 
-;; WINNER-MODE
+** Winner mode
+#+begin_src emacs-lisp
 (winner-mode)
+#+end_src
+
+** After init hook
+#+begin_src emacs-lisp
 
 (add-hook
  'after-init-hook
@@ -696,5 +727,4 @@ Load el-get packages
 
    (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
    (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)))
-
 #+end_src
