@@ -446,6 +446,12 @@
 (setq term-buffer-maximum-size (* 10 2048))
 #+end_src
 
+   Use Chromium as default browser.
+
+#+begin_src emacs-lisp
+   (setq browse-url-browser-function 'browse-url-chromium)
+#+end_src
+
 ** Mac OSX
 
    This variable describes the behavior of the command key.
@@ -845,9 +851,6 @@
 (add-hook
  'after-init-hook
  (lambda ()
-
-   ;; Use Chromium as default browser.
-   (setq browse-url-browser-function 'browse-url-chromium)
 
    ;; Clickable URLs
    (define-globalized-minor-mode global-goto-address-mode goto-address-mode goto-address-mode)
