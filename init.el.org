@@ -47,25 +47,30 @@
 #+end_src
 
 ** Faces
-
 *** Cursor
+
 #+begin_src emacs-lisp
   (custom-set-faces
    '(cursor ((t (:background "orange red" :foreground "white")))))
 #+end_src
 
 *** Magit
+
 #+begin_src emacs-lisp
   (custom-set-faces
    '(magit-section-title ((t (:underline t)))))
 #+end_src
+
 *** Mode Line
+
 #+begin_src emacs-lisp
   (custom-set-faces
    '(mode-line ((t (:background "white smoke" :foreground "black"))))
    '(mode-line-inactive ((t (:background "dark gray" :foreground "black")))))
 #+end_src
+
 *** Vertical Border
+
 #+begin_src emacs-lisp
   (custom-set-faces
    '(vertical-border ((t (:foreground "black")))))
@@ -296,10 +301,10 @@
 #+begin_src emacs-lisp
 (setq user-full-name "Roman Scherer")
 #+end_src
-
 ** Global auto revert mode
-   Reverts any buffer associated with a file when the file changes on
-   disk.
+
+   Reload files when they change on disk.
+
 #+begin_src emacs-lisp
 (global-auto-revert-mode 1)
 #+end_src
@@ -420,13 +425,21 @@
 
 ** Abbrev mode
 
+   Set the name of file from which to read abbrevs.
+
 #+begin_src emacs-lisp
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
-(setq default-abbrev-mode t)
-(setq save-abbrevs t)
+#+end_src
+
+   Silently save word abbrevs too when files are saved.
+
+#+begin_src emacs-lisp
+(setq save-abbrevs 'silently)
 #+end_src
 
 ** Compile mode
+
+   Auto scroll compilation buffer.
 
 #+begin_src emacs-lisp
 (setq compilation-scroll-output 't)
@@ -435,6 +448,7 @@
 ** Leiningen
 
 #+begin_src emacs-lisp
+
 (defun lein-cljsbuild ()
   (interactive)
   (compile "lein clean; lein cljsbuild auto"))
@@ -458,6 +472,7 @@
   "Start a NodeJS repl via Leiningen."
   (interactive)
   (run-lisp "lein trampoline noderepl"))
+
 #+end_src
 
 ** CSS mode
@@ -489,6 +504,9 @@
 #+end_src
 
 ** Inferior Lisp mode
+
+   Set Steel Bank Common Lisp (SBCL) as inferior-lisp-program.
+
 #+begin_src emacs-lisp
 (setq inferior-lisp-program "sbcl")
 #+end_src
@@ -505,22 +523,6 @@
 
 #+begin_src emacs-lisp
 (setq dired-dwim-target t)
-#+end_src
-
-   Run shell command in background.
-
-#+begin_src emacs-lisp
-(defun dired-do-shell-command-in-background (command)
-  "In dired, do shell command in background on the file or directory named on
- this line."
-  (interactive
-   (list (dired-read-shell-command (concat "& on " "%s: ") nil (list (dired-get-filename)))))
-  (call-process command nil 0 nil (dired-get-filename)))
-
-(add-hook 'dired-load-hook
-          (lambda ()
-            (load "dired-x")
-            (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
 #+end_src
 
    Find Clojure files in dired mode.
@@ -551,10 +553,39 @@
         ("\\.xlsx?$" "libreoffice")))
 #+end_src
 
+   Run shell command in background.
+
+#+begin_src emacs-lisp
+(defun dired-do-shell-command-in-background (command)
+  "In dired, do shell command in background on the file or directory named on
+ this line."
+  (interactive
+   (list (dired-read-shell-command (concat "& on " "%s: ") nil (list (dired-get-filename)))))
+  (call-process command nil 0 nil (dired-get-filename)))
+
+(add-hook 'dired-load-hook
+          (lambda ()
+            (load "dired-x")
+            (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
+#+end_src
+
 ** Emacs Lisp mode
+
+   Unequivocally turn on ElDoc mode.
+
 #+begin_src emacs-lisp
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+#+end_src
+
+   Enable Slime-style navigation of elisp symbols using M-. and M-,
+
+#+begin_src emacs-lisp
 (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+#+end_src
+
+   Auto load files.
+
+#+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 #+end_src
 
@@ -590,18 +621,48 @@
 #+begin_src emacs-lisp
 (setq gnus-init-file "~/.emacs.d/gnus.el")
 #+end_src
-
 ** Ido mode
+
+#+begin_src emacs-lisp
+(setq ido-auto-merge-work-directories-length nil)
+#+end_src
+
+   Always create new buffer if no buffer matches substring.
+
+#+begin_src emacs-lisp
+(setq ido-create-new-buffer 'always)
+#+end_src
+
+   Enable flexible string matching.
+
+#+begin_src emacs-lisp
+(setq ido-enable-flex-matching t)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq ido-enable-prefix nil)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq ido-handle-duplicate-virtual-buffers 2)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq ido-max-prospects 10)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq ido-use-filename-at-point 'guess)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq ido-use-virtual-buffers t)
+#+end_src
+
+   Enable IDO mode.
+
 #+begin_src emacs-lisp
 (ido-mode t)
-(setq ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'always
-      ido-enable-flex-matching t
-      ido-enable-prefix nil
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10
-      ido-use-filename-at-point 'guess
-      ido-use-virtual-buffers t)
 #+end_src
 
 ** Java
