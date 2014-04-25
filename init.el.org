@@ -159,7 +159,8 @@ Load custom file.
  'websocket
  'yasnippet)
 #+end_src
-   CEh** Set the package sources.
+
+** Set the package sources.
 #+begin_src emacs-lisp
 (setq package-archives
       '(("elpa" . "http://tromey.com/elpa/")
