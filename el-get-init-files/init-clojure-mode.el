@@ -21,6 +21,7 @@
      (drop-table 1)
      (insert 2)
      (select 1)
+     (select! 2)
      (truncate 1)
      (update 2)
      ;; CUSTOM
