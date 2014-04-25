@@ -762,6 +762,21 @@
 (setq uniquify-after-kill-buffer-p t)
 #+end_src
 
+** Org mode
+
+   Configure active languages for Babel.
+
+#+begin_src emacs-lisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((R . t)
+     (clojure . t)
+     (emacs-lisp . t)
+     (ruby . t)
+     (sh . t)
+     (sql . t)))
+#+end_src
+
 ** Winner mode
 #+begin_src emacs-lisp
 (winner-mode)
