@@ -501,6 +501,11 @@
  'after-init-hook
  (lambda ()
 
+   ;; Save minibuffer history.
+   (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+   (setq savehist-file "~/.emacs.d/savehist")
+   (savehist-mode 1)
+
    ;; Use Chromium as default browser.
    (setq browse-url-browser-function 'browse-url-chromium)
 
