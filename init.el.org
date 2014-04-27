@@ -158,7 +158,6 @@
  'cider
  'clojure-mode
  'clj-refactor
- 'company-mode
  'dired-toggle-sudo
  'elisp-slime-nav
  'elnode
@@ -211,6 +210,51 @@
     (if directory
         (compile (message (format "cd %s; compass watch" directory)))
       (message "Can't find compass project root."))))
+#+end_src
+
+** Company mode
+
+   Nicer faces
+
+#+begin_src emacs-lisp
+  (custom-set-faces
+   '(company-preview
+     ((t (:foreground "darkgray" :underline t))))
+   '(company-preview-common
+     ((t (:inherit company-preview))))
+   '(company-tooltip
+     ((t (:background "lightgray" :foreground "black"))))
+   '(company-tooltip-selection
+     ((t (:background "steelblue" :foreground "white"))))
+   '(company-tooltip-common
+     ((((type x)) (:inherit company-tooltip :weight bold))
+      (t (:inherit company-tooltip))))
+   '(company-tooltip-common-selection
+     ((((type x)) (:inherit company-tooltip-selection :weight bold))
+      (t (:inherit company-tooltip-selection))))
+   '(company-scrollbar-fg
+     ((t (:background "black"))))
+   '(company-scrollbar-bg
+     ((t (:background "darkgray")))))
+#+end_src
+
+   Indent with TAB, then do completion.
+
+#+begin_src emacs-lisp
+  (defun indent-or-complete ()
+    "Indent or complete via company-mode."
+    (interactive)
+    (if (looking-at "\\_>")
+        (company-complete-common)
+      (indent-according-to-mode)))
+
+  (global-set-key (kbd "TAB") 'indent-or-complete)
+#+end_src
+
+   Enable company mode in all buffers.
+
+#+begin_src emacs-lisp
+  (global-company-mode)
 #+end_src
 
 ** Functions

@@ -17,7 +17,7 @@
 ;; (depends-on "auto-complete-emacs-lisp")
 ;; (depends-on "auto-complete-etags")
 ;; (depends-on "auto-complete-ruby")
-;; (depends-on "auto-complete-yasnippet")
+(depends-on "company-mode")
 (depends-on "auto-dictionary")
 (depends-on "cider")
 (depends-on "clojure-mode")
