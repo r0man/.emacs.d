@@ -452,6 +452,13 @@
    (setq browse-url-browser-function 'browse-url-chromium)
 #+end_src
 
+   Clickable URLs.
+
+#+begin_src emacs-lisp
+   (define-globalized-minor-mode global-goto-address-mode goto-address-mode goto-address-mode)
+   (global-goto-address-mode)
+#+end_src
+
 ** Mac OSX
 
    This variable describes the behavior of the command key.
@@ -851,10 +858,6 @@
 (add-hook
  'after-init-hook
  (lambda ()
-
-   ;; Clickable URLs
-   (define-globalized-minor-mode global-goto-address-mode goto-address-mode goto-address-mode)
-   (global-goto-address-mode)
 
    ;; Load system specific config.
    (let ((system-config (concat user-emacs-directory system-name ".el")))
