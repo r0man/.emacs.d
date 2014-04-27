@@ -14,11 +14,11 @@
     (t (:inherit company-tooltip))))
  '(company-tooltip-common-selection
    ((((type x)) (:inherit company-tooltip-selection :weight bold))
-    (t (:inherit company-tooltip-selection)))))
-
-(let ((mode company-mode-map))
-  (define-key mode (kbd "C-n") 'company-select-next)
-  (define-key mode (kbd "C-p") 'company-select-previous))
+    (t (:inherit company-tooltip-selection))))
+ '(company-scrollbar-fg
+   ((t (:background "black"))))
+ '(company-scrollbar-bg
+   ((t (:background "darkgray")))))
 
 (defun indent-or-complete ()
   "Indent or complete via company-mode."
