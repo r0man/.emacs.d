@@ -81,7 +81,6 @@
   (cask-initialize)
   (require 'pallet)
 #+end_src
-
 ** el-get
 
    Add el-get to load path.
@@ -526,12 +525,24 @@
 (setq save-abbrevs 'silently)
 #+end_src
 
-** Compile mode
+** Compilation mode
 
    Auto scroll compilation buffer.
 
 #+begin_src emacs-lisp
-(setq compilation-scroll-output 't)
+  (setq compilation-scroll-output 't)
+#+end_src
+
+   Enable colors in compilation mode.
+   http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
+
+#+begin_src emacs-lisp
+  (defun colorize-compilation-buffer ()
+    (toggle-read-only)
+    (ansi-color-apply-on-region (point-min) (point-max))
+    (toggle-read-only))
+
+  (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 #+end_src
 
 ** Leiningen
