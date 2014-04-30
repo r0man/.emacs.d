@@ -915,6 +915,12 @@
      (sql . t)))
 #+end_src
 
+   Fontify org mode code blocks.
+
+#+begin_src emacs-lisp
+  (setq org-src-fontify-natively t)
+#+end_src
+
 ** Winner mode
 #+begin_src emacs-lisp
 (winner-mode)
