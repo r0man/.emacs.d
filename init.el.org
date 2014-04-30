@@ -632,7 +632,7 @@
     (find-dired dir "-name \"*.clj\""))
 #+end_src
 
-   Find Rube files in dired mode.
+   Find Ruby files in dired mode.
 
 #+begin_src emacs-lisp
   (defun find-dired-ruby (dir)
