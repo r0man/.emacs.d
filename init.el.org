@@ -667,6 +667,10 @@
             (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
 #+end_src
 
+** Electric pair mode
+#+begin_src emacs-lisp
+  (electric-pair-mode t)
+#+end_src
 ** Emacs Lisp mode
 
    Unequivocally turn on ElDoc mode.
