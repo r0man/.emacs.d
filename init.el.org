@@ -80,6 +80,7 @@
   (require 'cask "~/.cask/cask.el")
   (cask-initialize)
   (require 'pallet)
+  (require 'use-package)
 #+end_src
 ** el-get
 
@@ -197,6 +198,10 @@
    'yasnippet)
 #+end_src
 
+** Use package
+#+begin_src emacs-lisp
+  (require 'use-package)
+#+end_src
 ** Compass
 
 #+begin_src emacs-lisp
