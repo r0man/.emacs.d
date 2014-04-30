@@ -668,6 +668,12 @@
 #+end_src
 
 ** Electric pair mode
+
+   Electric Pair mode, a global minor mode, provides a way to easily
+   insert matching delimiters. Whenever you insert an opening
+   delimiter, the matching closing delimiter is automatically inserted
+   as well, leaving point between the two.
+
 #+begin_src emacs-lisp
   (electric-pair-mode t)
 #+end_src
