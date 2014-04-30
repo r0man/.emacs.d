@@ -687,6 +687,14 @@
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 #+end_src
 
+** Emacs server
+
+   Start the Emacs server if it's not running.
+
+#+begin_src emacs-lisp
+  (unless (server-running-p) (server-start))
+#+end_src
+
 ** Fly Spell mode
 
    Enable flyspell in text mode.
@@ -940,9 +948,6 @@
 
    ;; Start a terminal.
    (multi-term)
-
-   ;; Start the Emacs server.
-   (server-start)
 
    ;; Load keyboard bindings.
    (global-set-key (kbd "C-c ,") 'ruby-test-run)
