@@ -696,6 +696,7 @@
    Start the Emacs server if it's not running.
 
 #+begin_src emacs-lisp
+  (require 'server)
   (unless (server-running-p) (server-start))
 #+end_src
 
