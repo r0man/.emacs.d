@@ -772,6 +772,12 @@
   (setq ido-use-virtual-buffers t)
 #+END_SRC
 
+   Use ido everywhere
+
+#+BEGIN_SRC emacs-lisp
+  (ido-everywhere 1)
+#+END_SRC
+
    Enable IDO mode.
 
 #+BEGIN_SRC emacs-lisp
@@ -782,6 +788,16 @@
 #+BEGIN_SRC emacs-lisp
   (use-package ido-vertical-mode
     :init (ido-vertical-mode))
+#+END_SRC
+** Flx mode
+#+BEGIN_SRC emacs-lisp
+  (use-package flx-ido
+    :init
+    (progn
+      (flx-ido-mode 1)
+      ;; disable ido faces to see flx highlights.
+      (setq ido-use-faces nil)
+      (setq gc-cons-threshold 20000000)))
 #+END_SRC
 ** Magit
 #+BEGIN_SRC emacs-lisp
