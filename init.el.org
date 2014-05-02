@@ -166,10 +166,6 @@
    'expand-region
    'flx
    'gnus-notify
-   'haskell-mode
-   'haskell-mode-exts
-   'highlight-cl
-   'ido-vertical-mode
    'inflect
    'js2-mode
    'jss
@@ -181,7 +177,6 @@
    'scss-mode
    'slamhound
    'smooth-scrolling
-   'web-mode
    'websocket)
 #+END_SRC
 
