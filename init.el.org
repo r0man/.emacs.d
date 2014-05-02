@@ -182,7 +182,6 @@
    'projectile
    'ruby-mode
    'ruby-test-mode
-   'rvm
    'scss-mode
    'slamhound
    'smooth-scrolling
