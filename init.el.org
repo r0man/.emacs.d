@@ -164,7 +164,6 @@
    'emacs-request
    'emms
    'expand-region
-   'find-file-in-project
    'flx
    'gnus-notify
    'haskell-mode
