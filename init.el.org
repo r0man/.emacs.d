@@ -950,6 +950,19 @@
             (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
                       'paredit-mode)))
 #+END_SRC
+** Ruby mode
+#+BEGIN_SRC emacs-lisp
+  (use-package ruby-mode
+    :mode (("Capfile$" . ruby-mode)
+           ("Gemfile$" . ruby-mode)
+           ("Guardfile$" . ruby-mode)
+           ("Rakefile$" . ruby-mode)
+           ("Vagrantfile$" . ruby-mode)
+           ("\\.gemspec$" . ruby-mode)
+           ("\\.rake$" . ruby-mode)
+           ("\\.ru$" . ruby-mode)))
+
+#+END_SRC
 ** Smex
 #+BEGIN_SRC emacs-lisp
   (use-package smex
