@@ -189,7 +189,6 @@
    'rvm
    'scss-mode
    'slamhound
-   'smex
    'smooth-scrolling
    'vertica
    'web-mode
@@ -936,6 +935,12 @@
   (setq org-src-fontify-natively t)
 #+end_src
 
+** Smex
+#+begin_src emacs-lisp
+  (use-package smex
+    :bind (("M-X" . smex-major-mode-commands)
+           ("M-x" . smex)))
+#+end_src
 ** Winner mode
 #+begin_src emacs-lisp
   (winner-mode)
