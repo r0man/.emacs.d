@@ -178,7 +178,6 @@
    'multi-term
    'multiple-cursors
    'popwin
-   'pretty-lambdada
    'scss-mode
    'slamhound
    'smooth-scrolling
@@ -946,6 +945,11 @@
     :init (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
             (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
                       'paredit-mode)))
+#+END_SRC
+** Pretty lambda
+#+BEGIN_SRC emacs-lisp
+  (use-package pretty-lambda
+    :init (pretty-lambda-for-modes))
 #+END_SRC
 ** Projectile
 #+BEGIN_SRC emacs-lisp
