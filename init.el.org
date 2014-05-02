@@ -757,7 +757,9 @@
 #+END_SRC
 ** Expand region
 #+BEGIN_SRC emacs-lisp
-  (use-package expand-region)
+  (use-package expand-region
+    :bind (("C-c C-+" . er/expand-region)
+           ("C-c C--" . er/contract-region)))
 #+END_SRC
 ** Fly Spell mode
 
@@ -1181,8 +1183,6 @@
 
      ;; Load keyboard bindings.
      (global-set-key (kbd "C-c ,") 'ruby-test-run)
-     (global-set-key (kbd "C-c C-+") 'er/expand-region)
-     (global-set-key (kbd "C-c C--") 'er/contract-region)
      (global-set-key (kbd "C-c C-.") 'clojure-test-run-test)
      (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
      (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
