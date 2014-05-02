@@ -1,5 +1,5 @@
-(source melpa)
 (source marmalade)
+(source melpa)
 
 (depends-on "ace-jump-mode")
 (depends-on "ack-and-a-half")
@@ -8,6 +8,7 @@
 (depends-on "bind-key")
 (depends-on "cask")
 (depends-on "cider")
+(depends-on "clj-refactor")
 (depends-on "clojure-mode")
 (depends-on "color-theme")
 (depends-on "company")
