@@ -82,84 +82,18 @@
   (require 'pallet)
   (require 'use-package)
 #+END_SRC
-** el-get
-
-   Add el-get to load path.
-
-#+BEGIN_SRC emacs-lisp
-  (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-#+END_SRC
-
-   Require el-get master branch.
-
-#+BEGIN_SRC emacs-lisp
-  (unless (require 'el-get nil 'noerror)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-      (let (el-get-master-branch)
-        (goto-char (point-max))
-        (eval-print-last-sexp))))
-#+END_SRC
-
-   Define where to look for init-pkgname.el configurations. Disabled if nil.
-
-#+BEGIN_SRC emacs-lisp
-  (setq el-get-user-package-directory "~/.emacs.d/el-get-init-files")
-#+END_SRC
-
-   Additional package recipes.
-
-#+BEGIN_SRC emacs-lisp
-  (setq el-get-sources
-        '(el-get
-          (:name emacs-color-theme-solarized-r0man
-                 :type github
-                 :pkgname "r0man/emacs-color-theme-solarized"
-                 :description "Emacs highlighting using Ethan Schoonover’s Solarized color scheme "
-                 :prepare (add-to-list 'custom-theme-load-path default-directory))
-          (:name inflect
-                 :type github
-                 :pkgname "r0man/inflect-el"
-                 :description "Emacs Lisp Inflection Library."
-                 :compile ("inflect.el"))
-          (:name emacs-request
-                 :type github
-                 :pkgname "tkf/emacs-request"
-                 :description "Easy HTTP request for Emacs Lisp"
-                 :load "request.el"
-                 :compile ("request.el"))
-          (:name jss
-                 :type github
-                 :pkgname "segv/jss"
-                 :depends websocket
-                 :description "jsSlime - An emacs toolkit for developing and debugging in-browser javascript code "
-                 :load "jss.el"
-                 :compile ("jss.el" "jss-browser-webkit.el"))
-          (:name macrostep
-                 :type github
-                 :pkgname "joddie/macrostep"
-                 :description "Elisp macro stepper"
-                 :compile ("macrostep.el"))
-          (:name slamhound
-                 :type github
-                 :pkgname "technomancy/slamhound"
-                 :description "Slamhound rips your namespace form apart and reconstructs it."
-                 :compile ("slamhound.el"))))
-#+END_SRC
-
-   Load el-get packages
-
-#+BEGIN_SRC emacs-lisp
-  (el-get
-   'sync
-   'emacs-color-theme-solarized-r0man
-   'websocket)
-#+END_SRC
-
 ** Use package
 #+BEGIN_SRC emacs-lisp
   (require 'use-package)
+#+END_SRC
+** Color theme
+#+BEGIN_SRC emacs-lisp
+  (use-package color-theme
+    :init
+    (progn
+      (add-to-list 'load-path "~/workspace/emacs-color-theme-solarized")
+      (require 'color-theme-solarized)
+      (load-theme 'solarized-dark t)))
 #+END_SRC
 ** Ace jump mode
 #+BEGIN_SRC emacs-lisp

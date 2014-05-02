@@ -9,6 +9,7 @@
 (depends-on "cask")
 (depends-on "cider")
 (depends-on "clojure-mode")
+(depends-on "color-theme")
 (depends-on "company")
 (depends-on "creole")
 (depends-on "dash")
