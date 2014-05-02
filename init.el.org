@@ -187,6 +187,11 @@
   (use-package ace-jump-mode
     :bind ("C-c SPC" . ace-jump-mode))
 #+END_SRC
+** Auto dictionary mode
+#+BEGIN_SRC emacs-lisp
+  (use-package auto-dictionary
+    :init (add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
+#+END_SRC
 ** Compass
 
 #+BEGIN_SRC emacs-lisp
