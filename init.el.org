@@ -173,7 +173,6 @@
    'markdown-mode
    'multi-term
    'multiple-cursors
-   'scss-mode
    'slamhound
    'smooth-scrolling
    'websocket)
@@ -570,7 +569,8 @@
 #+END_SRC
 ** SCSS mode
 #+BEGIN_SRC emacs-lisp
-  (setq scss-compile-at-save nil)
+  (use-package scss-mode
+    :init (setq scss-compile-at-save nil))
 #+END_SRC
 ** Desktop save mode
 
