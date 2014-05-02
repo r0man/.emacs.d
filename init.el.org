@@ -46,21 +46,22 @@
 #+END_SRC
 
 ** Faces
-*** Cursor
+
+   Cursor
 
 #+BEGIN_SRC emacs-lisp
   (custom-set-faces
    '(cursor ((t (:background "orange red" :foreground "white")))))
 #+END_SRC
 
-*** Magit
+   Magit
 
 #+BEGIN_SRC emacs-lisp
   (custom-set-faces
    '(magit-section-title ((t (:underline t)))))
 #+END_SRC
 
-*** Mode Line
+   Mode Line
 
 #+BEGIN_SRC emacs-lisp
   (custom-set-faces
@@ -68,7 +69,7 @@
    '(mode-line-inactive ((t (:background "dark gray" :foreground "black")))))
 #+END_SRC
 
-*** Vertical Border
+   Vertical Border
 
 #+BEGIN_SRC emacs-lisp
   (custom-set-faces
@@ -736,7 +737,7 @@
     (define-key mode (kbd "C-c C-,") 'ert))
 #+END_SRC
 
-** Emacs Lisp slime navigation
+** Elisp slime navigation
 #+BEGIN_SRC emacs-lisp
   (use-package elisp-slime-nav)
 #+END_SRC
