@@ -178,7 +178,6 @@
    'markdown-mode
    'multi-term
    'multiple-cursors
-   'paredit
    'popwin
    'pretty-lambdada
    'projectile
@@ -947,6 +946,13 @@
   (setq org-src-fontify-natively t)
 #+END_SRC
 
+** Paredit
+#+BEGIN_SRC emacs-lisp
+  (use-package paredit
+    :init (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
+            (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
+                      'paredit-mode)))
+#+END_SRC
 ** Smex
 #+BEGIN_SRC emacs-lisp
   (use-package smex
