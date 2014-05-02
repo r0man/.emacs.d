@@ -186,7 +186,6 @@
    'scss-mode
    'slamhound
    'smooth-scrolling
-   'vertica
    'web-mode
    'websocket
    'yasnippet)
