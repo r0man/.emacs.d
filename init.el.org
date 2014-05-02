@@ -957,6 +957,11 @@
     :bind (("M-X" . smex-major-mode-commands)
            ("M-x" . smex)))
 #+END_SRC
+** Web mode
+#+BEGIN_SRC emacs-lisp
+  (use-package web-mode
+    :mode "\\.html\\'")
+#+END_SRC
 ** Winner mode
 #+BEGIN_SRC emacs-lisp
   (winner-mode)
