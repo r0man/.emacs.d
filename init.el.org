@@ -719,6 +719,23 @@
   (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 #+END_SRC
 
+   Key bindings.
+
+#+BEGIN_SRC emacs-lisp
+  (let ((mode emacs-lisp-mode-map))
+    (define-key mode (kbd "C-c m") 'macrostep-expand)
+    (define-key mode (kbd "C-c e E") 'elint-current-buffer)
+    (define-key mode (kbd "C-c e c") 'cancel-debug-on-entry)
+    (define-key mode (kbd "C-c e d") 'debug-on-entry)
+    (define-key mode (kbd "C-c e e") 'toggle-debug-on-error)
+    (define-key mode (kbd "C-c e f") 'emacs-lisp-byte-compile-and-load)
+    (define-key mode (kbd "C-c e l") 'find-library)
+    (define-key mode (kbd "C-c e r") 'eval-region)
+    (define-key mode (kbd "C-c C-k") 'eval-buffer)
+    (define-key mode (kbd "C-c ,") 'ert)
+    (define-key mode (kbd "C-c C-,") 'ert))
+#+END_SRC
+
 ** Emacs Lisp slime navigation
 #+BEGIN_SRC emacs-lisp
   (use-package elisp-slime-nav)
@@ -1186,7 +1203,6 @@
      (global-set-key (kbd "C-c C-.") 'clojure-test-run-test)
      (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
      (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
-     (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
      (global-set-key (kbd "C-c n") 'cleanup-buffer)
      (global-set-key (kbd "C-x C-g b") 'mo-git-blame-current)
      (global-set-key (kbd "C-x C-d") 'dired)
@@ -1197,19 +1213,6 @@
      (global-set-key (kbd "C-x f") 'ido-find-file)
      (global-set-key (kbd "C-x h") 'mark-whole-buffer)
      (global-set-key (kbd "C-c r") 'rotate-buffers)
-
-     (let ((mode emacs-lisp-mode-map))
-       (define-key mode (kbd "C-c m") 'macrostep-expand)
-       (define-key mode (kbd "C-c e E") 'elint-current-buffer)
-       (define-key mode (kbd "C-c e c") 'cancel-debug-on-entry)
-       (define-key mode (kbd "C-c e d") 'debug-on-entry)
-       (define-key mode (kbd "C-c e e") 'toggle-debug-on-error)
-       (define-key mode (kbd "C-c e f") 'emacs-lisp-byte-compile-and-load)
-       (define-key mode (kbd "C-c e l") 'find-library)
-       (define-key mode (kbd "C-c e r") 'eval-region)
-       (define-key mode (kbd "C-c C-k") 'eval-buffer)
-       (define-key mode (kbd "C-c ,") 'ert)
-       (define-key mode (kbd "C-c C-,") 'ert))
 
      (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
      (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)))
