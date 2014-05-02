@@ -1,98 +1,98 @@
 * init.el
 ** Package Sources
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq package-archives
         '(("elpa" . "http://tromey.com/elpa/")
           ("gnu" . "http://elpa.gnu.org/packages/")
           ("marmalade" . "http://marmalade-repo.org/packages/")))
-#+end_src
+#+END_SRC
 ** Scroll, tool and menu bar.
 
    Hide scroll bar.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-#+end_src
+#+END_SRC
 
    Hide tool bar.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-#+end_src
+#+END_SRC
 
    Hide menu bar.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-#+end_src
+#+END_SRC
 
 ** Transparency
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (set-frame-parameter (selected-frame) 'alpha '(85 50))
   (add-to-list 'default-frame-alist '(alpha 85 50))
-#+end_src
+#+END_SRC
 
 ** Custom
 
    Set location of custom file.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
-#+end_src
+#+END_SRC
 
    Load custom file.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (load custom-file)
-#+end_src
+#+END_SRC
 
 ** Faces
 *** Cursor
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (custom-set-faces
    '(cursor ((t (:background "orange red" :foreground "white")))))
-#+end_src
+#+END_SRC
 
 *** Magit
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (custom-set-faces
    '(magit-section-title ((t (:underline t)))))
-#+end_src
+#+END_SRC
 
 *** Mode Line
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (custom-set-faces
    '(mode-line ((t (:background "white smoke" :foreground "black"))))
    '(mode-line-inactive ((t (:background "dark gray" :foreground "black")))))
-#+end_src
+#+END_SRC
 
 *** Vertical Border
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (custom-set-faces
    '(vertical-border ((t (:foreground "black")))))
-#+end_src
+#+END_SRC
 ** Cask
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (require 'cask "~/.cask/cask.el")
   (cask-initialize)
   (require 'pallet)
   (require 'use-package)
-#+end_src
+#+END_SRC
 ** el-get
 
    Add el-get to load path.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-#+end_src
+#+END_SRC
 
    Require el-get master branch.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (unless (require 'el-get nil 'noerror)
     (with-current-buffer
         (url-retrieve-synchronously
@@ -100,17 +100,17 @@
       (let (el-get-master-branch)
         (goto-char (point-max))
         (eval-print-last-sexp))))
-#+end_src
+#+END_SRC
 
    Define where to look for init-pkgname.el configurations. Disabled if nil.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq el-get-user-package-directory "~/.emacs.d/el-get-init-files")
-#+end_src
+#+END_SRC
 
    Additional package recipes.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq el-get-sources
         '(el-get
           (:name emacs-color-theme-solarized-r0man
@@ -146,11 +146,11 @@
                  :pkgname "technomancy/slamhound"
                  :description "Slamhound rips your namespace form apart and reconstructs it."
                  :compile ("slamhound.el"))))
-#+end_src
+#+END_SRC
 
    Load el-get packages
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (el-get
    'sync
    'ack-and-a-half
@@ -194,20 +194,20 @@
    'web-mode
    'websocket
    'yasnippet)
-#+end_src
+#+END_SRC
 
 ** Use package
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (require 'use-package)
-#+end_src
+#+END_SRC
 ** Ace jump mode
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (use-package ace-jump-mode
     :bind ("C-c SPC" . ace-jump-mode))
-#+end_src
+#+END_SRC
 ** Compass
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun compass-watch ()
     "Find the project root and run compass watch."
     (interactive)
@@ -217,13 +217,13 @@
       (if directory
           (compile (message (format "cd %s; compass watch" directory)))
         (message "Can't find compass project root."))))
-#+end_src
+#+END_SRC
 
 ** Company mode
 
    Nicer faces
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (custom-set-faces
    '(company-preview
      ((t (:foreground "darkgray" :underline t))))
@@ -243,11 +243,11 @@
      ((t (:background "black"))))
    '(company-scrollbar-bg
      ((t (:background "darkgray")))))
-#+end_src
+#+END_SRC
 
    Indent with TAB, then do completion.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun indent-or-complete ()
     "Indent or complete via company-mode."
     (interactive)
@@ -256,57 +256,57 @@
       (indent-according-to-mode)))
 
   (global-set-key (kbd "TAB") 'indent-or-complete)
-#+end_src
+#+END_SRC
 
    Enable company mode in all buffers.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (global-company-mode)
-#+end_src
+#+END_SRC
 
 ** Functions
 
    Indent the whole buffer.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun indent-buffer ()
     "Indent the whole buffer."
     (interactive)
     (indent-region (point-min) (point-max)))
-#+end_src
+#+END_SRC
 
    Remove all tabs from the current buffer.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun untabify-buffer ()
     "Remove all tabs from the current buffer."
     (interactive)
     (untabify (point-min) (point-max)))
-#+end_src
+#+END_SRC
 
    Cleanup the current buffer.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun cleanup-buffer ()
     "Cleanup the current buffer."
     (interactive)
     (indent-buffer)
     (delete-trailing-whitespace))
-#+end_src
+#+END_SRC
 
    Find file as root.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun sudo-edit (&optional arg)
     (interactive "p")
     (if (or arg (not buffer-file-name))
         (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
       (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-#+end_src
+#+END_SRC
 
    Swap two buffers.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun swap-buffers ()
     "Swap your buffers."
     (interactive)
@@ -327,11 +327,11 @@
                (set-window-start w1 s2)
                (set-window-start w2 s1)
                (setq i (1+ i)))))))
-#+end_src
+#+END_SRC
 
    Rotate two buffers.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun rotate-buffers ()
     "Rotate your buffers."
     (interactive)
@@ -357,311 +357,311 @@
             (set-window-buffer (next-window) next-win-buffer)
             (select-window first-win)
             (if this-win-2nd (other-window 1))))))
-#+end_src
+#+END_SRC
 
    Show the face found at the current point.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun what-face (pos)
     "Show the face found at the current point."
     (interactive "d")
     (let ((face (or (get-char-property (point) 'read-face-name)
                     (get-char-property (point) 'face))))
       (if face (message "Face: %s" face) (message "No face at %d" pos))))
-#+end_src
+#+END_SRC
 
    Reload the ~/.Xresources configuration.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun xresources ()
     "Reload the ~/.Xresources configuration."
     (interactive)
     (shell-command "xrdb -merge ~/.Xresources ")
     (message "X resources reloaded."))
-#+end_src
+#+END_SRC
 
 ** Configure the full name of the user logged in.
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq user-full-name "Roman Scherer")
-#+end_src
+#+END_SRC
 ** Global auto revert mode
 
    Reload files when they change on disk.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (global-auto-revert-mode 1)
-#+end_src
+#+END_SRC
 
 ** Backup
 
    Put all backup files in a separate directory.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-#+end_src
+#+END_SRC
 
    Make backups for files under version control as well.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq vc-make-backup-files t)
-#+end_src
+#+END_SRC
 
    If t, delete excess backup versions silently.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq delete-old-versions t)
-#+end_src
+#+END_SRC
 
    Number of newest versions to keep when a new numbered backup is made.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq kept-new-versions 6)
-#+end_src
+#+END_SRC
 
    Number of oldest versions to keep when a new numbered backup is made.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq kept-old-versions 2)
-#+end_src
+#+END_SRC
 
    Make numeric backup versions unconditionally.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq version-control t)
-#+end_src
+#+END_SRC
 
 ** Misc
 
    Answer questions with "y" or "n"..
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defalias 'yes-or-no-p 'y-or-n-p)
-#+end_src
+#+END_SRC
 
    Highlight matching parentheses when the point is on them.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (show-paren-mode 1)
-#+end_src
+#+END_SRC
 
    Enter debugger if an error is signaled?
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq debug-on-error nil)
-#+end_src
+#+END_SRC
 
    Don't show startup message.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq inhibit-startup-message t)
-#+end_src
+#+END_SRC
 
    Delete trailing whitespace when saving.
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
-#+end_src
+#+END_SRC
 
    Toggle column number display in the mode line.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (column-number-mode)
-#+end_src
+#+END_SRC
 
    Enable display of time, load level, and mail flag in mode lines.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (display-time)
-#+end_src
+#+END_SRC
 
    Whether to add a newline automatically at the end of the file.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq require-final-newline t)
-#+end_src
+#+END_SRC
 
    Highlight trailing whitespace.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq show-trailing-whitespace t)
-#+end_src
+#+END_SRC
 
    Controls the operation of the TAB key.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq tab-always-indent 'complete)
-#+end_src
+#+END_SRC
 
    The maximum size in lines for term buffers.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq term-buffer-maximum-size (* 10 2048))
-#+end_src
+#+END_SRC
 
    Use Chromium as default browser.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq browse-url-browser-function 'browse-url-chromium)
-#+end_src
+#+END_SRC
 
    Clickable URLs.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (define-globalized-minor-mode global-goto-address-mode goto-address-mode goto-address-mode)
   (global-goto-address-mode)
-#+end_src
+#+END_SRC
 
 ** Mac OSX
 
    This variable describes the behavior of the command key.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq mac-option-key-is-meta t)
   (setq mac-right-option-modifier nil)
-#+end_src
+#+END_SRC
 
 ** Abbrev mode
 
    Set the name of file from which to read abbrevs.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
-#+end_src
+#+END_SRC
 
    Silently save word abbrevs too when files are saved.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq save-abbrevs 'silently)
-#+end_src
+#+END_SRC
 
 ** Compilation mode
 
    Auto scroll compilation buffer.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq compilation-scroll-output 't)
-#+end_src
+#+END_SRC
 
    Enable colors in compilation mode.
    http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun colorize-compilation-buffer ()
     (toggle-read-only)
     (ansi-color-apply-on-region (point-min) (point-max))
     (toggle-read-only))
 
   (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-#+end_src
+#+END_SRC
 
 ** Leiningen
 
    Auto compile ClojureScript.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun lein-cljsbuild ()
     (interactive)
     (compile "lein clean; lein cljsbuild auto"))
-#+end_src
+#+END_SRC
 
    Start a Rhino REPL.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun lein-rhino-repl ()
     "Start a Rhino repl via Leiningen."
     (interactive)
     (run-lisp "lein trampoline cljsbuild repl-rhino"))
-#+end_src
+#+END_SRC
 
    Start a Node.js REPL.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun lein-node-repl ()
     "Start a NodeJS repl via Leiningen."
     (interactive)
     (run-lisp "lein trampoline noderepl"))
-#+end_src
+#+END_SRC
 
 ** CSS mode
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq css-indent-offset 2)
-#+end_src
+#+END_SRC
 ** SCSS mode
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq scss-compile-at-save nil)
-#+end_src
+#+END_SRC
 ** Desktop save mode
 
    Always save desktop.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq desktop-save t)
-#+end_src
+#+END_SRC
 
    Load desktop even if it is locked.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq desktop-load-locked-desktop t)
-#+end_src
+#+END_SRC
 
    Enable desktop save mode.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (desktop-save-mode 1)
-#+end_src
+#+END_SRC
 
 ** Inferior Lisp mode
 
    Use Steel Bank Common Lisp (SBCL) as inferior-lisp-program.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq inferior-lisp-program "sbcl")
-#+end_src
+#+END_SRC
 
 ** Dired mode
 
    Switches passed to `ls' for Dired. MUST contain the `l' option.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq dired-listing-switches "-alh")
-#+end_src
+#+END_SRC
 
    Try to guess a default target directory.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq dired-dwim-target t)
-#+end_src
+#+END_SRC
 
    Find Clojure files in dired mode.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun find-dired-clojure (dir)
     "Run find-dired on Clojure files."
     (interactive (list (read-directory-name "Run find (Clojure) in directory: " nil "" t)))
     (find-dired dir "-name \"*.clj\""))
-#+end_src
+#+END_SRC
 
    Find Ruby files in dired mode.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun find-dired-ruby (dir)
     "Run find-dired on Ruby files."
     (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
     (find-dired dir "-name \"*.rb\""))
-#+end_src
+#+END_SRC
 
 ** Dired-x mode
 
    User-defined alist of rules for suggested commands.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq dired-guess-shell-alist-user
         '(("\\.pdf$" "evince")
           ("\\.xlsx?$" "libreoffice")))
-#+end_src
+#+END_SRC
 
    Run shell command in background.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (defun dired-do-shell-command-in-background (command)
     "In dired, do shell command in background on the file or directory named on
    this line."
@@ -673,7 +673,7 @@
             (lambda ()
               (load "dired-x")
               (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
-#+end_src
+#+END_SRC
 
 ** Electric pair mode
 
@@ -682,43 +682,43 @@
    delimiter, the matching closing delimiter is automatically inserted
    as well, leaving point between the two.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (electric-pair-mode t)
-#+end_src
+#+END_SRC
 ** Emacs Lisp mode
 
    Unequivocally turn on ElDoc mode.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-#+end_src
+#+END_SRC
 
    Enable Slime-style navigation of elisp symbols using M-. and M-,
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
-#+end_src
+#+END_SRC
 
    Auto load files.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
-#+end_src
+#+END_SRC
 
 ** Emacs server
 
    Start the Emacs server if it's not running.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (require 'server)
   (unless (server-running-p) (server-start))
-#+end_src
+#+END_SRC
 
 ** Fly Spell mode
 
    Enable flyspell in text mode.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 
   (defun enable-flyspell-mode ()
     "Enable Flyspell mode."
@@ -727,11 +727,11 @@
   (dolist (hook '(text-mode-hook))
     (add-hook hook 'enable-flyspell-mode))
 
-#+end_src
+#+END_SRC
 
    Enable flyspell in programming mode.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 
   (defun enable-flyspell-prog-mode ()
     "Enable Flyspell Programming mode."
@@ -740,71 +740,71 @@
   (dolist (hook '(prog-mode-hook))
     (add-hook hook 'enable-flyspell-prog-mode))
 
-#+end_src
+#+END_SRC
 
 ** Gnus
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq gnus-init-file "~/.emacs.d/gnus.el")
-#+end_src
+#+END_SRC
 ** Ido mode
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq ido-auto-merge-work-directories-length nil)
-#+end_src
+#+END_SRC
 
    Always create new buffer if no buffer matches substring.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq ido-create-new-buffer 'always)
-#+end_src
+#+END_SRC
 
    Enable flexible string matching.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq ido-enable-flex-matching t)
-#+end_src
+#+END_SRC
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq ido-enable-prefix nil)
-#+end_src
+#+END_SRC
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq ido-handle-duplicate-virtual-buffers 2)
-#+end_src
+#+END_SRC
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq ido-max-prospects 10)
-#+end_src
+#+END_SRC
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq ido-use-filename-at-point 'guess)
-#+end_src
+#+END_SRC
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq ido-use-virtual-buffers t)
-#+end_src
+#+END_SRC
 
    Enable IDO mode.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (ido-mode t)
-#+end_src
+#+END_SRC
 
 ** Java
 
    Indent Java annotations. See http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (add-hook
    'java-mode-hook
    '(lambda ()
       (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
       (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
-#+end_src
+#+END_SRC
 
 ** Octave
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
   (add-hook 'octave-mode-hook
             (lambda ()
@@ -812,10 +812,10 @@
               (auto-fill-mode 1)
               (if (eq window-system 'x)
                   (font-lock-mode 1))))
-#+end_src
+#+END_SRC
 
 ** IRC
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
 
   (setq rcirc-default-nick "r0man"
@@ -830,95 +830,95 @@
               (set (make-local-variable 'scroll-conservatively) 8192)
               (rcirc-track-minor-mode 1)
               (flyspell-mode 1)))
-#+end_src
+#+END_SRC
 
 ** Mail
 
    Load smtpmail
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (require 'smtpmail)
-#+end_src
+#+END_SRC
 
    Send mail via smtpmail.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq send-mail-function 'sendmail-send-it)
-#+end_src
+#+END_SRC
 
    Whether to print info in debug buffer.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq smtpmail-debug-info t)
-#+end_src
+#+END_SRC
 
    The name of the host running SMTP server.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq smtpmail-smtp-server "smtp.googlemail.com")
-#+end_src
+#+END_SRC
 
    SMTP service port number.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq smtpmail-smtp-service 465)
-#+end_src
+#+END_SRC
 
 ** Fuck the NSA
 
    http://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Amusements.html
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq mail-signature
         '(progn
            (goto-char (point-max))
            (insert "\n\n--------------------------------------------------------------------------------")
            (spook)))
-#+end_src
+#+END_SRC
 ** Save hist mode
 
    Save the mini buffer history.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
   (setq savehist-file "~/.emacs.d/savehist")
   (savehist-mode 1)
-#+end_src
+#+END_SRC
 
 ** SQL mode
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq sql-indent-offset 2)
   (eval-after-load "sql"
     '(progn
        (let ((filename "~/.sql.el"))
          (when (file-exists-p filename)
            (load-file filename)))))
-#+end_src
+#+END_SRC
 
 ** Tramp
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (eval-after-load "tramp"
     '(progn
        (tramp-set-completion-function
         "ssh"
         '((tramp-parse-shosts "~/.ssh/known_hosts")
           (tramp-parse-hosts "/etc/hosts")))))
-#+end_src
+#+END_SRC
 
 ** Uniquify
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (require 'uniquify)
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
   (setq uniquify-separator "|")
   (setq uniquify-ignore-buffers-re "^\\*")
   (setq uniquify-after-kill-buffer-p t)
-#+end_src
+#+END_SRC
 
 ** Org mode
 
    Configure active languages for Babel.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((R . t)
@@ -927,27 +927,27 @@
      (ruby . t)
      (sh . t)
      (sql . t)))
-#+end_src
+#+END_SRC
 
    Fontify org mode code blocks.
 
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (setq org-src-fontify-natively t)
-#+end_src
+#+END_SRC
 
 ** Smex
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (use-package smex
     :bind (("M-X" . smex-major-mode-commands)
            ("M-x" . smex)))
-#+end_src
+#+END_SRC
 ** Winner mode
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (winner-mode)
-#+end_src
+#+END_SRC
 
 ** After init hook
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
 
   (add-hook
    'after-init-hook
@@ -1014,4 +1014,4 @@
 
      (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
      (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)))
-#+end_src
+#+END_SRC
