@@ -169,7 +169,6 @@
    'haskell-mode
    'haskell-mode-exts
    'highlight-cl
-   'hive
    'ido-vertical-mode
    'inflect
    'js2-mode
