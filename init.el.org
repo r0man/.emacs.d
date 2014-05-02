@@ -948,7 +948,7 @@
 #+END_SRC
 ** Pretty lambda
 #+BEGIN_SRC emacs-lisp
-  (use-package pretty-lambda
+  (use-package pretty-lambdada
     :init (pretty-lambda-for-modes))
 #+END_SRC
 ** Projectile
