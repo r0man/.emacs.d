@@ -153,28 +153,7 @@
 #+BEGIN_SRC emacs-lisp
   (el-get
    'sync
-   'ack-and-a-half
-   'cider
-   'clojure-mode
-   'clj-refactor
-   'dired-toggle-sudo
-   'elisp-slime-nav
-   'elnode
    'emacs-color-theme-solarized-r0man
-   'emacs-request
-   'emms
-   'expand-region
-   'flx
-   'gnus-notify
-   'inflect
-   'js2-mode
-   'jss
-   'macrostep
-   'markdown-mode
-   'multi-term
-   'multiple-cursors
-   'slamhound
-   'smooth-scrolling
    'websocket)
 #+END_SRC
 
@@ -570,7 +549,9 @@
 
 ** CSS mode
 #+BEGIN_SRC emacs-lisp
-  (setq css-indent-offset 2)
+  (use-package css-mode
+    :mode ("\\.css\\'" . css-mode)
+    :init (setq css-indent-offset 2))
 #+END_SRC
 ** SCSS mode
 #+BEGIN_SRC emacs-lisp
@@ -806,6 +787,10 @@
   (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 #+END_SRC
 
+** Emacs Lisp slime navigation
+#+BEGIN_SRC emacs-lisp
+  (use-package elisp-slime-nav)
+#+END_SRC
 ** Emacs server
 
    Start the Emacs server if it's not running.
@@ -837,6 +822,10 @@
 
       (add-to-list 'emms-stream-default-list
                    '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))))
+#+END_SRC
+** Expand region
+#+BEGIN_SRC emacs-lisp
+  (use-package expand-region)
 #+END_SRC
 ** Fly Spell mode
 
@@ -911,7 +900,7 @@
    Use ido everywhere
 
 #+BEGIN_SRC emacs-lisp
-  (ido-everywhere 1)
+  (setq ido-everywhere t)
 #+END_SRC
 
    Enable IDO mode.
@@ -1069,6 +1058,18 @@
   (setq smtpmail-smtp-service 465)
 #+END_SRC
 
+** Macrostep
+#+BEGIN_SRC emacs-lisp
+  (use-package macrostep)
+#+END_SRC
+** Markdown mode
+#+BEGIN_SRC emacs-lisp
+  (use-package markdown-mode)
+#+END_SRC
+** Multiple cursors
+#+BEGIN_SRC emacs-lisp
+  (use-package multiple-cursors)
+#+END_SRC
 ** Fuck the NSA
 
    http://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Amusements.html
@@ -1202,6 +1203,14 @@
   (use-package smex
     :bind (("M-X" . smex-major-mode-commands)
            ("M-x" . smex)))
+#+END_SRC
+** Slamhound
+#+BEGIN_SRC emacs-lisp
+  (use-package slamhound)
+#+END_SRC
+** Smooth scrolling
+#+BEGIN_SRC emacs-lisp
+  (use-package smooth-scrolling)
 #+END_SRC
 ** Web mode
 #+BEGIN_SRC emacs-lisp
