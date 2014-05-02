@@ -788,6 +788,11 @@
   (ido-mode t)
 #+END_SRC
 
+** Ido vertical mode
+#+BEGIN_SRC emacs-lisp
+  (use-package ido-vertical-mode
+    :init (ido-vertical-mode))
+#+END_SRC
 ** Magit
 #+BEGIN_SRC emacs-lisp
   (use-package magit
