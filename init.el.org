@@ -179,9 +179,6 @@
    'multiple-cursors
    'popwin
    'pretty-lambdada
-   'projectile
-   'ruby-mode
-   'ruby-test-mode
    'scss-mode
    'slamhound
    'smooth-scrolling
@@ -949,6 +946,11 @@
     :init (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
             (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
                       'paredit-mode)))
+#+END_SRC
+** Projectile
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :init (projectile-global-mode))
 #+END_SRC
 ** Ruby mode
 #+BEGIN_SRC emacs-lisp
