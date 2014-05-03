@@ -648,7 +648,10 @@
 
 #+BEGIN_SRC emacs-lisp
   (setq dired-guess-shell-alist-user
-        '(("\\.pdf$" "evince")
+        '(("\\.mp4$" "mplayer")
+          ("\\.mkv$" "mplayer")
+          ("\\.mov$" "mplayer")
+          ("\\.pdf$" "evince")
           ("\\.xlsx?$" "libreoffice")))
 #+END_SRC
 
