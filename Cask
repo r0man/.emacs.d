@@ -1,5 +1,5 @@
-(source marmalade)
 (source melpa)
+(source marmalade)
 
 (depends-on "ace-jump-mode")
 (depends-on "ack-and-a-half")
@@ -10,6 +10,7 @@
 (depends-on "cider")
 (depends-on "clj-refactor")
 (depends-on "clojure-mode")
+(depends-on "clojure-test-mode")
 (depends-on "color-theme")
 (depends-on "company")
 (depends-on "creole")

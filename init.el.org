@@ -558,45 +558,42 @@
     :mode (("\\.edn$" . clojure-mode)
            ("\\.cljs$" . clojure-mode)
            ("\\.cljx$" . clojure-mode))
-    :init
-    (progn
-      (eval-after-load "clojure-mode"
-        '(define-clojure-indent
-           ;; COMPOJURE
-           (ANY 2)
-           (DELETE 2)
-           (GET 2)
-           (HEAD 2)
-           (POST 2)
-           (PUT 2)
-           (context 2)
-           ;; ALGO.MONADS
-           (domonad 1)
-           ;; SQLINGVO
-           (copy 2)
-           (create-table 1)
-           (delete 1)
-           (drop-table 1)
-           (insert 2)
-           (select 1)
-           (select! 2)
-           (truncate 1)
-           (update 2)
-           ;; CUSTOM
-           (api-test 1)
-           (web-test 1)
-           (database-test 1)
-           (defroutes 'defun)
-           ))
-
-      ;; More flexible clojure-test-mode regex.
-      (eval-after-load "clojure-test-mode"
-        '(setq clojure-test-regex
-               (mapconcat
-                'identity
-                '("\\(clojure\\.test\\)"
-                  "\\((ns .*-test.*\\)")
-                "\\|")))))
+    :init (define-clojure-indent
+            ;; COMPOJURE
+            (ANY 2)
+            (DELETE 2)
+            (GET 2)
+            (HEAD 2)
+            (POST 2)
+            (PUT 2)
+            (context 2)
+            ;; ALGO.MONADS
+            (domonad 1)
+            ;; SQLINGVO
+            (copy 2)
+            (create-table 1)
+            (delete 1)
+            (drop-table 1)
+            (insert 2)
+            (select 1)
+            (select! 2)
+            (truncate 1)
+            (update 2)
+            ;; CUSTOM
+            (api-test 1)
+            (web-test 1)
+            (database-test 1)
+            (defroutes 'defun)))
+#+END_SRC
+** Clojure test mode
+#+BEGIN_SRC emacs-lisp
+  (use-package clojure-test-mode
+    :init (setq clojure-test-regex
+                (mapconcat
+                 'identity
+                 '("\\(clojure\\.test\\)"
+                   "\\((ns .*-test.*\\)")
+                 "\\|")))
 #+END_SRC
 ** Clojure refactor
 #+BEGIN_SRC emacs-lisp
