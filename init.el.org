@@ -1165,6 +1165,19 @@
   (use-package web-mode
     :mode "\\.html\\'")
 #+END_SRC
+** Which function mode
+
+   Enable mode line display of current function.
+
+#+BEGIN_SRC emacs-lisp
+  (which-function-mode)
+#+END_SRC
+
+   String to display in the mode line when current function is unknown.
+
+#+BEGIN_SRC emacs-lisp
+  (setq which-func-unknown "n/a")
+#+END_SRC
 ** Winner mode
 #+BEGIN_SRC emacs-lisp
   (winner-mode)
