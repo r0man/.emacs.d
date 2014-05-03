@@ -82,9 +82,19 @@
   (require 'pallet)
 #+END_SRC
 ** Use package
+
+   Load and configure packages with [[https://github.com/jwiegley/use-package][use-package]].
+
 #+BEGIN_SRC emacs-lisp
   (require 'use-package)
 #+END_SRC
+
+   Report about loading and configuration details.
+
+#+BEGIN_SRC emacs-lisp
+  (setq use-package-verbose t)
+#+END_SRC
+
 ** Color theme
 #+BEGIN_SRC emacs-lisp
   (use-package color-theme
