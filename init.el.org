@@ -117,8 +117,6 @@
     (if (looking-at "\\_>")
         (company-complete-common)
       (indent-according-to-mode)))
-
-  (global-set-key (kbd "TAB") 'indent-or-complete)
 #+END_SRC
 
 ** Functions
