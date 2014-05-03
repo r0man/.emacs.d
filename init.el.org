@@ -104,6 +104,7 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package company
+    :bind ("TAB" . indent-or-complete)
     :init (add-hook 'after-init-hook 'global-company-mode))
 #+END_SRC
 
@@ -118,12 +119,6 @@
       (indent-according-to-mode)))
 
   (global-set-key (kbd "TAB") 'indent-or-complete)
-#+END_SRC
-
-   Enable company mode in all buffers.
-
-#+BEGIN_SRC emacs-lisp
-  (global-company-mode)
 #+END_SRC
 
 ** Functions
