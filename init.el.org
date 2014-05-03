@@ -76,62 +76,6 @@
       (load file)))
 #+END_SRC
 
-** Color theme
-#+BEGIN_SRC emacs-lisp
-  (use-package color-theme
-    :init
-    (progn
-      (add-to-list 'load-path "~/workspace/emacs-color-theme-solarized")
-      (require 'color-theme-solarized)
-      (load-theme 'solarized-dark t)))
-#+END_SRC
-** Ace jump mode
-#+BEGIN_SRC emacs-lisp
-  (use-package ace-jump-mode
-    :bind ("C-c SPC" . ace-jump-mode))
-#+END_SRC
-** Auto dictionary mode
-#+BEGIN_SRC emacs-lisp
-  (use-package auto-dictionary
-    :init (add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
-#+END_SRC
-** Compass
-
-#+BEGIN_SRC emacs-lisp
-  (defun compass-watch ()
-    "Find the project root and run compass watch."
-    (interactive)
-    (let ((directory (locate-dominating-file (expand-file-name (directory-file-name ".")) "config.rb"))
-          (compilation-ask-about-save nil)
-          (compilation-buffer-name-function (lambda (mode) "*compass*")))
-      (if directory
-          (compile (message (format "cd %s; compass watch" directory)))
-        (message "Can't find compass project root."))))
-#+END_SRC
-
-** Company mode
-
-   Enable company mode.
-
-#+BEGIN_SRC emacs-lisp
-  (use-package company
-    :bind ("TAB" . indent-or-complete)
-    :init (add-hook 'after-init-hook 'global-company-mode))
-#+END_SRC
-
-   Indent with TAB, then do completion.
-
-#+BEGIN_SRC emacs-lisp
-  (defun indent-or-complete ()
-    "Indent or complete via company-mode."
-    (interactive)
-    (if (looking-at "\\_>")
-        (company-complete-common)
-      (indent-according-to-mode)))
-#+END_SRC
-
-** Functions
-
    Indent the whole buffer.
 
 #+BEGIN_SRC emacs-lisp
@@ -244,6 +188,59 @@
     (interactive)
     (shell-command "xrdb -merge ~/.Xresources ")
     (message "X resources reloaded."))
+#+END_SRC
+** Color theme
+#+BEGIN_SRC emacs-lisp
+  (use-package color-theme
+    :init
+    (progn
+      (add-to-list 'load-path "~/workspace/emacs-color-theme-solarized")
+      (require 'color-theme-solarized)
+      (load-theme 'solarized-dark t)))
+#+END_SRC
+** Ace jump mode
+#+BEGIN_SRC emacs-lisp
+  (use-package ace-jump-mode
+    :bind ("C-c SPC" . ace-jump-mode))
+#+END_SRC
+** Auto dictionary mode
+#+BEGIN_SRC emacs-lisp
+  (use-package auto-dictionary
+    :init (add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
+#+END_SRC
+** Compass
+
+#+BEGIN_SRC emacs-lisp
+  (defun compass-watch ()
+    "Find the project root and run compass watch."
+    (interactive)
+    (let ((directory (locate-dominating-file (expand-file-name (directory-file-name ".")) "config.rb"))
+          (compilation-ask-about-save nil)
+          (compilation-buffer-name-function (lambda (mode) "*compass*")))
+      (if directory
+          (compile (message (format "cd %s; compass watch" directory)))
+        (message "Can't find compass project root."))))
+#+END_SRC
+
+** Company mode
+
+   Enable company mode.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :bind ("TAB" . indent-or-complete)
+    :init (add-hook 'after-init-hook 'global-company-mode))
+#+END_SRC
+
+   Indent with TAB, then do completion.
+
+#+BEGIN_SRC emacs-lisp
+  (defun indent-or-complete ()
+    "Indent or complete via company-mode."
+    (interactive)
+    (if (looking-at "\\_>")
+        (company-complete-common)
+      (indent-according-to-mode)))
 #+END_SRC
 
 ** Configure the full name of the user logged in.
