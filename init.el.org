@@ -120,6 +120,13 @@
 
 ** Company mode
 
+   Enable company mode.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :init (add-hook 'after-init-hook 'global-company-mode))
+#+END_SRC
+
    Nicer faces
 
 #+BEGIN_SRC emacs-lisp
