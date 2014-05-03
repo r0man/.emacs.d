@@ -65,6 +65,17 @@
   (setq use-package-verbose t)
 #+END_SRC
 
+** Custom functions
+
+   Load a file only if it exists.
+
+#+BEGIN_SRC emacs-lisp
+  (defun load-if-exists (file)
+    "Load `file` if it exists."
+    (when (file-exists-p file)
+      (load file)))
+#+END_SRC
+
 ** Color theme
 #+BEGIN_SRC emacs-lisp
   (use-package color-theme
@@ -727,11 +738,7 @@
 
       (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
       (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
-
-      (let ((filename "~/.emms.el"))
-        (when (file-exists-p filename)
-          (load-file filename)))
-
+      (load-if-exists "~/.emms.el")
       (add-to-list 'emms-stream-default-list
                    '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))))
 #+END_SRC
@@ -873,7 +880,7 @@
 
 ** IRC
 #+BEGIN_SRC emacs-lisp
-  (if (file-exists-p "~/.rcirc.el") (load-file "~/.rcirc.el"))
+  (load-if-exists "~/.rcirc.el")
 
   (setq rcirc-default-nick "r0man"
         rcirc-default-user-name "r0man"
@@ -1016,13 +1023,18 @@
 #+END_SRC
 
 ** SQL mode
+
+   Use 2 spaces for indentation in SQL mode.
+
 #+BEGIN_SRC emacs-lisp
   (setq sql-indent-offset 2)
+#+END_SRC
+
+   Load database connection settings.
+
+#+BEGIN_SRC emacs-lisp
   (eval-after-load "sql"
-    '(progn
-       (let ((filename "~/.sql.el"))
-         (when (file-exists-p filename)
-           (load-file filename)))))
+    '(load-if-exists "~/.sql.el"))
 #+END_SRC
 
 ** Tramp
@@ -1154,9 +1166,7 @@
    (lambda ()
 
      ;; Load system specific config.
-     (let ((system-config (concat user-emacs-directory system-name ".el")))
-       (when (file-exists-p system-config)
-         (load system-config)))
+     (load-if-exists (concat user-emacs-directory system-name ".el"))
 
      ;; Start a terminal.
      (multi-term)
