@@ -45,36 +45,6 @@
   (load custom-file)
 #+END_SRC
 
-** Faces
-
-   Cursor
-
-#+BEGIN_SRC emacs-lisp
-  (custom-set-faces
-   '(cursor ((t (:background "orange red" :foreground "white")))))
-#+END_SRC
-
-   Magit
-
-#+BEGIN_SRC emacs-lisp
-  (custom-set-faces
-   '(magit-section-title ((t (:underline t)))))
-#+END_SRC
-
-   Mode Line
-
-#+BEGIN_SRC emacs-lisp
-  (custom-set-faces
-   '(mode-line ((t (:background "white smoke" :foreground "black"))))
-   '(mode-line-inactive ((t (:background "dark gray" :foreground "black")))))
-#+END_SRC
-
-   Vertical Border
-
-#+BEGIN_SRC emacs-lisp
-  (custom-set-faces
-   '(vertical-border ((t (:foreground "black")))))
-#+END_SRC
 ** Cask
 #+BEGIN_SRC emacs-lisp
   (require 'cask "~/.cask/cask.el")
