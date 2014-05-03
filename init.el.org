@@ -299,6 +299,12 @@
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 #+END_SRC
 
+   Copy all files, don't rename them.
+
+#+BEGIN_SRC emacs-lisp
+  (setq backup-by-copying t)
+#+END_SRC
+
    Make backups for files under version control as well.
 
 #+BEGIN_SRC emacs-lisp
@@ -314,13 +320,13 @@
    Number of newest versions to keep when a new numbered backup is made.
 
 #+BEGIN_SRC emacs-lisp
-  (setq kept-new-versions 6)
+  (setq kept-new-versions 10)
 #+END_SRC
 
    Number of oldest versions to keep when a new numbered backup is made.
 
 #+BEGIN_SRC emacs-lisp
-  (setq kept-old-versions 2)
+  (setq kept-old-versions 0)
 #+END_SRC
 
    Make numeric backup versions unconditionally.
