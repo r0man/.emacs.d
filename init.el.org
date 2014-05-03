@@ -46,11 +46,19 @@
 #+END_SRC
 
 ** Cask
+
+   Load [[http://cask.github.io/][Cask]].
+
 #+BEGIN_SRC emacs-lisp
   (require 'cask "~/.cask/cask.el")
-  (cask-initialize)
-  (require 'pallet)
 #+END_SRC
+
+   Initialize [[http://cask.github.io/][Cask]].
+
+#+BEGIN_SRC emacs-lisp
+  (cask-initialize)
+#+END_SRC
+
 ** Use package
 
    Load and configure packages with [[https://github.com/jwiegley/use-package][use-package]].
@@ -1074,6 +1082,13 @@
   (setq org-src-fontify-natively t)
 #+END_SRC
 
+** Pallet
+
+   Load [[https://github.com/rdallasgray/pallet][Pallet]], a package management tool for Emacs.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package pallet)
+#+END_SRC
 ** Paredit
 #+BEGIN_SRC emacs-lisp
   (use-package paredit
