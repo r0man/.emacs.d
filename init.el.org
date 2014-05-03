@@ -293,7 +293,7 @@
 
 ** Misc
 
-   Answer questions with "y" or "n"..
+   Answer questions with "y" or "n".
 
 #+BEGIN_SRC emacs-lisp
   (defalias 'yes-or-no-p 'y-or-n-p)
