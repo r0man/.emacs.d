@@ -23,6 +23,7 @@
  '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
  '(company-tooltip-selection ((t (:background "steelblue" :foreground "white"))))
  '(cursor ((t (:background "orange red" :foreground "white"))))
+ '(magit-header ((t (:foreground "gainsboro"))))
  '(magit-section-title ((t (:underline t))))
  '(mode-line ((t (:background "white smoke" :foreground "black"))))
  '(mode-line-inactive ((t (:background "dark gray" :foreground "black"))))
