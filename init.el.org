@@ -874,9 +874,11 @@
 
 ** Key Chord
 #+BEGIN_SRC emacs-lisp
-(require 'key-chord)
-(key-chord-mode 1)
-(key-chord-define-global "dq" 'dq)
+  (use-package key-chord
+    :init (progn
+            (key-chord-mode 1)
+            (key-chord-define-global "gg" 'ace-jump-word-mode)))
+
 #+END_SRC
 ** Octave
 
