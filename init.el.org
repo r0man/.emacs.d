@@ -877,7 +877,7 @@
   (use-package key-chord
     :init (progn
             (key-chord-mode 1)
-            (key-chord-define-global "gg" 'ace-jump-word-mode)))
+            (key-chord-define-global "jj" 'ace-jump-word-mode)))
 
 #+END_SRC
 ** Octave
