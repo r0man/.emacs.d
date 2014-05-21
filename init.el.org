@@ -1061,7 +1061,11 @@
       (when (= orig-point (point))
         (move-beginning-of-line 1))))
 
-  ;; remap C-a to `smarter-move-beginning-of-line'
+#+END_SRC
+
+   Remap C-a to `smarter-move-beginning-of-line'
+
+#+BEGIN_SRC emacs-lisp
   (global-set-key [remap move-beginning-of-line]
                   'smarter-move-beginning-of-line)
 #+END_SRC
