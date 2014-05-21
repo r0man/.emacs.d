@@ -1,5 +1,4 @@
 (source melpa)
-(source marmalade)
 
 (depends-on "ace-jump-mode")
 (depends-on "ack-and-a-half")
@@ -22,6 +21,7 @@
 (depends-on "elnode")
 (depends-on "emms")
 (depends-on "epl")
+(depends-on "es-mode")
 (depends-on "expand-region")
 (depends-on "f")
 (depends-on "fakir")
@@ -62,4 +62,3 @@
 (depends-on "web")
 (depends-on "web-mode")
 (depends-on "websocket")
-(depends-on "yasnippet")
