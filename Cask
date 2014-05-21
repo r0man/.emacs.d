@@ -34,6 +34,7 @@
 (depends-on "hive")
 (depends-on "ido-vertical-mode")
 (depends-on "js2-mode")
+(depends-on "key-chord")
 (depends-on "kv")
 (depends-on "macrostep")
 (depends-on "magit")

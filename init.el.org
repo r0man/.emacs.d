@@ -235,9 +235,10 @@
    Enable company mode.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package company
-    :bind ("TAB" . indent-or-complete)
-    :init (add-hook 'after-init-hook 'global-company-mode))
+    ;; (use-package company
+    ;;   :disabled t
+    ;;   :bind ("TAB" . indent-or-complete)
+    ;;   :init (add-hook 'after-init-hook 'global-company-mode))
 #+END_SRC
 
    Indent with TAB, then do completion.
@@ -871,6 +872,12 @@
       (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 #+END_SRC
 
+** Key Chord
+#+BEGIN_SRC emacs-lisp
+(require 'key-chord)
+(key-chord-mode 1)
+(key-chord-define-global "dq" 'dq)
+#+END_SRC
 ** Octave
 
 #+BEGIN_SRC emacs-lisp
