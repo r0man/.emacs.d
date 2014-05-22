@@ -51,6 +51,7 @@
 (depends-on "popwin")
 (depends-on "pretty-lambdada")
 (depends-on "projectile")
+(depends-on "request")
 (depends-on "ruby-test-mode")
 (depends-on "rvm")
 (depends-on "s")
