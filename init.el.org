@@ -256,6 +256,22 @@
 #+BEGIN_SRC emacs-lisp
   (setq user-full-name "Roman Scherer")
 #+END_SRC
+** Dim parentheses
+#+BEGIN_SRC emacs-lisp
+(defface paren-face
+  '((((class color) (background dark))
+     (:foreground "grey20"))
+    (((class color) (background light))
+     (:foreground "grey80")))
+  "Face used to dim parentheses.")
+
+(defun dim-parens ()
+  (font-lock-add-keywords nil '(("(\\|)" . 'paren-face))))
+
+(add-hook 'clojure-mode-hook 'dim-parens)
+(add-hook 'emacs-lisp-mode-hook 'dim-parens)
+#+END_SRC
+
 ** Global auto revert mode
 
    Reload files when they change on disk.
