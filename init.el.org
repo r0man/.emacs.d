@@ -967,8 +967,12 @@
 #+END_SRC
 ** Markdown mode
 #+BEGIN_SRC emacs-lisp
-  (use-package markdown-mode)
+  (use-package markdown-mode
+    :init (progn
+            (setq markdown-command "gfm")
+            (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))))
 #+END_SRC
+
 ** Multi term
 
 #+BEGIN_SRC emacs-lisp
