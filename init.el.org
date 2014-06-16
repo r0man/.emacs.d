@@ -528,6 +528,7 @@
   (use-package cider
     :init
     (progn
+
       ;; Enable eldoc in Clojure buffers
       (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
@@ -558,6 +559,9 @@
 
       ;; T to wrap history around when the end is reached.
       (setq cider-repl-wrap-history t)
+
+      ;; Log protocol messages to the `nrepl-message-buffer-name' buffer.
+      (setq nrepl-log-messages t)
 
       (defun cider-namespace-refresh ()
         (interactive)
@@ -610,16 +614,6 @@
             (web-test 1)
             (database-test 1)
             (defroutes 'defun)))
-#+END_SRC
-** Clojure test mode
-#+BEGIN_SRC emacs-lisp
-  (use-package clojure-test-mode
-    :init (setq clojure-test-regex
-                (mapconcat
-                 'identity
-                 '("\\(clojure\\.test\\)"
-                   "\\((ns .*-test.*\\)")
-                 "\\|")))
 #+END_SRC
 ** Clojure refactor
 #+BEGIN_SRC emacs-lisp
