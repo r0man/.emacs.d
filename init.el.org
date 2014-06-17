@@ -216,6 +216,114 @@
   (use-package auto-dictionary
     :init (add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
 #+END_SRC
+** Clojure mode
+#+BEGIN_SRC emacs-lisp
+  (use-package clojure-mode
+    :mode (("\\.edn$" . clojure-mode)
+           ("\\.cljs$" . clojure-mode)
+           ("\\.cljx$" . clojure-mode))
+    :init (progn
+            (require 'clojure-mode-extra-font-locking)
+            (add-hook 'clojure-mode-hook 'subword-mode)
+            (add-hook 'clojure-mode-hook 'paredit-mode)
+            (define-clojure-indent
+              ;; COMPOJURE
+              (ANY 2)
+              (DELETE 2)
+              (GET 2)
+              (HEAD 2)
+              (POST 2)
+              (PUT 2)
+              (context 2)
+              ;; ALGO.MONADS
+              (domonad 1)
+              ;; SQLINGVO
+              (copy 2)
+              (create-table 1)
+              (delete 1)
+              (drop-table 1)
+              (insert 2)
+              (select 1)
+              (select! 2)
+              (truncate 1)
+              (update 2)
+              ;; CUSTOM
+              (api-test 1)
+              (web-test 1)
+              (database-test 1)
+              (defroutes 'defun))))
+#+END_SRC
+** Clojure refactor
+#+BEGIN_SRC emacs-lisp
+  (use-package clj-refactor
+    :init
+    (progn
+      (defun enable-clj-refactor-mode ()
+        (clj-refactor-mode 1))
+
+      (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)
+      (cljr-add-keybindings-with-prefix "C-c C-x")))
+
+#+END_SRC
+** Cider
+#+BEGIN_SRC emacs-lisp
+  (use-package cider
+    :init
+    (progn
+
+      ;; Enable eldoc in Clojure buffers
+      (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+
+      ;; Hide *nrepl-connection* and *nrepl-server* buffers from appearing
+      ;; in some buffer switching commands like switch-to-buffer
+      (setq nrepl-hide-special-buffers nil)
+
+      ;; Enabling CamelCase support for editing commands(like forward-word,
+      ;; backward-word, etc) in the REPL is quite useful since we often have
+      ;; to deal with Java class and method names. The built-in Emacs minor
+      ;; mode subword-mode provides such functionality
+      (add-hook 'cider-repl-mode-hook 'subword-mode)
+
+      ;; The use of paredit when editing Clojure (or any other Lisp) code is
+      ;; highly recommended. You're probably using it already in your
+      ;; clojure-mode buffers (if you're not you probably should). You might
+      ;; also want to enable paredit in the REPL buffer as well.
+      (add-hook 'cider-repl-mode-hook 'paredit-mode)
+
+      ;; Auto-select the error buffer when it's displayed:
+      (setq cider-auto-select-error-buffer t)
+
+      ;; Controls whether to pop to the REPL buffer on connect.
+      (setq cider-repl-pop-to-buffer-on-connect nil)
+
+      ;; Controls whether to auto-select the error popup buffer.
+      (setq cider-auto-select-error-buffer t)
+
+      ;; T to wrap history around when the end is reached.
+      (setq cider-repl-wrap-history t)
+
+      ;; Log protocol messages to the `nrepl-message-buffer-name' buffer.
+      (setq nrepl-log-messages t)
+
+      (defun cider-namespace-refresh ()
+        (interactive)
+        (cider-interactive-eval
+         "(require 'clojure.tools.namespace.repl)
+      (clojure.tools.namespace.repl/refresh)"))
+
+      (defun piggiepack-repl ()
+        (interactive)
+        ;; (cider-jack-in)
+        (cider-interactive-eval
+         "(require 'cljs.repl.browser)
+          (cemerick.piggieback/cljs-repl :repl-env (cljs.repl.browser/repl-env :port 9000))"))
+
+      (defun node-repl ()
+        (interactive)
+        (cider-interactive-eval
+         "(require '[cljs.repl.node :as node])
+          (node/run-node-nrepl)"))))
+#+END_SRC
 ** Compass
 
 #+BEGIN_SRC emacs-lisp
@@ -523,110 +631,6 @@
   (setq inferior-lisp-program "sbcl")
 #+END_SRC
 
-** Cider
-#+BEGIN_SRC emacs-lisp
-  (use-package cider
-    :init
-    (progn
-
-      ;; Enable eldoc in Clojure buffers
-      (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-
-      ;; Hide *nrepl-connection* and *nrepl-server* buffers from appearing
-      ;; in some buffer switching commands like switch-to-buffer
-      (setq nrepl-hide-special-buffers nil)
-
-      ;; Enabling CamelCase support for editing commands(like forward-word,
-      ;; backward-word, etc) in the REPL is quite useful since we often have
-      ;; to deal with Java class and method names. The built-in Emacs minor
-      ;; mode subword-mode provides such functionality
-      (add-hook 'cider-repl-mode-hook 'subword-mode)
-
-      ;; The use of paredit when editing Clojure (or any other Lisp) code is
-      ;; highly recommended. You're probably using it already in your
-      ;; clojure-mode buffers (if you're not you probably should). You might
-      ;; also want to enable paredit in the REPL buffer as well.
-      (add-hook 'cider-repl-mode-hook 'paredit-mode)
-
-      ;; Auto-select the error buffer when it's displayed:
-      (setq cider-auto-select-error-buffer t)
-
-      ;; Controls whether to pop to the REPL buffer on connect.
-      (setq cider-repl-pop-to-buffer-on-connect nil)
-
-      ;; Controls whether to auto-select the error popup buffer.
-      (setq cider-auto-select-error-buffer t)
-
-      ;; T to wrap history around when the end is reached.
-      (setq cider-repl-wrap-history t)
-
-      ;; Log protocol messages to the `nrepl-message-buffer-name' buffer.
-      (setq nrepl-log-messages t)
-
-      (defun cider-namespace-refresh ()
-        (interactive)
-        (cider-interactive-eval
-         "(require 'clojure.tools.namespace.repl)
-      (clojure.tools.namespace.repl/refresh)"))
-
-      (defun piggiepack-repl ()
-        (interactive)
-        ;; (cider-jack-in)
-        (cider-interactive-eval
-         "(require 'cljs.repl.browser)
-          (cemerick.piggieback/cljs-repl :repl-env (cljs.repl.browser/repl-env :port 9000))"))
-
-      (defun node-repl ()
-        (interactive)
-        (cider-interactive-eval
-         "(require '[cljs.repl.node :as node])
-          (node/run-node-nrepl)"))))
-#+END_SRC
-** Clojure mode
-#+BEGIN_SRC emacs-lisp
-  (use-package clojure-mode
-    :mode (("\\.edn$" . clojure-mode)
-           ("\\.cljs$" . clojure-mode)
-           ("\\.cljx$" . clojure-mode))
-    :init (define-clojure-indent
-            ;; COMPOJURE
-            (ANY 2)
-            (DELETE 2)
-            (GET 2)
-            (HEAD 2)
-            (POST 2)
-            (PUT 2)
-            (context 2)
-            ;; ALGO.MONADS
-            (domonad 1)
-            ;; SQLINGVO
-            (copy 2)
-            (create-table 1)
-            (delete 1)
-            (drop-table 1)
-            (insert 2)
-            (select 1)
-            (select! 2)
-            (truncate 1)
-            (update 2)
-            ;; CUSTOM
-            (api-test 1)
-            (web-test 1)
-            (database-test 1)
-            (defroutes 'defun)))
-#+END_SRC
-** Clojure refactor
-#+BEGIN_SRC emacs-lisp
-  (use-package clj-refactor
-    :init
-    (progn
-      (defun enable-clj-refactor-mode ()
-        (clj-refactor-mode 1))
-
-      (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)
-      (cljr-add-keybindings-with-prefix "C-c C-x")))
-
-#+END_SRC
 ** Dired mode
 
    Switches passed to `ls' for Dired. MUST contain the `l' option.
@@ -1270,10 +1274,7 @@
      (multi-term)
 
      ;; Load keyboard bindings.
-     (global-set-key (kbd "C-c ,") 'ruby-test-run)
-     (global-set-key (kbd "C-c C-.") 'clojure-test-run-test)
      (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-     (global-set-key (kbd "C-c M-,") 'ruby-test-run-at-point)
      (global-set-key (kbd "C-c n") 'cleanup-buffer)
      (global-set-key (kbd "C-x C-g b") 'mo-git-blame-current)
      (global-set-key (kbd "C-x C-d") 'dired)

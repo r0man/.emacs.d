@@ -11,6 +11,7 @@
 (depends-on "cider")
 (depends-on "cider")
 (depends-on "clj-refactor")
+(depends-on "clojure-mode")
 (depends-on "color-theme")
 (depends-on "company")
 (depends-on "creole")
