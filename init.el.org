@@ -807,6 +807,10 @@
 
 #+END_SRC
 
+** Github browse file
+#+BEGIN_SRC emacs-lisp
+  (use-package github-browse-file)
+#+END_SRC
 ** Gnus
 #+BEGIN_SRC emacs-lisp
   (setq gnus-init-file "~/.emacs.d/gnus.el")
