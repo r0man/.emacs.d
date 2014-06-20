@@ -305,6 +305,9 @@
       ;; Log protocol messages to the `nrepl-message-buffer-name' buffer.
       (setq nrepl-log-messages t)
 
+      ;; Toggle between test and implementation, instead of showing test report buffer.
+      (define-key cider-mode-map (kbd "C-c C-t") 'projectile-toggle-between-implementation-and-test)
+
       (defun cider-namespace-refresh ()
         (interactive)
         (cider-interactive-eval
