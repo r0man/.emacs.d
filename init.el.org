@@ -267,6 +267,7 @@
 #+END_SRC
 ** Cider
 #+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path "~/workspace/cider")
   (use-package cider
     :init
     (progn
@@ -307,6 +308,9 @@
 
       ;; Toggle between test and implementation, instead of showing test report buffer.
       (define-key cider-mode-map (kbd "C-c C-t") 'projectile-toggle-between-implementation-and-test)
+
+      (define-key cider-mode-map (kbd "C-c ,") 'clojure-test-run-tests)
+      (define-key cider-mode-map (kbd "C-c C-,") 'clojure-test-run-tests)
 
       (defun cider-namespace-refresh ()
         (interactive)
