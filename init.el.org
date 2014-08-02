@@ -347,9 +347,8 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package company
-    :disabled t
     :bind ("TAB" . indent-or-complete)
-    :init (add-hook 'after-init-hook 'global-company-mode))
+    :init (global-company-mode))
 #+END_SRC
 
    Indent with TAB, then do completion.
