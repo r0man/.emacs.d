@@ -1,12 +1,11 @@
 
-;; Default method for selecting a newsgroup.
 (setq gnus-select-method
-      '(nnimap "gmail"
-               (nnimap-address "imap.gmail.com")
-               (nnimap-server-port 993)
-               (nnimap-stream ssl)))
+      '(nnimap "Mail"
+	       (nnimap-address "localhost")
+	       (nnimap-stream network)
+	       (nnimap-authenticator login)))
 
-;; *Integer that says how verbose Gnus should be.
+;; Integer that says how verbose Gnus should be.
 (setq gnus-verbose 10)
 
 ;; Integer that says how verbose the Gnus backends should be.
