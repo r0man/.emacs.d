@@ -965,7 +965,8 @@
    Send mail via smtpmail.
 
 #+BEGIN_SRC emacs-lisp
-  (setq send-mail-function 'message-smtpmail-send-it)
+  (setq send-mail-function 'smtpmail-send-it)
+  (setq message-send-mail-function 'smtpmail-send-it)
 #+END_SRC
 
    Whether to print info in debug buffer.
@@ -977,13 +978,13 @@
    The name of the host running SMTP server.
 
 #+BEGIN_SRC emacs-lisp
-  (setq smtpmail-smtp-server "smtp.googlemail.com")
+  (setq smtpmail-smtp-server "smtp.gmail.com")
 #+END_SRC
 
    SMTP service port number.
 
 #+BEGIN_SRC emacs-lisp
-  (setq smtpmail-smtp-service 465)
+  (setq smtpmail-smtp-service 587)
 #+END_SRC
 
 ** Macrostep
