@@ -944,6 +944,18 @@
 
 ** Mail
 
+   My email address.
+
+#+BEGIN_SRC emacs-lisp
+  (setq user-mail-address "roman.scherer@burningswell.com")
+#+END_SRC
+
+   Use message mode to send emails.
+
+#+BEGIN_SRC emacs-lisp
+  (setq mail-user-agent 'message-user-agent)
+#+END_SRC
+
    Load smtpmail
 
 #+BEGIN_SRC emacs-lisp
@@ -953,7 +965,7 @@
    Send mail via smtpmail.
 
 #+BEGIN_SRC emacs-lisp
-  (setq send-mail-function 'sendmail-send-it)
+  (setq send-mail-function 'message-smtpmail-send-it)
 #+END_SRC
 
    Whether to print info in debug buffer.
