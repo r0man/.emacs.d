@@ -443,6 +443,13 @@
   (setq version-control t)
 #+END_SRC
 
+** Message Buffer
+
+   Increase the number of messages in the *Messages* buffer.
+
+#+BEGIN_SRC emacs-lisp
+  (setq message-log-max 10000)
+#+END_SRC
 ** Misc
 
    Answer questions with "y" or "n".
