@@ -1192,14 +1192,15 @@
    Configure active languages for Babel.
 
 #+BEGIN_SRC emacs-lisp
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((R . t)
-     (clojure . t)
-     (emacs-lisp . t)
-     (ruby . t)
-     (sh . t)
-     (sql . t)))
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((R . t)
+       (clojure . t)
+       (elasticsearch . t)
+       (emacs-lisp . t)
+       (ruby . t)
+       (sh . t)
+       (sql . t)))
 #+END_SRC
 
    Fontify org mode code blocks.
