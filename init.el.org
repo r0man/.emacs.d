@@ -399,7 +399,7 @@
   (defun inconsolata ()
     "Set the default font to Inconsolata."
     (interactive)
-    (set-default-font "Inconsolata 13"))
+    (set-default-font "Inconsolata 14"))
 #+END_SRC
 ** Global auto revert mode
 
