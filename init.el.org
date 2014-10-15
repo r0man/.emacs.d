@@ -197,6 +197,28 @@
     (shell-command "xrdb -merge ~/.Xresources ")
     (message "X resources reloaded."))
 #+END_SRC
+
+   Insert a Clojure UUID.
+
+#+BEGIN_SRC emacs-lisp
+  (defun insert-clj-uuid (n)
+    "Insert a Clojure UUID tagged literal in the form of #uuid
+    \"11111111-1111-1111-1111-11111111\". The prefix argument N
+    specifies the padding used."
+    (interactive "P")
+    (let ((n (or n 1)))
+      (if (or (< n 0) (> n 9))
+          (error "Argument N must be between 0 and 9."))
+      (let ((n (string-to-char (number-to-string n))))
+        (insert
+         (format "#uuid \"%s-%s-%s-%s-%s\""
+                 (make-string 8 n)
+                 (make-string 4 n)
+                 (make-string 4 n)
+                 (make-string 4 n)
+                 (make-string 8 n))))))
+#+END_SRC
+
 ** Color theme
 #+BEGIN_SRC emacs-lisp
   (use-package color-theme
