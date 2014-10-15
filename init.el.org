@@ -216,7 +216,7 @@
                  (make-string 4 n)
                  (make-string 4 n)
                  (make-string 4 n)
-                 (make-string 8 n))))))
+                 (make-string 10 n))))))
 #+END_SRC
 
 ** Color theme
