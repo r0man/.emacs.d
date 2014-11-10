@@ -940,17 +940,6 @@
       (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 #+END_SRC
 
-** Key Chord
-#+BEGIN_SRC emacs-lisp
-  (use-package key-chord
-    :init (progn
-            (key-chord-mode 1)
-            (key-chord-define-global "jj" 'ace-jump-word-mode)
-            (key-chord-define-global "jk" 'ace-jump-line-mode)
-            (key-chord-define-global "uu" 'undo-tree-visualize)
-            (key-chord-define-global "yy" 'browse-kill-ring)))
-
-#+END_SRC
 ** Octave
 
 #+BEGIN_SRC emacs-lisp
