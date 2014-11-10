@@ -1,5 +1,5 @@
-(source melpa)
 (source gnu)
+(source melpa)
 
 (depends-on "ace-jump-mode")
 (depends-on "ace-window")
