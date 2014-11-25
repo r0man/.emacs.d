@@ -7,7 +7,10 @@
 	cleanup-buffer
 	forward-sexp
 	paredit-backward-kill-word
+	paredit-close-square
 	paredit-forward-kill-word
+	paredit-forward-slurp-sexp
+	paredit-open-square
 	sgml-slash
 	smex
 	yas-expand
