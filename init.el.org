@@ -1301,7 +1301,8 @@
 ** Web mode
 #+BEGIN_SRC emacs-lisp
   (use-package web-mode
-    :mode "\\.html\\'")
+    :mode "\\.html\\'"
+    :init (setq web-mode-markup-indent-offset 2))
 #+END_SRC
 ** Winner mode
 #+BEGIN_SRC emacs-lisp
