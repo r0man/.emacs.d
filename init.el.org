@@ -260,20 +260,22 @@
               ;; ALGO.MONADS
               (domonad 1)
               ;; SQLINGVO
-              (copy 2)
-              (create-table 1)
-              (delete 1)
-              (drop-table 1)
-              (insert 2)
-              (select 1)
-              (select! 2)
+              (copy 3)
+              (create-table 2)
+              (delete 2)
+              (drop-table 2)
+              (insert 3)
+              (select 2)
               (truncate 1)
-              (update 2)
+              (update 3)
+              (with 2)
               ;; CUSTOM
               (api-test 1)
               (web-test 1)
               (database-test 1)
-              (defroutes 'defun))))
+              (defroutes 'defun)
+              (assoc-some 1))))
+
 #+END_SRC
 ** Clojure refactor
 #+BEGIN_SRC emacs-lisp
@@ -1191,12 +1193,33 @@
             (setq org-babel-clojure-backend 'cider)
             (eval-after-load "ob-clojure"
               '(defun org-babel-execute:clojure (body params)
-                 "Execute a block of Clojure code with Babel and nREPL."
-                 (require 'cider)
-                 (if (nrepl-current-connection-buffer)
-                     (let ((result (cider-eval-sync (org-babel-expand-body:clojure body params))))
-                       (car (read-from-string (plist-get result :value))))
-                   (error "nREPL not connected!"))))))
+                 "Execute a block of Clojure code with Babel."
+                 (let ((expanded (org-babel-expand-body:clojure body params))
+                       result)
+                   (case org-babel-clojure-backend
+                     (cider
+                      (require 'cider)
+                      (let ((result-params (cdr (assoc :result-params params))))
+                        (setq result
+                              (nrepl-dict-get
+                               (nrepl-sync-request:eval expanded)
+                               (if (or (member "output" result-params)
+                                       (member "pp" result-params))
+                                   "out"
+                                 "value")))))
+                     (slime
+                      (require 'slime)
+                      (with-temp-buffer
+                        (insert expanded)
+                        (setq result
+                              (slime-eval
+                               `(swank:eval-and-grab-output
+                                 ,(buffer-substring-no-properties (point-min) (point-max)))
+                               (cdr (assoc :package params)))))))
+                   (org-babel-result-cond (cdr (assoc :result-params params))
+                     result
+                     (condition-case nil (org-babel-script-escape result)
+                       (error result))))))))
 
 #+END_SRC
 
