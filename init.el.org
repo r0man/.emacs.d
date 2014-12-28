@@ -293,6 +293,7 @@
 #+END_SRC
 ** Cider
 #+BEGIN_SRC emacs-lisp
+  (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
   (use-package cider
     :init
     (progn
