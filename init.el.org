@@ -274,6 +274,7 @@
               (create-table 2)
               (delete 2)
               (drop-table 2)
+              (drop-materialized-view 2)
               (insert 3)
               (select 2)
               (truncate 1)
