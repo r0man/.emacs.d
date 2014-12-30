@@ -240,6 +240,14 @@
   (use-package auto-dictionary
     :init (add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
 #+END_SRC
+** Appointments
+
+   Enable appointments.
+
+#+BEGIN_SRC emacs-lisp
+(appt-activate 1)
+#+END_SRC emacs-lisp
+
 ** Clojure mode
 #+BEGIN_SRC emacs-lisp
   (use-package clojure-mode
