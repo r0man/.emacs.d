@@ -906,6 +906,12 @@
 
 *** Gnus Demon
 
+    Require the Gnus demon.
+
+    #+BEGIN_SRC emacs-lisp
+      (require 'gnus-demon)
+    #+END_SRC
+
     Add daemonic server disconnection to Gnus.
 
     #+BEGIN_SRC emacs-lisp
