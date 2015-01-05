@@ -244,10 +244,15 @@
 
    Enable appointments.
 
-#+BEGIN_SRC emacs-lisp
-(appt-activate 1)
-#+END_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
+     (appt-activate 1)
+   #+END_SRC emacs-lisp
 
+   Display minutes to appointment and time on the mode line.
+
+   #+BEGIN_SRC emacs-lisp
+  (setq appt-display-mode-line t)
+   #+END_SRC
 ** Clojure mode
 #+BEGIN_SRC emacs-lisp
   (use-package clojure-mode
