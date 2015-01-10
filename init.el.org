@@ -264,6 +264,8 @@
             (add-hook 'clojure-mode-hook 'subword-mode)
             (add-hook 'clojure-mode-hook 'paredit-mode)
             (define-clojure-indent
+              ;; ClojureScript
+              (this-as 1)
               ;; COMPOJURE
               (ANY 2)
               (DELETE 2)
