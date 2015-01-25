@@ -26,6 +26,7 @@
 (depends-on "elisp-slime-nav")
 (depends-on "elnode")
 (depends-on "emms")
+(depends-on "ensime")
 (depends-on "epl")
 (depends-on "es-mode")
 (depends-on "evil")
