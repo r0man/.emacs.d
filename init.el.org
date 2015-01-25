@@ -235,11 +235,6 @@
   (use-package ace-jump-mode
     :bind ("C-c SPC" . ace-jump-mode))
 #+END_SRC
-** Ace window
-#+BEGIN_SRC emacs-lisp
-  (use-package ace-window
-    :bind ("C-x o" . ace-window))
-#+END_SRC
 ** Auto dictionary mode
 #+BEGIN_SRC emacs-lisp
   (use-package auto-dictionary
