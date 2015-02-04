@@ -264,6 +264,14 @@
             (add-hook 'clojure-mode-hook 'subword-mode)
             (add-hook 'clojure-mode-hook 'paredit-mode)
             (define-clojure-indent
+              ;; om-tools
+              (defcomponent 'defun)
+              (render 1)
+              (init-state 1)
+              (did-mount 1)
+              (will-mount 1)
+              (will-update 1)
+              (will-receive-props 1)
               ;; ClojureScript
               (this-as 1)
               ;; COMPOJURE
