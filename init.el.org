@@ -1362,7 +1362,9 @@
 ** Projectile
 #+BEGIN_SRC emacs-lisp
   (use-package projectile
-    :init (projectile-global-mode))
+    :init (progn
+            (add-hook 'clojure-mode-hook 'projectile-mode)
+            (add-hook 'ruby-mode-hook 'projectile-mode)))
 #+END_SRC
 ** Popwin
 #+BEGIN_SRC emacs-lisp
