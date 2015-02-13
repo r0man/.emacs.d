@@ -267,7 +267,7 @@
               ;; om-tools
               (defcomponent 'defun)
               (did-mount 1)
-              (did-unmount 1)
+              (will-unmount 1)
               (init-state 1)
               (render 1)
               (will-mount 1)
