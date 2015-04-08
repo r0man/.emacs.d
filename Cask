@@ -29,7 +29,6 @@
 (depends-on "elisp-slime-nav")
 (depends-on "elnode")
 (depends-on "emms")
-(depends-on "ensime")
 (depends-on "epl")
 (depends-on "erlang")
 (depends-on "es-mode")

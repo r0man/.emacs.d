@@ -445,11 +445,6 @@
   (use-package editorconfig)
 #+END_SRC
 
-** Ensime
-#+BEGIN_SRC emacs-lisp
-  (use-package ensime
-    :init (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
-#+END_SRC
 ** Fonts
 
    Use the Inconsolata font.
