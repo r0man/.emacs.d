@@ -1439,6 +1439,13 @@
 #+BEGIN_SRC emacs-lisp
   (use-package smooth-scrolling)
 #+END_SRC
+** Tabs
+
+   Don't insert tabs.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq-default indent-tabs-mode nil)
+   #+END_SRC
 ** Web mode
 #+BEGIN_SRC emacs-lisp
   (use-package web-mode
