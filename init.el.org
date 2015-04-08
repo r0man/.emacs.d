@@ -274,6 +274,7 @@
               (will-mount 1)
               (will-receive-props 1)
               (will-update 1)
+              (should-update 1)
               ;; ClojureScript
               (this-as 1)
               ;; COMPOJURE
