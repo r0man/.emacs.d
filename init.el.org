@@ -1446,9 +1446,12 @@
 #+BEGIN_SRC emacs-lisp
   (use-package web-mode
     :mode "\\.html\\'"
-    :init (setq web-mode-code-indent-offset 2
-                web-mode-css-indent-offset 2
-                web-mode-markup-indent-offset 2))
+    :init (progn
+            (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+            (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+            (setq web-mode-code-indent-offset 2
+                  web-mode-css-indent-offset 2
+                  web-mode-markup-indent-offset 2)))
 #+END_SRC
 ** Winner mode
 #+BEGIN_SRC emacs-lisp
