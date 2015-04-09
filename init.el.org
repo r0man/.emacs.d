@@ -258,7 +258,8 @@
   (use-package clojure-mode
     :mode (("\\.edn$" . clojure-mode)
            ("\\.cljs$" . clojure-mode)
-           ("\\.cljx$" . clojure-mode))
+           ("\\.cljx$" . clojure-mode)
+           ("\\.cljc$" . clojure-mode))
     :init (progn
             (require 'clojure-mode-extra-font-locking)
             (add-hook 'clojure-mode-hook 'subword-mode)
