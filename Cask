@@ -38,6 +38,7 @@
 (depends-on "fakir")
 (depends-on "find-file-in-project")
 (depends-on "flx")
+(depends-on "flx-ido")
 (depends-on "flycheck")
 (depends-on "gh")
 (depends-on "gist")
