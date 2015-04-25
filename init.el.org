@@ -1040,6 +1040,7 @@
   (use-package magit
     :bind (("C-x C-g s" . magit-status))
     :init (progn
+            (setq magit-last-seen-setup-instructions "1.4.0")
             (setq magit-stage-all-confirm nil)
             (setq magit-unstage-all-confirm nil)
             (setq ediff-window-setup-function 'ediff-setup-windows-plain)))
