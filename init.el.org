@@ -1461,6 +1461,11 @@
   (winner-mode)
 #+END_SRC
 
+** YAML mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package yaml-mode
+       :mode (("\\.yml$" . yaml-mode)))
+   #+END_SRC
 ** After init hook
 #+BEGIN_SRC emacs-lisp
 

@@ -105,3 +105,4 @@
 (depends-on "web-mode")
 (depends-on "websocket")
 (depends-on "yasnippet")
+(depends-on "yaml-mode")
