@@ -438,15 +438,6 @@
 (add-hook 'emacs-lisp-mode-hook 'dim-parens)
 #+END_SRC
 
-** Editorconfig
-
-   EditorConfig helps developers define and maintain consistent coding
-   styles between different editors and IDEs.
-
-#+BEGIN_SRC emacs-lisp
-  (use-package editorconfig)
-#+END_SRC
-
 ** Fonts
 
    Use the Inconsolata font.
