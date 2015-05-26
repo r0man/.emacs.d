@@ -230,10 +230,10 @@
       (require 'color-theme-solarized)
       (load-theme 'solarized-dark t)))
 #+END_SRC
-** Ace jump mode
+** Avy
 #+BEGIN_SRC emacs-lisp
-  (use-package ace-jump-mode
-    :bind ("C-c SPC" . ace-jump-mode))
+  (use-package avy
+    :bind ("C-c SPC" . avy-goto-char))
 #+END_SRC
 ** Auto dictionary mode
 #+BEGIN_SRC emacs-lisp
@@ -361,6 +361,9 @@
 
       ;; Toggle between test and implementation, instead of showing test report buffer.
       (define-key cider-mode-map (kbd "C-c C-t") 'projectile-toggle-between-implementation-and-test)
+
+      (setq cider-known-endpoints
+            '(("localhost" "127.0.0.1" "7888")))
 
       (defun piggiepack-repl ()
         (interactive)
