@@ -786,7 +786,7 @@
 
       (defengine google
         "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
-        "g")))
+        :keybinding "g")))
 #+END_SRC
 
 ** Emacs Lisp mode
