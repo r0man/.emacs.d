@@ -1463,6 +1463,23 @@
      (use-package yaml-mode
        :mode (("\\.yml$" . yaml-mode)))
    #+END_SRC
+** YASnippet
+   #+BEGIN_SRC emacs-lisp
+     (use-package yasnippet
+       :init (progn
+               (yas-reload-all)
+               (mapcar
+                (lambda (mode)
+                  (add-hook mode #'yas-minor-mode))
+                '(clojure-mode-hook
+                  emacs-lisp-mode
+                  js-mode
+                  js2-mode
+                  lisp--interaction-mode
+                  lisp-mode
+                  ruby-mode
+                  sql-mode))))
+   #+END_SRC
 ** After init hook
 #+BEGIN_SRC emacs-lisp
 
