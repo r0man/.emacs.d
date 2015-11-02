@@ -313,10 +313,11 @@
     :init
     (progn
       (defun enable-clj-refactor-mode ()
-        (clj-refactor-mode 1))
+        (clj-refactor-mode 1)
+        (yas-minor-mode 1)
+        (cljr-add-keybindings-with-prefix "C-c C-m"))
 
-      (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)
-      (cljr-add-keybindings-with-prefix "C-c C-x")))
+      (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)))
 
 #+END_SRC
 ** Cider
