@@ -535,11 +535,6 @@
   (setq inhibit-startup-message t)
 #+END_SRC
 
-   Delete trailing whitespace when saving.
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'before-save-hook 'delete-trailing-whitespace)
-#+END_SRC
-
    Toggle column number display in the mode line.
 
 #+BEGIN_SRC emacs-lisp
