@@ -265,6 +265,8 @@
             (add-hook 'clojure-mode-hook 'subword-mode)
             (add-hook 'clojure-mode-hook 'paredit-mode)
             (define-clojure-indent
+              ;; cljs.test
+              (async 1)
               ;; om-tools
               (defcomponent 'defun)
               (did-mount 1)
@@ -288,17 +290,8 @@
               (context 2)
               ;; ALGO.MONADS
               (domonad 1)
-              ;; SQLINGVO
-              (copy 3)
-              (create-table 2)
-              (delete 2)
-              (drop-table 2)
-              (drop-materialized-view 2)
-              (insert 3)
-              (select 2)
-              (truncate 1)
-              (update 3)
-              (with 2)
+              ;; Om.next
+              (defui '(1 nil nil (1)))
               ;; CUSTOM
               (api-test 1)
               (web-test 1)
