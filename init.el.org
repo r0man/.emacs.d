@@ -1326,8 +1326,7 @@
 #+BEGIN_SRC emacs-lisp
     (org-babel-do-load-languages
      'org-babel-load-languages
-     '((R . t)
-       (clojure . t)
+     '((clojure . t)
        (elasticsearch . t)
        (emacs-lisp . t)
        (ruby . t)
