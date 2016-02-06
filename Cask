@@ -2,7 +2,6 @@
 (source melpa)
 (source melpa-stable)
 
-(depends-on "ack-and-a-half")
 (depends-on "async")
 (depends-on "auto-complete")
 (depends-on "auto-dictionary")
@@ -41,9 +40,6 @@
 (depends-on "flycheck")
 (depends-on "gh")
 (depends-on "gist")
-(depends-on "git-commit-mode")
-(depends-on "git-rebase-mode")
-(depends-on "git-timemachine")
 (depends-on "github-browse-file")
 (depends-on "goto-chg")
 (depends-on "haskell-mode")
