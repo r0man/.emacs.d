@@ -1356,7 +1356,7 @@
             ("*git-gutter:diff*" :height 30 :stick t))))
    #+END_SRC
 ** Ruby mode
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package ruby-mode
     :mode (("Capfile$" . ruby-mode)
            ("Gemfile$" . ruby-mode)
@@ -1366,18 +1366,18 @@
            ("\\.gemspec$" . ruby-mode)
            ("\\.rake$" . ruby-mode)
            ("\\.ru$" . ruby-mode)))
-
-#+END_SRC
+   #+END_SRC
 ** Smex
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package smex
     :bind (("M-X" . smex-major-mode-commands)
            ("M-x" . smex)))
-#+END_SRC
+   #+END_SRC
 ** Slamhound
-#+BEGIN_SRC emacs-lisp
-  (use-package slamhound)
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+  (use-package slamhound
+    :commands (slamhound))
+   #+END_SRC
 ** Smooth scrolling
 #+BEGIN_SRC emacs-lisp
   (use-package smooth-scrolling)
