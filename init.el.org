@@ -645,15 +645,17 @@
 #+END_SRC
 
 ** CSS mode
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package css-mode
     :mode ("\\.css\\'" . css-mode)
-    :init (setq css-indent-offset 2))
-#+END_SRC
+    :config (setq css-indent-offset 2))
+   #+END_SRC
 ** SCSS mode
 #+BEGIN_SRC emacs-lisp
   (use-package scss-mode
-    :init (setq scss-compile-at-save nil))
+    :mode (("\\.sass\\'" . scss-mode)
+           ("\\.scss\\'" . scss-mode))
+    :config (setq scss-compile-at-save nil))
 #+END_SRC
 ** Desktop save mode
 
