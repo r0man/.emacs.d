@@ -1116,13 +1116,13 @@
   (use-package macrostep)
 #+END_SRC
 ** Markdown mode
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package markdown-mode
-    :init (progn
-            (setq markdown-command "doctor")
-            (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))))
-#+END_SRC
-
+    :mode ("\\.md\\'" . markdown-mode)
+    :config
+    (setq markdown-command "doctor")
+    (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode)))
+   #+END_SRC
 ** Multi term
 
 #+BEGIN_SRC emacs-lisp
