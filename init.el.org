@@ -758,18 +758,14 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package engine-mode
-    :init
-    (progn
-
-      (require 'engine-mode)
-      (engine-mode t)
-
-      (defengine github
-        "https://github.com/search?ref=simplesearch&q=%s")
-
-      (defengine google
-        "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
-        :keybinding "g")))
+    :commands (engine/search-github engine/search-google)
+    :config
+    (engine-mode t)
+    (defengine github
+      "https://github.com/search?ref=simplesearch&q=%s")
+    (defengine google
+      "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
+      :keybinding "g"))
 #+END_SRC
 
 ** Emacs Lisp mode
