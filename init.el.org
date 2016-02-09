@@ -1390,7 +1390,7 @@
      (setq-default indent-tabs-mode nil)
    #+END_SRC
 ** Web mode
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package web-mode
     :mode (("\\.jsx$" . web-mode)
            ("\\.html$" . web-mode))
@@ -1398,7 +1398,7 @@
     (setq web-mode-code-indent-offset 2
           web-mode-css-indent-offset 2
           web-mode-markup-indent-offset 2))
-#+END_SRC
+   #+END_SRC
 ** Winner mode
 #+BEGIN_SRC emacs-lisp
   (winner-mode)
@@ -1412,19 +1412,19 @@
 ** YASnippet
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
-       :init (progn
-               (yas-reload-all)
-               (mapcar
-                (lambda (mode)
-                  (add-hook mode #'yas-minor-mode))
-                '(clojure-mode-hook
-                  emacs-lisp-mode
-                  js-mode
-                  js2-mode
-                  lisp--interaction-mode
-                  lisp-mode
-                  ruby-mode
-                  sql-mode))))
+       :init
+       (yas-reload-all)
+       (mapcar
+        (lambda (mode)
+          (add-hook mode #'yas-minor-mode))
+        '(clojure-mode-hook
+          emacs-lisp-mode
+          js-mode
+          js2-mode
+          lisp--interaction-mode
+          lisp-mode
+          ruby-mode
+          sql-mode)))
    #+END_SRC
 ** After init hook
    #+BEGIN_SRC emacs-lisp
