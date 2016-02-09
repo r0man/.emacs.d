@@ -311,7 +311,7 @@
       (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)))
 #+END_SRC
 ** Cider
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package cider
     :init
     (progn
@@ -365,7 +365,7 @@
         (cider-interactive-eval
          "(require '[cljs.repl.node :as node])
           (node/run-node-nrepl)"))))
-#+END_SRC
+   #+END_SRC
 ** Compass
 
 #+BEGIN_SRC emacs-lisp
@@ -384,22 +384,22 @@
 
    Enable company mode.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package company
     :bind ("TAB" . indent-or-complete)
     :init (global-company-mode))
-#+END_SRC
+   #+END_SRC
 
    Indent with TAB, then do completion.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun indent-or-complete ()
     "Indent or complete via company-mode."
     (interactive)
     (if (looking-at "\\_>")
         (company-complete-common)
       (indent-according-to-mode)))
-#+END_SRC
+   #+END_SRC
 
 ** Company Quickhelp
 
@@ -1459,4 +1459,3 @@
         (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
         (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)))
    #+END_SRC
-
