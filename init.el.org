@@ -998,32 +998,31 @@
 #+END_SRC
 
 ** Ido vertical mode
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package ido-vertical-mode
     :init
     (ido-vertical-mode)
     (setq ido-vertical-define-keys 'C-n-and-C-p-only))
-#+END_SRC
+   #+END_SRC
 ** Flx mode
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package flx-ido
     :init
-    (progn
-      (flx-ido-mode 1)
-      ;; disable ido faces to see flx highlights.
-      (setq ido-use-faces nil)
-      (setq gc-cons-threshold 20000000)))
-#+END_SRC
+    (flx-ido-mode 1)
+    ;; disable ido faces to see flx highlights.
+    (setq ido-use-faces nil)
+    (setq gc-cons-threshold 20000000))
+   #+END_SRC
 ** Magit
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package magit
     :bind (("C-x C-g s" . magit-status))
-    :init (progn
-            (setq magit-last-seen-setup-instructions "1.4.0")
-            (setq magit-stage-all-confirm nil)
-            (setq magit-unstage-all-confirm nil)
-            (setq ediff-window-setup-function 'ediff-setup-windows-plain)))
-#+END_SRC
+    :config
+    (setq magit-last-seen-setup-instructions "1.4.0")
+    (setq magit-stage-all-confirm nil)
+    (setq magit-unstage-all-confirm nil)
+    (setq ediff-window-setup-function 'ediff-setup-windows-plain))
+   #+END_SRC
 ** Java
 
    Indent Java annotations. See http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
