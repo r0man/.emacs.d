@@ -225,10 +225,9 @@
 #+BEGIN_SRC emacs-lisp
   (use-package color-theme
     :init
-    (progn
-      (add-to-list 'load-path "~/workspace/emacs-color-theme-solarized")
-      (require 'color-theme-solarized)
-      (load-theme 'solarized-dark t)))
+    (add-to-list 'load-path "~/workspace/emacs-color-theme-solarized")
+    (require 'color-theme-solarized)
+    (load-theme 'solarized-dark t))
 #+END_SRC
 ** Avy
 #+BEGIN_SRC emacs-lisp
