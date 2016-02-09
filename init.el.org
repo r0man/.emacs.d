@@ -819,8 +819,9 @@
    Start the Emacs server if it's not running.
 
 #+BEGIN_SRC emacs-lisp
-  (require 'server)
-  (unless (server-running-p) (server-start))
+  (use-package server
+    :if window-system
+    :init (add-hook 'after-init-hook 'server-start t))
 #+END_SRC
 
 ** Emacs multimedia system
