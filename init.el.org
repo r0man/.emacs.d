@@ -876,7 +876,8 @@
 
 ** Github browse file
 #+BEGIN_SRC emacs-lisp
-  (use-package github-browse-file)
+  (use-package github-browse-file
+    :commands (github-browse-file github-browse-file-blame))
 #+END_SRC
 ** Gnus
 
