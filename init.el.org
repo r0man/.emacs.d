@@ -262,8 +262,8 @@
            ("\\.cljc$" . clojure-mode))
     :init (progn
             (require 'clojure-mode-extra-font-locking)
-            (add-hook 'clojure-mode-hook 'subword-mode)
-            (add-hook 'clojure-mode-hook 'paredit-mode)
+            (add-hook 'clojure-mode-hook #'subword-mode)
+            (add-hook 'clojure-mode-hook #'paredit-mode)
             (define-clojure-indent
               ;; cljs.test
               (async 1)
