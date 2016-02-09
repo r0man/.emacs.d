@@ -1000,9 +1000,9 @@
 ** Ido vertical mode
 #+BEGIN_SRC emacs-lisp
   (use-package ido-vertical-mode
-    :init (progn
-            (ido-vertical-mode)
-            (setq ido-vertical-define-keys 'C-n-and-C-p-only)))
+    :init
+    (ido-vertical-mode)
+    (setq ido-vertical-define-keys 'C-n-and-C-p-only))
 #+END_SRC
 ** Flx mode
 #+BEGIN_SRC emacs-lisp
