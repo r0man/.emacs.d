@@ -5,8 +5,8 @@
         '(("elpa" . "http://tromey.com/elpa/")
           ("melpa" . "http://melpa.org/packages/")
           ("melpa-stable" . "http://stable.melpa.org/packages/")
-          ("gnu" . "http://elpa.gnu.org/packages/")
-          ("marmalade" . "http://marmalade-repo.org/packages/")))
+          ("gnu" . "http://elpa.gnu.org/packages/")))
+  (package-initialize)
 #+END_SRC
 ** Scroll, tool and menu bar.
 
@@ -47,86 +47,74 @@
   (load custom-file)
 #+END_SRC
 
-** Cask
-
-   Load [[http://cask.github.io/][Cask]].
-
-#+BEGIN_SRC emacs-lisp
-  (require 'cask "~/.cask/cask.el")
-#+END_SRC
-
-   Initialize [[http://cask.github.io/][Cask]].
-
-#+BEGIN_SRC emacs-lisp
-  (cask-initialize)
-#+END_SRC
-
 ** Use package
 
-   Load and configure packages with [[https://github.com/jwiegley/use-package][use-package]].
+   Bootstrap [[https://github.com/jwiegley/use-package][use-package]].
 
-#+BEGIN_SRC emacs-lisp
-  (require 'use-package)
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (unless (package-installed-p 'use-package)
+       (package-refresh-contents)
+       (package-install 'use-package))
+   #+END_SRC
 
    Report about loading and configuration details.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (setq use-package-verbose t)
-#+END_SRC
+   #+END_SRC
 
 ** Custom functions
 
    Load a file only if it exists.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun load-if-exists (file)
     "Load `file` if it exists."
     (when (file-exists-p file)
       (load file)))
-#+END_SRC
+   #+END_SRC
 
    Indent the whole buffer.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun indent-buffer ()
     "Indent the whole buffer."
     (interactive)
     (indent-region (point-min) (point-max)))
-#+END_SRC
+   #+END_SRC
 
    Remove all tabs from the current buffer.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun untabify-buffer ()
     "Remove all tabs from the current buffer."
     (interactive)
     (untabify (point-min) (point-max)))
-#+END_SRC
+   #+END_SRC
 
    Cleanup the current buffer.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun cleanup-buffer ()
     "Cleanup the current buffer."
     (interactive)
     (indent-buffer)
     (delete-trailing-whitespace))
-#+END_SRC
+   #+END_SRC
 
    Find file as root.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun sudo-edit (&optional arg)
     (interactive "p")
     (if (or arg (not buffer-file-name))
         (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
       (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-#+END_SRC
+   #+END_SRC
 
    Swap two buffers.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun swap-buffers ()
     "Swap your buffers."
     (interactive)
@@ -147,11 +135,11 @@
                (set-window-start w1 s2)
                (set-window-start w2 s1)
                (setq i (1+ i)))))))
-#+END_SRC
+   #+END_SRC
 
    Rotate two buffers.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun rotate-buffers ()
     "Rotate your buffers."
     (interactive)
@@ -177,32 +165,32 @@
             (set-window-buffer (next-window) next-win-buffer)
             (select-window first-win)
             (if this-win-2nd (other-window 1))))))
-#+END_SRC
+   #+END_SRC
 
    Show the face found at the current point.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun what-face (pos)
     "Show the face found at the current point."
     (interactive "d")
     (let ((face (or (get-char-property (point) 'read-face-name)
                     (get-char-property (point) 'face))))
       (if face (message "Face: %s" face) (message "No face at %d" pos))))
-#+END_SRC
+   #+END_SRC
 
    Reload the ~/.Xresources configuration.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun xresources ()
     "Reload the ~/.Xresources configuration."
     (interactive)
     (shell-command "xrdb -merge ~/.Xresources ")
     (message "X resources reloaded."))
-#+END_SRC
+   #+END_SRC
 
    Insert a Clojure UUID.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (defun insert-clj-uuid (n)
     "Insert a Clojure UUID tagged literal in the form of #uuid
     \"11111111-1111-1111-1111-111111111111\". The prefix argument N
@@ -219,26 +207,29 @@
                  (make-string 4 n)
                  (make-string 4 n)
                  (make-string 12 n))))))
-#+END_SRC
+   #+END_SRC
 
 ** Color theme
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package color-theme
+    :ensure t
     :init
     (add-to-list 'load-path "~/workspace/emacs-color-theme-solarized")
     (require 'color-theme-solarized)
     (load-theme 'solarized-dark t))
-#+END_SRC
+   #+END_SRC
 ** Avy
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package avy
+    :ensure t
     :bind ("C-c SPC" . avy-goto-char))
-#+END_SRC
+   #+END_SRC
 ** Auto dictionary mode
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package auto-dictionary
+    :ensure t
     :init (add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
-#+END_SRC
+   #+END_SRC
 ** Appointments
 
    Enable appointments.
@@ -253,118 +244,123 @@
   (setq appt-display-mode-line t)
    #+END_SRC
 ** Clojure mode
-#+BEGIN_SRC emacs-lisp
-  (use-package clojure-mode
-    :mode (("\\.edn$" . clojure-mode)
-           ("\\.cljs$" . clojure-mode)
-           ("\\.cljx$" . clojure-mode)
-           ("\\.cljc$" . clojure-mode))
-    :config
-    (require 'clojure-mode-extra-font-locking)
-    (add-hook 'clojure-mode-hook #'subword-mode)
-    (add-hook 'clojure-mode-hook #'paredit-mode)
-    (define-clojure-indent
-      ;; cljs.test
-      (async 1)
-      ;; om-tools
-      (defcomponent 'defun)
-      (did-mount 1)
-      (did-update 1)
-      (will-unmount 1)
-      (init-state 1)
-      (render 1)
-      (will-mount 1)
-      (will-receive-props 1)
-      (will-update 1)
-      (should-update 1)
-      ;; ClojureScript
-      (this-as 1)
-      ;; COMPOJURE
-      (ANY 2)
-      (DELETE 2)
-      (GET 2)
-      (HEAD 2)
-      (POST 2)
-      (PUT 2)
-      (context 2)
-      ;; ALGO.MONADS
-      (domonad 1)
-      ;; Om.next
-      (defui '(1 nil nil (1)))
-      ;; CUSTOM
-      (api-test 1)
-      (web-test 1)
-      (database-test 1)
-      (defroutes 'defun)
-      (assoc-some 1))
-    (put 'defmixin 'clojure-backtracking-indent '(4 (2))))
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (use-package clojure-mode
+       :ensure t
+       :mode (("\\.edn$" . clojure-mode)
+              ("\\.cljs$" . clojure-mode)
+              ("\\.cljx$" . clojure-mode)
+              ("\\.cljc$" . clojure-mode))
+       :config
+       (add-hook 'clojure-mode-hook #'subword-mode)
+       (add-hook 'clojure-mode-hook #'paredit-mode)
+       (define-clojure-indent
+         ;; cljs.test
+         (async 1)
+         ;; om-tools
+         (defcomponent 'defun)
+         (did-mount 1)
+         (did-update 1)
+         (will-unmount 1)
+         (init-state 1)
+         (render 1)
+         (will-mount 1)
+         (will-receive-props 1)
+         (will-update 1)
+         (should-update 1)
+         ;; ClojureScript
+         (this-as 1)
+         ;; COMPOJURE
+         (ANY 2)
+         (DELETE 2)
+         (GET 2)
+         (HEAD 2)
+         (POST 2)
+         (PUT 2)
+         (context 2)
+         ;; ALGO.MONADS
+         (domonad 1)
+         ;; Om.next
+         (defui '(1 nil nil (1)))
+         ;; CUSTOM
+         (api-test 1)
+         (web-test 1)
+         (database-test 1)
+         (defroutes 'defun)
+         (assoc-some 1))
+       (put 'defmixin 'clojure-backtracking-indent '(4 (2))))
+
+     (use-package clojure-mode-extra-font-locking
+       :ensure t)
+   #+END_SRC
 ** Clojure refactor
-#+BEGIN_SRC emacs-lisp
-  (use-package clj-refactor
-    :init
-    (progn
-      (defun enable-clj-refactor-mode ()
-        (clj-refactor-mode 1)
-        (yas-minor-mode 1)
-        (cljr-add-keybindings-with-prefix "C-c C-R"))
-      (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)))
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (use-package clj-refactor
+       :disabled t
+       :ensure t
+       :pin "melpa-stable"
+       :init
+       (defun enable-clj-refactor-mode ()
+         (clj-refactor-mode 1)
+         (cljr-add-keybindings-with-prefix "C-c C-R"))
+       (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode))
+   #+END_SRC
 ** Cider
    #+BEGIN_SRC emacs-lisp
-  (use-package cider
-    :init
-    (progn
+     (use-package cider
+       :ensure t
+       :init
+       (progn
 
-      ;; Enable eldoc in Clojure buffers
-      (add-hook 'cider-mode-hook #'eldoc-mode)
+         ;; Enable eldoc in Clojure buffers
+         (add-hook 'cider-mode-hook #'eldoc-mode)
 
-      ;; Hide *nrepl-connection* and *nrepl-server* buffers from appearing
-      ;; in some buffer switching commands like switch-to-buffer
-      (setq nrepl-hide-special-buffers nil)
+         ;; Hide *nrepl-connection* and *nrepl-server* buffers from appearing
+         ;; in some buffer switching commands like switch-to-buffer
+         (setq nrepl-hide-special-buffers nil)
 
-      ;; Enabling CamelCase support for editing commands(like forward-word,
-      ;; backward-word, etc) in the REPL is quite useful since we often have
-      ;; to deal with Java class and method names. The built-in Emacs minor
-      ;; mode subword-mode provides such functionality
-      (add-hook 'cider-repl-mode-hook #'subword-mode)
+         ;; Enabling CamelCase support for editing commands(like forward-word,
+         ;; backward-word, etc) in the REPL is quite useful since we often have
+         ;; to deal with Java class and method names. The built-in Emacs minor
+         ;; mode subword-mode provides such functionality
+         (add-hook 'cider-repl-mode-hook #'subword-mode)
 
-      ;; The use of paredit when editing Clojure (or any other Lisp) code is
-      ;; highly recommended. You're probably using it already in your
-      ;; clojure-mode buffers (if you're not you probably should). You might
-      ;; also want to enable paredit in the REPL buffer as well.
-      (add-hook 'cider-repl-mode-hook #'paredit-mode)
+         ;; The use of paredit when editing Clojure (or any other Lisp) code is
+         ;; highly recommended. You're probably using it already in your
+         ;; clojure-mode buffers (if you're not you probably should). You might
+         ;; also want to enable paredit in the REPL buffer as well.
+         (add-hook 'cider-repl-mode-hook #'paredit-mode)
 
-      ;; Auto-select the error buffer when it's displayed:
-      (setq cider-auto-select-error-buffer t)
+         ;; Auto-select the error buffer when it's displayed:
+         (setq cider-auto-select-error-buffer t)
 
-      ;; Controls whether to pop to the REPL buffer on connect.
-      (setq cider-repl-pop-to-buffer-on-connect nil)
+         ;; Controls whether to pop to the REPL buffer on connect.
+         (setq cider-repl-pop-to-buffer-on-connect nil)
 
-      ;; Controls whether to auto-select the error popup buffer.
-      (setq cider-auto-select-error-buffer t)
+         ;; Controls whether to auto-select the error popup buffer.
+         (setq cider-auto-select-error-buffer t)
 
-      ;; T to wrap history around when the end is reached.
-      (setq cider-repl-wrap-history t)
+         ;; T to wrap history around when the end is reached.
+         (setq cider-repl-wrap-history t)
 
-      ;; Log protocol messages to the `nrepl-message-buffer-name' buffer.
-      (setq nrepl-log-messages t)
+         ;; Log protocol messages to the `nrepl-message-buffer-name' buffer.
+         (setq nrepl-log-messages t)
 
-      (setq cider-known-endpoints
-            '(("localhost" "127.0.0.1" "7888")))
+         (setq cider-known-endpoints
+               '(("localhost" "127.0.0.1" "7888")))
 
-      (defun piggiepack-repl ()
-        (interactive)
-        ;; (cider-jack-in)
-        (cider-interactive-eval
-         "(require 'cljs.repl.browser)
-          (cemerick.piggieback/cljs-repl :repl-env (cljs.repl.browser/repl-env :port 9000))"))
+         (defun piggiepack-repl ()
+           (interactive)
+           ;; (cider-jack-in)
+           (cider-interactive-eval
+            "(require 'cljs.repl.browser)
+             (cemerick.piggieback/cljs-repl :repl-env (cljs.repl.browser/repl-env :port 9000))"))
 
-      (defun node-repl ()
-        (interactive)
-        (cider-interactive-eval
-         "(require '[cljs.repl.node :as node])
-          (node/run-node-nrepl)"))))
+         (defun node-repl ()
+           (interactive)
+           (cider-interactive-eval
+            "(require '[cljs.repl.node :as node])
+             (node/run-node-nrepl)"))))
    #+END_SRC
 ** Compass
 
@@ -385,9 +381,10 @@
    Enable company mode.
 
    #+BEGIN_SRC emacs-lisp
-  (use-package company
-    :bind ("TAB" . indent-or-complete)
-    :init (global-company-mode))
+     (use-package company
+       :ensure t
+       :bind ("TAB" . indent-or-complete)
+       :init (global-company-mode))
    #+END_SRC
 
    Indent with TAB, then do completion.
@@ -403,11 +400,12 @@
 
 ** Company Quickhelp
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package company-quickhelp
+    :ensure t
     :init (company-quickhelp-mode 1))
 
-#+END_SRC
+   #+END_SRC
 
 ** Configure the full name of the user logged in.
 #+BEGIN_SRC emacs-lisp
@@ -646,16 +644,18 @@
 
 ** CSS mode
    #+BEGIN_SRC emacs-lisp
-  (use-package css-mode
-    :mode ("\\.css\\'" . css-mode)
-    :config (setq css-indent-offset 2))
+     (use-package css-mode
+       :ensure t
+       :mode ("\\.css\\'" . css-mode)
+       :config (setq css-indent-offset 2))
    #+END_SRC
 ** SCSS mode
    #+BEGIN_SRC emacs-lisp
-  (use-package scss-mode
-    :mode (("\\.sass\\'" . scss-mode)
-           ("\\.scss\\'" . scss-mode))
-    :config (setq scss-compile-at-save nil))
+     (use-package scss-mode
+       :ensure t
+       :mode (("\\.sass\\'" . scss-mode)
+              ("\\.scss\\'" . scss-mode))
+       :config (setq scss-compile-at-save nil))
    #+END_SRC
 ** Desktop save mode
 
@@ -758,8 +758,9 @@
 #+END_SRC
 ** Engine Mode
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package engine-mode
+    :ensure t
     :commands (engine/search-github engine/search-google)
     :config
     (engine-mode t)
@@ -768,7 +769,7 @@
     (defengine google
       "http://www.google.com/search?ie=utf-8&oe=utf-8&q=%s"
       :keybinding "g"))
-#+END_SRC
+   #+END_SRC
 
 ** Emacs Lisp mode
 
@@ -776,12 +777,6 @@
 
 #+BEGIN_SRC emacs-lisp
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-#+END_SRC
-
-   Enable Slime-style navigation of elisp symbols using M-. and M-,
-
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
 #+END_SRC
 
    Auto load files.
@@ -808,22 +803,27 @@
 #+END_SRC
 
 ** Elisp slime navigation
-#+BEGIN_SRC emacs-lisp
-  (use-package elisp-slime-nav)
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (use-package elisp-slime-nav
+       :ensure t
+       :init
+       (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode))
+   #+END_SRC
 ** Emacs server
 
    Start the Emacs server if it's not running.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package server
+    :ensure t
     :if window-system
     :init (add-hook 'after-init-hook 'server-start t))
-#+END_SRC
+   #+END_SRC
 
 ** Emacs multimedia system
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package emms
+    :ensure t
     :init
     (progn
       (emms-all)
@@ -839,13 +839,14 @@
       (load-if-exists "~/.emms.el")
       (add-to-list 'emms-stream-default-list
                    '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))))
-#+END_SRC
+   #+END_SRC
 ** Expand region
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package expand-region
+    :ensure t
     :bind (("C-c C-+" . er/expand-region)
            ("C-c C--" . er/contract-region)))
-#+END_SRC
+   #+END_SRC
 ** Fly Spell mode
 
    Enable flyspell in text mode.
@@ -875,10 +876,11 @@
 #+END_SRC
 
 ** Github browse file
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package github-browse-file
+    :ensure t
     :commands (github-browse-file github-browse-file-blame))
-#+END_SRC
+   #+END_SRC
 ** Gnus
 
    Write mail with Gnus.
@@ -999,29 +1001,32 @@
 
 ** Ido vertical mode
    #+BEGIN_SRC emacs-lisp
-  (use-package ido-vertical-mode
-    :init
-    (ido-vertical-mode)
-    (setq ido-vertical-define-keys 'C-n-and-C-p-only))
+     (use-package ido-vertical-mode
+       :ensure t
+       :init
+       (ido-vertical-mode)
+       (setq ido-vertical-define-keys 'C-n-and-C-p-only))
    #+END_SRC
 ** Flx mode
    #+BEGIN_SRC emacs-lisp
-  (use-package flx-ido
-    :init
-    (flx-ido-mode 1)
-    ;; disable ido faces to see flx highlights.
-    (setq ido-use-faces nil)
-    (setq gc-cons-threshold 20000000))
+     (use-package flx-ido
+       :ensure t
+       :init
+       (flx-ido-mode 1)
+       ;; disable ido faces to see flx highlights.
+       (setq ido-use-faces nil)
+       (setq gc-cons-threshold 20000000))
    #+END_SRC
 ** Magit
    #+BEGIN_SRC emacs-lisp
-  (use-package magit
-    :bind (("C-x C-g s" . magit-status))
-    :config
-    (setq magit-last-seen-setup-instructions "1.4.0")
-    (setq magit-stage-all-confirm nil)
-    (setq magit-unstage-all-confirm nil)
-    (setq ediff-window-setup-function 'ediff-setup-windows-plain))
+     (use-package magit
+       :ensure t
+       :bind (("C-x C-g s" . magit-status))
+       :config
+       (setq magit-last-seen-setup-instructions "1.4.0")
+       (setq magit-stage-all-confirm nil)
+       (setq magit-unstage-all-confirm nil)
+       (setq ediff-window-setup-function 'ediff-setup-windows-plain))
    #+END_SRC
 ** Java
 
@@ -1111,51 +1116,54 @@
 #+END_SRC
 
 ** Macrostep
-#+BEGIN_SRC emacs-lisp
-  (use-package macrostep)
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+  (use-package macrostep
+    :ensure t)
+   #+END_SRC
 ** Markdown mode
    #+BEGIN_SRC emacs-lisp
-  (use-package markdown-mode
-    :mode ("\\.md\\'" . markdown-mode)
-    :config
-    (setq markdown-command "doctor")
-    (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode)))
+     (use-package markdown-mode
+       :ensure t
+       :mode ("\\.md\\'" . markdown-mode)
+       :config
+       (setq markdown-command "doctor")
+       (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode)))
    #+END_SRC
 ** Multi term
 
    #+BEGIN_SRC emacs-lisp
-  (use-package multi-term
-    :bind (("C-x M" . multi-term)
-           ("C-x m" . switch-to-term-mode-buffer))
-    :config
-    ;; (setq multi-term-dedicated-select-after-open-p t
-    ;;       multi-term-dedicated-window-height 25
-    ;;       multi-term-program "/bin/bash")
+     (use-package multi-term
+       :ensure t
+       :bind (("C-x M" . multi-term)
+              ("C-x m" . switch-to-term-mode-buffer))
+       :config
+       ;; (setq multi-term-dedicated-select-after-open-p t
+       ;;       multi-term-dedicated-window-height 25
+       ;;       multi-term-program "/bin/bash")
 
-    ;; ;; Enable compilation-shell-minor-mode in multi term.
-    ;; ;; http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/
+       ;; ;; Enable compilation-shell-minor-mode in multi term.
+       ;; ;; http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/
 
-    ;; ;; TODO: WTF? Turns off colors in terminal.
-    ;; ;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
-    (add-hook 'term-mode-hook
-              (lambda ()
-                (dolist
-                    (bind '(("<S-down>" . multi-term)
-                            ("<S-left>" . multi-term-prev)
-                            ("<S-right>" . multi-term-next)
-                            ("C-<backspace>" . term-send-backward-kill-word)
-                            ("C-<delete>" . term-send-forward-kill-word)
-                            ("C-<left>" . term-send-backward-word)
-                            ("C-<right>" . term-send-forward-word)
-                            ("C-c C-j" . term-line-mode)
-                            ("C-c C-k" . term-char-mode)
-                            ("C-v" . scroll-up)
-                            ("C-y" . term-paste)
-                            ("C-z" . term-stop-subjob)
-                            ("M-DEL" . term-send-backward-kill-word)
-                            ("M-d" . term-send-forward-kill-word)))
-                  (add-to-list 'term-bind-key-alist bind)))))
+       ;; ;; TODO: WTF? Turns off colors in terminal.
+       ;; ;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
+       (add-hook 'term-mode-hook
+                 (lambda ()
+                   (dolist
+                       (bind '(("<S-down>" . multi-term)
+                               ("<S-left>" . multi-term-prev)
+                               ("<S-right>" . multi-term-next)
+                               ("C-<backspace>" . term-send-backward-kill-word)
+                               ("C-<delete>" . term-send-forward-kill-word)
+                               ("C-<left>" . term-send-backward-word)
+                               ("C-<right>" . term-send-forward-word)
+                               ("C-c C-j" . term-line-mode)
+                               ("C-c C-k" . term-char-mode)
+                               ("C-v" . scroll-up)
+                               ("C-y" . term-paste)
+                               ("C-z" . term-stop-subjob)
+                               ("M-DEL" . term-send-backward-kill-word)
+                               ("M-d" . term-send-forward-kill-word)))
+                     (add-to-list 'term-bind-key-alist bind)))))
    #+END_SRC
 
    Returns the most recently used term-mode buffer.
@@ -1182,9 +1190,10 @@
    #+END_SRC
 
 ** Multiple cursors
-#+BEGIN_SRC emacs-lisp
-  (use-package multiple-cursors)
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+  (use-package multiple-cursors
+    :ensure t)
+   #+END_SRC
 ** Fuck the NSA
 
    http://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Amusements.html
@@ -1278,110 +1287,110 @@
 
    Use Cider as backend.
 
-#+BEGIN_SRC emacs-lisp
-  (use-package ob-clojure
-    :init (setq org-babel-clojure-backend 'cider))
+   #+BEGIN_SRC emacs-lisp
+     (use-package ob-clojure
+       :init (setq org-babel-clojure-backend 'cider))
 
-#+END_SRC
+   #+END_SRC
 
    Configure active languages for Babel.
 
-#+BEGIN_SRC emacs-lisp
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((clojure . t)
-       (elasticsearch . t)
-       (emacs-lisp . t)
-       (ruby . t)
-       (sh . t)
-       (sql . t)))
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((clojure . t)
+        (emacs-lisp . t)
+        (ruby . t)
+        (sh . t)
+        (sql . t)))
+   #+END_SRC
 
    Fontify org mode code blocks.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (setq org-src-fontify-natively t)
-#+END_SRC
+   #+END_SRC
 
-** Pallet
-
-   Load [[https://github.com/rdallasgray/pallet][Pallet]], a package management tool for Emacs.
-
-#+BEGIN_SRC emacs-lisp
-  (use-package pallet)
-#+END_SRC
 ** Paredit
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package paredit
+    :ensure t
     :init (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
             (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
                       'paredit-mode)))
-#+END_SRC
+   #+END_SRC
 ** Pretty lambda
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
   (use-package pretty-lambdada
+    :ensure t
     :init (pretty-lambda-for-modes))
-#+END_SRC
+   #+END_SRC
 ** Projectile
    #+BEGIN_SRC emacs-lisp
-  (use-package projectile
-    :init
-    (add-hook 'clojure-mode-hook 'projectile-mode)
-    (add-hook 'ruby-mode-hook 'projectile-mode))
+     (use-package projectile
+       :ensure t
+       :init
+       (add-hook 'clojure-mode-hook 'projectile-mode)
+       (add-hook 'ruby-mode-hook 'projectile-mode))
    #+END_SRC
 ** Popwin
    #+BEGIN_SRC emacs-lisp
-  (use-package popwin
-    :init
-    (setq display-buffer-function 'popwin:display-buffer)
-    (setq popwin:special-display-config
-          '(("*Help*"  :height 30)
-            ("*Completions*" :noselect t)
-            ("*Messages*" :noselect t :height 30)
-            ("*Apropos*" :noselect t :height 30)
-            ("*Backtrace*" :height 30)
-            ("*Messages*" :height 30)
-            ("*Occur*" :noselect t)
-            ("*Ido Completions*" :noselect t :height 30)
-            ("*magit-commit*" :noselect t :height 40 :width 80 :stick t)
-            ("*magit-diff*" :noselect t :height 40 :width 80)
-            ("*magit-edit-log*" :noselect t :height 15 :width 80)
-            ("\\*ansi-term\\*.*" :regexp t :height 30)
-            ("*shell*" :height 30)
-            (".*overtone.log" :regexp t :height 30)
-            ("*gists*" :height 30)
-            ("*sldb.*":regexp t :height 30)
-            ("*Kill Ring*" :height 30)
-            ("*Compile-Log*" :height 30 :stick t)
-            ("*git-gutter:diff*" :height 30 :stick t))))
+     (use-package popwin
+       :ensure t
+       :init
+       (setq display-buffer-function 'popwin:display-buffer)
+       (setq popwin:special-display-config
+             '(("*Help*"  :height 30)
+               ("*Completions*" :noselect t)
+               ("*Messages*" :noselect t :height 30)
+               ("*Apropos*" :noselect t :height 30)
+               ("*Backtrace*" :height 30)
+               ("*Messages*" :height 30)
+               ("*Occur*" :noselect t)
+               ("*Ido Completions*" :noselect t :height 30)
+               ("*magit-commit*" :noselect t :height 40 :width 80 :stick t)
+               ("*magit-diff*" :noselect t :height 40 :width 80)
+               ("*magit-edit-log*" :noselect t :height 15 :width 80)
+               ("\\*ansi-term\\*.*" :regexp t :height 30)
+               ("*shell*" :height 30)
+               (".*overtone.log" :regexp t :height 30)
+               ("*gists*" :height 30)
+               ("*sldb.*":regexp t :height 30)
+               ("*Kill Ring*" :height 30)
+               ("*Compile-Log*" :height 30 :stick t)
+               ("*git-gutter:diff*" :height 30 :stick t))))
    #+END_SRC
 ** Ruby mode
    #+BEGIN_SRC emacs-lisp
-  (use-package ruby-mode
-    :mode (("Capfile$" . ruby-mode)
-           ("Gemfile$" . ruby-mode)
-           ("Guardfile$" . ruby-mode)
-           ("Rakefile$" . ruby-mode)
-           ("Vagrantfile$" . ruby-mode)
-           ("\\.gemspec$" . ruby-mode)
-           ("\\.rake$" . ruby-mode)
-           ("\\.ru$" . ruby-mode)))
+     (use-package ruby-mode
+       :ensure t
+       :mode (("Capfile$" . ruby-mode)
+              ("Gemfile$" . ruby-mode)
+              ("Guardfile$" . ruby-mode)
+              ("Rakefile$" . ruby-mode)
+              ("Vagrantfile$" . ruby-mode)
+              ("\\.gemspec$" . ruby-mode)
+              ("\\.rake$" . ruby-mode)
+              ("\\.ru$" . ruby-mode)))
    #+END_SRC
 ** Smex
    #+BEGIN_SRC emacs-lisp
-  (use-package smex
-    :bind (("M-X" . smex-major-mode-commands)
-           ("M-x" . smex)))
+     (use-package smex
+       :ensure t
+       :bind (("M-X" . smex-major-mode-commands)
+              ("M-x" . smex)))
    #+END_SRC
 ** Slamhound
    #+BEGIN_SRC emacs-lisp
-  (use-package slamhound
-    :commands (slamhound))
+     (use-package slamhound
+       :ensure t
+       :commands (slamhound))
    #+END_SRC
 ** Smooth scrolling
-#+BEGIN_SRC emacs-lisp
-  (use-package smooth-scrolling)
-#+END_SRC
+   #+BEGIN_SRC emacs-lisp
+  (use-package smooth-scrolling
+    :ensure t)
+   #+END_SRC
 ** Tabs
 
    Don't insert tabs.
@@ -1391,13 +1400,14 @@
    #+END_SRC
 ** Web mode
    #+BEGIN_SRC emacs-lisp
-  (use-package web-mode
-    :mode (("\\.jsx$" . web-mode)
-           ("\\.html$" . web-mode))
-    :config
-    (setq web-mode-code-indent-offset 2
-          web-mode-css-indent-offset 2
-          web-mode-markup-indent-offset 2))
+     (use-package web-mode
+       :ensure t
+       :mode (("\\.jsx$" . web-mode)
+              ("\\.html$" . web-mode))
+       :config
+       (setq web-mode-code-indent-offset 2
+             web-mode-css-indent-offset 2
+             web-mode-markup-indent-offset 2))
    #+END_SRC
 ** Winner mode
 #+BEGIN_SRC emacs-lisp
@@ -1407,11 +1417,13 @@
 ** YAML mode
    #+BEGIN_SRC emacs-lisp
      (use-package yaml-mode
+       :ensure t
        :mode (("\\.yml$" . yaml-mode)))
    #+END_SRC
 ** YASnippet
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
+       :ensure t
        :init
        (yas-reload-all)
        (mapcar
