@@ -31,6 +31,7 @@
  '(cursor ((t (:background "orange red" :foreground "white"))))
  '(ediff-current-diff-C ((t (:background "black"))))
  '(ert-test-result-expected ((t (:background "green3" :foreground "white smoke"))))
+ '(helm-selection ((t (:background "#586e75" :foreground "white smoke"))))
  '(mode-line ((t (:background "white smoke" :foreground "black"))))
  '(mode-line-inactive ((t (:background "dark gray" :foreground "black"))))
  '(vertical-border ((t (:foreground "black")))))
