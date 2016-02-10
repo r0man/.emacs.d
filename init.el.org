@@ -841,27 +841,29 @@
    Enable flyspell in text mode.
 
    #+BEGIN_SRC emacs-lisp
-
      (defun enable-flyspell-mode ()
        "Enable Flyspell mode."
        (flyspell-mode 1))
 
      (dolist (hook '(text-mode-hook))
        (add-hook hook 'enable-flyspell-mode))
-
    #+END_SRC
 
    Enable flyspell in programming mode.
 
    #+BEGIN_SRC emacs-lisp
-
      (defun enable-flyspell-prog-mode ()
        "Enable Flyspell Programming mode."
        (flyspell-prog-mode))
 
      (dolist (hook '(prog-mode-hook))
        (add-hook hook 'enable-flyspell-prog-mode))
+   #+END_SRC
 
+   Don't print messages when checking words.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq flyspell-issue-message-flag nil)
    #+END_SRC
 
 ** Github browse file
