@@ -57,7 +57,7 @@
        (package-install 'use-package))
    #+END_SRC
 
-   Report about loading and configuration details.
+   Report details about loading and configuration.
 
    #+BEGIN_SRC emacs-lisp
      (setq use-package-verbose t)
