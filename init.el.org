@@ -1391,6 +1391,18 @@
   (use-package smooth-scrolling
     :ensure t)
    #+END_SRC
+** SoundKlaus
+   #+BEGIN_SRC emacs-lisp
+     (use-package soundklaus
+       :commands
+       (soundklaus-connect
+        soundklaus-my-playlists
+        soundklaus-my-tracks
+        soundklaus-playlists
+        soundklaus-playlists
+        soundklaus-tracks)
+       :load-path "~/workspace/soundklaus.el")
+   #+END_SRC
 ** Tabs
 
    Don't insert tabs.
