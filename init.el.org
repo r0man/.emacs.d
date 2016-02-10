@@ -1404,7 +1404,8 @@
    #+BEGIN_SRC emacs-lisp
      (use-package soundklaus
        :commands
-       (soundklaus-connect
+       (soundklaus-activities
+        soundklaus-connect
         soundklaus-my-playlists
         soundklaus-my-tracks
         soundklaus-playlists
