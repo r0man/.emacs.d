@@ -349,6 +349,9 @@
          (setq cider-known-endpoints
                '(("localhost" "127.0.0.1" "7888")))
 
+         ;; Don't show the `*cider-test-report*` buffer on passing tests.
+         (setq cider-test-report-on-success nil)
+
          (defun piggiepack-repl ()
            (interactive)
            ;; (cider-jack-in)
