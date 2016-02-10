@@ -296,9 +296,9 @@
 ** Clojure refactor
    #+BEGIN_SRC emacs-lisp
      (use-package clj-refactor
-       :disabled t
-       :ensure t
+       :disabled true
        :pin "melpa-stable"
+       :ensure t
        :init
        (defun enable-clj-refactor-mode ()
          (clj-refactor-mode 1)
@@ -412,7 +412,7 @@
   (setq user-full-name "Roman Scherer")
 #+END_SRC
 ** Dim parentheses
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 (defface paren-face
   '((((class color) (background dark))
      (:foreground "grey20"))
