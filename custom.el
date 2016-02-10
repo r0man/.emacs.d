@@ -9,6 +9,9 @@
  '(cursor-color "#839496")
  '(display-time-mode t)
  '(foreground-color "#839496")
+ '(helm-M-x-fuzzy-match t)
+ '(helm-completion-in-region-fuzzy-match t)
+ '(helm-mode t)
  '(safe-local-variable-values
    (quote
     ((emacs-lisp-docstring-fill-column . 75)
@@ -31,7 +34,9 @@
  '(cursor ((t (:background "orange red" :foreground "white"))))
  '(ediff-current-diff-C ((t (:background "black"))))
  '(ert-test-result-expected ((t (:background "green3" :foreground "white smoke"))))
+ '(helm-M-x-key ((t (:foreground "#839496" :underline t :weight bold))))
  '(helm-selection ((t (:background "#586e75" :foreground "white smoke"))))
+ '(helm-source-header ((t (:foreground "white smoke" :weight bold :height 1.1 :family "Sans Serif"))))
  '(mode-line ((t (:background "white smoke" :foreground "black"))))
  '(mode-line-inactive ((t (:background "dark gray" :foreground "black"))))
  '(vertical-border ((t (:foreground "black")))))
