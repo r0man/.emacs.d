@@ -823,7 +823,10 @@
      (use-package server
        :ensure t
        :if window-system
-       :init (add-hook 'after-init-hook 'server-start t))
+       :init
+       (require 'server)
+       (unless (server-running-p)
+         (add-hook 'after-init-hook 'server-start t)))
    #+END_SRC
 
 ** Emacs multimedia system
