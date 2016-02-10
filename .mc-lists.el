@@ -3,19 +3,20 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-	cider-load-current-buffer
-	cleanup-buffer
-	forward-sexp
-	paredit-backward-kill-word
-	paredit-close-square
-	paredit-forward-kill-word
-	paredit-forward-slurp-sexp
-	paredit-open-square
-	sgml-slash
-	smex
-	yas-expand
-	))
+        cider-load-current-buffer
+        cleanup-buffer
+        forward-sexp
+        paredit-backward-kill-word
+        paredit-close-square
+        paredit-forward-kill-word
+        paredit-forward-slurp-sexp
+        paredit-open-square
+        sgml-slash
+        smarter-move-beginning-of-line
+        smex
+        yas-expand
+        ))
 
 (setq mc/cmds-to-run-once
       '(
-	))
+        ))
