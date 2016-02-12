@@ -440,8 +440,7 @@
        :bind (("M-x" . helm-M-x))
        :init
        (require 'helm-config)
-       (setq helm-M-x-fuzzy-match t)
-       (setq helm-completion-in-region-fuzzy-match t))
+       (setq helm-mode-fuzzy-match t))
    #+END_SRC
 ** Helm Projectile
    #+BEGIN_SRC emacs-lisp
