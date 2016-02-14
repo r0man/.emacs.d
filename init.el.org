@@ -1228,6 +1228,15 @@
      (savehist-mode 1)
    #+END_SRC
 
+** Slime
+
+   The Superior Lisp Interaction Mode for Emacs
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package slime
+       :commands (slime)
+       :ensure t)
+   #+END_SRC
 ** Smarter beginning of line
    #+BEGIN_SRC emacs-lisp
      (defun smarter-move-beginning-of-line (arg)
