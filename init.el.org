@@ -301,7 +301,9 @@
        (defun enable-clj-refactor-mode ()
          (clj-refactor-mode 1)
          (cljr-add-keybindings-with-prefix "C-c C-R"))
-       (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode))
+       (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)
+       ;; Don't use prefix notation when cleaning the ns form.
+       (setq cljr-favor-prefix-notation nil))
    #+END_SRC
 ** Cider
    #+BEGIN_SRC emacs-lisp
