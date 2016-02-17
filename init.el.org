@@ -1399,7 +1399,12 @@
               ("\\.rake$" . ruby-mode)
               ("\\.ru$" . ruby-mode)))
    #+END_SRC
-** Slamhound
+** Rainbow mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package rainbow-mode
+       :ensure t
+       :defer 1)
+   #+END_SRC** Slamhound
    #+BEGIN_SRC emacs-lisp
      (use-package slamhound
        :ensure t
