@@ -438,7 +438,6 @@
      (use-package helm
        :ensure t
        :bind (("M-x" . helm-M-x)
-              ("C-x b" . helm-buffers-list)
               ("C-x C-b" . helm-buffers-list))
        :init
        (require 'helm-config)
