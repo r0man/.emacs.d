@@ -1313,7 +1313,9 @@
    #+BEGIN_SRC emacs-lisp
      (use-package ob-clojure
        :defer 1
-       :init (setq org-babel-clojure-backend 'cider))
+       :init
+       (require 'ob-clojure)
+       (setq org-babel-clojure-backend 'cider))
 
    #+END_SRC
 
