@@ -1422,14 +1422,15 @@
 ** SoundKlaus
    #+BEGIN_SRC emacs-lisp
      (use-package soundklaus
+       :ensure t
        :commands
        (soundklaus-activities
         soundklaus-connect
+        soundklaus-my-favorites
         soundklaus-my-playlists
         soundklaus-my-tracks
         soundklaus-playlists
-        soundklaus-tracks)
-       :load-path "~/workspace/soundklaus.el")
+        soundklaus-tracks))
    #+END_SRC
 ** Tabs
 
