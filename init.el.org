@@ -1430,7 +1430,8 @@
         soundklaus-my-playlists
         soundklaus-my-tracks
         soundklaus-playlists
-        soundklaus-tracks))
+        soundklaus-tracks)
+       :load-path "~/workspace/soundklaus.el")
    #+END_SRC
 ** Tabs
 
