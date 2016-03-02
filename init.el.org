@@ -272,7 +272,7 @@
      (use-package clojure-mode
        :ensure t
        :mode (("\\.edn$" . clojure-mode)
-              ("\\.cljs$" . clojure-mode)
+              ("\\.cljs$" . clojurescript-mode)
               ("\\.cljx$" . clojure-mode)
               ("\\.cljc$" . clojure-mode))
        :config
