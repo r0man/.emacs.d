@@ -1018,13 +1018,14 @@
    Enable IDO mode.
 
    #+BEGIN_SRC emacs-lisp
-     (ido-mode t)
+     (ido-mode nil)
    #+END_SRC
 
 ** Ido vertical mode
    #+BEGIN_SRC emacs-lisp
      (use-package ido-vertical-mode
        :ensure t
+       :disabled t
        :init
        (ido-vertical-mode)
        (setq ido-vertical-define-keys 'C-n-and-C-p-only))
@@ -1033,6 +1034,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package flx-ido
        :ensure t
+       :disabled t
        :init
        (flx-ido-mode 1)
        ;; disable ido faces to see flx highlights.
