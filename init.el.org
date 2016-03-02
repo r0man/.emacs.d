@@ -677,6 +677,12 @@
      (setq desktop-load-locked-desktop t)
    #+END_SRC
 
+   Number of buffers to restore immediately.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq desktop-restore-eager 4)
+   #+END_SRC
+
    Enable desktop save mode.
 
    #+BEGIN_SRC emacs-lisp
