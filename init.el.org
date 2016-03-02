@@ -1318,33 +1318,22 @@
 
 ** Org mode
 
-   Use Cider as backend.
-
    #+BEGIN_SRC emacs-lisp
-     (use-package ob-clojure
+     (use-package org
+       :ensure t
        :defer 1
-       :init
+       :mode ("\\.org\\'" . org-mode)
+       :config
        (require 'ob-clojure)
-       (setq org-babel-clojure-backend 'cider))
-
-   #+END_SRC
-
-   Configure active languages for Babel.
-
-   #+BEGIN_SRC emacs-lisp
-     (org-babel-do-load-languages
-      'org-babel-load-languages
-      '((clojure . t)
-        (emacs-lisp . t)
-        (ruby . t)
-        (sh . t)
-        (sql . t)))
-   #+END_SRC
-
-   Fontify org mode code blocks.
-
-   #+BEGIN_SRC emacs-lisp
-     (setq org-src-fontify-natively t)
+       (setq org-babel-clojure-backend 'cider)
+       (setq org-src-fontify-natively t)
+       (org-babel-do-load-languages
+        'org-babel-load-languages
+        '((clojure . t)
+          (emacs-lisp . t)
+          (ruby . t)
+          (sh . t)
+          (sql . t))))
    #+END_SRC
 
 ** Paredit
