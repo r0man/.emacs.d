@@ -28,6 +28,26 @@
      (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
    #+END_SRC
 
+** Language & Encoding
+
+   Add UTF8 at the front of the priority list for automatic detection.
+
+   #+BEGIN_SRC emacs-lisp
+     (prefer-coding-system 'utf-8)
+   #+END_SRC
+
+   Set up multilingual environment to use UTF-8.
+
+   #+BEGIN_SRC emacs-lisp
+     (set-language-environment "UTF-8")
+   #+END_SRC
+
+   Set default value of various coding systems to UTF-8.
+
+   #+BEGIN_SRC emacs-lisp
+     (set-default-coding-systems 'utf-8)
+   #+END_SRC
+
 ** Transparency
    #+BEGIN_SRC emacs-lisp
      (set-frame-parameter (selected-frame) 'alpha '(85 50))
