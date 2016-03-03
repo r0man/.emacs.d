@@ -28,6 +28,12 @@
      (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
    #+END_SRC
 
+   Number of lines of margin at the top and bottom of a window.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq scroll-margin 3)
+   #+END_SRC
+
 ** Language & Encoding
 
    Add UTF8 at the front of the priority list for automatic detection.
