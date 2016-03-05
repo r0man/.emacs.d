@@ -2,19 +2,29 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("init.el"
- (filename . "~/.emacs.d/init.el")
- (front-context-string . ";; Hide scroll, ")
+(("Zsh Configuration"
+ (filename . "~/.dotfiles/zsh/.zshrc")
+ (front-context-string . "# Lines configur")
  (rear-context-string)
  (position . 1))
-("postgresql.conf"
+("Xmonad Configuration"
+ (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
+ (front-context-string . "--\n-- xmonad exa")
+ (rear-context-string)
+ (position . 1))
+("Emacs Configuration"
+ (filename . "~/.emacs.d/init.el.org")
+ (front-context-string . "* init.el\n** Pac")
+ (rear-context-string)
+ (position . 1))
+("Leiningen Profiles"
+ (filename . "~/.lein/profiles.clj")
+ (front-context-string . "{;; :repl {:depe")
+ (rear-context-string)
+ (position . 1))
+("PostgreSQL Configuration"
  (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
  (front-context-string . "# --------------")
  (rear-context-string)
  (position . 1))
-("README.org"
- (filename . "~/.dotfiles/README.org")
- (front-context-string)
- (rear-context-string . "run-node-nrepl)\n")
- (position . 422))
 )
