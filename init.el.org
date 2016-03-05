@@ -476,7 +476,17 @@
               ("C-x r b" . helm-bookmarks))
        :config
        (require 'helm-config)
-       (setq helm-mode-fuzzy-match t))
+       (setq helm-mode-fuzzy-match t)
+       (require 'helm)
+
+       ;; Enter directories with RET, same as ido
+       ;; http://emacs.stackexchange.com/questions/3798/how-do-i-make-pressing-ret-in-helm-find-files-open-the-directory/7896#7896
+       (defun helm-find-files-navigate-forward (orig-fun &rest args)
+         (if (file-directory-p (helm-get-selection))
+             (apply orig-fun args)
+           (helm-maybe-exit-minibuffer)))
+       (advice-add 'helm-execute-persistent-action :around #'helm-find-files-navigate-forward)
+       (define-key helm-find-files-map (kbd "<return>") 'helm-execute-persistent-action))
    #+END_SRC
 ** Helm Projectile
    #+BEGIN_SRC emacs-lisp
