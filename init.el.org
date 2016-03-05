@@ -727,10 +727,28 @@
      (setq desktop-restore-eager 4)
    #+END_SRC
 
+   Don't save some buffers.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq desktop-buffers-not-to-save
+           (concat "\\("
+                   "\\.bbdb|\\.gz"
+                   "\\)$"))
+   #+END_SRC
+
    Enable desktop save mode.
 
    #+BEGIN_SRC emacs-lisp
      (desktop-save-mode 1)
+   #+END_SRC
+
+   Don't save certain modes..
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'desktop-modes-not-to-save 'Info-mode)
+     (add-to-list 'desktop-modes-not-to-save 'dired-mode)
+     (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
+     (add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
    #+END_SRC
 
 ** Inferior Lisp mode
