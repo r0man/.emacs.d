@@ -468,6 +468,9 @@
        (setq helm-mode-fuzzy-match t)
        (require 'helm)
 
+       ;; Disable Helm in the following functions.
+       (add-to-list 'helm-completing-read-handlers-alist '(magit-gitignore))
+
        ;; Enter directories with RET, same as ido
        ;; http://emacs.stackexchange.com/questions/3798/how-do-i-make-pressing-ret-in-helm-find-files-open-the-directory/7896#7896
        (defun helm-find-files-navigate-forward (orig-fun &rest args)
