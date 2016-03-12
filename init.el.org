@@ -1479,7 +1479,9 @@
         soundklaus-my-tracks
         soundklaus-playlists
         soundklaus-tracks)
-       :load-path "~/workspace/soundklaus.el")
+       :load-path
+       ("~/workspace/soundklaus.el"
+        "~/workspace/soundklaus.el/test"))
    #+END_SRC
 ** Tabs
 
