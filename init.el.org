@@ -317,24 +317,12 @@
      (use-package clojure-mode-extra-font-locking
        :ensure t)
    #+END_SRC
-** Clojure refactor
-   #+BEGIN_SRC emacs-lisp
-     (use-package clj-refactor
-       :ensure t
-       :init
-       (defun enable-clj-refactor-mode ()
-         (clj-refactor-mode 1)
-         (cljr-add-keybindings-with-prefix "C-c C-R"))
-       (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)
-       ;; Don't use prefix notation when cleaning the ns form.
-       (setq cljr-favor-prefix-notation nil))
-   #+END_SRC
 ** Cider
    #+BEGIN_SRC emacs-lisp
      (use-package cider
        :commands (cider-jack-in cider-jack-in-clojurescript)
        :ensure t
-       :pin "melpa-stable"
+       ;; :pin "melpa-stable"
        :config
        ;; Enable eldoc in Clojure buffers
        (add-hook 'cider-mode-hook #'eldoc-mode)
@@ -368,16 +356,24 @@
        (setq cider-repl-wrap-history t)
 
        ;; Log protocol messages to the `nrepl-message-buffer-name' buffer.
-       (setq nrepl-log-messages t)
-
-       (setq cider-known-endpoints
-             '(("localhost" "127.0.0.1" "7888")))
+       ;; (setq nrepl-log-messages t)
 
        ;; Don't show the `*cider-test-report*` buffer on passing tests.
        (setq cider-test-report-on-success nil))
    #+END_SRC
+** Clojure refactor
+   #+BEGIN_SRC emacs-lisp
+     (use-package clj-refactor
+       :ensure t
+       :init
+       (defun enable-clj-refactor-mode ()
+         (clj-refactor-mode 1)
+         (cljr-add-keybindings-with-prefix "C-c C-R"))
+       (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)
+       ;; Don't use prefix notation when cleaning the ns form.
+       (setq cljr-favor-prefix-notation nil))
+   #+END_SRC
 ** Compass
-
    #+BEGIN_SRC emacs-lisp
      (defun compass-watch ()
        "Find the project root and run compass watch."
@@ -389,7 +385,6 @@
              (compile (message (format "cd %s; compass watch" directory)))
            (message "Can't find compass project root."))))
    #+END_SRC
-
 ** Company mode
 
    Enable company mode.
