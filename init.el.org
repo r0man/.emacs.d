@@ -478,7 +478,27 @@
              (apply orig-fun args)
            (helm-maybe-exit-minibuffer)))
        (advice-add 'helm-execute-persistent-action :around #'helm-find-files-navigate-forward)
-       (define-key helm-find-files-map (kbd "<return>") 'helm-execute-persistent-action))
+       (define-key helm-find-files-map (kbd "<return>") 'helm-execute-persistent-action)
+
+
+       ;; Don't show "." and ".." directories when finding files.
+       ;; https://github.com/hatschipuh/better-helm
+       (with-eval-after-load 'helm-files
+         (advice-add 'helm-ff-filter-candidate-one-by-one
+                     :before-while 'no-dots-display-file-p))
+
+       (defvar no-dots-whitelist nil
+         "List of helm buffers in which to show dots.")
+
+       (defun no-dots-in-white-listed-helm-buffer-p ()
+         (member helm-buffer no-dots-whitelist))
+
+       (defun no-dots-display-file-p (file)
+         ;; in a whitelisted buffer display the file regardless of its name
+         (or (no-dots-in-white-listed-helm-buffer-p)
+             ;; not in a whitelisted buffer display all files
+             ;; which does not end with /. /..
+             (not (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file)))))
    #+END_SRC
 ** Helm Projectile
    #+BEGIN_SRC emacs-lisp
