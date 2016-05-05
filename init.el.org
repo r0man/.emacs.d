@@ -267,6 +267,24 @@
    #+BEGIN_SRC emacs-lisp
      (setq appt-display-mode-line t)
    #+END_SRC
+** EIN - Emacs IPython Notebook
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package ein
+       :ensure t
+       :commands (ein:notebooklist-open))
+   #+END_SRC
+
+** Elpy - Emacs Python Development Environment 
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package elpy
+       :ensure t
+       :init (with-eval-after-load 'python
+               (elpy-enable)
+               (elpy-use-ipython)))
+   #+END_SRC
+
 ** Clojure mode
    #+BEGIN_SRC emacs-lisp
      (use-package clojure-mode
