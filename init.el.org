@@ -242,6 +242,14 @@
        (require 'color-theme-solarized)
        (load-theme 'solarized-dark t))
    #+END_SRC
+** Aggressive Indent Mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package aggressive-indent
+       :ensure t
+       :init
+       (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+       (add-hook 'clojure-mode-hook #'aggressive-indent-mode))
+   #+END_SRC
 ** Avy
    #+BEGIN_SRC emacs-lisp
      (use-package avy
