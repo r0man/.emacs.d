@@ -1565,6 +1565,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
        :ensure t
+       :disabled t
        :defer 1
        :init
        (yas-reload-all)
