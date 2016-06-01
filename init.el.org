@@ -307,6 +307,7 @@
        (add-hook 'clojure-mode-hook #'subword-mode)
        (add-hook 'clojure-mode-hook #'paredit-mode)
        (define-clojure-indent
+         (fdef 1)
          ;; cljs.test
          (async 1)
          ;; om-tools
