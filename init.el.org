@@ -288,9 +288,11 @@
    #+BEGIN_SRC emacs-lisp
      (use-package elpy
        :ensure t
-       :init (with-eval-after-load 'python
-               (elpy-enable)
-               (elpy-use-ipython)))
+       :init
+       (delete 'elpy-module-highlight-indentation elpy-modules)
+       (with-eval-after-load 'python
+         (elpy-enable)
+         (elpy-use-ipython)))
    #+END_SRC
 
 ** Clojure mode
