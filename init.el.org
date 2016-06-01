@@ -301,8 +301,8 @@
        :ensure t
        :mode (("\\.edn$" . clojure-mode)
               ("\\.cljs$" . clojurescript-mode)
-              ("\\.cljx$" . clojure-mode)
-              ("\\.cljc$" . clojure-mode))
+              ("\\.cljx$" . clojurex-mode)
+              ("\\.cljc$" . clojurec-mode))
        :config
        (add-hook 'clojure-mode-hook #'subword-mode)
        (add-hook 'clojure-mode-hook #'paredit-mode)
