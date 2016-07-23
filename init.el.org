@@ -1553,6 +1553,14 @@
              web-mode-css-indent-offset 2
              web-mode-markup-indent-offset 2))
    #+END_SRC
+** Which Key
+   #+BEGIN_SRC emacs-lisp
+     (use-package which-key  
+       :ensure t
+       :defer 10
+       :pin "melpa-stable"
+       :init (which-key-mode))
+   #+END_SRC
 ** Winner mode
    #+BEGIN_SRC emacs-lisp
      (winner-mode)
