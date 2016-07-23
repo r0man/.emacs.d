@@ -536,6 +536,14 @@
        :bind (("C-c p h" . helm-projectile)
               ("C-x C-f" . helm-projectile-find-file)))
    #+END_SRC
+** Hy Mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package hy-mode
+       :ensure t
+       :mode (("\\.hy$" . hy-mode))
+       :config
+       (add-hook 'hy-mode-hook 'paredit-mode))
+   #+END_SRC
 ** Backup
 
    Put all backup files in a separate directory.
