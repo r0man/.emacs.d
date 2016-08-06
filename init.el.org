@@ -290,9 +290,9 @@
        :ensure t
        :init
        (with-eval-after-load 'python
-         (delete 'elpy-module-highlight-indentation elpy-modules)
          (elpy-enable)
-         (elpy-use-ipython)))
+         (elpy-use-ipython)
+         (delete 'elpy-module-highlight-indentation elpy-modules)))
    #+END_SRC
 
 ** Clojure mode
