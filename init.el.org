@@ -289,8 +289,8 @@
      (use-package elpy
        :ensure t
        :init
-       (delete 'elpy-module-highlight-indentation elpy-modules)
        (with-eval-after-load 'python
+         (delete 'elpy-module-highlight-indentation elpy-modules)
          (elpy-enable)
          (elpy-use-ipython)))
    #+END_SRC
