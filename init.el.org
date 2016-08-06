@@ -536,13 +536,37 @@
        :bind (("C-c p h" . helm-projectile)
               ("C-x C-f" . helm-projectile-find-file)))
    #+END_SRC
+** Inferior Hy Mode
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'load-path "~/workspace/inf-hy")
+     (require 'inf-hy)
+     (autoload 'inf-hy "inf-hy" "Run an inferior Hy process" t)
+     (autoload 'inf-hy "inf-hy-minor-mode" "Load inferior Hy minor mode" t)
+     (add-hook 'hy-mode-hook 'inf-hy-minor-mode)
+     ;; (use-package inf-hy
+     ;;   :ensure t
+     ;;   :commands (inf-hy)
+     ;;   :load-path ("~/workspace/inf-hy"))
+   #+END_SRC
 ** Hy Mode
    #+BEGIN_SRC emacs-lisp
      (use-package hy-mode
        :ensure t
        :mode (("\\.hy$" . hy-mode))
        :config
-       (add-hook 'hy-mode-hook 'paredit-mode))
+       (add-hook 'hy-mode-hook 'paredit-mode)
+       (setq hy-indent-specform
+             '(("for" . 1)
+               ("for*" . 1)
+               ("while" . 1)
+               ("except" . 1)
+               ("catch" . 1)
+               ("let" . 1)
+               ("if" . 1)
+               ("when" . 1)
+               ("unless" . 1)
+               ("test-set" . 1)
+               ("test-set-fails" . 1))))
    #+END_SRC
 ** Backup
 
