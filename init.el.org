@@ -586,7 +586,7 @@
    Make backups for files under version control as well.
 
    #+BEGIN_SRC emacs-lisp
-     (setq vc-make-backup-files t)
+     (setq vc-make-backup-files nil)
    #+END_SRC
 
    If t, delete excess backup versions silently.
