@@ -539,15 +539,11 @@
    #+END_SRC
 ** Inferior Hy Mode
    #+BEGIN_SRC emacs-lisp
-     (add-to-list 'load-path "~/workspace/inf-hy")
-     (require 'inf-hy)
-     (autoload 'inf-hy "inf-hy" "Run an inferior Hy process" t)
-     (autoload 'inf-hy "inf-hy-minor-mode" "Load inferior Hy minor mode" t)
-     (add-hook 'hy-mode-hook 'inf-hy-minor-mode)
-     ;; (use-package inf-hy
-     ;;   :ensure t
-     ;;   :commands (inf-hy)
-     ;;   :load-path ("~/workspace/inf-hy"))
+     (use-package inf-hy
+       :commands (inf-hy inf-hy-minor-mode)
+       :load-path ("~/workspace/inf-hy")
+       :init
+       (add-hook 'hy-mode-hook 'inf-hy-minor-mode))
    #+END_SRC
 ** Hy Mode
    #+BEGIN_SRC emacs-lisp
