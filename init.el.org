@@ -610,6 +610,14 @@
      (setq version-control t)
    #+END_SRC
 
+** Version Control
+
+   Disable all version control to speed up file saving.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq vc-handled-backends nil)
+   #+END_SRC
+
 ** Message Buffer
 
    Increase the number of messages in the *Messages* buffer.
