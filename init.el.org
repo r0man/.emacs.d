@@ -243,6 +243,23 @@
        (require 'color-theme-solarized)
        (load-theme 'solarized-dark t))
    #+END_SRC
+** Mac OSX
+
+   Make Emacs use the $PATH set up by the user's shell.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package exec-path-from-shell
+       :ensure t
+       :init (exec-path-from-shell-initialize))
+   #+END_SRC
+
+   This variable describes the behavior of the command key.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq mac-option-key-is-meta t)
+     (setq mac-right-option-modifier nil)
+   #+END_SRC
+
 ** Aggressive Indent Mode
    #+BEGIN_SRC emacs-lisp
      (use-package aggressive-indent
@@ -706,15 +723,6 @@
    #+BEGIN_SRC emacs-lisp
      (define-globalized-minor-mode global-goto-address-mode goto-address-mode goto-address-mode)
      (global-goto-address-mode)
-   #+END_SRC
-
-** Mac OSX
-
-   This variable describes the behavior of the command key.
-
-   #+BEGIN_SRC emacs-lisp
-     (setq mac-option-key-is-meta t)
-     (setq mac-right-option-modifier nil)
    #+END_SRC
 
 ** Abbrev mode
