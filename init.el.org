@@ -470,6 +470,12 @@
      (add-hook 'emacs-lisp-mode-hook 'dim-parens)
    #+END_SRC
 
+** Delete trailing whitespace
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'before-save-hook 'delete-trailing-whitespace)
+   #+END_SRC
+
 ** Fonts
 
    Use the Inconsolata font.
