@@ -309,6 +309,7 @@
        (add-hook 'clojure-mode-hook #'subword-mode)
        (add-hook 'clojure-mode-hook #'paredit-mode)
        (define-clojure-indent
+         (time! 1)
          (fdef 1)
          ;; cljs.test
          (async 1)
@@ -1465,21 +1466,21 @@
 ** Org mode
 
    #+BEGIN_SRC emacs-lisp
-     (use-package org
-       :ensure t
-       :defer 1
-       :mode ("\\.org\\'" . org-mode)
-       :config
-       (require 'ob-clojure)
-       (setq org-babel-clojure-backend 'cider)
-       (setq org-src-fontify-natively t)
-       (org-babel-do-load-languages
-        'org-babel-load-languages
-        '((clojure . t)
-          (emacs-lisp . t)
-          (ruby . t)
-          (sh . t)
-          (sql . t))))
+     ;; (use-package org
+     ;;   :ensure t
+     ;;   :defer 1
+     ;;   :mode ("\\.org\\'" . org-mode)
+     ;;   :config
+     ;;   (require 'ob-clojure)
+     ;;   (setq org-babel-clojure-backend 'cider)
+     ;;   (setq org-src-fontify-natively t)
+     ;;   (org-babel-do-load-languages
+     ;;    'org-babel-load-languages
+     ;;    '((clojure . t)
+     ;;      (emacs-lisp . t)
+     ;;      (ruby . t)
+     ;;      (sh . t)
+     ;;      (sql . t))))
    #+END_SRC
 
 ** Paredit
