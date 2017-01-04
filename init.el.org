@@ -294,6 +294,13 @@
    #+BEGIN_SRC emacs-lisp
      (setq appt-display-mode-line t)
    #+END_SRC
+** Find File in Project
+   #+BEGIN_SRC emacs-lisp
+     (use-package find-file-in-project
+       :ensure t
+       :init
+       (setq ffip-prefer-ido-mode t))
+   #+END_SRC
 ** EIN - Emacs IPython Notebook
 
    #+BEGIN_SRC emacs-lisp
@@ -302,7 +309,7 @@
        :commands (ein:notebooklist-open))
    #+END_SRC
 
-** Elpy - Emacs Python Development Environment 
+** Elpy - Emacs Python Development Environment
 
    #+BEGIN_SRC emacs-lisp
      (use-package elpy
@@ -510,58 +517,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (global-auto-revert-mode 1)
-   #+END_SRC
-** Helm
-   #+BEGIN_SRC emacs-lisp
-     (use-package helm
-       :ensure t
-       :bind (("M-x" . helm-M-x)
-              ("C-x b" . helm-buffers-list)
-              ("C-x f" . helm-find-files)
-              ("C-x r b" . helm-bookmarks))
-       :config
-       (require 'helm-config)
-       (setq helm-mode-fuzzy-match t)
-       (require 'helm)
-
-       ;; Disable Helm in the following functions.
-       (add-to-list 'helm-completing-read-handlers-alist '(magit-gitignore))
-
-       ;; Enter directories with RET, same as ido
-       ;; http://emacs.stackexchange.com/questions/3798/how-do-i-make-pressing-ret-in-helm-find-files-open-the-directory/7896#7896
-       (defun helm-find-files-navigate-forward (orig-fun &rest args)
-         (if (file-directory-p (helm-get-selection))
-             (apply orig-fun args)
-           (helm-maybe-exit-minibuffer)))
-       (advice-add 'helm-execute-persistent-action :around #'helm-find-files-navigate-forward)
-       (define-key helm-find-files-map (kbd "<return>") 'helm-execute-persistent-action)
-
-
-       ;; Don't show "." and ".." directories when finding files.
-       ;; https://github.com/hatschipuh/better-helm
-       (with-eval-after-load 'helm-files
-         (advice-add 'helm-ff-filter-candidate-one-by-one
-                     :before-while 'no-dots-display-file-p))
-
-       (defvar no-dots-whitelist nil
-         "List of helm buffers in which to show dots.")
-
-       (defun no-dots-in-white-listed-helm-buffer-p ()
-         (member helm-buffer no-dots-whitelist))
-
-       (defun no-dots-display-file-p (file)
-         ;; in a whitelisted buffer display the file regardless of its name
-         (or (no-dots-in-white-listed-helm-buffer-p)
-             ;; not in a whitelisted buffer display all files
-             ;; which does not end with /. /..
-             (not (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file)))))
-   #+END_SRC
-** Helm Projectile
-   #+BEGIN_SRC emacs-lisp
-     (use-package helm-projectile
-       :ensure t
-       :bind (("C-c p h" . helm-projectile)
-              ("C-x C-f" . helm-projectile-find-file)))
    #+END_SRC
 ** Inferior Hy Mode
    #+BEGIN_SRC emacs-lisp
@@ -1174,11 +1129,33 @@
      (ido-mode nil)
    #+END_SRC
 
+** Ido Ubiquitous
+
+   Use Ido everywhere
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package ido-ubiquitous
+       :ensure t
+       :init
+       (ido-everywhere 1))
+   #+END_SRC
+
+** Ido Bookmarks
+
+   Use Ido to jump to bookmarks.
+
+   #+BEGIN_SRC emacs-lisp
+    (defun ido-bookmark-jump ()
+      "Jump to a bookmark using Ido."
+      (interactive)
+      (bookmark-jump
+       (bookmark-get-bookmark
+        (ido-completing-read "Jump to bookmark: " (bookmark-all-names)))))
+   #+END_SRC
 ** Ido vertical mode
    #+BEGIN_SRC emacs-lisp
      (use-package ido-vertical-mode
        :ensure t
-       :disabled t
        :init
        (ido-vertical-mode)
        (setq ido-vertical-define-keys 'C-n-and-C-p-only))
@@ -1187,7 +1164,6 @@
    #+BEGIN_SRC emacs-lisp
      (use-package flx-ido
        :ensure t
-       :disabled t
        :init
        (flx-ido-mode 1)
        ;; disable ido faces to see flx highlights.
@@ -1201,6 +1177,7 @@
        :bind (("C-x C-g s" . magit-status))
        :config
        (setq magit-last-seen-setup-instructions "1.4.0")
+       (setq magit-completing-read-function 'magit-ido-completing-read)
        (setq magit-stage-all-confirm nil)
        (setq magit-unstage-all-confirm nil)
        (setq ediff-window-setup-function 'ediff-setup-windows-plain))
@@ -1474,21 +1451,21 @@
 ** Org mode
 
    #+BEGIN_SRC emacs-lisp
-     ;; (use-package org
-     ;;   :ensure t
-     ;;   :defer 1
-     ;;   :mode ("\\.org\\'" . org-mode)
-     ;;   :config
-     ;;   (require 'ob-clojure)
-     ;;   (setq org-babel-clojure-backend 'cider)
-     ;;   (setq org-src-fontify-natively t)
-     ;;   (org-babel-do-load-languages
-     ;;    'org-babel-load-languages
-     ;;    '((clojure . t)
-     ;;      (emacs-lisp . t)
-     ;;      (ruby . t)
-     ;;      (sh . t)
-     ;;      (sql . t))))
+     (use-package org
+       :ensure t
+       :defer 1
+       :mode ("\\.org\\'" . org-mode)
+       :config
+       (require 'ob-clojure)
+       (setq org-babel-clojure-backend 'cider)
+       (setq org-src-fontify-natively t)
+       (org-babel-do-load-languages
+        'org-babel-load-languages
+        '((clojure . t)
+          (emacs-lisp . t)
+          (ruby . t)
+          (sh . t)
+          (sql . t))))
    #+END_SRC
 
 ** Paredit
@@ -1513,7 +1490,8 @@
        :defer 1
        :init
        (add-hook 'clojure-mode-hook 'projectile-mode)
-       (add-hook 'ruby-mode-hook 'projectile-mode))
+       (add-hook 'ruby-mode-hook 'projectile-mode)
+       :bind (("C-x C-f" . projectile-find-file)))
    #+END_SRC
 ** Popwin
    #+BEGIN_SRC emacs-lisp
@@ -1589,6 +1567,13 @@
        ("~/workspace/soundklaus.el"
         "~/workspace/soundklaus.el/test"))
    #+END_SRC
+** Smex
+   #+BEGIN_SRC emacs-lisp
+     (use-package smex
+       :ensure t
+       :bind (("M-X" . smex-major-mode-commands)
+              ("M-x" . smex)))
+   #+END_SRC
 ** Tabs
 
    Don't insert tabs.
@@ -1617,7 +1602,7 @@
    #+END_SRC
 ** Which Key
    #+BEGIN_SRC emacs-lisp
-     (use-package which-key  
+     (use-package which-key
        :ensure t
        :defer 10
        :pin "melpa-stable"
@@ -1668,16 +1653,17 @@
 
         ;; Load keyboard bindings.
         (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+        (global-set-key (kbd "C-c C-t") 'projectile-toggle-between-implementation-and-test)
         (global-set-key (kbd "C-c n") 'cleanup-buffer)
         (global-set-key (kbd "C-c r") 'rotate-buffers)
-        (global-set-key (kbd "C-c C-t") 'projectile-toggle-between-implementation-and-test)
         (global-set-key (kbd "C-x C-b") 'list-buffers)
         (global-set-key (kbd "C-x C-d") 'dired)
-        (global-set-key (kbd "C-x C-g b") 'mo-git-blame-current)
         (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
         (global-set-key (kbd "C-x TAB") 'indent-rigidly)
         (global-set-key (kbd "C-x ^") 'enlarge-window)
+        (global-set-key (kbd "C-x f") 'find-file)
         (global-set-key (kbd "C-x h") 'mark-whole-buffer)
+        (global-set-key (kbd "C-x r b") 'ido-bookmark-jump)
 
         (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
         (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)))
