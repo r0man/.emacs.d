@@ -430,18 +430,13 @@
        (setq cljr-favor-prefix-notation nil)
        (setq cljr--debug-mode t))
    #+END_SRC
-** Compass
+** GraphQL Mode
    #+BEGIN_SRC emacs-lisp
-     (defun compass-watch ()
-       "Find the project root and run compass watch."
-       (interactive)
-       (let ((directory (locate-dominating-file (expand-file-name (directory-file-name ".")) "config.rb"))
-             (compilation-ask-about-save nil)
-             (compilation-buffer-name-function (lambda (mode) "*compass*")))
-         (if directory
-             (compile (message (format "cd %s; compass watch" directory)))
-           (message "Can't find compass project root."))))
-   #+END_SRC
+     (use-package graphql-mode
+      :ensure t
+      :init
+      (setq graphql-url "http://localhost:7000/graphql"))
+   #+END_SRC** Compass
 ** Company mode
 
    Enable company mode.
