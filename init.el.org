@@ -436,7 +436,7 @@
       :ensure t
       :init
       (setq graphql-url "http://localhost:7000/graphql"))
-   #+END_SRC** Compass
+   #+END_SRC
 ** Company mode
 
    Enable company mode.
