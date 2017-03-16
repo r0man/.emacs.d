@@ -273,7 +273,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package avy
        :ensure t
-       :bind ("C-c SPC" . avy-goto-char))
+       :bind ("C-:" . avy-goto-char-2))
    #+END_SRC
 ** Auto dictionary mode
    #+BEGIN_SRC emacs-lisp
