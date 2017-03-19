@@ -1,7 +1,0 @@
-#contributor : Sam Aaron <samaaron@gmail.com>
-# name: Example cond
-# key: cond.
-# group: examples
-# --
-(cond ((eq a 'hack) 'foo)
-      (t "default"))
