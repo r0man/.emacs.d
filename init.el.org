@@ -318,6 +318,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package elpy
        :ensure t
+       :disabled
        :init
        (with-eval-after-load 'python
          (elpy-enable)
