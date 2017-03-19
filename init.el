@@ -13,7 +13,8 @@
 
 (setq dotfiles-dir (file-name-directory (or (buffer-file-name) load-file-name)))
 
-(let* ((org-dir (expand-file-name
+(let* ((started-at (current-time))
+       (org-dir (expand-file-name
                  "lisp" (expand-file-name
                          "org" (expand-file-name
                                 "src" dotfiles-dir))))
@@ -25,9 +26,15 @@
                           (or load-path nil))))
   ;; load up Org-mode and Org-babel
   (require 'org-install)
-  (require 'ob-tangle))
+  (require 'ob-tangle)
+  (message "Loaded Org Mode (%.03fs)" (float-time (time-since started-at))))
 
-;; load up all literate org-mode files in this directory
-(mapc #'org-babel-load-file (directory-files dotfiles-dir t "\\.org$"))
+;; Load up all literate org-mode files in this directory
+(mapc (lambda (filename)
+        (let ((started-at (current-time)))
+          (org-babel-load-file filename)
+          (message "Loaded Org Babel file: %s (%.03fs)"
+                   filename (float-time (time-since started-at)))))
+      (directory-files dotfiles-dir t "\\.org$"))
 
 ;;; init.el ends here
