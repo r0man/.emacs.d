@@ -534,17 +534,24 @@
               ("C-x r b" . helm-bookmarks))
        :config
        (require 'helm-config)
-       (helm-flx-mode 1)
-       (helm-fuzzier-mode 1)
+
+       ;; Globally enable fuzzy matching for helm-mode.
+       (setq helm-mode-fuzzy-match t)
+       (setq helm-completion-in-region-fuzzy-match t)
+
+       (setq helm-M-x-fuzzy-match t)
+       (setq helm-buffers-fuzzy-matching t)
+       (setq helm-recentf-fuzzy-match to t)
 
        (global-set-key [remap execute-extended-command] #'helm-smex)
        (global-set-key (kbd "M-X") #'helm-smex-major-mode-commands)
 
        ;; Disable Helm in the following functions.
        ;; See: https://github.com/emacs-helm/helm/wiki#customize-helm-mode
-       (add-to-list 'helm-completing-read-handlers-alist '(find-file-read-only . ido))
-       (add-to-list 'helm-completing-read-handlers-alist '(magit-gitignore . nil))
-       (add-to-list 'helm-completing-read-handlers-alist '(rename-file . ido))
+       (setq helm-completing-read-handlers-alist
+             '((find-file-read-only . ido)
+               (magit-gitignore . nil)
+               (rename-file . ido)))
 
        ;; Enter directories with RET, same as ido
        ;; http://emacs.stackexchange.com/questions/3798/how-do-i-make-pressing-ret-in-helm-find-files-open-the-directory/7896#7896
@@ -553,8 +560,9 @@
              (apply orig-fun args)
            (helm-maybe-exit-minibuffer)))
        (advice-add 'helm-execute-persistent-action :around #'helm-find-files-navigate-forward)
-       (define-key helm-find-files-map (kbd "<return>") 'helm-execute-persistent-action)
 
+       (with-eval-after-load 'helm-files
+         (define-key helm-find-files-map (kbd "<return>") 'helm-execute-persistent-action))
 
        ;; Don't show "." and ".." directories when finding files.
        ;; https://github.com/hatschipuh/better-helm
