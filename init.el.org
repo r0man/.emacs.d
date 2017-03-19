@@ -541,7 +541,10 @@
        (global-set-key (kbd "M-X") #'helm-smex-major-mode-commands)
 
        ;; Disable Helm in the following functions.
-       (add-to-list 'helm-completing-read-handlers-alist '(magit-gitignore))
+       ;; See: https://github.com/emacs-helm/helm/wiki#customize-helm-mode
+       (add-to-list 'helm-completing-read-handlers-alist '(find-file-read-only . ido))
+       (add-to-list 'helm-completing-read-handlers-alist '(magit-gitignore . nil))
+       (add-to-list 'helm-completing-read-handlers-alist '(rename-file . ido))
 
        ;; Enter directories with RET, same as ido
        ;; http://emacs.stackexchange.com/questions/3798/how-do-i-make-pressing-ret-in-helm-find-files-open-the-directory/7896#7896
