@@ -1687,7 +1687,6 @@
         (global-set-key (kbd "C-x ^") 'enlarge-window)
         (global-set-key (kbd "C-x f") 'find-file)
         (global-set-key (kbd "C-x h") 'mark-whole-buffer)
-        (global-set-key (kbd "C-x r b") 'ido-bookmark-jump)
 
         (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
         (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)))
