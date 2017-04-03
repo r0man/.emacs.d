@@ -543,7 +543,7 @@
 
        (setq helm-M-x-fuzzy-match t)
        (setq helm-buffers-fuzzy-matching t)
-       (setq helm-recentf-fuzzy-match to t)
+       (setq helm-recentf-fuzzy-match t)
 
        (global-set-key [remap execute-extended-command] #'helm-smex)
        (global-set-key (kbd "M-X") #'helm-smex-major-mode-commands)
