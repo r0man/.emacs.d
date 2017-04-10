@@ -1146,6 +1146,8 @@
 
 ** Ido mode
 
+   Automatically switch to merged work directories during file name input.
+
    #+BEGIN_SRC emacs-lisp
      (setq ido-auto-merge-work-directories-length nil)
    #+END_SRC
@@ -1180,6 +1182,12 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq ido-use-virtual-buffers t)
+   #+END_SRC
+
+   Enable ido mode.
+
+   #+BEGIN_SRC emacs-lisp
+     (ido-mode)
    #+END_SRC
 
 ** Ido vertical mode
@@ -1684,7 +1692,7 @@
         (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
         (global-set-key (kbd "C-x TAB") 'indent-rigidly)
         (global-set-key (kbd "C-x ^") 'enlarge-window)
-        (global-set-key (kbd "C-x f") 'find-file)
+        (global-set-key (kbd "C-x f") 'ido-find-file)
         (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
         (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
