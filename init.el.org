@@ -1237,6 +1237,13 @@
          (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
          (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
    #+END_SRC
+** JavaScript
+
+   Number of spaces for each indentation step in `js-mode'.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq js-indent-level 2)
+   #+END_SRC
 
 ** Octave
 
