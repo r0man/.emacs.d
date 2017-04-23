@@ -1046,6 +1046,12 @@
        :ensure t
        :init (global-flycheck-mode))
    #+END_SRC
+** Flycheck Flow
+   #+BEGIN_SRC emacs-lisp
+     (use-package flycheck-flow
+       :ensure t
+       :init (add-hook 'javascript-mode-hook 'flycheck-mode))
+   #+END_SRC
 ** Fly Spell mode
 
    Enable flyspell in text mode.
