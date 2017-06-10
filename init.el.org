@@ -1520,6 +1520,15 @@
           (sql . t))))
    #+END_SRC
 
+** Org Plus Contrib
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-plus-contrib
+       :ensure t
+       :init
+       (require 'org-invoice))
+   #+END_SRC
+
 ** Paredit
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
