@@ -11,6 +11,15 @@
 ;; You may delete these explanatory comments.
 ;; (package-initialize)
 
+(setq package-archives
+      '(("elpa" . "http://tromey.com/elpa/")
+        ("melpa" . "http://melpa.org/packages/")
+        ("melpa-stable" . "http://stable.melpa.org/packages/")
+        ("gnu" . "http://elpa.gnu.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")))
+
+(package-initialize)
+
 (setq dotfiles-dir (file-name-directory (or (buffer-file-name) load-file-name)))
 
 (let* ((started-at (current-time))

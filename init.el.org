@@ -1,13 +1,4 @@
 * init.el
-** Package Sources
-   #+BEGIN_SRC emacs-lisp
-     (setq package-archives
-           '(("elpa" . "http://tromey.com/elpa/")
-             ("melpa" . "http://melpa.org/packages/")
-             ("melpa-stable" . "http://stable.melpa.org/packages/")
-             ("gnu" . "http://elpa.gnu.org/packages/")))
-     (package-initialize)
-   #+END_SRC
 ** Scroll, tool and menu bar.
 
    Hide the scroll bar.
@@ -291,7 +282,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (appt-activate 1)
-   #+END_SRC emacs-lisp
+   #+END_SRC
 
    Display minutes to appointment and time on the mode line.
 
@@ -387,6 +378,9 @@
        :config
        ;; Enable eldoc in Clojure buffers
        (add-hook 'cider-mode-hook #'eldoc-mode)
+
+       ;; Pretty print in the REPL.
+       (setq cider-repl-use-pretty-printing t)
 
        ;; Hide *nrepl-connection* and *nrepl-server* buffers from appearing
        ;; in some buffer switching commands like switch-to-buffer
@@ -536,6 +530,7 @@
               ("C-x r b" . helm-bookmarks))
        :config
        (require 'helm-config)
+       (helm-mode 1)
 
        ;; Globally enable fuzzy matching for helm-mode.
        (setq helm-mode-fuzzy-match t)
@@ -1525,6 +1520,15 @@
           (sql . t))))
    #+END_SRC
 
+** Org Plus Contrib
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-plus-contrib
+       :ensure t
+       :init
+       (require 'org-invoice))
+   #+END_SRC
+
 ** Paredit
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
@@ -1596,7 +1600,8 @@
      (use-package rainbow-mode
        :ensure t
        :defer 1)
-   #+END_SRC** Slamhound
+   #+END_SRC
+** Slamhound
    #+BEGIN_SRC emacs-lisp
      (use-package slamhound
        :ensure t
