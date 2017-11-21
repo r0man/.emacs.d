@@ -1227,6 +1227,15 @@
        (setq magit-unstage-all-confirm nil)
        (setq ediff-window-setup-function 'ediff-setup-windows-plain))
    #+END_SRC
+** Magithub
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package magithub
+       :after magit
+       :disabled true
+       :config (magithub-feature-autoinject t))
+   #+END_SRC
+
 ** Java
 
    Indent Java annotations. See http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
