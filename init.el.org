@@ -1215,6 +1215,15 @@
        (setq ido-use-faces nil)
        (setq gc-cons-threshold 20000000))
    #+END_SRC
+** Kubernetes
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package kubernetes
+       :ensure t
+       :bind (("C-x C-k s" . kubernetes-overview))
+       :commands (kubernetes-overview))
+   #+END_SRC
+
 ** Magit
    #+BEGIN_SRC emacs-lisp
      (use-package magit
