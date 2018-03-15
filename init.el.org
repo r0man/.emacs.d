@@ -374,7 +374,7 @@
      (use-package cider
        :commands (cider-jack-in cider-jack-in-clojurescript)
        :ensure t
-       ;; :pin "melpa-stable"
+       :pin "melpa-stable"
        :config
        ;; Enable eldoc in Clojure buffers
        (add-hook 'cider-mode-hook #'eldoc-mode)
