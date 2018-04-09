@@ -520,6 +520,11 @@
        :init
        (add-hook 'hy-mode-hook 'inf-hy-minor-mode))
    #+END_SRC
+** Inferior Clojure
+   #+BEGIN_SRC emacs-lisp
+     (use-package inf-clojure
+       :commands (inf-clojure))
+   #+END_SRC
 ** Helm
    #+BEGIN_SRC emacs-lisp
      (use-package helm
