@@ -8,6 +8,7 @@
         forward-sexp
         paredit-backward-kill-word
         paredit-close-square
+        paredit-forward-barf-sexp
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
         paredit-open-square
@@ -19,4 +20,9 @@
 
 (setq mc/cmds-to-run-once
       '(
+        cider-find-var
+        cider-load-buffer
+        cider-switch-to-repl-buffer
+        helm-M-x
+        indent-or-complete
         ))
