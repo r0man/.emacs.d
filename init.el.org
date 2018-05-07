@@ -1549,9 +1549,10 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package org-plus-contrib
+       :commands org-invoice-report
        :ensure t
-       :init
-       (require 'org-invoice))
+       :init (require 'org-invoice)
+       :no-require t)
    #+END_SRC
 
 ** Paredit
