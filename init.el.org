@@ -1540,7 +1540,6 @@
         '((clojure . t)
           (emacs-lisp . t)
           (ruby . t)
-          (sh . t)
           (shell . t)
           (sql . t))))
    #+END_SRC
