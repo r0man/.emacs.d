@@ -228,12 +228,8 @@
 
 ** Color theme
    #+BEGIN_SRC emacs-lisp
-     (use-package color-theme
-       :ensure t
-       :load-path "~/workspace/emacs-color-theme-solarized"
-       :init
-       (require 'color-theme-solarized)
-       (load-theme 'solarized-dark t))
+     (add-to-list 'custom-theme-load-path "~/workspace/emacs-color-theme-solarized")
+     (load-theme 'solarized-dark t)
    #+END_SRC
 ** Mac OSX
 
