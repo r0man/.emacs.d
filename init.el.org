@@ -1626,12 +1626,6 @@
        :ensure t
        :defer 1)
    #+END_SRC
-** Slamhound
-   #+BEGIN_SRC emacs-lisp
-     (use-package slamhound
-       :ensure t
-       :commands (slamhound))
-   #+END_SRC
 ** Smooth scrolling
    #+BEGIN_SRC emacs-lisp
      (use-package smooth-scrolling
