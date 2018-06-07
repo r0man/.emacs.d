@@ -329,17 +329,6 @@
          (fdef 1)
          ;; cljs.test
          (async 1)
-         ;; om-tools
-         (defcomponent 'defun)
-         (did-mount 1)
-         (did-update 1)
-         (will-unmount 1)
-         (init-state 1)
-         (render 1)
-         (will-mount 1)
-         (will-receive-props 1)
-         (will-update 1)
-         (should-update 1)
          ;; ClojureScript
          (this-as 1)
          ;; COMPOJURE
@@ -1206,6 +1195,11 @@
        :init
        (ido-vertical-mode)
        (setq ido-vertical-define-keys 'C-n-and-C-p-only))
+   #+END_SRC
+** Ido Completing Read+
+   #+BEGIN_SRC emacs-lisp
+     (use-package ido-completing-read+
+       :ensure t)m
    #+END_SRC
 ** Flx mode
    #+BEGIN_SRC emacs-lisp
