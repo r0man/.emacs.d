@@ -1199,7 +1199,7 @@
 ** Ido Completing Read+
    #+BEGIN_SRC emacs-lisp
      (use-package ido-completing-read+
-       :ensure t)m
+       :ensure t)
    #+END_SRC
 ** Flx mode
    #+BEGIN_SRC emacs-lisp
