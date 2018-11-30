@@ -1182,6 +1182,12 @@
      (setq ido-use-virtual-buffers t)
    #+END_SRC
 
+   Show new file in selected window.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq ido-default-file-method 'selected-window)
+   #+END_SRC
+
    Enable ido mode.
 
    #+BEGIN_SRC emacs-lisp
