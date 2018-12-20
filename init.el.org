@@ -349,6 +349,7 @@
          (web-test 1)
          (database-test 1)
          (defroutes 'defun)
+         (for-all 'defun)
          (assoc-some 1))
        (put 'defmixin 'clojure-backtracking-indent '(4 (2))))
 
