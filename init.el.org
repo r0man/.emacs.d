@@ -492,6 +492,13 @@
        (interactive)
        (set-default-font "Inconsolata 14"))
    #+END_SRC
+** Forge
+   #+BEGIN_SRC emacs-lisp
+     (use-package forge
+       :ensure t
+       :disabled t
+       :commands (forge-pull))
+   #+END_SRC
 ** Global auto revert mode
 
    Reload files when they change on disk.
