@@ -483,6 +483,13 @@
      (add-hook 'before-save-hook 'delete-trailing-whitespace)
    #+END_SRC
 
+** Docker
+   #+BEGIN_SRC emacs-lisp
+     (use-package docker
+       :ensure t
+       :commands (docker))
+
+   #+END_SRC
 ** Fonts
 
    Use the Inconsolata font.
