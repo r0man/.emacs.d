@@ -11,6 +11,7 @@
         paredit-forward-barf-sexp
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
+        paredit-open-round
         paredit-open-square
         sgml-slash
         smarter-move-beginning-of-line
