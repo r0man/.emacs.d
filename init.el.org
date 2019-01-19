@@ -1,4 +1,9 @@
 * init.el
+
+  #+BEGIN_SRC emacs-lisp
+    ;;; init.el --- my emacs configuration. -*- lexical-binding: t; -*-
+  #+END_SRC
+
 ** Scroll, tool and menu bar.
 
    Hide the scroll bar.
