@@ -1,8 +1,13 @@
-;;;; Emacs Bookmark Format Version 1 ;;;;
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Zsh Configuration"
+(("StumpWM Configuration"
+ (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
+ (front-context-string . ";; Configure res")
+ (rear-context-string . "rder-width* 1)\n\n")
+ (position . 713))
+("Zsh Configuration"
  (filename . "~/.dotfiles/zsh/.zshrc")
  (front-context-string . "# Lines configur")
  (rear-context-string)
