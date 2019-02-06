@@ -79,6 +79,19 @@
    #+BEGIN_SRC emacs-lisp
      (setq use-package-verbose t)
    #+END_SRC
+** Ansi Color
+
+   Colorize the current buffer.
+   See: [[https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer][Stack Overflow]]
+
+   #+BEGIN_SRC emacs-lisp
+     (defun colorize-current-buffer ()
+       (interactive)
+       (require 'ansi-color)
+       (let ((inhibit-read-only t))
+         (ansi-color-apply-on-region (point-min) (point-max))))
+   #+END_SRC
+
 ** Cask
    #+BEGIN_SRC emacs-lisp
      (use-package cask
