@@ -1277,6 +1277,11 @@
        (setq magit-unstage-all-confirm nil)
        (setq ediff-window-setup-function 'ediff-setup-windows-plain))
    #+END_SRC
+** Midje Mode
+   #+BEGIN_SRC emacs-lisp
+     (use-package midje-mode
+       :ensure t)
+   #+END_SRC
 ** Nubank
    #+BEGIN_SRC emacs-lisp
      (let ((nudev-emacs-path "~/workspace/nu/nudev/ides/emacs/"))
