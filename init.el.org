@@ -426,7 +426,9 @@
        (setq nrepl-log-messages nil)
 
        ;; Don't show the `*cider-test-report*` buffer on passing tests.
-       (setq cider-test-report-on-success nil))
+       (setq cider-test-report-on-success nil)
+
+       (add-to-list 'cider-test-defining-forms "defflow"))
    #+END_SRC
 ** Clojure refactor
    #+BEGIN_SRC emacs-lisp
