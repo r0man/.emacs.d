@@ -1611,6 +1611,11 @@
                (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
                          'paredit-mode)))
    #+END_SRC
+** Pass
+   #+BEGIN_SRC emacs-lisp
+     (use-package pass
+       :ensure t)
+   #+END_SRC
 ** Projectile
    #+BEGIN_SRC emacs-lisp
      (use-package projectile
