@@ -325,7 +325,6 @@
    #+END_SRC
 
 ** Elpy - Emacs Python Development Environment
-
    #+BEGIN_SRC emacs-lisp
      (use-package elpy
        :ensure t
@@ -336,7 +335,13 @@
          (elpy-use-ipython)
          (delete 'elpy-module-highlight-indentation elpy-modules)))
    #+END_SRC
-
+** EMidje
+   #+BEGIN_SRC emacs-lisp
+     (use-package emidje
+       :ensure t
+       :disabled t
+       :init (eval-after-load 'cider #'emidje-setup))
+   #+END_SRC
 ** Clojure mode
    #+BEGIN_SRC emacs-lisp
      (use-package clojure-mode
