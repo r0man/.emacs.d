@@ -564,7 +564,6 @@
        :ensure t
        :bind (("M-x" . helm-M-x)
               ("C-x b" . helm-buffers-list)
-              ("C-x f" . helm-find-files)
               ("C-x r b" . helm-bookmarks))
        :config
        (require 'helm-config)
