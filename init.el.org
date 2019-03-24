@@ -1624,10 +1624,10 @@
    #+BEGIN_SRC emacs-lisp
      (use-package projectile
        :ensure t
-       :defer 1
-       :init
-       (add-hook 'clojure-mode-hook 'projectile-mode)
-       (add-hook 'ruby-mode-hook 'projectile-mode)
+       :config
+       (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+       (projectile-mode +1)
        :bind (("C-x C-f" . projectile-find-file)))
    #+END_SRC
 ** Ruby mode
