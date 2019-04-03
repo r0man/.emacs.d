@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("StumpWM Configuration"
+(("X Resources"
+ (filename . "~/.dotfiles/x11/.Xresources")
+ (front-context-string . "! Applications w")
+ (rear-context-string)
+ (position . 1))
+("Stumpwm Configuration"
  (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
  (front-context-string . ";; Configure res")
  (rear-context-string . "rder-width* 1)\n\n")
