@@ -467,6 +467,11 @@
        :init (global-company-mode))
    #+END_SRC
 
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-lsp
+       :ensure t)
+   #+END_SRC
+
    Indent with TAB, then do completion.
 
    #+BEGIN_SRC emacs-lisp
@@ -1670,14 +1675,16 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
+       :ensure t
        :init (setq lsp-prefer-flymake nil))
 
      (use-package lsp-ui
-       :hook (lsp-mode . lsp-ui-mode))
+       :ensure t)
 
      (use-package lsp-scala
        :after scala-mode
        :demand t
+       :ensure t
        ;; Optional - enable lsp-scala automatically in scala files
        :hook (scala-mode . lsp))
    #+END_SRC
@@ -1789,7 +1796,7 @@
         (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
         (global-set-key (kbd "C-x TAB") 'indent-rigidly)
         (global-set-key (kbd "C-x ^") 'enlarge-window)
-        (global-set-key (kbd "C-x f") 'ido-find-file)
+        (global-set-key (kbd "C-x f") 'helm-find-files)
         (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
         (define-key lisp-mode-shared-map (kbd "RET") 'reindent-then-newline-and-indent)
