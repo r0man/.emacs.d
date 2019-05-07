@@ -582,6 +582,9 @@
        (setq helm-buffers-fuzzy-matching t)
        (setq helm-recentf-fuzzy-match t)
 
+       (setq helm-locate-command "locate %s -e -A --regex %s")
+       (setq helm-locate-fuzzy-match t)
+
        (global-set-key [remap execute-extended-command] #'helm-smex)
        (global-set-key (kbd "M-X") #'helm-smex-major-mode-commands)
 
