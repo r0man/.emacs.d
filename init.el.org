@@ -494,8 +494,14 @@
    #+END_SRC
 
 ** Configure the full name of the user logged in.
+
    #+BEGIN_SRC emacs-lisp
      (setq user-full-name "Roman Scherer")
+   #+END_SRC
+** Dart
+   #+BEGIN_SRC emacs-lisp
+     (use-package dart-mode
+       :ensure t)
    #+END_SRC
 ** Dim parentheses
    #+BEGIN_SRC emacs-lisp
