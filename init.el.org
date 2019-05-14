@@ -530,7 +530,14 @@
      (use-package docker
        :ensure t
        :commands (docker))
-
+   #+END_SRC
+** Flutter
+   #+BEGIN_SRC emacs-lisp
+     (use-package flutter
+       :after dart-mode
+       :ensure t
+       :bind (:map dart-mode-map ("C-M-x" . #'flutter-run-or-hot-reload))
+       :custom (flutter-sdk-path "/opt/flutter/"))
    #+END_SRC
 ** Fonts
 
