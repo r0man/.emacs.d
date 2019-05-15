@@ -755,10 +755,10 @@
      (column-number-mode)
    #+END_SRC
 
-   Enable display of time, load level, and mail flag in mode lines.
+   Don't display time, load level, and mail flag in mode lines.
 
    #+BEGIN_SRC emacs-lisp
-     (display-time)
+     (display-time-mode 0)
    #+END_SRC
 
    Whether to add a newline automatically at the end of the file.
