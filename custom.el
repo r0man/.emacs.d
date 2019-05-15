@@ -5,8 +5,6 @@
  ;; If there is more than one, they won't work right.
  '(background-color "#141b23")
  '(background-mode dark)
- '(cider-cljs-lein-repl
-   "(do (require 'figwheel-sidecar.repl-api) (figwheel-sidecar.repl-api/start-figwheel!) (figwheel-sidecar.repl-api/cljs-repl))")
  '(cider-repl-pop-to-buffer-on-connect nil)
  '(cider-repl-wrap-history t)
  '(column-number-mode t)
