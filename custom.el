@@ -48,6 +48,7 @@
  '(ediff-fine-diff-C ((t (:background "#aaaa22" :foreground "white"))))
  '(ert-test-result-expected ((t (:background "green3" :foreground "white smoke"))))
  '(helm-M-x-key ((t (:foreground "#839496" :underline t :weight bold))))
+ '(helm-locate-finish ((t (:foreground "#859900"))))
  '(helm-selection ((t (:background "#586e75" :foreground "white smoke"))))
  '(helm-source-header ((t (:foreground "white smoke" :weight bold :height 1.1 :family "Sans Serif"))))
  '(mode-line ((t (:background "white smoke" :foreground "black"))))
