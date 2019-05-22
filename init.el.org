@@ -553,6 +553,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package forge
        :ensure t
+       :after magit
        :disabled t
        :commands (forge-pull))
    #+END_SRC
