@@ -325,7 +325,16 @@
        :ensure t
        :commands (ein:notebooklist-open))
    #+END_SRC
-
+** ElFeed
+   #+BEGIN_SRC emacs-lisp
+     (use-package elfeed
+       :ensure t
+       :init
+       (setq elfeed-feeds
+             '("https://nullprogram.com/feed"
+               "https://planet.emacslife.com/atom.xml"
+               "http://planet.clojure.in/atom.xml")))
+   #+END_SRC
 ** Elpy - Emacs Python Development Environment
    #+BEGIN_SRC emacs-lisp
      (use-package elpy
