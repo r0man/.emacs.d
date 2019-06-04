@@ -262,7 +262,9 @@
    #+BEGIN_SRC emacs-lisp
      (use-package exec-path-from-shell
        :ensure t
-       :init (exec-path-from-shell-initialize))
+       :init
+       (setq exec-path-from-shell-variables '("PATH" "MANPATH" "NU_HOME"))
+       (exec-path-from-shell-initialize))
    #+END_SRC
 
    This variable describes the behavior of the command key.
