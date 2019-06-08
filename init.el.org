@@ -263,7 +263,11 @@
      (use-package exec-path-from-shell
        :ensure t
        :init
-       (setq exec-path-from-shell-variables '("PATH" "MANPATH" "NU_HOME"))
+       (setq exec-path-from-shell-variables
+             '("GOOGLE_APPLICATION_CREDENTIALS"
+               "PATH"
+               "MANPATH"
+               "NU_HOME"))
        (exec-path-from-shell-initialize))
    #+END_SRC
 
