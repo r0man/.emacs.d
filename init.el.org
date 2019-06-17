@@ -265,7 +265,6 @@
        :init
        (setq exec-path-from-shell-variables
              '("GOOGLE_APPLICATION_CREDENTIALS"
-               "DISPLAY"
                "PATH"
                "MANPATH"
                "NU_HOME"))
