@@ -461,7 +461,8 @@
        (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)
        ;; Don't use prefix notation when cleaning the ns form.
        (setq cljr-favor-prefix-notation nil)
-       (setq cljr--debug-mode t))
+       ;; Don't warn when running an AST op.
+       (setq cljr-warn-on-eval nil))
    #+END_SRC
 ** GraphQL Mode
    #+BEGIN_SRC emacs-lisp
