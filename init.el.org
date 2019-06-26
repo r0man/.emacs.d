@@ -244,6 +244,16 @@
                     (make-string 12 n))))))
    #+END_SRC
 
+   Run the current buffer through zprint.
+
+   #+BEGIN_SRC emacs-lisp
+     (defun zprint-buffer ()
+       "Run the current buffer through zprint."
+       (interactive)
+       (mark-whole-buffer)
+       (shell-command-on-region (point-min) (point-max) "zprint" nil t))
+   #+END_SRC
+
 ** Color theme
    #+BEGIN_SRC emacs-lisp
      (add-to-list 'custom-theme-load-path "~/workspace/emacs-color-theme-solarized")
