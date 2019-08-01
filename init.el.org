@@ -668,6 +668,7 @@
 ** Helm Projectile
    #+BEGIN_SRC emacs-lisp
      (use-package helm-projectile
+       :after (projectile)
        :ensure t
        :init (helm-projectile-on))
    #+END_SRC
