@@ -1656,6 +1656,14 @@
        :no-require t)
    #+END_SRC
 
+** Pandoc
+   #+BEGIN_SRC emacs-lisp
+     (use-package pandoc-mode
+       :ensure t
+       :after markdown-mode
+       :init
+       (add-hook 'markdown-mode-hook 'pandoc-mode))
+   #+END_SRC
 ** Paredit
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
