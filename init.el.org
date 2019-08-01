@@ -1451,7 +1451,6 @@
        :ensure t
        :mode ("\\.md\\'" . markdown-mode)
        :config
-       (setq markdown-command "doctor")
        (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode)))
    #+END_SRC
 ** Multi term
