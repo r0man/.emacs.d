@@ -1725,14 +1725,26 @@
    #+END_SRC
 ** Language Server Protocol
 
+   Emacs client for the Language Server Protocol.
+
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
        :ensure t
-       :init (setq lsp-prefer-flymake nil))
+       :config
+       (add-to-list 'lsp-language-id-configuration '(clojure-mode . "clojure-mode")))
+   #+END_SRC
 
+   Higher level UI modules of lsp-mode.
+
+   #+BEGIN_SRC emacs-lisp
      (use-package lsp-ui
-       :ensure t)
+       :ensure t
+       :commands lsp-ui-mode)
+   #+END_SRC
 
+   Scala
+
+   #+BEGIN_SRC emacs-lisp
      (use-package lsp-scala
        :after scala-mode
        :demand t
