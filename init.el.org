@@ -1729,28 +1729,17 @@
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
        :ensure t
-       :config
-       (add-to-list 'lsp-language-id-configuration '(clojure-mode . "clojure-mode")))
+       :hook (scala-mode . lsp)
+       :config (setq lsp-prefer-flymake nil))
    #+END_SRC
 
    Higher level UI modules of lsp-mode.
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-ui
-       :ensure t
-       :commands lsp-ui-mode)
+       :ensure t)
    #+END_SRC
 
-   Scala
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package lsp-scala
-       :after scala-mode
-       :demand t
-       :ensure t
-       ;; Optional - enable lsp-scala automatically in scala files
-       :hook (scala-mode . lsp))
-   #+END_SRC
 ** Smooth scrolling
    #+BEGIN_SRC emacs-lisp
      (use-package smooth-scrolling
