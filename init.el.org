@@ -1777,6 +1777,11 @@
        :config
        (setq venv-location "~/.virtualenv"))
    #+END_SRC
+** Vterm
+   #+BEGIN_SRC emacs-lisp
+     (use-package vterm
+       :ensure t)
+   #+END_SRC
 ** Web mode
    #+BEGIN_SRC emacs-lisp
      (use-package web-mode
