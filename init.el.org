@@ -250,8 +250,9 @@
      (defun zprint-buffer ()
        "Run the current buffer through zprint."
        (interactive)
-       (mark-whole-buffer)
-       (shell-command-on-region (point-min) (point-max) "zprint" nil t))
+       (shell-command-on-region (point-min) (point-max) "zprint" nil t)
+       (goto-char (point-min))
+       (deactivate-mark))
    #+END_SRC
 
 ** Color theme
