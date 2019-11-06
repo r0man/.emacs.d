@@ -521,7 +521,6 @@
        :ensure t
        :defer 1
        :init (company-quickhelp-mode 1))
-
    #+END_SRC
 
 ** Configure the full name of the user logged in.
@@ -1516,6 +1515,15 @@
          (if (not buffer)
              (multi-term)
            (switch-to-buffer buffer))))
+   #+END_SRC
+
+** Multi Libvterm
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package multi-libvterm
+       :load-path "~/workspace/multi-libvterm"
+       :bind (("C-x M" . multi-libvterm)
+              ("C-x m" . multi-libvterm-next)))
    #+END_SRC
 
 ** Multiple cursors
