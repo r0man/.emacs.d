@@ -497,11 +497,6 @@
        :init (global-company-mode))
    #+END_SRC
 
-   #+BEGIN_SRC emacs-lisp
-     (use-package company-lsp
-       :ensure t)
-   #+END_SRC
-
    Indent with TAB, then do completion.
 
    #+BEGIN_SRC emacs-lisp
@@ -513,6 +508,12 @@
          (indent-according-to-mode)))
    #+END_SRC
 
+** Company LSP
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-lsp
+       :ensure t
+       :commands company-lsp)
+   #+END_SRC
 ** Company Quickhelp
 
    #+BEGIN_SRC emacs-lisp
@@ -1734,15 +1735,18 @@
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
        :ensure t
-       :hook (scala-mode . lsp)
-       :config (setq lsp-prefer-flymake nil))
+       :hook ((dart-mode . lsp-deferred)
+              (scala-mode . lsp-deferred))
+       :config (setq lsp-prefer-flymake nil)
+       :commands (lsp lsp-deferred))
    #+END_SRC
 
    Higher level UI modules of lsp-mode.
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-ui
-       :ensure t)
+       :ensure t
+       :commands lsp-ui-mode)
    #+END_SRC
 
 ** Smooth scrolling
