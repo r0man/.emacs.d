@@ -1462,6 +1462,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package multi-term
        :ensure t
+       :disabled t
        :bind (("C-x M" . multi-term)
               ("C-x m" . switch-to-term-mode-buffer))
        :config
