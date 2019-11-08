@@ -1525,8 +1525,9 @@
        :load-path "~/workspace/multi-libvterm"
        :bind (("C-x M" . multi-libvterm)
               ("C-x m" . multi-libvterm-next)
-              :map projectile-mode-map
-              ("C-c p m" . multi-libvterm-projectile)))
+              ;; :map projectile-mode-map
+              ;; ("C-c p m" . multi-libvterm-projectile)
+              ))
    #+END_SRC
 
 ** Multiple cursors
