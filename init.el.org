@@ -617,6 +617,11 @@
        (require 'helm-config)
        (helm-mode 1)
 
+       ;; https://www.reddit.com/r/emacs/comments/ecdj6s/how_to_get_fuzzy_completion_in_helm_working_again/
+       (setq helm-completion-style 'emacs)
+       (setq completion-styles `(basic partial-completion emacs22 initials
+                                       ,(if (version<= emacs-version "27.0") 'helm-flex 'flex)))
+
        ;; Globally enable fuzzy matching for helm-mode.
        (setq helm-mode-fuzzy-match t)
        (setq helm-completion-in-region-fuzzy-match t)
