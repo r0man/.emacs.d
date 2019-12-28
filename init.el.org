@@ -1541,6 +1541,12 @@
        :ensure t
        :defer 1)
    #+END_SRC
+** NuCLI
+   #+BEGIN_SRC emacs-lisp
+     (use-package nucli
+       :commands (nucli)
+       :load-path ("~/workspace/nu/nucli.el"))
+   #+END_SRC
 ** Fuck the NSA
 
    http://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Amusements.html
