@@ -278,7 +278,8 @@
              '("GOOGLE_APPLICATION_CREDENTIALS"
                "PATH"
                "MANPATH"
-               "NU_HOME"))
+               "NU_HOME"
+               "NPM_PACKAGES"))
        (exec-path-from-shell-initialize))
    #+END_SRC
 
