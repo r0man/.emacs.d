@@ -494,7 +494,6 @@
    #+BEGIN_SRC emacs-lisp
      (use-package company
        :ensure t
-       :bind ("TAB" . indent-or-complete)
        :defer 1
        :init (global-company-mode))
    #+END_SRC
@@ -502,12 +501,7 @@
    Indent with TAB, then do completion.
 
    #+BEGIN_SRC emacs-lisp
-     (defun indent-or-complete ()
-       "Indent or complete via company-mode."
-       (interactive)
-       (if (looking-at "\\_>")
-           (company-complete-common)
-         (indent-according-to-mode)))
+     (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
    #+END_SRC
 
 ** Company LSP
