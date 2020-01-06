@@ -460,7 +460,11 @@
        (setq cider-test-report-on-success nil)
 
        (add-to-list 'cider-test-defining-forms "defflow")
-       (add-to-list 'cider-test-defining-forms "defflow-as-of"))
+       (add-to-list 'cider-test-defining-forms "defflow-as-of")
+
+       ;; Fuzzy candidate matching
+       (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+       (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion))
    #+END_SRC
 ** Clojure refactor
    #+BEGIN_SRC emacs-lisp
