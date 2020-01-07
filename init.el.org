@@ -276,10 +276,11 @@
        :init
        (setq exec-path-from-shell-variables
              '("GOOGLE_APPLICATION_CREDENTIALS"
-               "PATH"
                "MANPATH"
+               "NPM_PACKAGES"
                "NU_HOME"
-               "NPM_PACKAGES"))
+               "PATH"
+               "SPARK_HOME"))
        (exec-path-from-shell-initialize))
    #+END_SRC
 
