@@ -1312,6 +1312,13 @@
      (use-package ido-completing-read+
        :ensure t)
    #+END_SRC
+** Joker
+
+   Open Joker files in Clojure mode.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'auto-mode-alist '("\\.joke$" . clojure-mode))
+   #+END_SRC
 ** Flx mode
    #+BEGIN_SRC emacs-lisp
      (use-package flx-ido
