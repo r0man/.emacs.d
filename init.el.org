@@ -1713,6 +1713,14 @@
      (use-package pass
        :ensure t)
    #+END_SRC
+** Pepita
+   #+BEGIN_SRC emacs-lisp
+     (use-package pepita
+       :ensure t
+       :config
+       (setq pepita-splunk-url "https://nubank.splunkcloud.com/services"))
+   #+END_SRC
+
 ** Projectile
    #+BEGIN_SRC emacs-lisp
      (use-package projectile
