@@ -266,6 +266,13 @@
                        (load-theme theme t)))
          (load-theme theme t)))
    #+END_SRC
+** Docopt.el
+   #+BEGIN_SRC emacs-lisp
+     (use-package docopt
+       :load-path
+       ("~/workspace/docopt.el"
+        "~/workspace/docopt.el/test"))
+   #+END_SRC
 ** Mac OSX
 
    Make Emacs use the $PATH set up by the user's shell.
