@@ -377,6 +377,12 @@
        :disabled t
        :init (eval-after-load 'cider #'emidje-setup))
    #+END_SRC
+** eval-expr
+   #+BEGIN_SRC emacs-lisp
+     (use-package eval-expr
+       :ensure t
+       :init (eval-expr-install))
+   #+END_SRC
 ** Clojure mode
    #+BEGIN_SRC emacs-lisp
      (use-package clojure-mode
