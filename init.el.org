@@ -1078,6 +1078,12 @@
      (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
    #+END_SRC
 
+   Pretty symbols.
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
+   #+END_SRC
+
    Key bindings.
 
    #+BEGIN_SRC emacs-lisp
