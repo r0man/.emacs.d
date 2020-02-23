@@ -1882,10 +1882,12 @@
        :mode (("\\.yml$" . yaml-mode)))
    #+END_SRC
 ** YASnippet
+
+   The YASnippet mode.
+
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
        :ensure t
-       :disabled t
        :defer 1
        :init
        (yas-reload-all)
