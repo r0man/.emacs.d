@@ -1901,6 +1901,13 @@
           ruby-mode
           sql-mode)))
    #+END_SRC
+
+   The YASnippet collection.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package yasnippet-snippets
+       :ensure t)
+   #+END_SRC
 ** After init hook
    #+BEGIN_SRC emacs-lisp
      (add-hook
