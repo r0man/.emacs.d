@@ -513,7 +513,9 @@
      (use-package company
        :ensure t
        :defer 1
-       :init (global-company-mode))
+       :init
+       (global-company-mode)
+       (company-tng-configure-default))
    #+END_SRC
 
    Indent with TAB, then do completion.
