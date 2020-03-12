@@ -1795,11 +1795,10 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
-       :ensure t
        :hook ((dart-mode . lsp-deferred)
+              (lsp-mode . lsp-lens-mode)
               (scala-mode . lsp-deferred))
-       :config (setq lsp-prefer-flymake nil)
-       :commands (lsp lsp-deferred))
+       :config (setq lsp-prefer-flymake nil))
    #+END_SRC
 
    Higher level UI modules of lsp-mode.
@@ -1808,6 +1807,33 @@
      (use-package lsp-ui
        :ensure t
        :commands lsp-ui-mode)
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package posframe
+       :ensure t)
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package dap-mode
+       :ensure t
+       :hook
+       (lsp-mode . dap-mode)
+       (lsp-mode . dap-ui-mode))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package treemacs
+       :ensure t
+       :defer t)
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package lsp-treemacs
+       :ensure t
+       :config
+       (lsp-metals-treeview-enable t)
+       (setq lsp-metals-treeview-show-when-views-received t))
    #+END_SRC
 
 ** Smooth scrolling
