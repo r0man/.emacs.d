@@ -285,6 +285,7 @@
              '("GOOGLE_APPLICATION_CREDENTIALS"
                "MANPATH"
                "NPM_PACKAGES"
+               "NU_COUNTRY"
                "NU_HOME"
                "PATH"
                "SPARK_HOME"))
