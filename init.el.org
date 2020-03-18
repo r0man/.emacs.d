@@ -397,6 +397,7 @@
        (add-hook 'clojure-mode-hook #'paredit-mode)
        (define-key clojure-mode-map (kbd "C-c t") #'projectile-toggle-between-implementation-and-test)
        (define-clojure-indent
+         (match? 0)
          (time! 1)
          (fdef 1)
          ;; cljs.test
