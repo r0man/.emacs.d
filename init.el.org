@@ -587,16 +587,6 @@
        :bind (:map dart-mode-map ("C-M-x" . #'flutter-run-or-hot-reload))
        :custom (flutter-sdk-path "~/local/flutter/"))
    #+END_SRC
-** Fonts
-
-   Use the Inconsolata font.
-
-   #+BEGIN_SRC emacs-lisp
-     (defun inconsolata ()
-       "Set the default font to Inconsolata."
-       (interactive)
-       (set-default-font "Inconsolata 14"))
-   #+END_SRC
 ** Forge
    #+BEGIN_SRC emacs-lisp
      (use-package forge
