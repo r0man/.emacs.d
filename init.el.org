@@ -649,6 +649,7 @@
        ;; See: https://github.com/emacs-helm/helm/wiki#customize-helm-mode
        (setq helm-completing-read-handlers-alist
              '((find-file-read-only . ido)
+               (cider-connect . nil)
                (magit-gitignore . nil)
                (rename-file . ido)))
 
