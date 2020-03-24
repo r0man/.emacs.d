@@ -1776,6 +1776,22 @@
        :ensure t
        :defer 1)
    #+END_SRC
+** Redshank
+
+   Common Lisp Editing Extensions (for Emacs)
+
+   Redshank is a collection of code-wrangling Emacs macros mostly
+   geared towards Common Lisp, but some are useful for other Lisp
+   dialects, too. Redshank's code transformations aim to be
+   expression-based (as opposed to character-based), thus it uses the
+   excellent Paredit mode as editing substrate whenever possible.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package redshank
+       :ensure t
+       :hook ((lisp-mode emacs-lisp-mode) . redshank-mode))
+   #+END_SRC
+
 ** Scala Mode
    #+BEGIN_SRC emacs-lisp
      (use-package scala-mode
