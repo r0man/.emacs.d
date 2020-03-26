@@ -515,6 +515,13 @@
        :defer 1
        :init
        (global-company-mode)
+       ;; No delay in showing suggestions.
+       (setq company-idle-delay 0)
+       ;; Show suggestions after entering one character.
+       (setq company-minimum-prefix-length 1)
+       ;; If enabled, selecting item before first or after last wraps around.
+       (setq company-selection-wrap-around t)
+       ;; Use tab key to cycle through suggestions.
        (company-tng-configure-default))
    #+END_SRC
 
