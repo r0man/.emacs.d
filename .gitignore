@@ -26,3 +26,11 @@ emms
 /recentf
 /transient/
 /forge-database.sqlite
+/elpy/
+/.lsp-session-v1
+/.cache/
+/.dap-breakpoints
+/picpocket/
+/request/
+/themes/
+/ido.last
