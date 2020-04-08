@@ -737,7 +737,7 @@
    Put all backup files in a separate directory.
 
    #+BEGIN_SRC emacs-lisp
-     (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+     (setq backup-directory-alist '((".*" . "~/.emacs.d/backups")))
    #+END_SRC
 
    Copy all files, don't rename them.
