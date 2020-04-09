@@ -1884,8 +1884,7 @@
      (use-package lsp-treemacs
        :ensure t
        :config
-       (lsp-metals-treeview-enable t)
-       (setq lsp-metals-treeview-show-when-views-received t))
+       (lsp-metals-treeview-enable t))
    #+END_SRC
 
 ** Smooth scrolling
