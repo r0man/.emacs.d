@@ -50,6 +50,18 @@
      (set-frame-parameter (selected-frame) 'alpha '(85 50))
      (add-to-list 'default-frame-alist '(alpha 85 50))
    #+END_SRC
+** Fonts
+   #+BEGIN_SRC emacs-lisp
+     (defun set-font-laptop ()
+       "Set the default font for use without external monitor."
+       (interactive)
+       (set-frame-font "Inconsolata-14" nil t))
+
+     (defun set-font-monitor ()
+       "Set the default font for use with external monitor."
+       (interactive)
+       (set-frame-font "Inconsolata-10" nil t))
+   #+END_SRC
 ** Custom
 
    Set location of custom file.
@@ -606,18 +618,6 @@
        :ensure t
        :bind (:map dart-mode-map ("C-M-x" . #'flutter-run-or-hot-reload))
        :custom (flutter-sdk-path "~/local/flutter/"))
-   #+END_SRC
-** Fonts
-   #+BEGIN_SRC emacs-lisp
-    (defun set-font-laptop ()
-      "Set the default font for use without external monitor."
-      (interactive)
-      (set-frame-font "Inconsolata-14" nil t))
-
-    (defun set-font-monitor ()
-      "Set the default font for use with external monitor."
-      (interactive)
-      (set-frame-font "Inconsolata-10" nil t))
    #+END_SRC
 ** Forge
    #+BEGIN_SRC emacs-lisp
