@@ -744,10 +744,20 @@
    #+END_SRC
 ** Backup
 
+   Set the backup directory.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq my-backup-directory (concat user-emacs-directory "backups"))
+   #+END_SRC
+
    Put all backup files in a separate directory.
 
    #+BEGIN_SRC emacs-lisp
-     (setq backup-directory-alist '((".*" . "~/.emacs.d/backups")))
+     (setq backup-directory-alist `(("." . ,my-backup-directory)))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (setq auto-save-file-name-transforms `((".*" ,my-backup-directory t)))
    #+END_SRC
 
    Copy all files, don't rename them.
@@ -756,7 +766,9 @@
      (setq backup-by-copying t)
    #+END_SRC
 
-   Make backups for files under version control as well.
+   If non-nil, backups of registered files are made as with other
+   files. If nil (the default), files covered by version control don’t
+   get backups.
 
    #+BEGIN_SRC emacs-lisp
      (setq vc-make-backup-files nil)
@@ -771,13 +783,13 @@
    Number of newest versions to keep when a new numbered backup is made.
 
    #+BEGIN_SRC emacs-lisp
-     (setq kept-new-versions 10)
+     (setq kept-new-versions 20)
    #+END_SRC
 
    Number of oldest versions to keep when a new numbered backup is made.
 
    #+BEGIN_SRC emacs-lisp
-     (setq kept-old-versions 0)
+     (setq kept-old-versions 20)
    #+END_SRC
 
    Make numeric backup versions unconditionally.
