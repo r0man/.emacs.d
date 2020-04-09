@@ -91,6 +91,15 @@
    #+BEGIN_SRC emacs-lisp
      (setq use-package-verbose t)
    #+END_SRC
+** External Monitor
+   #+BEGIN_SRC emacs-lisp
+     (defvar my-external-monitor "DP-1"
+       "The name of the external monitor.")
+
+     (defun monitor-connected-p (monitor)
+       "Return t if MONITOR is connected, otherwise nil."
+       (not (string= "" (shell-command-to-string (format "xrandr --listmonitors | grep %s" monitor)))))
+   #+END_SRC
 ** Ansi Color
 
    Colorize the current buffer.
