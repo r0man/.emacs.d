@@ -1166,9 +1166,7 @@
 
          (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
          (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
-         (load-if-exists "~/.emms.el")
-         (add-to-list 'emms-stream-default-list
-                      '("SomaFM: Space Station" "http://www.somafm.com/spacestation.pls" 1 streamlist))))
+         (load-if-exists "~/.emms.el")))
    #+END_SRC
 ** Expand region
    #+BEGIN_SRC emacs-lisp
