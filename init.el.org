@@ -564,9 +564,14 @@
      (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
    #+END_SRC
 
+   #+BEGIN_SRC emacs-lisp
+     (use-package company-capf)
+   #+END_SRC
+
 ** Company LSP
    #+BEGIN_SRC emacs-lisp
      (use-package company-lsp
+       :disabled t
        :ensure t)
    #+END_SRC
 ** Company Quickhelp
@@ -586,7 +591,8 @@
 ** Dart
    #+BEGIN_SRC emacs-lisp
      (use-package dart-mode
-       :ensure t)
+       :ensure t
+       :hook (dart-mode . flutter-test-mode))
    #+END_SRC
 ** Dim parentheses
    #+BEGIN_SRC emacs-lisp
@@ -627,7 +633,7 @@
        :after dart-mode
        :ensure t
        :bind (:map dart-mode-map ("C-M-x" . #'flutter-run-or-hot-reload))
-       :custom (flutter-sdk-path "~/local/flutter/"))
+       :custom (flutter-sdk-path "~/workspace/flutter"))
    #+END_SRC
 ** Forge
    #+BEGIN_SRC emacs-lisp
@@ -1860,15 +1866,24 @@
        :hook ((dart-mode . lsp-deferred)
               (lsp-mode . lsp-lens-mode)
               (scala-mode . lsp-deferred))
-       :config (setq lsp-prefer-flymake nil))
+       :config
+       (setq lsp-prefer-flymake nil))
    #+END_SRC
 
-   Higher level UI modules of lsp-mode.
+   #+BEGIN_SRC emacs-lisp
+     (use-package lsp-dart
+       :ensure t
+       :hook (dart-mode . lsp)
+       :init
+       (with-eval-after-load 'projectile
+         (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
+         (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
+       (setq lsp-dart-sdk-dir "~/local/flutter/bin/cache/dart-sdk/"))
+   #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-ui
-       :ensure t
-       :commands lsp-ui-mode)
+       :ensure t)
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
