@@ -282,7 +282,7 @@
      (defun theme-by-current-hour ()
        "Return the theme, depending on the current hour of the day."
        (let ((hour (string-to-number (format-time-string "%H"))))
-         (if (and (> hour 7) (< hour 20))
+         (if (and (< 7 hour 19))
              'solarized-light
            'solarized-dark)))
    #+END_SRC
