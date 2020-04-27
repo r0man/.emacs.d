@@ -1764,6 +1764,14 @@
        :no-require t)
    #+END_SRC
 
+** Org Present
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-present
+       :ensure t
+       :commands org-present)
+   #+END_SRC
+
 ** Pandoc
    #+BEGIN_SRC emacs-lisp
      (use-package pandoc-mode
