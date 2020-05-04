@@ -1885,6 +1885,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
+       :ensure t
        :hook ((dart-mode . lsp-deferred)
               (lsp-mode . lsp-lens-mode)
               (scala-mode . lsp-deferred))
