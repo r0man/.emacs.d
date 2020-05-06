@@ -649,6 +649,15 @@
    #+BEGIN_SRC emacs-lisp
      (global-auto-revert-mode 1)
    #+END_SRC
+** History
+
+   If set to t when adding a new history element, all previous
+   identical elements are deleted from the history list.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq history-delete-duplicates t)
+   #+END_SRC
+
 ** Inferior Hy Mode
    #+BEGIN_SRC emacs-lisp
      (use-package inf-hy
