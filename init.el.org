@@ -1628,12 +1628,12 @@
 ** Multi Libvterm
 
    #+BEGIN_SRC emacs-lisp
-     (use-package multi-libvterm
+     (use-package multi-vterm
        :load-path "~/workspace/multi-libvterm"
-       :bind (("C-x M" . multi-libvterm)
-              ("C-x m" . multi-libvterm-next)
+       :bind (("C-x M" . multi-vterm)
+              ("C-x m" . multi-vterm-next)
               ;; :map projectile-mode-map
-              ;; ("C-c p m" . multi-libvterm-projectile)
+              ;; ("C-c p m" . multi-vterm-projectile)
               ))
    #+END_SRC
 
@@ -2068,7 +2068,7 @@
         (load-if-exists (concat user-emacs-directory system-name ".el"))
 
         ;; Start a terminal.
-        (multi-libvterm)
+        (multi-vterm)
 
         ;; Load keyboard bindings.
         (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
