@@ -1877,6 +1877,7 @@
 ** Scala Mode
    #+BEGIN_SRC emacs-lisp
      (use-package scala-mode
+       :ensure t
        :mode "\\.s\\(cala\\|bt\\)$")
    #+END_SRC
 ** SBT Mode
