@@ -60,7 +60,7 @@
      (defun set-font-monitor ()
        "Set the default font for use with external monitor."
        (interactive)
-       (set-frame-font "Inconsolata-10" nil t))
+       (set-frame-font "Hack-9" nil t))
    #+END_SRC
 ** Custom
 
