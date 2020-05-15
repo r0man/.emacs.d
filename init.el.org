@@ -100,6 +100,11 @@
        "Return t if MONITOR is connected, otherwise nil."
        (not (string= "" (shell-command-to-string (format "xrandr --listmonitors | grep %s" monitor)))))
    #+END_SRC
+** Aio
+   #+BEGIN_SRC emacs-lisp
+     (use-package aio
+       :ensure t)
+   #+END_SRC
 ** Ansi Color
 
    Colorize the current buffer.
