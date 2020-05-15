@@ -1454,7 +1454,8 @@
        (when (file-directory-p nudev-emacs-path)
          (add-to-list 'load-path nudev-emacs-path)
          (require 'nu)
-         (require 'nu-metapod)))
+         (require 'nu-metapod)
+         (require 'nu-datomic-query)))
    #+END_SRC
 ** Java
 
