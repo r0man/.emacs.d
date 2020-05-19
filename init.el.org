@@ -4,6 +4,15 @@
     ;;; init.el --- my emacs configuration. -*- lexical-binding: t; -*-
   #+END_SRC
 
+** Emacs native compiler
+
+   Compile Elisp to native machine code.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq comp-num-cpus 4)
+     (setq comp-deferred-compilation t)
+   #+END_SRC
+
 ** Scroll, tool and menu bar.
 
    Hide the scroll bar.
