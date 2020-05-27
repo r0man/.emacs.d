@@ -437,6 +437,7 @@
 ** Clojure mode
    #+BEGIN_SRC emacs-lisp
      (use-package clojure-mode
+       :after (nu)
        :ensure t
        :mode (("\\.edn$" . clojure-mode)
               ("\\.cljs$" . clojurescript-mode)
@@ -1464,12 +1465,12 @@
    #+END_SRC
 ** Nubank
    #+BEGIN_SRC emacs-lisp
-     (let ((nudev-emacs-path "~/workspace/nu/nudev/ides/emacs/"))
-       (when (file-directory-p nudev-emacs-path)
-         (add-to-list 'load-path nudev-emacs-path)
-         (require 'nu)
-         (require 'nu-metapod)
-         (require 'nu-datomic-query)))
+     (use-package nu
+       :load-path ("~/workspace/nu/nudev/ides/emacs/")
+       :init
+       (require 'nu)
+       (require 'nu-metapod)
+       (require 'nu-datomic-query))
    #+END_SRC
 ** Java
 
