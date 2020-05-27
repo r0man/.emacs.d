@@ -730,35 +730,70 @@
                (magit-gitignore . nil)
                (rename-file . ido)))
 
-       ;; Enter directories with RET, same as ido
-       ;; http://emacs.stackexchange.com/questions/3798/how-do-i-make-pressing-ret-in-helm-find-files-open-the-directory/7896#7896
-       (defun helm-find-files-navigate-forward (orig-fun &rest args)
-         (if (file-directory-p (helm-get-selection))
-             (apply orig-fun args)
-           (helm-maybe-exit-minibuffer)))
-       (advice-add 'helm-execute-persistent-action :around #'helm-find-files-navigate-forward)
+       :: Helm IDO like: https://github.com/clemera/helm-ido-like-guide
 
-       (with-eval-after-load 'helm-files
-         (define-key helm-find-files-map (kbd "<return>") 'helm-execute-persistent-action))
+       (defun helm-ido-like-find-files-up-one-level-maybe ()
+         (interactive)
+         (if (looking-back "/" 1)
+             (call-interactively 'helm-find-files-up-one-level)
+           (delete-char -1)))
 
-       ;; Don't show "." and ".." directories when finding files.
-       ;; https://github.com/hatschipuh/better-helm
-       (with-eval-after-load 'helm-files
+       (defun helm-ido-like-find-files-navigate-forward (orig-fun &rest args)
+         "Adjust how helm-execute-persistent actions behaves, depending on context."
+         (let ((sel (helm-get-selection)))
+           (if (file-directory-p sel)
+               ;; the current dir needs to work to
+               ;; be able to select directories if needed
+               (cond ((and (stringp sel)
+                           (string-match "\\.\\'" (helm-get-selection)))
+                      (helm-maybe-exit-minibuffer))
+                     (t
+                      (apply orig-fun args)))
+             (helm-maybe-exit-minibuffer))))
+
+       (defun helm-ido-like-load-file-nav ()
+         (advice-add 'helm-execute-persistent-action :around #'helm-ido-like-find-files-navigate-forward)
+         ;; <return> is not bound in helm-map by default
+         (define-key helm-map (kbd "<return>") 'helm-maybe-exit-minibuffer)
+         (with-eval-after-load 'helm-files
+           (define-key helm-read-file-map (kbd "<backspace>") 'helm-ido-like-find-files-up-one-level-maybe)
+           (define-key helm-read-file-map (kbd "DEL") 'helm-ido-like-find-files-up-one-level-maybe)
+           (define-key helm-find-files-map (kbd "<backspace>") 'helm-ido-like-find-files-up-one-level-maybe)
+           (define-key helm-find-files-map (kbd "DEL") 'helm-ido-like-find-files-up-one-level-maybe)
+
+           (define-key helm-find-files-map (kbd "<return>") 'helm-execute-persistent-action)
+           (define-key helm-read-file-map (kbd "<return>") 'helm-execute-persistent-action)
+           (define-key helm-find-files-map (kbd "RET") 'helm-execute-persistent-action)
+           (define-key helm-read-file-map (kbd "RET") 'helm-execute-persistent-action)))
+
+       (defvar helm-ido-like-no-dots-whitelist
+         '("*Helm file completions*" "*helm-mode-dired*")
+         "List of helm buffers in which to show dot directories.")
+
+       (defun helm-ido-like-no-dots-display-file-p (file)
+         ;; in a whitelisted buffer display all but the relative path to parent dir
+         (or (and (member helm-buffer helm-ido-like-no-dots-whitelist)
+                  (not (string-match "\\(?:/\\|\\`\\)\\.\\{2\\}\\'" file)))
+             ;; in all other buffers display all files but the two relative ones
+             (not (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file))))
+
+       (defun helm-ido-like-no-dots-auto-add (&rest args)
+         "Auto add buffers which want to read directory names to the whitelist."
+         (if (eq (car (last args)) 'file-directory-p)
+             (add-to-list 'helm-ido-like-no-dots-whitelist
+                          (format "*helm-mode-%s*"
+                                  (helm-symbol-name
+                                   (or (helm-this-command) this-command))))))
+
+       (defun helm-ido-like-no-dots ()
+         (require 'cl-lib)
          (advice-add 'helm-ff-filter-candidate-one-by-one
-                     :before-while 'no-dots-display-file-p))
+                     :before-while 'helm-ido-like-no-dots-display-file-p)
+         (advice-add  'helm--generic-read-file-name :before 'helm-ido-like-no-dots-auto-add))
 
-       (defvar no-dots-whitelist nil
-         "List of helm buffers in which to show dots.")
 
-       (defun no-dots-in-white-listed-helm-buffer-p ()
-         (member helm-buffer no-dots-whitelist))
-
-       (defun no-dots-display-file-p (file)
-         ;; in a whitelisted buffer display the file regardless of its name
-         (or (no-dots-in-white-listed-helm-buffer-p)
-             ;; not in a whitelisted buffer display all files
-             ;; which does not end with /. /..
-             (not (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file)))))
+       (helm-ido-like-load-file-nav)
+       (helm-ido-like-no-dots))
    #+END_SRC
 ** Helm Projectile
 
