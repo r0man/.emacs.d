@@ -730,7 +730,7 @@
                (magit-gitignore . nil)
                (rename-file . ido)))
 
-       :: Helm IDO like: https://github.com/clemera/helm-ido-like-guide
+       ;; Helm IDO like: https://github.com/clemera/helm-ido-like-guide
 
        (defun helm-ido-like-find-files-up-one-level-maybe ()
          (interactive)
