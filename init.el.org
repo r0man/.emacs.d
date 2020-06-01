@@ -407,9 +407,10 @@
        :ensure t
        :init
        (setq elfeed-feeds
-             '("https://nullprogram.com/feed"
+             '("http://planet.clojure.in/atom.xml"
+               "https://grumpyhacker.com/feed.xml"
+               "https://nullprogram.com/feed"
                "https://planet.emacslife.com/atom.xml"
-               "http://planet.clojure.in/atom.xml"
                "https://sulami.github.io/atom.xml")))
    #+END_SRC
 ** Elpy - Emacs Python Development Environment
