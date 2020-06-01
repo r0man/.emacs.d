@@ -1695,7 +1695,7 @@
        :ensure t
        :defer 1)
    #+END_SRC
-** NuCLI
+** Nucli
    #+BEGIN_SRC emacs-lisp
      (use-package nucli
        :commands (nucli)
