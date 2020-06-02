@@ -768,7 +768,9 @@
            (define-key helm-read-file-map (kbd "RET") 'helm-execute-persistent-action)))
 
        (defvar helm-ido-like-no-dots-whitelist
-         '("*Helm file completions*" "*helm-mode-dired*")
+         '("*Helm file completions*"
+           "*helm-mode-dired*"
+           "*helm-mode-dired-do-rename*")
          "List of helm buffers in which to show dot directories.")
 
        (defun helm-ido-like-no-dots-display-file-p (file)
