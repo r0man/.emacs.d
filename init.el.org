@@ -1144,17 +1144,17 @@
    #+BEGIN_SRC emacs-lisp
      (defun find-dired-clojure (dir)
        "Run find-dired on Clojure files."
-       (interactive (list (read-directory-name "Run find (Clojure) in directory: " nil "" t)))
+       (interactive (list (read-directory-name "Find Clojure files in directory: " nil "" t)))
        (find-dired dir "-name \"*.clj\""))
    #+END_SRC
 
-   Find Ruby files in dired mode.
+   Find Elisp files in dired mode.
 
    #+BEGIN_SRC emacs-lisp
-     (defun find-dired-ruby (dir)
-       "Run find-dired on Ruby files."
-       (interactive (list (read-directory-name "Run find (Ruby) in directory: " nil "" t)))
-       (find-dired dir "-name \"*.rb\""))
+     (defun find-dired-elisp (dir)
+       "Run find-dired on Elisp files."
+       (interactive (list (read-directory-name "Find Elisp files in directory: " nil "" t)))
+       (find-dired dir "-name \"*.el\""))
    #+END_SRC
 
 ** Dired-x mode
