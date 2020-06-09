@@ -610,11 +610,19 @@
      (setq user-full-name "Roman Scherer")
    #+END_SRC
 ** Dart
+
    #+BEGIN_SRC emacs-lisp
      (use-package dart-mode
        :ensure t
        :hook (dart-mode . flutter-test-mode))
    #+END_SRC
+** Data Debug
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package data-debug
+       :bind (("M-:" . data-debug-eval-expression)))
+   #+END_SRC
+
 ** Dim parentheses
    #+BEGIN_SRC emacs-lisp
      (defface paren-face
@@ -642,6 +650,13 @@
      (use-package docker
        :ensure t
        :commands (docker))
+   #+END_SRC
+** EIEIO
+
+   Enhanced Implementation of Emacs Interpreted Objects
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package eieio-datadebug)
    #+END_SRC
 ** Emacs Refactor
    #+BEGIN_SRC emacs-lisp
