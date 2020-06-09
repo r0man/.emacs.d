@@ -320,7 +320,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package docopt
        :load-path
-       ("~/workspace/docopt.el"
+       ("~/workspace/docopt.el/src"
         "~/workspace/docopt.el/test"))
    #+END_SRC
 ** Mac OSX
