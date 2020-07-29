@@ -997,7 +997,7 @@
    Use Chromium as default browser.
 
    #+BEGIN_SRC emacs-lisp
-     (setq browse-url-browser-function 'browse-url-chromium)
+     (setq browse-url-browser-function 'browse-url-firefox)
    #+END_SRC
 
    Clickable URLs.
