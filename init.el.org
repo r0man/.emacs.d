@@ -825,6 +825,15 @@
        :ensure t
        :init (helm-projectile-on))
    #+END_SRC
+** Helm Recoll
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package helm-recoll
+       :commands helm-recoll
+       :init (setq helm-recoll-directories
+                   '(("Nubank Playbooks" . "~/.recoll-nu-playbooks"))))
+   #+END_SRC
+
 ** HTMLize
 
    #+BEGIN_SRC emacs-lisp
