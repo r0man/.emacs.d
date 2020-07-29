@@ -792,7 +792,7 @@
            "*helm-mode-package-install-file*")
          "List of helm buffers in which to show dot directories.")
 
-       (defun helm-ido-like-no-dots-display-file-p (file)
+       (defun helm-ido-like-no-dots-display-file-p (file &optional reverse skip-boring-check)
          ;; in a whitelisted buffer display all but the relative path to parent dir
          (or (and (member helm-buffer helm-ido-like-no-dots-whitelist)
                   (not (string-match "\\(?:/\\|\\`\\)\\.\\{2\\}\\'" file)))
