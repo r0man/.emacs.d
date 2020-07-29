@@ -474,7 +474,9 @@
          (database-test 1)
          (defroutes 'defun)
          (for-all 'defun)
-         (assoc-some 1))
+         (assoc-some 1)
+         (let-entities 2)
+         (functions/constraint-fn 2))
        (put 'defmixin 'clojure-backtracking-indent '(4 (2))))
 
      (use-package clojure-mode-extra-font-locking
