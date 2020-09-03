@@ -2025,9 +2025,11 @@
        :ensure t
        :hook ((dart-mode . lsp-deferred)
               (lsp-mode . lsp-lens-mode)
-              (scala-mode . lsp-deferred))
+              (scala-mode . lsp))
        :config
-       (setq lsp-prefer-flymake nil))
+       (setq lsp-prefer-flymake nil)
+       (setq lsp-enable-file-watchers t)
+       (setq lsp-file-watch-threshold 100000))
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
