@@ -445,6 +445,7 @@
               ("\\.cljx$" . clojurex-mode)
               ("\\.cljc$" . clojurec-mode))
        :config
+       (require 'flycheck-clj-kondo)
        (add-hook 'clojure-mode-hook #'subword-mode)
        (add-hook 'clojure-mode-hook #'paredit-mode)
        (define-key clojure-mode-map (kbd "C-c t") #'projectile-toggle-between-implementation-and-test)
@@ -1315,17 +1316,24 @@
               ("C-c C--" . er/contract-region)))
    #+END_SRC
 ** Flycheck
+
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
        :ensure t
        :init (global-flycheck-mode))
    #+END_SRC
-** Flycheck ELSA
+
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck-elsa
        :ensure t
        :init (add-hook 'emacs-lisp-mode-hook #'flycheck-elsa-setup))
    #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package flycheck-clj-kondo
+       :ensure t)
+   #+END_SRC
+
 ** Fly Spell mode
 
    Enable flyspell in text mode.
