@@ -2010,11 +2010,12 @@
    #+BEGIN_SRC emacs-lisp
      (use-package scala-mode
        :ensure t
-       :mode "\\.s\\(cala\\|bt\\)$")
+       :interpreter ("scala" . scala-mode))
    #+END_SRC
 ** SBT Mode
    #+BEGIN_SRC emacs-lisp
      (use-package sbt-mode
+       :ensure t
        :commands sbt-start sbt-command
        :config
        ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
@@ -2035,8 +2036,10 @@
        :ensure t
        :hook ((dart-mode . lsp-deferred)
               (lsp-mode . lsp-lens-mode)
-              (scala-mode . lsp))
+              (scala-mode . lsp-deferred)
+              (sql-mode . lsp-deferred))
        :config
+       (setq lsp-sqls-server "~/go/bin/sqls")
        (setq lsp-prefer-flymake nil)
        (setq lsp-enable-file-watchers t)
        (setq lsp-file-watch-threshold 100000))
@@ -2060,7 +2063,8 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-metals
-       :ensure t)
+       :ensure t
+       :config (setq lsp-metals-treeview-show-when-views-received t))
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
@@ -2085,13 +2089,6 @@
      (use-package treemacs
        :ensure t
        :defer t)
-   #+END_SRC
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package lsp-treemacs
-       :ensure t
-       :config
-       (lsp-metals-treeview-enable t))
    #+END_SRC
 
 ** Smooth scrolling
