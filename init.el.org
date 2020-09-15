@@ -817,7 +817,8 @@
 
 
        (helm-ido-like-load-file-nav)
-       (helm-ido-like-no-dots))
+       ;;(helm-ido-like-no-dots)
+       )
    #+END_SRC
 ** Helm Projectile
 
