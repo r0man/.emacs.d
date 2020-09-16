@@ -2038,6 +2038,7 @@
        (setq lsp-prefer-flymake nil)
        (setq lsp-enable-file-watchers t)
        (setq lsp-file-watch-threshold 100000))
+       (setq lsp-file-watch-threshold nil))
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
