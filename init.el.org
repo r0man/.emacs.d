@@ -1525,6 +1525,12 @@
        :bind (("C-x C-k s" . kubernetes-overview))
        :commands (kubernetes-overview))
    #+END_SRC
+** Kotlin
+
+      #+BEGIN_SRC emacs-lisp
+        (use-package kotlin-mode
+          :ensure t)
+   #+END_SRC
 
 ** Magit
    #+BEGIN_SRC emacs-lisp
