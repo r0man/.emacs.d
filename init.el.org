@@ -869,17 +869,13 @@
    Set the backup directory.
 
    #+BEGIN_SRC emacs-lisp
-     (setq my-backup-directory (concat user-emacs-directory "backups"))
+     (setq my-backup-directory (concat user-emacs-directory "backups/"))
    #+END_SRC
 
    Put all backup files in a separate directory.
 
    #+BEGIN_SRC emacs-lisp
      (setq backup-directory-alist `(("." . ,my-backup-directory)))
-   #+END_SRC
-
-   #+BEGIN_SRC emacs-lisp
-     (setq auto-save-file-name-transforms `((".*" ,my-backup-directory t)))
    #+END_SRC
 
    Copy all files, don't rename them.
