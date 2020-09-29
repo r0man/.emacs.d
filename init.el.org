@@ -401,6 +401,52 @@
        :ensure t
        :commands (ein:notebooklist-open))
    #+END_SRC
+** EJira
+
+   JIRA integration to Emacs org-mode.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package ejira
+       :load-path ("~/workspace/ejira")
+       :init
+       (setq jiralib2-url "https://nubank.atlassian.net"
+             jiralib2-auth 'basic
+             jiralib2-user-login-name "roman.scherer@nubank.com.br"
+             jiralib2-token nil
+             ejira-org-directory "~/jira"
+             ejira-projects '("DIIOM")
+
+             ejira-priorities-alist '(("Highest" . ?A)
+                                      ("High"    . ?B)
+                                      ("Medium"  . ?C)
+                                      ("Low"     . ?D)
+                                      ("Lowest"  . ?E))
+             ejira-todo-states-alist '(("To Do"       . 1)
+                                       ("In Progress" . 2)
+                                       ("Done"        . 3)))
+       :config
+       ;; Tries to auto-set custom fields by looking into /editmeta
+       ;; of an issue and an epic.
+       (add-hook 'jiralib2-post-login-hook #'ejira-guess-epic-sprint-fields)
+
+       ;; They can also be set manually if autoconfigure is not used.
+       ;; (setq ejira-sprint-field       'customfield_10001
+       ;;       ejira-epic-field         'customfield_10002
+       ;;       ejira-epic-summary-field 'customfield_10004)
+
+       (require 'ejira-agenda)
+
+       ;; Make the issues visisble in your agenda by adding `ejira-org-directory'
+       ;; into your `org-agenda-files'.
+       (add-to-list 'org-agenda-files ejira-org-directory)
+
+       ;; Add an agenda view to browse the issues that
+       (org-add-agenda-custom-command
+        '("j" "My JIRA issues"
+          ((ejira-jql "resolution = unresolved and assignee = currentUser()"
+                      ((org-agenda-overriding-header "Assigned to me")))))))
+   #+END_SRC
+
 ** ElFeed
    #+BEGIN_SRC emacs-lisp
      (use-package elfeed
@@ -557,9 +603,9 @@
 ** GraphQL Mode
    #+BEGIN_SRC emacs-lisp
      (use-package graphql-mode
-      :ensure t
-      :init
-      (setq graphql-url "http://localhost:7000/graphql"))
+       :ensure t
+       :init
+       (setq graphql-url "http://localhost:7000/graphql"))
    #+END_SRC
 ** Company mode
 
@@ -1039,6 +1085,15 @@
 
      (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
    #+END_SRC
+** Language Detection
+
+   Automatic programming language detection of code snippets, in Emacs
+   Lisp.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package language-detection
+       :ensure t)
+   #+END_SRC
 
 ** Leiningen
 
@@ -1496,6 +1551,15 @@
      (use-package ido-completing-read+
        :ensure t)
    #+END_SRC
+** Jiralib2
+
+   Lisp bindings to JIRA REST API.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package jiralib2
+       :ensure t)
+   #+END_SRC
+
 ** Joker
 
    Open Joker files in Clojure mode.
@@ -1523,9 +1587,9 @@
    #+END_SRC
 ** Kotlin
 
-      #+BEGIN_SRC emacs-lisp
-        (use-package kotlin-mode
-          :ensure t)
+   #+BEGIN_SRC emacs-lisp
+     (use-package kotlin-mode
+       :ensure t)
    #+END_SRC
 
 ** Magit
@@ -1885,6 +1949,17 @@
        (openwith-mode 1))
    #+END_SRC
 
+** Org Jira
+
+   Use Jira in Emacs org-mode.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-jira
+       :ensure t
+       :init
+       (setq jiralib-url "https://nubank.atlassian.net"))
+   #+END_SRC
+
 ** Org mode
 
    #+BEGIN_SRC emacs-lisp
@@ -1929,6 +2004,14 @@
        :ensure t)
    #+END_SRC
 
+** Ox Jira
+
+   JIRA Backend for Org Export Engine.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package ox-jira
+       :ensure t)
+   #+END_SRC
 ** Pandoc
    #+BEGIN_SRC emacs-lisp
      (use-package pandoc-mode
@@ -2021,8 +2104,8 @@
         'minibuffer-complete-word
         'self-insert-command
         minibuffer-local-completion-map)
-        ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
-        (setq sbt:program-options '("-Dsbt.supershell=false")))
+       ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+       (setq sbt:program-options '("-Dsbt.supershell=false")))
    #+END_SRC
 ** Language Server Protocol
 
