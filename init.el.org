@@ -328,19 +328,19 @@
    Make Emacs use the $PATH set up by the user's shell.
 
    #+BEGIN_SRC emacs-lisp
-          (use-package exec-path-from-shell
-            :ensure t
-            :init
-            (setq exec-path-from-shell-variables
-                  '("CHROME_EXECUTABLE"
-                    "GOOGLE_APPLICATION_CREDENTIALS"
-                    "MANPATH"
-                    "NPM_PACKAGES"
-                    "NU_COUNTRY"
-                    "NU_HOME"
-                    "PATH"
-                    "SPARK_HOME"))
-            (exec-path-from-shell-initialize))
+     (use-package exec-path-from-shell
+       :ensure t
+       :init
+       (setq exec-path-from-shell-variables
+             '("CHROME_EXECUTABLE"
+               "GOOGLE_APPLICATION_CREDENTIALS"
+               "MANPATH"
+               "NPM_PACKAGES"
+               "NU_COUNTRY"
+               "NU_HOME"
+               "PATH"
+               "SPARK_HOME"))
+       (exec-path-from-shell-initialize))
    #+END_SRC
 
    This variable describes the behavior of the command key.
