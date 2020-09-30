@@ -1897,6 +1897,16 @@
      (eval-after-load "sql"
        '(load-if-exists "~/.sql.el"))
    #+END_SRC
+** SQL Indent
+
+   Support for indenting code in SQL files.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package sql-indent
+       :ensure t
+       :hook (sql-mode . sqlind-minor-mode))
+   #+END_SRC
+
 
 ** Tramp
    #+BEGIN_SRC emacs-lisp
