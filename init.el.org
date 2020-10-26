@@ -2209,6 +2209,14 @@
    #+BEGIN_SRC emacs-lisp
      (setq-default indent-tabs-mode nil)
    #+END_SRC
+
+** Terraform
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package terraform-mode
+       :ensure t)
+   #+END_SRC
+
 ** Undo Tree
 
    #+BEGIN_SRC emacs-lisp
