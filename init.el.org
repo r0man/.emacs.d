@@ -387,6 +387,13 @@
    #+BEGIN_SRC emacs-lisp
      (setq appt-display-mode-line t)
    #+END_SRC
+** Bluetooth
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package bluetooth
+       :ensure t)
+   #+END_SRC
+
 ** Find File in Project
    #+BEGIN_SRC emacs-lisp
      (use-package find-file-in-project
