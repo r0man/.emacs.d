@@ -414,6 +414,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package ejira
+       :after (jiralib2)
        :load-path ("~/workspace/ejira")
        :init
        (setq jiralib2-url "https://nubank.atlassian.net"
@@ -1568,6 +1569,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package jiralib2
+       :after (ox-jira)
        :ensure t)
    #+END_SRC
 
