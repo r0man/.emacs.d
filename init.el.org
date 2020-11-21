@@ -1815,7 +1815,9 @@
    #+BEGIN_SRC emacs-lisp
      (use-package nucli
        :commands (nucli)
-       :load-path ("~/workspace/nu/nucli.el"))
+       :load-path ("~/workspace/nu/nucli.el/src"
+                   "~/workspace/nu/nucli.el/test"))
+
    #+END_SRC
 ** Fuck the NSA
 
