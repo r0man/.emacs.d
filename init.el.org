@@ -729,11 +729,15 @@
    #+END_SRC
 ** GIF Screencast
    #+BEGIN_SRC emacs-lisp
-     (require 'gif-screencast)
-     (with-eval-after-load 'gif-screencast
-       (setq gif-screencast-scale-factor 1.0)
-       (define-key gif-screencast-mode-map (kbd "<f8>") 'gif-screencast-toggle-pause)
-       (global-set-key (kbd "<f9>") 'gif-screencast-start-or-stop))
+     (use-package gif-screencast
+       :ensure t
+       :bind ("<f9>" . gif-screencast-start-or-stop)
+       :init
+       (setq gif-screencast-scale-factor 1.0))
+     ;; (with-eval-after-load 'gif-screencast
+     ;;   (setq gif-screencast-scale-factor 1.0)
+     ;;   (define-key gif-screencast-mode-map (kbd "<f8>") 'gif-screencast-toggle-pause)
+     ;;   (global-set-key (kbd "<f9>") 'gif-screencast-start-or-stop))
    #+END_SRC
 ** Global auto revert mode
 
