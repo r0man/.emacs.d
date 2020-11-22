@@ -424,14 +424,15 @@
              ejira-org-directory "~/jira"
              ejira-projects '("DIIOM")
 
-             ejira-priorities-alist '(("Highest" . ?A)
-                                      ("High"    . ?B)
-                                      ("Medium"  . ?C)
-                                      ("Low"     . ?D)
-                                      ("Lowest"  . ?E))
-             ejira-todo-states-alist '(("To Do"       . 1)
-                                       ("In Progress" . 2)
-                                       ("Done"        . 3)))
+             ;; ejira-priorities-alist '(("Highest" . ?A)
+             ;;                          ("High"    . ?B)
+             ;;                          ("Medium"  . ?C)
+             ;;                          ("Low"     . ?D)
+             ;;                          ("Lowest"  . ?E))
+             ;; ejira-todo-states-alist '(("To Do"       . 1)
+             ;;                           ("In Progress" . 2)
+             ;;                           ("Done"        . 3))
+             )
        :config
        ;; Tries to auto-set custom fields by looking into /editmeta
        ;; of an issue and an epic.
