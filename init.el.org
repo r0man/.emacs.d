@@ -891,9 +891,10 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package helm-recoll
+       :ensure t
        :commands helm-recoll
        :init (setq helm-recoll-directories
-                   '(("Nubank Playbooks" . "~/.recoll-nu-playbooks"))))
+                   '(("Home" . "~/.recoll"))))
    #+END_SRC
 
 ** HTMLize
@@ -1913,6 +1914,7 @@
      (eval-after-load "sql"
        '(load-if-exists "~/.sql.el"))
    #+END_SRC
+
 ** SQL Indent
 
    Support for indenting code in SQL files.
