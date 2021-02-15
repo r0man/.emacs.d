@@ -588,6 +588,7 @@
 
        (add-to-list 'cider-test-defining-forms "defflow")
        (add-to-list 'cider-test-defining-forms "defflow-as-of")
+       (add-to-list 'cider-test-defining-forms "defflow-with-params")
 
        ;; Fuzzy candidate matching
        (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
