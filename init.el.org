@@ -423,13 +423,17 @@
              jiralib2-user-login-name "roman.scherer@nubank.com.br"
              jiralib2-token nil
              ejira-org-directory "~/jira"
-             ejira-projects '("DIIOM")
+             ejira-projects '("DIEP")
 
-             ;; ejira-priorities-alist '(("Highest" . ?A)
-             ;;                          ("High"    . ?B)
-             ;;                          ("Medium"  . ?C)
-             ;;                          ("Low"     . ?D)
-             ;;                          ("Lowest"  . ?E))
+             ;; Configure JIRA priorities
+             ejira-priorities-alist '(("Highest" . ?A)
+                                      ("High"    . ?B)
+                                      ("Medium"  . ?C)
+                                      ("Low"     . ?D)
+                                      ("Lowest"  . ?E))
+             ;; Set the highest/lowest org priorities
+             org-priority-highest ?A
+             org-priority-lowest ?E
              ;; ejira-todo-states-alist '(("To Do"       . 1)
              ;;                           ("In Progress" . 2)
              ;;                           ("Done"        . 3))
