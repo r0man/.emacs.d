@@ -2178,15 +2178,9 @@
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
-     (use-package lsp-treemacs
-       :ensure t
-       :commands lsp-treemacs-errors-list)
-   #+END_SRC
-
-   #+BEGIN_SRC emacs-lisp
      (use-package lsp-metals
        :ensure t
-       :config (setq lsp-metals-treeview-show-when-views-received t))
+       :config (setq lsp-metals-treeview-show-when-views-received nil))
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
