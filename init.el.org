@@ -2164,7 +2164,6 @@
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
-
      (use-package lsp-dart
        :ensure t
        :init
@@ -2175,6 +2174,12 @@
        (setq lsp-dart-dap-flutter-hot-restart-on-save nil)
        (setq lsp-dart-flutter-widget-guides nil)
        (setq lsp-dart-sdk-dir "/opt/flutter/bin/cache/dart-sdk"))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package lsp-treemacs
+       :ensure t
+       :commands lsp-treemacs-errors-list)
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
