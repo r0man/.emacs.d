@@ -2177,6 +2177,12 @@
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
+     (use-package helm-lsp
+       :ensure t
+       :commands helm-lsp-workspace-symbol)
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
      (use-package lsp-treemacs
        :ensure t
        :commands lsp-treemacs-errors-list)
