@@ -433,13 +433,29 @@
                                       ("Medium"  . ?C)
                                       ("Low"     . ?D)
                                       ("Lowest"  . ?E))
+
+             ;; Map JIRA states to org states.
+             ejira-todo-states-alist '(("Unscheduled" . 1)
+                                       ("Groomed" . 2)
+                                       ("Ready For Development" . 3)
+                                       ("In Development" . 4)
+                                       ("Ready For Review" . 5)
+                                       ("Ready For Deploy" . 6)
+                                       ("Done" . 7))
+
              ;; Set the highest/lowest org priorities
              org-priority-highest ?A
              org-priority-lowest ?E
-             ;; ejira-todo-states-alist '(("To Do"       . 1)
-             ;;                           ("In Progress" . 2)
-             ;;                           ("Done"        . 3))
-             )
+             org-todo-keywords
+             '((sequence
+                "UNSCHEDULED(u)"
+                "GROOMED(g)"
+                "READY-FOR-DEVELOPMENT(r)"
+                "IN-DEVELOPMENT(i)"
+                "READY-FOR-REVIEW(v)"
+                "READY-FOR-DEPLOY(p)"
+                "|"
+                "DONE(d)")))
        :config
        ;; Tries to auto-set custom fields by looking into /editmeta
        ;; of an issue and an epic.
