@@ -2015,6 +2015,15 @@
        (openwith-mode 1))
    #+END_SRC
 
+** Org GCal
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-gcal
+       :ensure t
+       :config
+       (setq org-gcal-client-id "307472772807-1ct65gf2io7mj4rlooqm5udk0761dlra.apps.googleusercontent.com"
+             org-gcal-fetch-file-alist '(("roman.scherer@nubank.com.br" .  "~/nubank-calendar.org")))
+       (add-to-list 'org-agenda-files "~/nubank-calendar.org"))
+   #+END_SRC
 ** Org Jira
 
    Use Jira in Emacs org-mode.
