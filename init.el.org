@@ -496,6 +496,7 @@
 ** Elpy - Emacs Python Development Environment
    #+BEGIN_SRC emacs-lisp
      (use-package elpy
+       :disabled t
        :ensure t
        :init
        (with-eval-after-load 'python
