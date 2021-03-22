@@ -933,6 +933,19 @@
                ("test-set" . 1)
                ("test-set-fails" . 1))))
    #+END_SRC
+
+** Auto Save
+
+   Set the auto save directory.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq my-auto-save-directory (concat user-emacs-directory "auto-save/"))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (setq auto-save-file-name-transforms `((".*" ,my-auto-save-directory t)))
+   #+END_SRC
+
 ** Backup
 
    Set the backup directory.
@@ -944,7 +957,7 @@
    Put all backup files in a separate directory.
 
    #+BEGIN_SRC emacs-lisp
-     (setq backup-directory-alist `(("." . ,my-backup-directory)))
+     (setq backup-directory-alist `((".*" . ,my-backup-directory)))
    #+END_SRC
 
    Copy all files, don't rename them.
