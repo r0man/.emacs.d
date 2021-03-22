@@ -1912,7 +1912,7 @@
    Use 2 spaces for indentation in SQL mode.
 
    #+BEGIN_SRC emacs-lisp
-     (setq sql-indent-offset 2)
+     (setq sql-indent-offset 0)
    #+END_SRC
 
    Load database connection settings.
