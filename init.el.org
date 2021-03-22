@@ -740,7 +740,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package gif-screencast
        :ensure t
-       :bind ("<f9>" . gif-screencast-start-or-stop)
+       ;; :bind ("<f9>" . gif-screencast-start-or-stop)
        :init
        (setq gif-screencast-scale-factor 1.0))
      ;; (with-eval-after-load 'gif-screencast
