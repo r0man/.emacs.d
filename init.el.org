@@ -636,6 +636,11 @@
        ;; Print a message when the AST has been built.
        (setq cljr--debug-mode t))
    #+END_SRC
+** Geiser
+   #+BEGIN_SRC emacs-lisp
+     (use-package geiser
+       :ensure t)
+   #+END_SRC
 ** GraphQL Mode
    #+BEGIN_SRC emacs-lisp
      (use-package graphql-mode
