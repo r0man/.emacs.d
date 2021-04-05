@@ -1906,6 +1906,14 @@
        :init (slime-setup '(slime-fancy slime-company)))
    #+END_SRC
 
+** Scheme
+
+   Use Guile as scheme program.
+
+   #+BEGIN_SRC emacs-lisp
+     (setq scheme-program-name "guile")
+   #+END_SRC
+
 ** Smarter beginning of line
    #+BEGIN_SRC emacs-lisp
      (defun smarter-move-beginning-of-line (arg)
