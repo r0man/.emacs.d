@@ -2226,9 +2226,11 @@
        :hook ((dart-mode . lsp-deferred)
               (lsp-mode . lsp-enable-which-key-integration)
               (lsp-mode . lsp-lens-mode)
+              (python-mode . lsp-deferred)
               (scala-mode . lsp-deferred)
               ;; (sql-mode . lsp-deferred)
               )
+              (yaml-mode . lsp-deferred))
        :init
        (setq lsp-file-watch-threshold nil
              lsp-keymap-prefix "C-c l"
