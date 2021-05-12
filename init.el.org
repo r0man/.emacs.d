@@ -710,7 +710,7 @@
 ** Configure the full name of the user logged in.
 
    #+BEGIN_SRC emacs-lisp
-     (setq user-full-name "Roman Scherer")
+     (setq user-full-name "r0man")
    #+END_SRC
 ** Dart
 
