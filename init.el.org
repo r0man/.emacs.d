@@ -342,7 +342,9 @@
                "NU_COUNTRY"
                "NU_HOME"
                "PATH"
-               "SPARK_HOME"))
+               "SPARK_HOME"
+               "XDG_CONFIG_DIRS"
+               "XDG_DATA_DIRS"))
        (exec-path-from-shell-initialize))
    #+END_SRC
 
