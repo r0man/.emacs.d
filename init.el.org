@@ -761,6 +761,13 @@
    #+BEGIN_SRC emacs-lisp
      (use-package eieio-datadebug)
    #+END_SRC
+** Emacs Lisp
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package emacs-lisp
+       :bind ("C-c C-p " . pp-eval-last-sexp))
+   #+END_SRC
+
 ** Emacs Refactor
    #+BEGIN_SRC emacs-lisp
      (use-package emr
