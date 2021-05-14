@@ -1664,6 +1664,12 @@
        (setq ido-use-faces nil)
        (setq gc-cons-threshold 20000000))
    #+END_SRC
+** Kubel
+   #+BEGIN_SRC emacs-lisp
+     (use-package kubel
+       :ensure t
+       :commands (kubel))
+   #+END_SRC
 ** Kubernetes
 
    #+BEGIN_SRC emacs-lisp
