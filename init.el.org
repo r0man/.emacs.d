@@ -2374,7 +2374,8 @@
 ** Vterm
    #+BEGIN_SRC emacs-lisp
      (use-package vterm
-       :ensure t)
+       :config
+       (setq vterm-max-scrollback 100000))
    #+END_SRC
 ** Web mode
    #+BEGIN_SRC emacs-lisp
