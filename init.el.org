@@ -1915,6 +1915,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package slime-company
+       :after slime
        :init (slime-setup '(slime-fancy slime-company)))
    #+END_SRC
 
