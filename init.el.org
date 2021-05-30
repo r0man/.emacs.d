@@ -2125,17 +2125,21 @@
 ** Paredit
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
-       :init (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
-               (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
-                         'paredit-mode)))
+       :hook (clojure-mode
+              clojurescript-mode
+              emacs-lisp-mode
+              lisp-mode
+              scheme-mode))
    #+END_SRC
 ** Pass
    #+BEGIN_SRC emacs-lisp
-     (use-package pass)
+     (use-package pass
+       :commands (pass pass-copy))
    #+END_SRC
 ** Pepita
    #+BEGIN_SRC emacs-lisp
      (use-package pepita
+       :commands (pepita-new-search)
        :ensure t
        :config
        (setq pepita-splunk-url "https://nubank.splunkcloud.com/services"))
