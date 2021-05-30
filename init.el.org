@@ -1668,9 +1668,9 @@
    #+BEGIN_SRC emacs-lisp
      (add-hook
       'java-mode-hook
-      '(lambda ()
-         (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
-         (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
+      (lambda ()
+        (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
+        (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
    #+END_SRC
 ** JavaScript
 
