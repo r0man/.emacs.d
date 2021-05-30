@@ -1654,6 +1654,7 @@
 ** Nubank
    #+BEGIN_SRC emacs-lisp
      (use-package nu
+       :commands (nu-datomic-query nu-session-switch)
        :load-path ("~/workspace/nu/nudev/ides/emacs/")
        :init
        (require 'nu)
