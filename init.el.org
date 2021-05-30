@@ -951,7 +951,8 @@
 ** HTMLize
 
    #+BEGIN_SRC emacs-lisp
-     (use-package htmlize)
+     (use-package htmlize
+       :commands (htmlize-buffer htmlize-file))
    #+END_SRC
 
 ** Hy Mode
