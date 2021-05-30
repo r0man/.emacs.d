@@ -1365,8 +1365,7 @@
 ** Elisp slime navigation
    #+BEGIN_SRC emacs-lisp
      (use-package elisp-slime-nav
-       :init
-       (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode))
+       :hook emacs-lisp-mode)
    #+END_SRC
 ** Emacs server
 
