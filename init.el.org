@@ -329,6 +329,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package docopt
+       :commands docopt
        :load-path
        ("~/workspace/docopt.el/src"
         "~/workspace/docopt.el/test"))
