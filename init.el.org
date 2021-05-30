@@ -406,12 +406,6 @@
        :commands bluetooth-list-devices)
    #+END_SRC
 
-** Find File in Project
-   #+BEGIN_SRC emacs-lisp
-     (use-package find-file-in-project
-       :init
-       (setq ffip-prefer-ido-mode t))
-   #+END_SRC
 ** EIN - Emacs IPython Notebook
 
    #+BEGIN_SRC emacs-lisp
