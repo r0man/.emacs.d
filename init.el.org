@@ -810,12 +810,6 @@
      (setq history-delete-duplicates t)
    #+END_SRC
 
-** Inferior Clojure
-   #+BEGIN_SRC emacs-lisp
-     (use-package inf-clojure
-       :ensure t
-       :commands (inf-clojure))
-   #+END_SRC
 ** Helm
    #+BEGIN_SRC emacs-lisp
      (use-package helm
