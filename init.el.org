@@ -1648,7 +1648,8 @@
 ** Midje Mode
    #+BEGIN_SRC emacs-lisp
      (use-package midje-mode
-       :ensure t)
+       :ensure t
+       :hook clojure-mode)
    #+END_SRC
 ** Nubank
    #+BEGIN_SRC emacs-lisp
