@@ -402,7 +402,8 @@
 ** Bluetooth
 
    #+BEGIN_SRC emacs-lisp
-     (use-package bluetooth)
+     (use-package bluetooth
+       :commands bluetooth-list-devices)
    #+END_SRC
 
 ** Find File in Project
