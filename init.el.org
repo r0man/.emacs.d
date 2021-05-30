@@ -643,21 +643,21 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package geiser
-       :command geiser)
+       :commands geiser)
    #+END_SRC
 
    The Geiser implementation for Guile scheme.
 
    #+BEGIN_SRC emacs-lisp
      (use-package geiser-guile
-       :command geiser)
+       :commands geiser)
    #+END_SRC
 
    The Geiser implementation for MIT scheme.
 
    #+BEGIN_SRC emacs-lisp
      (use-package geiser-mit
-       :command geiser
+       :commands geiser
        :ensure t)
    #+END_SRC
 
