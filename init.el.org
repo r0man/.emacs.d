@@ -2181,7 +2181,8 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package redshank
-       :hook (emacs-lisp-mode lisp-mode))
+       :hook ((emacs-lisp-mode . redshank-mode)
+              (lisp-mode . redshank-mode)))
    #+END_SRC
 
 ** Scala Mode
