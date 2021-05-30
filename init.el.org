@@ -1607,6 +1607,7 @@
 ** Flx mode
    #+BEGIN_SRC emacs-lisp
      (use-package flx-ido
+       :after ido
        :ensure t
        :init
        (flx-ido-mode 1)
