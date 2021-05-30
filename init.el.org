@@ -1169,34 +1169,6 @@
        :ensure t)
    #+END_SRC
 
-** Leiningen
-
-   Auto compile ClojureScript.
-
-   #+BEGIN_SRC emacs-lisp
-     (defun lein-cljsbuild ()
-       (interactive)
-       (compile "lein clean; lein cljsbuild auto"))
-   #+END_SRC
-
-   Start a Rhino REPL.
-
-   #+BEGIN_SRC emacs-lisp
-     (defun lein-rhino-repl ()
-       "Start a Rhino repl via Leiningen."
-       (interactive)
-       (run-lisp "lein trampoline cljsbuild repl-rhino"))
-   #+END_SRC
-
-   Start a Node.js REPL.
-
-   #+BEGIN_SRC emacs-lisp
-     (defun lein-node-repl ()
-       "Start a NodeJS repl via Leiningen."
-       (interactive)
-       (run-lisp "lein trampoline noderepl"))
-   #+END_SRC
-
 ** CSS mode
    #+BEGIN_SRC emacs-lisp
      (use-package css-mode
