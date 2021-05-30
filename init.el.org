@@ -642,25 +642,29 @@
    Emacs and Scheme talk to each other.
 
    #+BEGIN_SRC emacs-lisp
-     (use-package geiser)
+     (use-package geiser
+       :command geiser)
    #+END_SRC
 
    The Geiser implementation for Guile scheme.
 
    #+BEGIN_SRC emacs-lisp
-     (use-package geiser-guile)
+     (use-package geiser-guile
+       :command geiser)
    #+END_SRC
 
    The Geiser implementation for MIT scheme.
 
    #+BEGIN_SRC emacs-lisp
      (use-package geiser-mit
+       :command geiser
        :ensure t)
    #+END_SRC
 
 ** GraphQL Mode
    #+BEGIN_SRC emacs-lisp
      (use-package graphql-mode
+       :mode "\\.graphql\\'"
        :init
        (setq graphql-url "http://localhost:7000/graphql"))
    #+END_SRC
