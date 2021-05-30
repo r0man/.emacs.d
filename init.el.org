@@ -765,7 +765,7 @@
 ** Emacs Refactor
    #+BEGIN_SRC emacs-lisp
      (use-package emr
-       :hook (emacs-lisp-mode . emr-minor-mode))
+       :commands (emr-show-refactor-menu))
    #+END_SRC
 ** Flutter
    #+BEGIN_SRC emacs-lisp
@@ -1381,20 +1381,17 @@
 ** Emacs multimedia system
    #+BEGIN_SRC emacs-lisp
      (use-package emms
-       :defer 1
-       :init
-       (progn
-         (emms-all)
-         (emms-default-players)
-
-         (add-to-list 'emms-player-list 'emms-player-mpd)
-         (condition-case nil
-             (emms-player-mpd-connect)
-           (error (message "Can't connect to music player daemon.")))
-
-         (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
-         (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
-         (load-if-exists "~/.emms.el")))
+       :commands (emms)
+       :config
+       (emms-all)
+       (emms-default-players)
+       (add-to-list 'emms-player-list 'emms-player-mpd)
+       (condition-case nil
+           (emms-player-mpd-connect)
+         (error (message "Can't connect to music player daemon.")))
+       (setq emms-source-file-directory-tree-function 'emms-source-file-directory-tree-find)
+       (setq emms-player-mpd-music-directory (expand-file-name "~/Music"))
+       (load-if-exists "~/.emms.el"))
    #+END_SRC
 ** Expand region
    #+BEGIN_SRC emacs-lisp
@@ -2394,7 +2391,8 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet-snippets
-       :after (yasnippet))
+       :after (yasnippet)
+       :defer t)
    #+END_SRC
 ** After init hook
    #+BEGIN_SRC emacs-lisp
