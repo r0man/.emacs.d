@@ -765,7 +765,7 @@
 ** Emacs Refactor
    #+BEGIN_SRC emacs-lisp
      (use-package emr
-       :hook emacs-lisp-mode)
+       :hook (emacs-lisp-mode . emr-minor-mode))
    #+END_SRC
 ** Flutter
    #+BEGIN_SRC emacs-lisp
@@ -1363,7 +1363,7 @@
 ** Elisp slime navigation
    #+BEGIN_SRC emacs-lisp
      (use-package elisp-slime-nav
-       :hook emacs-lisp-mode)
+       :hook (emacs-lisp-mode . elisp-slime-nav-mode))
    #+END_SRC
 ** Emacs server
 
@@ -1654,7 +1654,7 @@
      (use-package nu
        :commands (nu-datomic-query nu-session-switch)
        :load-path ("~/workspace/nu/nudev/ides/emacs/")
-       :init
+       :config
        (require 'nu)
        (require 'nu-metapod)
        (require 'nu-datomic-query))
@@ -2347,6 +2347,7 @@
 ** Vterm
    #+BEGIN_SRC emacs-lisp
      (use-package vterm
+       :commands (vterm)
        :config
        (setq vterm-max-scrollback 100000))
    #+END_SRC
@@ -2381,26 +2382,19 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
-       :defer 1
-       :init
-       (yas-reload-all)
-       (mapcar
-        (lambda (mode)
-          (add-hook mode #'yas-minor-mode))
-        '(clojure-mode-hook
-          emacs-lisp-mode
-          js-mode
-          js2-mode
-          lisp--interaction-mode
-          lisp-mode
-          ruby-mode
-          sql-mode)))
+       :hook ((js-mode . yas-minor-mode)
+              (js2-mode . yas-minor-mode)
+              (ruby-mode . yas-minor-mode)
+              (sql-mode . yas-minor-mode))
+       :config
+       (yas-reload-all))
    #+END_SRC
 
    The YASnippet collection.
 
    #+BEGIN_SRC emacs-lisp
-     (use-package yasnippet-snippets)
+     (use-package yasnippet-snippets
+       :after (yasnippet))
    #+END_SRC
 ** After init hook
    #+BEGIN_SRC emacs-lisp
