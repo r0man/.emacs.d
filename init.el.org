@@ -558,10 +558,8 @@
          (assoc-some 1)
          (let-entities 2)
          (functions/constraint-fn 2))
-       (put 'defmixin 'clojure-backtracking-indent '(4 (2))))
-
-     (use-package clojure-mode-extra-font-locking
-       :ensure t)
+       (put 'defmixin 'clojure-backtracking-indent '(4 (2)))
+       (require 'clojure-mode-extra-font-locking))
    #+END_SRC
 ** Cider
    #+BEGIN_SRC emacs-lisp
