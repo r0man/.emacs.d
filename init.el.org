@@ -1361,6 +1361,9 @@
    #+END_SRC
 
 ** Elisp slime navigation
+
+   Slime-style navigation for Emacs Lisp.
+
    #+BEGIN_SRC emacs-lisp
      (use-package elisp-slime-nav
        :hook (emacs-lisp-mode . elisp-slime-nav-mode))
