@@ -2232,6 +2232,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-dart
+       :hook dart-mode
        :ensure t
        :init
        (with-eval-after-load 'projectile
@@ -2255,6 +2256,7 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-metals
+       :hook scala-mode
        :ensure t
        :config (setq lsp-metals-treeview-show-when-views-received nil))
    #+END_SRC
