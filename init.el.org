@@ -1758,7 +1758,7 @@
 ** Mu4e
    #+BEGIN_SRC emacs-lisp
      (use-package mu4e
-       :ensure nil
+       :commands mu4e
        :config
 
        ;; This is set to 't' to avoid mail syncing issues when using mbsync
