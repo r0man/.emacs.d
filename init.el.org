@@ -2125,11 +2125,11 @@
 ** Paredit
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
-       :hook (clojure-mode
-              clojurescript-mode
-              emacs-lisp-mode
-              lisp-mode
-              scheme-mode))
+       :hook ((clojure-mode . paredit-mode)
+              (clojurescript-mode . paredit-mode)
+              (emacs-lisp-mode . paredit-mode)
+              (lisp-mode . paredit-mode)
+              (scheme-mode . paredit-mode)))
    #+END_SRC
 ** Pass
    #+BEGIN_SRC emacs-lisp
