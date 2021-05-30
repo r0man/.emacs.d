@@ -1680,18 +1680,6 @@
      (setq js-indent-level 2)
    #+END_SRC
 
-** Octave
-
-   #+BEGIN_SRC emacs-lisp
-     (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
-     (add-hook 'octave-mode-hook
-               (lambda ()
-                 (abbrev-mode 1)
-                 (auto-fill-mode 1)
-                 (if (eq window-system 'x)
-                     (font-lock-mode 1))))
-   #+END_SRC
-
 ** IRC
    #+BEGIN_SRC emacs-lisp
      (load-if-exists "~/.rcirc.el")
