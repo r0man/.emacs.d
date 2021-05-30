@@ -2326,7 +2326,8 @@
 ** Terraform
 
    #+BEGIN_SRC emacs-lisp
-     (use-package terraform-mode)
+     (use-package terraform-mode
+       :mode "\\.tf$")
    #+END_SRC
 
 ** Undo Tree
