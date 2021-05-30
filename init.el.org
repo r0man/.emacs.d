@@ -1751,7 +1751,7 @@
 ** Markdown mode
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
-       :mode ("\\.md\\'" . markdown-mode)
+       :mode "\\.md\\'"
        :config
        (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode)))
    #+END_SRC
@@ -2117,11 +2117,12 @@
        :ensure t)
    #+END_SRC
 ** Pandoc
+
+   An Emacs mode for interacting with Pandoc.
+
    #+BEGIN_SRC emacs-lisp
      (use-package pandoc-mode
-       :after markdown-mode
-       :init
-       (add-hook 'markdown-mode-hook 'pandoc-mode))
+       :hook markdown-mode)
    #+END_SRC
 ** Paredit
    #+BEGIN_SRC emacs-lisp
