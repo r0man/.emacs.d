@@ -2407,6 +2407,12 @@
       'after-init-hook
       (lambda ()
 
+        ;; Number of bytes of consing between garbage collections.
+        (setq gc-cons-threshold 800000)
+
+        ;; Portion of the heap used for allocation.
+        (setq gc-cons-percentage 0.1)
+
         ;; Load system specific config.
         (load-if-exists (concat user-emacs-directory system-name ".el"))
 
