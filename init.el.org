@@ -4,6 +4,28 @@
     ;;; init.el --- my emacs configuration. -*- lexical-binding: t; -*-
   #+END_SRC
 
+** Color theme
+
+   #+BEGIN_SRC emacs-lisp
+     (defun theme-by-current-hour ()         ;
+       "Return the theme, depending on the current hour of the day."
+       (let ((hour (string-to-number (format-time-string "%H"))))
+         (if (and (< 10 hour 17))
+             'solarized-light
+           'solarized-dark)))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'custom-theme-load-path "~/workspace/emacs-color-theme-solarized")
+     (let ((theme 'solarized-dark))
+       (if (daemonp)
+           (add-hook 'after-make-frame-functions
+                     (lambda (frame)
+                       (select-frame frame)
+                       (load-theme theme t)))
+         (load-theme theme t)))
+   #+END_SRC
+
 ** Emacs native compiler
 
    Compile Elisp to native machine code.
@@ -100,6 +122,16 @@
    #+BEGIN_SRC emacs-lisp
      (setq use-package-verbose t)
    #+END_SRC
+
+   Always ensure packages are installed when running on a non-guix
+   system.
+
+   #+BEGIN_SRC emacs-lisp
+     (unless (file-exists-p "/gnu/store")
+       (require 'use-package-ensure)
+       (setq use-package-always-ensure t))
+   #+END_SRC
+
 ** External Monitor
    #+BEGIN_SRC emacs-lisp
      (defvar my-external-monitor "DP-1"
@@ -290,31 +322,9 @@
        (deactivate-mark))
    #+END_SRC
 
-** Color theme
-
-   #+BEGIN_SRC emacs-lisp
-     (defun theme-by-current-hour ()
-       "Return the theme, depending on the current hour of the day."
-       (let ((hour (string-to-number (format-time-string "%H"))))
-         (if (and (< 10 hour 17))
-             'solarized-light
-           'solarized-dark)))
-   #+END_SRC
-
-   #+BEGIN_SRC emacs-lisp
-     (add-to-list 'custom-theme-load-path "~/workspace/emacs-color-theme-solarized")
-     (let ((theme 'solarized-dark))
-       (if (daemonp)
-           (add-hook 'after-make-frame-functions
-                     (lambda (frame)
-                       (select-frame frame)
-                       (load-theme theme t)))
-         (load-theme theme t)))
-   #+END_SRC
 ** Docopt.el
    #+BEGIN_SRC emacs-lisp
-     (use-package parsec
-       :ensure t)
+     (use-package parsec)
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
@@ -329,7 +339,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package exec-path-from-shell
-       :ensure t
        :init
        (setq exec-path-from-shell-variables
              '("CHROME_EXECUTABLE"
@@ -358,7 +367,6 @@
 ** Aggressive Indent Mode
    #+BEGIN_SRC emacs-lisp
      (use-package aggressive-indent
-       :ensure t
        :disabled t
        :init
        (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
@@ -367,7 +375,6 @@
 ** Avy
    #+BEGIN_SRC emacs-lisp
      (use-package avy
-       :ensure t
        :bind (("M-j" . avy-goto-char-2)
               :map isearch-mode-map
               ("C-'" . avy-search)))
@@ -376,7 +383,6 @@
 ** Auto dictionary mode
    #+BEGIN_SRC emacs-lisp
      (use-package auto-dictionary
-       :ensure t
        :init (add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
    #+END_SRC
 ** Appointments
@@ -395,14 +401,12 @@
 ** Bluetooth
 
    #+BEGIN_SRC emacs-lisp
-     (use-package bluetooth
-       :ensure t)
+     (use-package bluetooth)
    #+END_SRC
 
 ** Find File in Project
    #+BEGIN_SRC emacs-lisp
      (use-package find-file-in-project
-       :ensure t
        :init
        (setq ffip-prefer-ido-mode t))
    #+END_SRC
@@ -485,7 +489,7 @@
 ** ElFeed
    #+BEGIN_SRC emacs-lisp
      (use-package elfeed
-       :ensure t
+       :commands (elfeed)
        :init
        (setq elfeed-feeds
              '("http://planet.clojure.in/atom.xml"
@@ -499,7 +503,6 @@
    #+BEGIN_SRC emacs-lisp
      (use-package elpy
        :disabled t
-       :ensure t
        :init
        (with-eval-after-load 'python
          (elpy-enable)
@@ -522,7 +525,6 @@
    #+BEGIN_SRC emacs-lisp
      (use-package clojure-mode
        :after (nu)
-       :ensure t
        :mode (("\\.edn$" . clojure-mode)
               ("\\.cljs$" . clojurescript-mode)
               ("\\.cljx$" . clojurex-mode)
@@ -570,7 +572,6 @@
      (use-package cider
        :commands (cider-jack-in cider-jack-in-clojurescript)
        ;; :load-path ("~/workspace/cider")
-       :ensure t
        :config
        ;; Enable eldoc in Clojure buffers
        (add-hook 'cider-mode-hook #'eldoc-mode)
@@ -621,6 +622,7 @@
        (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion))
    #+END_SRC
 ** Clojure refactor
+
    #+BEGIN_SRC emacs-lisp
      (use-package clj-refactor
        :ensure t
@@ -643,15 +645,13 @@
    Emacs and Scheme talk to each other.
 
    #+BEGIN_SRC emacs-lisp
-     (use-package geiser
-       :ensure t)
+     (use-package geiser)
    #+END_SRC
 
    The Geiser implementation for Guile scheme.
 
    #+BEGIN_SRC emacs-lisp
-     (use-package geiser-guile
-       :ensure t)
+     (use-package geiser-guile)
    #+END_SRC
 
    The Geiser implementation for MIT scheme.
@@ -664,7 +664,6 @@
 ** GraphQL Mode
    #+BEGIN_SRC emacs-lisp
      (use-package graphql-mode
-       :ensure t
        :init
        (setq graphql-url "http://localhost:7000/graphql"))
    #+END_SRC
@@ -674,7 +673,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package company
-       :ensure t
        :defer 1
        :init
        (global-company-mode)
@@ -702,7 +700,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package company-quickhelp
-       :ensure t
        :defer 1
        :init (company-quickhelp-mode 1))
    #+END_SRC
@@ -716,7 +713,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package dart-mode
-       :ensure t
        :hook (dart-mode . flutter-test-mode))
    #+END_SRC
 ** Data Debug
@@ -751,7 +747,6 @@
 ** Docker
    #+BEGIN_SRC emacs-lisp
      (use-package docker
-       :ensure t
        :commands (docker))
    #+END_SRC
 ** EIEIO
@@ -770,8 +765,7 @@
 
 ** Emacs Refactor
    #+BEGIN_SRC emacs-lisp
-     (use-package emr
-       :ensure t)
+     (use-package emr)
    #+END_SRC
 ** Flutter
    #+BEGIN_SRC emacs-lisp
@@ -784,14 +778,12 @@
 ** Forge
    #+BEGIN_SRC emacs-lisp
      (use-package forge
-       :ensure t
        :after magit
        :commands (forge-pull))
    #+END_SRC
 ** GIF Screencast
    #+BEGIN_SRC emacs-lisp
      (use-package gif-screencast
-       :ensure t
        ;; :bind ("<f9>" . gif-screencast-start-or-stop)
        :init
        (setq gif-screencast-scale-factor 1.0))
@@ -833,7 +825,6 @@
 ** Helm
    #+BEGIN_SRC emacs-lisp
      (use-package helm
-       :ensure t
        :bind (("M-x" . helm-M-x)
               ("C-x b" . helm-buffers-list)
               ("C-x r b" . helm-bookmarks))
@@ -943,7 +934,6 @@
    #+BEGIN_SRC emacs-lisp
      (use-package helm-projectile
        :after (projectile)
-       :ensure t
        :init (helm-projectile-on))
    #+END_SRC
 ** Helm Recoll
@@ -959,14 +949,12 @@
 ** HTMLize
 
    #+BEGIN_SRC emacs-lisp
-     (use-package htmlize
-       :ensure t)
+     (use-package htmlize)
    #+END_SRC
 
 ** Hy Mode
    #+BEGIN_SRC emacs-lisp
      (use-package hy-mode
-       :ensure t
        :mode (("\\.hy$" . hy-mode))
        :config
        (add-hook 'hy-mode-hook 'paredit-mode)
@@ -1351,7 +1339,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package engine-mode
-       :ensure t
        :commands (engine/search-github engine/search-google)
        :config
        (engine-mode t)
@@ -1402,7 +1389,6 @@
 ** Elisp slime navigation
    #+BEGIN_SRC emacs-lisp
      (use-package elisp-slime-nav
-       :ensure t
        :init
        (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode))
    #+END_SRC
@@ -1412,7 +1398,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package server
-       :ensure t
        :if window-system
        :init
        (require 'server)
@@ -1423,7 +1408,6 @@
 ** Emacs multimedia system
    #+BEGIN_SRC emacs-lisp
      (use-package emms
-       :ensure t
        :defer 1
        :init
        (progn
@@ -1442,7 +1426,6 @@
 ** Expand region
    #+BEGIN_SRC emacs-lisp
      (use-package expand-region
-       :ensure t
        :bind (("C-c C-+" . er/expand-region)
               ("C-c C--" . er/contract-region)))
    #+END_SRC
@@ -1450,7 +1433,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package flycheck
-       :ensure t
        :init (global-flycheck-mode))
    #+END_SRC
 
@@ -1627,15 +1609,14 @@
 ** Ido vertical mode
    #+BEGIN_SRC emacs-lisp
      (use-package ido-vertical-mode
-       :ensure t
        :init
        (ido-vertical-mode)
        (setq ido-vertical-define-keys 'C-n-and-C-p-only))
    #+END_SRC
 ** Ido Completing Read+
    #+BEGIN_SRC emacs-lisp
-     (use-package ido-completing-read+
-       :ensure t)
+     ;; (use-package ido-completing-read+
+     ;;   :ensure t)
    #+END_SRC
 ** Jiralib2
 
@@ -1671,7 +1652,6 @@
        :commands (kubel))
    #+END_SRC
 ** Kubernetes
-
    #+BEGIN_SRC emacs-lisp
      (use-package kubernetes
        :ensure t
@@ -1681,14 +1661,12 @@
 ** Kotlin
 
    #+BEGIN_SRC emacs-lisp
-     (use-package kotlin-mode
-       :ensure t)
+     (use-package kotlin-mode)
    #+END_SRC
 
 ** Magit
    #+BEGIN_SRC emacs-lisp
      (use-package magit
-       :ensure t
        :bind (("C-x C-g s" . magit-status))
        :config
        (setq magit-completing-read-function 'magit-ido-completing-read)
@@ -1807,22 +1785,60 @@
 ** Macrostep
    #+BEGIN_SRC emacs-lisp
      (use-package macrostep
-       :ensure t
        :defer 1)
    #+END_SRC
 ** Markdown mode
    #+BEGIN_SRC emacs-lisp
      (use-package markdown-mode
-       :ensure t
        :mode ("\\.md\\'" . markdown-mode)
        :config
        (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode)))
+   #+END_SRC
+** Mu4e
+   #+BEGIN_SRC emacs-lisp
+     (use-package mu4e
+       :ensure nil
+       :config
+
+       ;; This is set to 't' to avoid mail syncing issues when using mbsync
+       (setq mu4e-change-filenames-when-moving t)
+
+       ;; Refresh mail using isync every 10 minutes
+       (setq mu4e-update-interval (* 10 60))
+       (setq mu4e-get-mail-command "mbsync -a")
+       (setq mu4e-maildir "~/Mail")
+
+       (setq mu4e-contexts
+             (list
+              (make-mu4e-context
+               :name "Burningswell"
+               :match-func
+               (lambda (msg)
+                 (when msg
+                   (string-prefix-p "/burningswell" (mu4e-message-field msg :maildir))))
+               :vars '((mu4e-drafts-folder . "/burningswell/[Gmail]/Drafts")
+                       (mu4e-refile-folder . "/burningswell/[Gmail]/All Mail")
+                       (mu4e-sent-folder . "/burningswell/[Gmail]/Sent Mail")
+                       (mu4e-trash-folder . "/burningswell/[Gmail]/Trash")
+                       (user-full-name . "Roman Scherer")
+                       (user-mail-address . "roman.scherer@burningswell.com")))
+              (make-mu4e-context
+               :name "Nubank"
+               :match-func
+               (lambda (msg)
+                 (when msg
+                   (string-prefix-p "/nubank" (mu4e-message-field msg :maildir))))
+               :vars '((mu4e-drafts-folder . "/nubank/[Gmail]/Drafts")
+                       (mu4e-refile-folder . "/nubank/[Gmail]/All Mail")
+                       (mu4e-sent-folder . "/nubank/[Gmail]/Sent Mail")
+                       (mu4e-trash-folder . "/nubank/[Gmail]/Trash")
+                       (user-full-name . "Roman Scherer")
+                       (user-mail-address . "roman.scherer@nubank.com.br"))))))
    #+END_SRC
 ** Multi term
 
    #+BEGIN_SRC emacs-lisp
      (use-package multi-term
-       :ensure t
        :disabled t
        :bind (("C-x M" . multi-term)
               ("C-x m" . switch-to-term-mode-buffer))
@@ -1894,7 +1910,6 @@
 ** Multiple cursors
    #+BEGIN_SRC emacs-lisp
      (use-package multiple-cursors
-       :ensure t
        :defer 1)
    #+END_SRC
 ** Nucli
@@ -1932,15 +1947,13 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package slime
-       :commands (slime)
-       :ensure t)
+       :commands (slime))
    #+END_SRC
 
    Slime Company
 
    #+BEGIN_SRC emacs-lisp
      (use-package slime-company
-       :ensure t
        :init (slime-setup '(slime-fancy slime-company)))
    #+END_SRC
 
@@ -2011,7 +2024,6 @@
        :hook (sql-mode . sqlind-minor-mode))
    #+END_SRC
 
-
 ** Tramp
    #+BEGIN_SRC emacs-lisp
      (eval-after-load "tramp"
@@ -2020,6 +2032,13 @@
            "ssh"
            '((tramp-parse-shosts "~/.ssh/known_hosts")
              (tramp-parse-hosts "/etc/hosts")))))
+   #+END_SRC
+
+** Tramp Docker
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package docker-tramp
+       :load-path ("~/.emacs.d/vendor"))
    #+END_SRC
 
 ** Uniquify
@@ -2087,7 +2106,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package org
-       :ensure t
        :defer 1
        :mode ("\\.org\\'" . org-mode)
        :config
@@ -2117,7 +2135,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package org-present
-       :ensure t
        :commands org-present)
    #+END_SRC
 ** Org Reveal
@@ -2138,7 +2155,6 @@
 ** Pandoc
    #+BEGIN_SRC emacs-lisp
      (use-package pandoc-mode
-       :ensure t
        :after markdown-mode
        :init
        (add-hook 'markdown-mode-hook 'pandoc-mode))
@@ -2146,15 +2162,13 @@
 ** Paredit
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
-       :ensure t
        :init (dolist (mode '(scheme emacs-lisp lisp clojure clojurescript))
                (add-hook (intern (concat (symbol-name mode) "-mode-hook"))
                          'paredit-mode)))
    #+END_SRC
 ** Pass
    #+BEGIN_SRC emacs-lisp
-     (use-package pass
-       :ensure t)
+     (use-package pass)
    #+END_SRC
 ** Pepita
    #+BEGIN_SRC emacs-lisp
@@ -2167,7 +2181,6 @@
 ** Projectile
    #+BEGIN_SRC emacs-lisp
      (use-package projectile
-       :ensure t
        :config
        (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
        (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -2177,7 +2190,6 @@
 ** Ruby mode
    #+BEGIN_SRC emacs-lisp
      (use-package ruby-mode
-       :ensure t
        :mode (("Capfile$" . ruby-mode)
               ("Gemfile$" . ruby-mode)
               ("Guardfile$" . ruby-mode)
@@ -2190,7 +2202,6 @@
 ** Rainbow mode
    #+BEGIN_SRC emacs-lisp
      (use-package rainbow-mode
-       :ensure t
        :defer 1)
    #+END_SRC
 ** Redshank
@@ -2205,20 +2216,17 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package redshank
-       :ensure t
        :hook ((lisp-mode emacs-lisp-mode) . redshank-mode))
    #+END_SRC
 
 ** Scala Mode
    #+BEGIN_SRC emacs-lisp
      (use-package scala-mode
-       :ensure t
        :interpreter ("scala" . scala-mode))
    #+END_SRC
 ** SBT Mode
    #+BEGIN_SRC emacs-lisp
      (use-package sbt-mode
-       :ensure t
        :commands sbt-start sbt-command
        :config
        ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
@@ -2240,7 +2248,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
-       :ensure t
        :bind-keymap ("C-c l" . lsp-command-map)
        :hook ((dart-mode . lsp-deferred)
               (lsp-mode . lsp-enable-which-key-integration)
@@ -2248,7 +2255,6 @@
               (python-mode . lsp-deferred)
               (scala-mode . lsp-deferred)
               ;; (sql-mode . lsp-deferred)
-              )
               (yaml-mode . lsp-deferred))
        :init
        (setq lsp-file-watch-threshold nil
@@ -2272,13 +2278,11 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package helm-lsp
-       :ensure t
        :commands helm-lsp-workspace-symbol)
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-treemacs
-       :ensure t
        :commands lsp-treemacs-errors-list)
    #+END_SRC
 
@@ -2289,8 +2293,13 @@
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
-     (use-package lsp-ui
+     (use-package lsp-java
        :ensure t
+       :hook ((java-mode . lsp-deferred)))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package lsp-ui
        :commands lsp-ui-mode)
    #+END_SRC
 
@@ -2300,13 +2309,11 @@
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
-     (use-package posframe
-       :ensure t)
+     (use-package posframe)
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
      (use-package dap-mode
-       :ensure t
        :hook
        (lsp-mode . dap-mode)
        (lsp-mode . dap-ui-mode))
@@ -2314,7 +2321,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package treemacs
-       :ensure t
        :defer t)
    #+END_SRC
 
@@ -2351,15 +2357,13 @@
 ** Terraform
 
    #+BEGIN_SRC emacs-lisp
-     (use-package terraform-mode
-       :ensure t)
+     (use-package terraform-mode)
    #+END_SRC
 
 ** Undo Tree
 
    #+BEGIN_SRC emacs-lisp
      (use-package undo-tree
-       :ensure t
        :init (global-undo-tree-mode))
    #+END_SRC
 
@@ -2380,7 +2384,6 @@
 ** Web mode
    #+BEGIN_SRC emacs-lisp
      (use-package web-mode
-       :ensure t
        :mode (("\\.jsx$" . web-mode)
               ("\\.html$" . web-mode))
        :config
@@ -2391,7 +2394,6 @@
 ** Which Key
    #+BEGIN_SRC emacs-lisp
      (use-package which-key
-       :ensure t
        :config (which-key-mode))
    #+END_SRC
 ** Winner mode
@@ -2402,7 +2404,6 @@
 ** YAML mode
    #+BEGIN_SRC emacs-lisp
      (use-package yaml-mode
-       :ensure t
        :mode (("\\.yml$" . yaml-mode)))
    #+END_SRC
 ** YASnippet
@@ -2411,7 +2412,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package yasnippet
-       :ensure t
        :defer 1
        :init
        (yas-reload-all)
@@ -2431,8 +2431,7 @@
    The YASnippet collection.
 
    #+BEGIN_SRC emacs-lisp
-     (use-package yasnippet-snippets
-       :ensure t)
+     (use-package yasnippet-snippets)
    #+END_SRC
 ** After init hook
    #+BEGIN_SRC emacs-lisp
