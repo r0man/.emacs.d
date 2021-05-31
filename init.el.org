@@ -2197,6 +2197,7 @@
 ** So Long
    #+BEGIN_SRC emacs-lisp
      (global-so-long-mode 1)
+     (setq so-long-max-lines 20)
    #+END_SRC
 ** Language Server Protocol
 
