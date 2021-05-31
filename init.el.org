@@ -351,6 +351,7 @@
                "METALS_JAVA_OPTS"
                "METALS_JDK_PATH"
                "NPM_PACKAGES"
+               "NUCLI_PY_FULL"
                "NU_COUNTRY"
                "NU_HOME"
                "PATH"
