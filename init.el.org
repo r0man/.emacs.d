@@ -506,13 +506,6 @@
          (elpy-enable)
          (delete 'elpy-module-highlight-indentation elpy-modules)))
    #+END_SRC
-** EMidje
-   #+BEGIN_SRC emacs-lisp
-     (use-package emidje
-       :ensure t
-       :disabled t
-       :init (eval-after-load 'cider #'emidje-setup))
-   #+END_SRC
 ** eval-expr
    #+BEGIN_SRC emacs-lisp
      (use-package eval-expr
@@ -1631,12 +1624,6 @@
        (setq magit-stage-all-confirm nil)
        (setq magit-unstage-all-confirm nil)
        (setq ediff-window-setup-function 'ediff-setup-windows-plain))
-   #+END_SRC
-** Midje Mode
-   #+BEGIN_SRC emacs-lisp
-     (use-package midje-mode
-       :ensure t
-       :hook clojure-mode)
    #+END_SRC
 ** Nubank
    #+BEGIN_SRC emacs-lisp
