@@ -2166,7 +2166,8 @@
 ** Scala Mode
    #+BEGIN_SRC emacs-lisp
      (use-package scala-mode
-       :interpreter ("scala" . scala-mode))
+       :interpreter ("scala" . scala-mode)
+       :mode "\\.scala\\'")
    #+END_SRC
 ** SBT Mode
    #+BEGIN_SRC emacs-lisp
