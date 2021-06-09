@@ -2049,6 +2049,9 @@
        (require 'ob-clojure)
        (setq org-babel-clojure-backend 'cider)
        (setq org-src-fontify-natively t)
+       (setq org-confirm-babel-evaluate
+             (lambda (lang body)
+               (not (member lang '("plantuml")))))
        (org-babel-do-load-languages
         'org-babel-load-languages
         '((clojure . t)
