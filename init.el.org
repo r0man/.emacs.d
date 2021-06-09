@@ -2053,6 +2053,7 @@
         'org-babel-load-languages
         '((clojure . t)
           (emacs-lisp . t)
+          (plantuml . t)
           (ruby . t)
           (shell . t)
           (sql . t))))
@@ -2120,6 +2121,12 @@
        (setq pepita-splunk-url "https://nubank.splunkcloud.com/services"))
    #+END_SRC
 
+** PlantUML
+   #+BEGIN_SRC emacs-lisp
+     (use-package plantuml-mode
+       :config
+       (setq org-plantuml-jar-path "~/.guix-profile/share/java/plantuml.jar"))
+   #+END_SRC
 ** Projectile
    #+BEGIN_SRC emacs-lisp
      (use-package projectile
