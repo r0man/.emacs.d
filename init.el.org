@@ -2351,6 +2351,14 @@
      (winner-mode)
    #+END_SRC
 
+** WSD Mode
+
+   Emacs major-mode for [[https://www.websequencediagrams.com/][Web Sequence Diagrams]].
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package wsd-mode
+       :mode "\\.wsd\\'")
+   #+END_SRC
 ** YAML mode
    #+BEGIN_SRC emacs-lisp
      (use-package yaml-mode
