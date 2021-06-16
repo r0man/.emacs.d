@@ -2101,6 +2101,13 @@
      (use-package pandoc-mode
        :hook markdown-mode)
    #+END_SRC
+
+   The org-mode Pandoc exporter.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package ox-pandoc)
+   #+END_SRC
+
 ** Paredit
    #+BEGIN_SRC emacs-lisp
      (use-package paredit
