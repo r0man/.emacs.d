@@ -1870,9 +1870,11 @@
    Save the mini buffer history.
 
    #+BEGIN_SRC emacs-lisp
-     (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
-     (setq savehist-file "~/.emacs.d/savehist")
-     (savehist-mode 1)
+     (use-package savehist
+       :init
+       (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+       (setq savehist-file "~/.emacs.d/savehist")
+       (savehist-mode))
    #+END_SRC
 
 ** Slime
