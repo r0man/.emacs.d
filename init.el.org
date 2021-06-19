@@ -865,6 +865,14 @@
      (use-package emr
        :commands (emr-show-refactor-menu))
    #+END_SRC
+** Emojify
+
+   Display Emojis in Emacs.
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package emojify
+       :hook (after-init . global-emojify-mode))
+   #+END_SRC
 ** Flutter
    #+BEGIN_SRC emacs-lisp
      (use-package flutter
