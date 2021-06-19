@@ -630,6 +630,109 @@
        ;; Print a message when the AST has been built.
        (setq cljr--debug-mode t))
    #+END_SRC
+** Consult
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package consult
+       :ensure t
+       ;; Replace bindings. Lazily loaded due by `use-package'.
+       :bind (;; C-c bindings (mode-specific-map)
+              ("C-c h" . consult-history)
+              ("C-c m" . consult-mode-command)
+              ("C-c b" . consult-bookmark)
+              ("C-c k" . consult-kmacro)
+              ;; C-x bindings (ctl-x-map)
+              ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+              ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+              ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+              ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+              ;; Custom M-# bindings for fast register access
+              ("M-#" . consult-register-load)
+              ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+              ("C-M-#" . consult-register)
+              ;; Other custom bindings
+              ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+              ("<help> a" . consult-apropos)            ;; orig. apropos-command
+              ;; M-g bindings (goto-map)
+              ("M-g e" . consult-compile-error)
+              ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+              ("M-g g" . consult-goto-line)             ;; orig. goto-line
+              ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+              ("M-g o" . consult-outline)
+              ("M-g m" . consult-mark)
+              ("M-g k" . consult-global-mark)
+              ("M-g i" . consult-imenu)
+              ("M-g I" . consult-project-imenu)
+              ;; M-s bindings (search-map)
+              ("M-s f" . consult-find)
+              ("M-s L" . consult-locate)
+              ("M-s g" . consult-grep)
+              ("M-s G" . consult-git-grep)
+              ("M-s r" . consult-ripgrep)
+              ("M-s l" . consult-line)
+              ("M-s m" . consult-multi-occur)
+              ("M-s k" . consult-keep-lines)
+              ("M-s u" . consult-focus-lines)
+              ;; Isearch integration
+              ("M-s e" . consult-isearch)
+              :map isearch-mode-map
+              ("M-e" . consult-isearch)                 ;; orig. isearch-edit-string
+              ("M-s e" . consult-isearch)               ;; orig. isearch-edit-string
+              ("M-s l" . consult-line))                 ;; required by consult-line to detect isearch
+
+       ;; Enable automatic preview at point in the *Completions* buffer.
+       ;; This is relevant when you use the default completion UI,
+       ;; and not necessary for Selectrum, Vertico etc.
+       :hook (completion-list-mode . consult-preview-at-point-mode)
+
+       ;; The :init configuration is always executed (Not lazy)
+       :init
+
+       ;; Optionally configure the register formatting. This improves the register
+       ;; preview for `consult-register', `consult-register-load',
+       ;; `consult-register-store' and the Emacs built-ins.
+       (setq register-preview-delay 0
+             register-preview-function #'consult-register-format)
+
+       ;; Optionally tweak the register preview window.
+       ;; This adds thin lines, sorting and hides the mode line of the window.
+       (advice-add #'register-preview :override #'consult-register-window)
+
+       ;; Use Consult to select xref locations with preview
+       (setq xref-show-xrefs-function #'consult-xref
+             xref-show-definitions-function #'consult-xref)
+
+       ;; Configure other variables and modes in the :config section,
+       ;; after lazily loading the package.
+       :config
+
+       ;; Optionally configure preview. The default value
+       ;; is 'any, such that any key triggers the preview.
+       ;; (setq consult-preview-key 'any)
+       ;; (setq consult-preview-key (kbd "M-."))
+       ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+       ;; For some commands and buffer sources it is useful to configure the
+       ;; :preview-key on a per-command basis using the `consult-customize' macro.
+       (consult-customize
+        consult-theme
+        :preview-key '(:debounce 0.2 any)
+        consult-ripgrep consult-git-grep consult-grep
+        consult-bookmark consult-recent-file consult-xref
+        consult--source-file consult--source-project-file consult--source-bookmark
+        :preview-key (kbd "M-."))
+
+       ;; Optionally configure the narrowing key.
+       ;; Both < and C-+ work reasonably well.
+       (setq consult-narrow-key "<") ;; (kbd "C-+")
+
+       ;; Optionally make narrowing help available in the minibuffer.
+       ;; You may want to use `embark-prefix-help-command' or which-key instead.
+       ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+
+       (autoload 'projectile-project-root "projectile")
+       (setq consult-project-root-function #'projectile-project-root))
+   #+END_SRC
+
 ** Geiser
 
    Emacs and Scheme talk to each other.
@@ -802,130 +905,6 @@
 
    #+BEGIN_SRC emacs-lisp
      (setq history-delete-duplicates t)
-   #+END_SRC
-
-** Helm
-   #+BEGIN_SRC emacs-lisp
-     (use-package helm
-       :bind (("M-x" . helm-M-x)
-              ("C-x b" . helm-buffers-list)
-              ("C-x r b" . helm-bookmarks))
-       :config
-       (require 'helm-config)
-       (helm-mode 1)
-
-       ;; https://www.reddit.com/r/emacs/comments/ecdj6s/how_to_get_fuzzy_completion_in_helm_working_again/
-       (setq helm-completion-style 'emacs)
-       (setq completion-styles `(basic partial-completion emacs22 initials
-                                       ,(if (version<= emacs-version "27.0") 'helm-flex 'flex)))
-
-       ;; Globally enable fuzzy matching for helm-mode.
-       (setq helm-mode-fuzzy-match t)
-       (setq helm-completion-in-region-fuzzy-match t)
-
-       (setq helm-M-x-fuzzy-match t)
-       (setq helm-buffers-fuzzy-matching t)
-       (setq helm-recentf-fuzzy-match t)
-
-       (setq helm-locate-command "locate %s -e -A --regex %s")
-       (setq helm-locate-fuzzy-match t)
-
-       (global-set-key [remap execute-extended-command] #'helm-smex)
-       (global-set-key (kbd "M-X") #'helm-smex-major-mode-commands)
-
-       ;; Disable Helm in the following functions.
-       ;; See: https://github.com/emacs-helm/helm/wiki#customize-helm-mode
-       (setq helm-completing-read-handlers-alist
-             '((find-file-read-only . ido)
-               (cider-connect . nil)
-               (magit-gitignore . nil)
-               (rename-file . ido)))
-
-       ;; Helm IDO like: https://github.com/clemera/helm-ido-like-guide
-
-       (defun helm-ido-like-find-files-up-one-level-maybe ()
-         (interactive)
-         (if (looking-back "/" 1)
-             (call-interactively 'helm-find-files-up-one-level)
-           (delete-char -1)))
-
-       (defun helm-ido-like-find-files-navigate-forward (orig-fun &rest args)
-         "Adjust how helm-execute-persistent actions behaves, depending on context."
-         (let ((sel (helm-get-selection)))
-           (if (file-directory-p sel)
-               ;; the current dir needs to work to
-               ;; be able to select directories if needed
-               (cond ((and (stringp sel)
-                           (string-match "\\.\\'" (helm-get-selection)))
-                      (helm-maybe-exit-minibuffer))
-                     (t
-                      (apply orig-fun args)))
-             (helm-maybe-exit-minibuffer))))
-
-       (defun helm-ido-like-load-file-nav ()
-         (advice-add 'helm-execute-persistent-action :around #'helm-ido-like-find-files-navigate-forward)
-         ;; <return> is not bound in helm-map by default
-         (define-key helm-map (kbd "<return>") 'helm-maybe-exit-minibuffer)
-         (with-eval-after-load 'helm-files
-           (define-key helm-read-file-map (kbd "<backspace>") 'helm-ido-like-find-files-up-one-level-maybe)
-           (define-key helm-read-file-map (kbd "DEL") 'helm-ido-like-find-files-up-one-level-maybe)
-           (define-key helm-find-files-map (kbd "<backspace>") 'helm-ido-like-find-files-up-one-level-maybe)
-           (define-key helm-find-files-map (kbd "DEL") 'helm-ido-like-find-files-up-one-level-maybe)
-
-           (define-key helm-find-files-map (kbd "<return>") 'helm-execute-persistent-action)
-           (define-key helm-read-file-map (kbd "<return>") 'helm-execute-persistent-action)
-           (define-key helm-find-files-map (kbd "RET") 'helm-execute-persistent-action)
-           (define-key helm-read-file-map (kbd "RET") 'helm-execute-persistent-action)))
-
-       (defvar helm-ido-like-no-dots-whitelist
-         '("*Helm file completions*"
-           "*helm-mode-dired*"
-           "*helm-mode-dired-do-rename*"
-           "*helm-mode-find-dired-clojure*"
-           "*helm-mode-package-install-file*")
-         "List of helm buffers in which to show dot directories.")
-
-       (defun helm-ido-like-no-dots-display-file-p (file &optional reverse skip-boring-check)
-         ;; in a whitelisted buffer display all but the relative path to parent dir
-         (or (and (member helm-buffer helm-ido-like-no-dots-whitelist)
-                  (not (string-match "\\(?:/\\|\\`\\)\\.\\{2\\}\\'" file)))
-             ;; in all other buffers display all files but the two relative ones
-             (not (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file))))
-
-       (defun helm-ido-like-no-dots-auto-add (&rest args)
-         "Auto add buffers which want to read directory names to the whitelist."
-         (if (eq (car (last args)) 'file-directory-p)
-             (add-to-list 'helm-ido-like-no-dots-whitelist
-                          (format "*helm-mode-%s*"
-                                  (helm-symbol-name
-                                   (or (helm-this-command) this-command))))))
-
-       (defun helm-ido-like-no-dots ()
-         (require 'cl-lib)
-         (advice-add 'helm-ff-filter-candidate-one-by-one
-                     :before-while 'helm-ido-like-no-dots-display-file-p)
-         (advice-add  'helm--generic-read-file-name :before 'helm-ido-like-no-dots-auto-add))
-
-
-       ;; (helm-ido-like-load-file-nav)
-       ;;(helm-ido-like-no-dots)
-       )
-   #+END_SRC
-** Helm Projectile
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package helm-projectile
-       :after (projectile)
-       :init (helm-projectile-on))
-   #+END_SRC
-** Helm Recoll
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package helm-recoll
-       :ensure t
-       :commands helm-recoll
-       :init (setq helm-recoll-directories
-                   '(("Home" . "~/.recoll"))))
    #+END_SRC
 
 ** HTMLize
@@ -1729,6 +1708,24 @@
        :config
        (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode)))
    #+END_SRC
+** Marginalia
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package marginalia
+       :ensure t
+       ;; Either bind `marginalia-cycle` globally or only in the minibuffer
+       :bind (("M-A" . marginalia-cycle)
+              :map minibuffer-local-map
+              ("M-A" . marginalia-cycle))
+
+       ;; The :init configuration is always executed (Not lazy!)
+       :init
+
+       ;; Must be in the :init section of use-package such that the mode gets
+       ;; enabled right away. Note that this forces loading the package.
+       (marginalia-mode))
+   #+END_SRC
+
 ** Mu4e
    #+BEGIN_SRC emacs-lisp
      (use-package mu4e
@@ -2144,6 +2141,7 @@
    #+BEGIN_SRC emacs-lisp
      (use-package projectile
        :config
+       (setq projectile-completion-system 'default)
        (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
        (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
        (projectile-mode +1)
@@ -2202,6 +2200,25 @@
        ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
        (setq sbt:program-options '("-Dsbt.supershell=false")))
    #+END_SRC
+** Selectrum
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package selectrum
+       :ensure t
+       :config
+       (setq selectrum-display-action nil)
+       (setq selectrum-max-window-height (/ (frame-height) 3))
+       (selectrum-mode +1))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package selectrum-prescient
+       :ensure t
+       :config
+       (selectrum-prescient-mode +1)
+       (prescient-persist-mode +1))
+   #+END_SRC
+
 ** So Long
    #+BEGIN_SRC emacs-lisp
      (global-so-long-mode 1)
@@ -2240,11 +2257,6 @@
        (setq lsp-dart-dap-flutter-hot-restart-on-save nil)
        (setq lsp-dart-flutter-widget-guides nil)
        (setq lsp-dart-sdk-dir "/opt/flutter/bin/cache/dart-sdk"))
-   #+END_SRC
-
-   #+BEGIN_SRC emacs-lisp
-     (use-package helm-lsp
-       :commands helm-lsp-workspace-symbol)
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
@@ -2334,6 +2346,13 @@
    #+BEGIN_SRC emacs-lisp
      (use-package undo-tree
        :init (global-undo-tree-mode))
+   #+END_SRC
+** Vertico
+   #+BEGIN_SRC emacs-lisp
+     ;; (use-package vertico
+     ;;   :init
+     ;;   (vertico-mode)
+     ;;   (setq vertico-cycle t))
    #+END_SRC
 
 ** Virtual Env Wrapper
@@ -2433,7 +2452,7 @@
         (global-set-key (kbd "C-x N") 'nucli)
         (global-set-key (kbd "C-x TAB") 'indent-rigidly)
         (global-set-key (kbd "C-x ^") 'enlarge-window)
-        (global-set-key (kbd "C-x f") 'helm-find-files)
+        ;; (global-set-key (kbd "C-x f") 'helm-find-files)
         (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
         (define-key emacs-lisp-mode-map (kbd "C-c C-t t") 'buttercup-run-at-point)
