@@ -2460,7 +2460,7 @@
         (global-set-key (kbd "C-x N") 'nucli)
         (global-set-key (kbd "C-x TAB") 'indent-rigidly)
         (global-set-key (kbd "C-x ^") 'enlarge-window)
-        ;; (global-set-key (kbd "C-x f") 'helm-find-files)
+        (global-set-key (kbd "C-x f") 'find-file)
         (global-set-key (kbd "C-x h") 'mark-whole-buffer)
 
         (define-key emacs-lisp-mode-map (kbd "C-c C-t t") 'buttercup-run-at-point)
