@@ -2148,12 +2148,15 @@
 ** Projectile
    #+BEGIN_SRC emacs-lisp
      (use-package projectile
+       :bind
+       (("C-x C-f" . projectile-find-file)
+        :map projectile-command-map
+        ("s g" . consult-grep)
+        ("s r" . consult-ripgrep))
+       :bind-keymap
+       (("C-c p" . projectile-command-map))
        :config
-       (setq projectile-completion-system 'default)
-       (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-       (projectile-mode +1)
-       :bind (("C-x C-f" . projectile-find-file)))
+       (setq projectile-completion-system 'default))
    #+END_SRC
 ** Ruby mode
    #+BEGIN_SRC emacs-lisp
