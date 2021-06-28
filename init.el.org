@@ -871,7 +871,9 @@
 
    #+BEGIN_SRC emacs-lisp
      (use-package emojify
-       :hook (after-init . global-emojify-mode))
+       :hook (after-init . global-emojify-mode)
+       :config
+       (setq emojify-emoji-styles '(unicode github)))
    #+END_SRC
 ** Flutter
    #+BEGIN_SRC emacs-lisp
