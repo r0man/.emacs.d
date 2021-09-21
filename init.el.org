@@ -2065,6 +2065,7 @@
        (org-babel-do-load-languages
         'org-babel-load-languages
         '((clojure . t)
+          (gnuplot . t)
           (emacs-lisp . t)
           (plantuml . t)
           (ruby . t)
