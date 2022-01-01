@@ -566,6 +566,12 @@
        ;; Enable eldoc in Clojure buffers
        (add-hook 'cider-mode-hook #'eldoc-mode)
 
+       ;; Disable showing eldoc, use lsp-mode.
+       (setq cider-eldoc-display-for-symbol-at-point nil)
+
+       ;; Add Cider Xref backend to the end, use lsp-mode.
+       (setq cider-xref-fn-depth 100)
+
        ;; Pretty print in the REPL.
        (setq cider-repl-use-pretty-printing t)
 
@@ -2259,7 +2265,10 @@
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode
        :bind-keymap ("C-c l" . lsp-command-map)
-       :hook ((dart-mode . lsp-deferred)
+       :hook ((clojure-mode . lsp-deferred)
+              (clojurec-mode . lsp-deferred)
+              (clojurescript-mode . lsp-deferred)
+              (dart-mode . lsp-deferred)
               (lsp-mode . lsp-enable-which-key-integration)
               (lsp-mode . lsp-lens-mode)
               (python-mode . lsp-deferred)
