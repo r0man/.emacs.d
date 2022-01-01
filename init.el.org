@@ -2240,6 +2240,18 @@
      (global-so-long-mode 1)
      (setq so-long-max-lines 20)
    #+END_SRC
+** Splunk
+   #+BEGIN_SRC emacs-lisp
+     (use-package splunk
+       :ensure t
+       :commands (splunk)
+       :load-path
+       ("~/workspace/splunk.el"
+        "~/workspace/splunk.el/test")
+       :init
+       (setq splunk-hostname "nubank.splunkcloud.com")
+       (setq splunk-api-hostname "nubank.splunkcloud.com"))
+   #+END_SRC
 ** Language Server Protocol
 
    Emacs client for the Language Server Protocol.
