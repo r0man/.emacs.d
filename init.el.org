@@ -498,15 +498,6 @@
                "https://sulami.github.io/atom.xml"
                "http://planet.lisp.org/rss20.xml")))
    #+END_SRC
-** Elpy - Emacs Python Development Environment
-   #+BEGIN_SRC emacs-lisp
-     (use-package elpy
-       :disabled t
-       :init
-       (with-eval-after-load 'python
-         (elpy-enable)
-         (delete 'elpy-module-highlight-indentation elpy-modules)))
-   #+END_SRC
 ** eval-expr
    #+BEGIN_SRC emacs-lisp
      (use-package eval-expr
