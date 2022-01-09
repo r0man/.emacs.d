@@ -141,6 +141,12 @@
        "Return t if MONITOR is connected, otherwise nil."
        (not (string= "" (shell-command-to-string (format "xrandr --listmonitors | grep %s" monitor)))))
    #+END_SRC
+** Aide.el
+   #+BEGIN_SRC emacs-lisp
+     (use-package aide
+       :commands (aide-openai-completion-region-insert)
+       :load-path ("~/workspace/aide.el"))
+   #+END_SRC
 ** Aio
    #+BEGIN_SRC emacs-lisp
      (use-package aio
