@@ -2101,6 +2101,20 @@ Use Jira in Emacs org-mode.
     :ensure t)
 #+END_SRC
 
+** Org Tree Slide
+
+A presentation tool for org-mode based on the visibility of outline
+trees.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org-tree-slide
+    :bind
+    (:map org-tree-slide-mode-map
+          ("<f9>" . org-tree-slide-move-previous-tree)
+          ("<f10>" . org-tree-slide-move-next-tree))
+    :config
+    (add-hook 'org-tree-slide-mode-hook (lambda () (org-display-inline-images))))
+#+END_SRC
 ** Ox Jira
 
 JIRA Backend for Org Export Engine.
