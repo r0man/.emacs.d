@@ -409,13 +409,6 @@ Display minutes to appointment and time on the mode line.
     :commands bluetooth-list-devices)
 #+END_SRC
 
-** EIN - Emacs IPython Notebook
-
-#+BEGIN_SRC emacs-lisp
-  (use-package ein
-    :disabled t
-    :commands (ein:notebooklist-open))
-#+END_SRC
 ** EJira
 
 JIRA integration to Emacs org-mode.
