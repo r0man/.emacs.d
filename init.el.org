@@ -680,7 +680,7 @@ JIRA integration to Emacs org-mode.
     ;; Enable automatic preview at point in the *Completions* buffer.
     ;; This is relevant when you use the default completion UI,
     ;; and not necessary for Selectrum, Vertico etc.
-    :hook (completion-list-mode . consult-preview-at-point-mode)
+    ;; :hook (completion-list-mode . consult-preview-at-point-mode)
 
     ;; The :init configuration is always executed (Not lazy)
     :init
@@ -2210,6 +2210,7 @@ excellent Paredit mode as editing substrate whenever possible.
 
 #+BEGIN_SRC emacs-lisp
   (use-package selectrum
+    :disabled
     :config
     (setq selectrum-display-action nil)
     (setq selectrum-max-window-height (/ (frame-height) 3))
@@ -2218,6 +2219,7 @@ excellent Paredit mode as editing substrate whenever possible.
 
 #+BEGIN_SRC emacs-lisp
   (use-package selectrum-prescient
+    :disabled
     :config
     (selectrum-prescient-mode +1)
     (prescient-persist-mode +1))
@@ -2359,11 +2361,24 @@ Don't insert tabs.
     :init (global-undo-tree-mode))
 #+END_SRC
 ** Vertico
+
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package vertico
-  ;;   :init
-  ;;   (vertico-mode)
-  ;;   (setq vertico-cycle t))
+  (use-package vertico
+    :init
+    (vertico-mode)
+    (setq vertico-cycle t))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (use-package orderless
+    :ensure t
+    :init
+    ;; Configure a custom style dispatcher (see the Consult wiki)
+    ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
+    ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+    (setq completion-styles '(orderless)
+          completion-category-defaults nil
+          completion-category-overrides '((file (styles partial-completion)))))
 #+END_SRC
 
 ** Virtual Env Wrapper
