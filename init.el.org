@@ -392,6 +392,7 @@ This variable describes the behavior of the command key.
 ** Auto dictionary mode
 #+BEGIN_SRC emacs-lisp
   (use-package auto-dictionary
+    :disabled t
     :init (add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
 #+END_SRC
 ** Appointments
@@ -904,6 +905,22 @@ Reload files when they change on disk.
 #+BEGIN_SRC emacs-lisp
   (global-auto-revert-mode 1)
 #+END_SRC
+** Guess Language
+
+Emacs minor mode that detects the language of what you’re
+typing. Automatically switches the spell checker and typo-mode.
+
+#+begin_src emacs-lisp
+  (use-package guess-language
+    :hook (text-mode . guess-language-mode)
+    :config
+    (setq guess-language-langcodes
+          '((de . ("de_DE" "German"))
+            (en . ("en_US" "English"))))
+    (setq guess-language-languages '(en de es))
+    (setq guess-language-min-paragraph-length 15))
+#+end_src
+
 ** History
 
 If set to t when adding a new history element, all previous
