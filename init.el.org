@@ -150,8 +150,7 @@ system.
 ** Aio
 #+BEGIN_SRC emacs-lisp
   (use-package aio
-    :defer t
-    :ensure t)
+    :defer t)
 #+END_SRC
 ** Ansi Color
 
@@ -169,8 +168,7 @@ See: [[https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing
 ** Cask
 #+BEGIN_SRC emacs-lisp
   (use-package cask
-    :disabled
-    :ensure t)
+    :disabled)
 #+END_SRC
 ** Custom functions
 
@@ -420,7 +418,6 @@ Display minutes to appointment and time on the mode line.
 
 #+BEGIN_SRC emacs-lisp
   (use-package ein
-    :ensure t
     :disabled t
     :commands (ein:notebooklist-open))
 #+END_SRC
@@ -507,7 +504,6 @@ JIRA integration to Emacs org-mode.
 ** eval-expr
 #+BEGIN_SRC emacs-lisp
   (use-package eval-expr
-    :ensure t
     :config (eval-expr-install))
 #+END_SRC
 ** Clojure mode
@@ -618,7 +614,6 @@ JIRA integration to Emacs org-mode.
 
 #+BEGIN_SRC emacs-lisp
   (use-package clj-refactor
-    :ensure t
     :init
     (defun enable-clj-refactor-mode ()
       (clj-refactor-mode 1)
@@ -637,7 +632,6 @@ JIRA integration to Emacs org-mode.
 
 #+BEGIN_SRC emacs-lisp
   (use-package consult
-    :ensure t
     ;; Replace bindings. Lazily loaded due by `use-package'.
     :bind (;; C-c bindings (mode-specific-map)
            ("C-c h" . consult-history)
@@ -757,8 +751,7 @@ The Geiser implementation for MIT scheme.
 
 #+BEGIN_SRC emacs-lisp
   (use-package geiser-mit
-    :commands geiser
-    :ensure t)
+    :commands geiser)
 #+END_SRC
 
 ** GraphQL Mode
@@ -883,7 +876,6 @@ Display Emojis in Emacs.
 #+BEGIN_SRC emacs-lisp
   (use-package flutter
     :after dart-mode
-    :ensure t
     :bind (:map dart-mode-map ("C-M-x" . #'flutter-run-or-hot-reload))
     :custom (flutter-sdk-path "/opt/flutter"))
 #+END_SRC
@@ -1141,21 +1133,18 @@ Automatic programming language detection of code snippets, in Emacs
 Lisp.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package language-detection
-    :ensure t)
+  (use-package language-detection)
 #+END_SRC
 
 ** CSS mode
 #+BEGIN_SRC emacs-lisp
   (use-package css-mode
-    :ensure t
     :mode ("\\.css\\'" . css-mode)
     :config (setq css-indent-offset 2))
 #+END_SRC
 ** SCSS mode
 #+BEGIN_SRC emacs-lisp
   (use-package scss-mode
-    :ensure t
     :mode (("\\.sass\\'" . scss-mode)
            ("\\.scss\\'" . scss-mode))
     :config (setq scss-compile-at-save nil))
@@ -1385,14 +1374,12 @@ Start the Emacs server if it's not running.
 
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck-elsa
-    :ensure t
     :after flycheck
     :init (add-hook 'emacs-lisp-mode-hook #'flycheck-elsa-setup))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck-clj-kondo
-    :ensure t
     :after flycheck
     :init (add-hook 'clojure-mode-hook (lambda () (require 'flycheck-clj-kondo))))
 #+END_SRC
@@ -1430,7 +1417,6 @@ Don't print messages when checking words.
 ** Github browse file
 #+BEGIN_SRC emacs-lisp
   (use-package github-browse-file
-    :ensure t
     :commands (github-browse-file github-browse-file-blame))
 #+END_SRC
 ** Gnus
@@ -1563,8 +1549,7 @@ Enable ido mode.
 #+END_SRC
 ** Ido Completing Read+
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package ido-completing-read+
-  ;;   :ensure t)
+  ;; (use-package ido-completing-read+)
 #+END_SRC
 ** Jiralib2
 
@@ -1573,7 +1558,6 @@ Lisp bindings to JIRA REST API.
 #+BEGIN_SRC emacs-lisp
   (use-package jiralib2
     :after (ox-jira)
-    :ensure t
     :defer t)
 #+END_SRC
 
@@ -1581,7 +1565,6 @@ Lisp bindings to JIRA REST API.
 #+BEGIN_SRC emacs-lisp
   (use-package flx-ido
     :after ido
-    :ensure t
     :init
     (flx-ido-mode 1)
     ;; disable ido faces to see flx highlights.
@@ -1591,13 +1574,11 @@ Lisp bindings to JIRA REST API.
 ** Kubel
 #+BEGIN_SRC emacs-lisp
   (use-package kubel
-    :ensure t
     :commands (kubel))
 #+END_SRC
 ** Kubernetes
 #+BEGIN_SRC emacs-lisp
   (use-package kubernetes
-    :ensure t
     :bind (("C-x C-k s" . kubernetes-overview))
     :commands (kubernetes-overview))
 #+END_SRC
@@ -1726,7 +1707,6 @@ SMTP service port number.
 
 #+BEGIN_SRC emacs-lisp
   (use-package marginalia
-    :ensure t
     ;; Either bind `marginalia-cycle` globally or only in the minibuffer
     :bind (("M-A" . marginalia-cycle)
            :map minibuffer-local-map
@@ -1969,7 +1949,6 @@ Support for indenting code in SQL files.
 
 #+BEGIN_SRC emacs-lisp
   (use-package sql-indent
-    :ensure t
     :hook (sql-mode . sqlind-minor-mode))
 #+END_SRC
 
@@ -2035,7 +2014,6 @@ Open files with external programs.
 #+BEGIN_SRC emacs-lisp
   (use-package org-gcal
     :commands (org-gcal-fetch org-gcal-sync)
-    :ensure t
     :config
     (setq org-gcal-client-id "307472772807-1ct65gf2io7mj4rlooqm5udk0761dlra.apps.googleusercontent.com"
           org-gcal-fetch-file-alist '(("roman.scherer@nubank.com.br" .  "~/nubank-calendar.org")))
@@ -2048,7 +2026,6 @@ Use Jira in Emacs org-mode.
 #+BEGIN_SRC emacs-lisp
   (use-package org-jira
     :commands (org-jira-get-issues)
-    :ensure t
     :config
     (setq jiralib-url "https://nubank.atlassian.net"))
 #+END_SRC
@@ -2083,7 +2060,6 @@ Use Jira in Emacs org-mode.
 #+BEGIN_SRC emacs-lisp
   (use-package org-plus-contrib
     :commands org-invoice-report
-    :ensure t
     :init (require 'org-invoice)
     :no-require t)
 #+END_SRC
@@ -2097,8 +2073,7 @@ Use Jira in Emacs org-mode.
 ** Org Reveal
 
 #+BEGIN_SRC emacs-lisp
-  (use-package ox-reveal
-    :ensure t)
+  (use-package ox-reveal)
 #+END_SRC
 
 ** Org Tree Slide
@@ -2120,8 +2095,7 @@ trees.
 JIRA Backend for Org Export Engine.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package ox-jira
-    :ensure t)
+  (use-package ox-jira)
 #+END_SRC
 ** Pandoc
 
@@ -2156,7 +2130,6 @@ The org-mode Pandoc exporter.
 #+BEGIN_SRC emacs-lisp
   (use-package pepita
     :commands (pepita-new-search)
-    :ensure t
     :config
     (setq pepita-splunk-url "https://nubank.splunkcloud.com:8089/services/"))
 #+END_SRC
@@ -2237,7 +2210,6 @@ excellent Paredit mode as editing substrate whenever possible.
 
 #+BEGIN_SRC emacs-lisp
   (use-package selectrum
-    :ensure t
     :config
     (setq selectrum-display-action nil)
     (setq selectrum-max-window-height (/ (frame-height) 3))
@@ -2246,7 +2218,6 @@ excellent Paredit mode as editing substrate whenever possible.
 
 #+BEGIN_SRC emacs-lisp
   (use-package selectrum-prescient
-    :ensure t
     :config
     (selectrum-prescient-mode +1)
     (prescient-persist-mode +1))
@@ -2294,7 +2265,6 @@ Emacs client for the Language Server Protocol.
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-dart
     :hook dart-mode
-    :ensure t
     :init
     (with-eval-after-load 'projectile
       (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
@@ -2312,13 +2282,11 @@ Emacs client for the Language Server Protocol.
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-metals
-    :ensure t
     :config (setq lsp-metals-treeview-show-when-views-received nil))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-java
-    :ensure t
     :hook ((java-mode . lsp-deferred)))
 #+END_SRC
 
@@ -2329,8 +2297,7 @@ Emacs client for the Language Server Protocol.
 
 #+BEGIN_SRC emacs-lisp
   (use-package hover
-    :defer t
-    :ensure t)
+    :defer t)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
@@ -2353,13 +2320,11 @@ Emacs client for the Language Server Protocol.
 ** Smooth scrolling
 #+BEGIN_SRC emacs-lisp
   (use-package smooth-scrolling
-    :ensure t
     :defer 1)
 #+END_SRC
 ** SoundKlaus
 #+BEGIN_SRC emacs-lisp
   (use-package soundklaus
-    :ensure t
     :commands
     (soundklaus-activities
      soundklaus-connect
@@ -2404,7 +2369,6 @@ Don't insert tabs.
 ** Virtual Env Wrapper
 #+BEGIN_SRC emacs-lisp
   (use-package virtualenvwrapper
-    :ensure t
     :commands (venv-workon)
     :config
     (setq venv-location "~/.virtualenv"))
