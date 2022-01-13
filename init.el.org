@@ -389,12 +389,6 @@ This variable describes the behavior of the command key.
            ("C-'" . avy-search)))
 
 #+END_SRC
-** Auto dictionary mode
-#+BEGIN_SRC emacs-lisp
-  (use-package auto-dictionary
-    :disabled t
-    :init (add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
-#+END_SRC
 ** Appointments
 
 Enable appointments.
