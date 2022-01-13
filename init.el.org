@@ -91,7 +91,7 @@ Set default value of various coding systems to UTF-8.
   (defun set-font-monitor ()
     "Set the default font for use with external monitor."
     (interactive)
-    (set-frame-font "Hack-9" nil t))
+    (set-frame-font "Inconsolata-12" nil t))
 #+END_SRC
 ** Custom
 
