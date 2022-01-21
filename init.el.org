@@ -2225,13 +2225,11 @@ excellent Paredit mode as editing substrate whenever possible.
 #+END_SRC
 ** Splunk
 #+BEGIN_SRC emacs-lisp
-  (use-package splunk
-    :commands (splunk)
+  (use-package paimon
+    :commands (paimon)
     :load-path
-    ("~/workspace/splunk.el/src"
-     "~/workspace/splunk.el/test")
-    :config
-    (setq splunk-api-hostname "nubank.splunkcloud.com"))
+    ("~/workspace/paimon.el/src"
+     "~/workspace/paimon.el/test"))
 #+END_SRC
 ** Language Server Protocol
 
