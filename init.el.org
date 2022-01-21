@@ -732,7 +732,7 @@ The Geiser implementation for Guile scheme.
 #+BEGIN_SRC emacs-lisp
   (use-package geiser-guile
     :commands geiser
-    :config (add-to-list 'geiser-guile-load-path "~/workspace/guix"))
+    :config (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix")))
 #+END_SRC
 
 The Geiser implementation for MIT scheme.
