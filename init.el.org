@@ -714,7 +714,9 @@ Emacs and Scheme talk to each other.
 
 #+BEGIN_SRC emacs-lisp
   (use-package geiser
-    :commands geiser)
+    :commands geiser
+    :config
+    (setq geiser-active-implementations '(guile)))
 #+END_SRC
 
 The Geiser implementation for Guile scheme.
@@ -723,13 +725,6 @@ The Geiser implementation for Guile scheme.
   (use-package geiser-guile
     :commands geiser
     :config (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix")))
-#+END_SRC
-
-The Geiser implementation for MIT scheme.
-
-#+BEGIN_SRC emacs-lisp
-  (use-package geiser-mit
-    :commands geiser)
 #+END_SRC
 
 ** GraphQL Mode
