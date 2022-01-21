@@ -1624,8 +1624,11 @@ Number of spaces for each indentation step in `js-mode'.
 
   (setq rcirc-default-nick "r0man"
         rcirc-default-user-name "r0man"
-        rcirc-default-full-name "Roman Scherer"
-        rcirc-server-alist '(("irc.freenode.net" :channels ("#clojure")))
+        rcirc-default-full-name "r0man"
+        rcirc-server-alist '(("irc.libera.chat"
+                              :channels ("#clojure" "#guix")
+                              :encryption tls
+                              :port 6697))
         rcirc-private-chat t
         rcirc-debug-flag t)
 
