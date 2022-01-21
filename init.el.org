@@ -442,17 +442,7 @@ JIRA integration to Emacs org-mode.
 
           ;; Set the highest/lowest org priorities
           org-priority-highest ?A
-          org-priority-lowest ?E
-          org-todo-keywords
-          '((sequence
-             "UNSCHEDULED(u)"
-             "GROOMED(g)"
-             "READY-FOR-DEVELOPMENT(r)"
-             "IN-DEVELOPMENT(i)"
-             "READY-FOR-REVIEW(v)"
-             "READY-FOR-DEPLOY(p)"
-             "|"
-             "DONE(d)")))
+          org-priority-lowest ?E)
     :config
     ;; Tries to auto-set custom fields by looking into /editmeta
     ;; of an issue and an epic.
