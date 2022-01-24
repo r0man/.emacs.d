@@ -2204,7 +2204,9 @@ excellent Paredit mode as editing substrate whenever possible.
     :commands (paimon)
     :load-path
     ("~/workspace/paimon.el/src"
-     "~/workspace/paimon.el/test"))
+     "~/workspace/paimon.el/test")
+    :config
+    (require 'nu-splunk))
 #+END_SRC
 ** Language Server Protocol
 
