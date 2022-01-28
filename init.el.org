@@ -2391,6 +2391,21 @@ Emacs major-mode for [[https://www.websequencediagrams.com/][Web Sequence Diagra
   (use-package wsd-mode
     :mode "\\.wsd\\'")
 #+END_SRC
+** X509
+
+Major mode for viewing certificates, CRLs, keys, DH-parameters and
+ASN.1 using OpenSSL.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package x509-mode
+    :commands
+    (x509-viewasn1
+     x509-viewcert
+     x509-viewcrl
+     x509-viewdh
+     x509-viewkey))
+#+END_SRC
+
 ** YAML mode
 #+BEGIN_SRC emacs-lisp
   (use-package yaml-mode
