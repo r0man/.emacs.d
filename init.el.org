@@ -584,6 +584,8 @@ JIRA integration to Emacs org-mode.
     (add-to-list 'cider-test-defining-forms "defflow-as-of")
     (add-to-list 'cider-test-defining-forms "defflow-with-params")
 
+    (setq cider-jdk-src-paths '("/usr/lib/jvm/java-11-openjdk/lib/src.zip"))
+
     ;; Fuzzy candidate matching
     (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
     (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion))
