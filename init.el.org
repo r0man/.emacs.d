@@ -884,7 +884,11 @@ typing. Automatically switches the spell checker and typo-mode.
     (setq guess-language-languages '(en de es))
     (setq guess-language-min-paragraph-length 15))
 #+end_src
-
+** GUIX
+#+begin_src emacs-lisp
+  (use-package guix
+    :hook ((scheme-mode . guix-devel-mode)))
+#+end_src
 ** History
 
 If set to t when adding a new history element, all previous
