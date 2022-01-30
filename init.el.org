@@ -409,6 +409,13 @@ Display minutes to appointment and time on the mode line.
     :commands bluetooth-list-devices)
 #+END_SRC
 
+** Eglot
+#+begin_src emacs-lisp
+  (use-package eglot
+    :disabled
+    :hook ((clojure-mode . eglot-ensure)
+           (clojurescript-mode . eglot-ensure)))
+#+end_src
 ** EJira
 
 JIRA integration to Emacs org-mode.
