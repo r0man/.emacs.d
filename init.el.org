@@ -1125,14 +1125,6 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
   (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 #+END_SRC
-** Language Detection
-
-Automatic programming language detection of code snippets, in Emacs
-Lisp.
-
-#+BEGIN_SRC emacs-lisp
-  (use-package language-detection)
-#+END_SRC
 
 ** CSS mode
 #+BEGIN_SRC emacs-lisp
