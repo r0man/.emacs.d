@@ -2357,21 +2357,18 @@ Don't insert tabs.
 
 #+BEGIN_SRC emacs-lisp
   (use-package vertico
-    :init
-    (vertico-mode)
-    (setq vertico-cycle t))
+    :hook (after-init . vertico-mode)
+    :custom
+    (vertico-cycle t))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (use-package orderless
-    :ensure t
-    :init
-    ;; Configure a custom style dispatcher (see the Consult wiki)
-    ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
-    ;;       orderless-component-separator #'orderless-escapable-split-on-space)
-    (setq completion-styles '(orderless)
-          completion-category-defaults nil
-          completion-category-overrides '((file (styles partial-completion)))))
+    :after (vertico)
+    :custom
+    (completion-styles '(orderless))
+    (completion-category-defaults nil)
+    (completion-category-overrides '((file (styles partial-completion)))))
 #+END_SRC
 
 ** Virtual Env Wrapper
