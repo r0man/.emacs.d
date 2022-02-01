@@ -478,7 +478,7 @@ JIRA integration to Emacs org-mode.
 #+BEGIN_SRC emacs-lisp
   (use-package elfeed
     :commands (elfeed)
-    :init
+    :config
     (setq elfeed-feeds
           '("http://planet.clojure.in/atom.xml"
             "https://grumpyhacker.com/feed.xml"
@@ -746,7 +746,7 @@ The Geiser implementation for Guile scheme.
 #+BEGIN_SRC emacs-lisp
   (use-package graphql-mode
     :mode "\\.graphql\\'"
-    :init
+    :config
     (setq graphql-url "http://localhost:7000/graphql"))
 #+END_SRC
 ** Company mode
@@ -868,7 +868,7 @@ Enhanced Implementation of Emacs Interpreted Objects
   (use-package gif-screencast
     :commands gif-screencast-start-or-stop
     ;; :bind ("<f9>" . gif-screencast-start-or-stop)
-    :init
+    :config
     (setq gif-screencast-scale-factor 1.0))
   ;; (with-eval-after-load 'gif-screencast
   ;;   (setq gif-screencast-scale-factor 1.0)
@@ -1704,12 +1704,7 @@ SMTP service port number.
     :bind (("M-A" . marginalia-cycle)
            :map minibuffer-local-map
            ("M-A" . marginalia-cycle))
-
-    ;; The :init configuration is always executed (Not lazy!)
     :init
-
-    ;; Must be in the :init section of use-package such that the mode gets
-    ;; enabled right away. Note that this forces loading the package.
     (marginalia-mode))
 #+END_SRC
 
@@ -1856,10 +1851,10 @@ Save the mini buffer history.
 
 #+BEGIN_SRC emacs-lisp
   (use-package savehist
-    :init
-    (setq savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
-    (setq savehist-file "~/.emacs.d/savehist")
-    (savehist-mode))
+    :hook (after-init . savehist-mode)
+    :custom
+    (savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
+    (savehist-file "~/.emacs.d/savehist"))
 #+END_SRC
 
 ** Slime
@@ -1876,7 +1871,8 @@ Slime Company
 #+BEGIN_SRC emacs-lisp
   (use-package slime-company
     :after slime
-    :init (slime-setup '(slime-fancy slime-company)))
+    :config
+    (slime-setup '(slime-fancy slime-company)))
 #+END_SRC
 
 ** Scheme
@@ -2143,8 +2139,11 @@ The org-mode Pandoc exporter.
      ("s r" . consult-ripgrep))
     :bind-keymap
     (("C-c p" . projectile-command-map))
+    :custom
+    (projectile-completion-system 'default)
     :config
-    (setq projectile-completion-system 'default))
+    (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
+    (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
 #+END_SRC
 ** Ruby mode
 #+BEGIN_SRC emacs-lisp
@@ -2240,6 +2239,7 @@ Emacs client for the Language Server Protocol.
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-mode
     :bind-keymap ("C-c l" . lsp-command-map)
+    :commands (lsp)
     :hook (;; (clojure-mode . lsp-deferred)
            ;; (clojurec-mode . lsp-deferred)
            ;; (clojurescript-mode . lsp-deferred)
@@ -2250,24 +2250,21 @@ Emacs client for the Language Server Protocol.
            (scala-mode . lsp-deferred)
            ;; (sql-mode . lsp-deferred)
            (yaml-mode . lsp-deferred))
-    :init
-    (setq lsp-file-watch-threshold nil
-          lsp-keymap-prefix "C-c l"
-          lsp-prefer-flymake nil
-          lsp-sqls-server "~/go/bin/sqls"))
+    :custom
+    (lsp-file-watch-threshold nil)
+    (lsp-keymap-prefix "C-c l")
+    (lsp-prefer-flymake nil)
+    (lsp-sqls-server "~/go/bin/sqls"))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-dart
     :hook dart-mode
-    :init
-    (with-eval-after-load 'projectile
-      (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
-      (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
-    (setq lsp-dart-dap-flutter-hot-reload-on-save t)
-    (setq lsp-dart-dap-flutter-hot-restart-on-save nil)
-    (setq lsp-dart-flutter-widget-guides nil)
-    (setq lsp-dart-sdk-dir "/opt/flutter/bin/cache/dart-sdk"))
+    :custom
+    (lsp-dart-dap-flutter-hot-reload-on-save t)
+    (lsp-dart-dap-flutter-hot-restart-on-save nil)
+    (lsp-dart-flutter-widget-guides nil)
+    (lsp-dart-sdk-dir "/opt/flutter/bin/cache/dart-sdk"))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
