@@ -112,6 +112,7 @@ Load custom file.
 Bootstrap [[https://github.com/jwiegley/use-package][use-package]].
 
 #+BEGIN_SRC emacs-lisp
+  (require 'package)
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
