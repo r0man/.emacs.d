@@ -2015,7 +2015,6 @@ Use Jira in Emacs org-mode.
 
 #+BEGIN_SRC emacs-lisp
   (use-package org
-    :defer 1
     :mode ("\\.org\\'" . org-mode)
     :config
     (require 'ob-clojure)
@@ -2054,7 +2053,8 @@ Use Jira in Emacs org-mode.
 ** Org Reveal
 
 #+BEGIN_SRC emacs-lisp
-  (use-package ox-reveal)
+  (use-package ox-reveal
+    :after (ox))
 #+END_SRC
 
 ** Org Tree Slide
@@ -2076,7 +2076,8 @@ trees.
 JIRA Backend for Org Export Engine.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package ox-jira)
+  (use-package ox-jira
+    :after (ox))
 #+END_SRC
 ** Pandoc
 
@@ -2090,7 +2091,8 @@ An Emacs mode for interacting with Pandoc.
 The org-mode Pandoc exporter.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package ox-pandoc)
+  (use-package ox-pandoc
+    :after (ox))
 #+END_SRC
 
 ** Paredit
@@ -2271,7 +2273,7 @@ Emacs client for the Language Server Protocol.
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-java
-    :hook ((java-mode . lsp-deferred)))
+    :hook (java-mode . lsp-deferred))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
