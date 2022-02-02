@@ -2420,7 +2420,9 @@ ASN.1 using OpenSSL.
 ** YAML mode
 #+BEGIN_SRC emacs-lisp
   (use-package yaml-mode
-    :mode (("\\.yml$" . yaml-mode)))
+    :mode (("\\.yaml$" . yaml-mode)
+           ("\\.yaml.tmpl$" . yaml-mode)
+           ("\\.yml$" . yaml-mode)))
 #+END_SRC
 ** YASnippet
 
