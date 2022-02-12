@@ -2230,7 +2230,7 @@ excellent Paredit mode as editing substrate whenever possible.
     ("~/workspace/paimon.el/src"
      "~/workspace/paimon.el/test")
     :config
-    (require 'nu-splunk))
+    (require 'nu-paimon))
 #+END_SRC
 ** Language Server Protocol
 
