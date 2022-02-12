@@ -1996,8 +1996,13 @@ Open files with external programs.
   (use-package org-gcal
     :commands (org-gcal-fetch org-gcal-sync)
     :config
-    (setq org-gcal-client-id "307472772807-cb0c244ep89qoec5sdu672st8funmqtr.apps.googleusercontent.com"
-          org-gcal-fetch-file-alist '(("roman.scherer@nubank.com.br" .  "~/nubank-calendar.org")))
+    (setq org-gcal-remove-api-cancelled-events t)
+    (setq org-gcal-client-id "307472772807-cb0c244ep89qoec5sdu672st8funmqtr.apps.googleusercontent.com")
+    (setq org-gcal-client-secret
+          (auth-source-pick-first-password
+           :host org-gcal-client-id
+           :user "roman.scherer@nubank.com.br"))
+    (setq org-gcal-fetch-file-alist '(("roman.scherer@nubank.com.br" .  "~/nubank-calendar.org")))
     (add-to-list 'org-agenda-files "~/nubank-calendar.org"))
 #+END_SRC
 ** Org Jira
