@@ -2348,7 +2348,9 @@ Don't insert tabs.
 
 #+BEGIN_SRC emacs-lisp
   (use-package undo-tree
-    :hook (after-init . global-undo-tree-mode))
+    :hook (after-init . global-undo-tree-mode)
+    :custom
+    (undo-tree-auto-save-history nil))
 #+END_SRC
 ** Vertico
 
