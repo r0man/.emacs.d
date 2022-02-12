@@ -2120,7 +2120,7 @@ The org-mode Pandoc exporter.
   (use-package pepita
     :commands (pepita-new-search)
     :config
-    (setq pepita-splunk-url "https://nubank.splunkcloud.com:8089/services/"))
+    (setq pepita-splunk-url "https://localhost:8089/services/"))
 #+END_SRC
 
 ** PlantUML
