@@ -1079,10 +1079,11 @@ The maximum size in lines for term buffers.
   (setq term-buffer-maximum-size (* 10 2048))
 #+END_SRC
 
-Use Chromium as default browser.
+Use Firefox as default browser.
 
 #+BEGIN_SRC emacs-lisp
   (setq browse-url-browser-function 'browse-url-firefox)
+
 #+END_SRC
 
 Clickable URLs.
