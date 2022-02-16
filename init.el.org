@@ -1522,14 +1522,6 @@ Enable ido mode.
   (ido-mode)
 #+END_SRC
 
-** Ido vertical mode
-#+BEGIN_SRC emacs-lisp
-  (use-package ido-vertical-mode
-    :after ido
-    :init
-    (ido-vertical-mode)
-    (setq ido-vertical-define-keys 'C-n-and-C-p-only))
-#+END_SRC
 ** Jiralib2
 
 Lisp bindings to JIRA REST API.
