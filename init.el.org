@@ -1637,6 +1637,14 @@ STARTTLS), or ‘ssl’ (to use TLS/SSL).
 #+END_SRC
 
 ** Mu4e
+
+Configure mu.
+
+#+BEGIN_SRC sh
+  mu init --maildir=~/Mail --my-address=roman@burningswell.com --my-address=roman.scherer@burningswell.com --my-address=roman.scherer@nubank.com.br
+  mu index
+#+END_SRC
+
 #+BEGIN_SRC emacs-lisp
   (use-package mu4e
     :commands mu4e
@@ -1652,9 +1660,6 @@ STARTTLS), or ‘ssl’ (to use TLS/SSL).
 
     ;; Do not show colors in the HTML.
     (setq shr-use-colors nil)
-
-    ;; mu init --maildir=~/Mail --my-address=roman@burningswell.com --my-address=roman.scherer@burningswell.com --my-address=roman.scherer@nubank.com.br
-    ;; mu index
 
     (setq mu4e-contexts
           (list
