@@ -216,7 +216,7 @@ Find file as root.
   (defun sudo-edit (&optional arg)
     (interactive "p")
     (if (or arg (not buffer-file-name))
-        (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
+        (find-file (concat "/sudo:root@localhost:" (read-file-name "File: ")))
       (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 #+END_SRC
 
@@ -1470,58 +1470,6 @@ connection is closed.
   (gnus-demon-add-nntp-close-connection)
 #+END_SRC
 
-** Ido mode
-
-Automatically switch to merged work directories during file name input.
-
-#+BEGIN_SRC emacs-lisp
-  (setq ido-auto-merge-work-directories-length nil)
-#+END_SRC
-
-Always create new buffer if no buffer matches substring.
-
-#+BEGIN_SRC emacs-lisp
-  (setq ido-create-new-buffer 'always)
-#+END_SRC
-
-Enable flexible string matching.
-
-#+BEGIN_SRC emacs-lisp
-  (setq ido-enable-flex-matching t)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (setq ido-enable-prefix nil)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (setq ido-handle-duplicate-virtual-buffers 2)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (setq ido-max-prospects 10)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (setq ido-use-filename-at-point 'guess)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (setq ido-use-virtual-buffers t)
-#+END_SRC
-
-Show new file in selected window.
-
-#+BEGIN_SRC emacs-lisp
-  (setq ido-default-file-method 'selected-window)
-#+END_SRC
-
-Enable ido mode.
-
-#+BEGIN_SRC emacs-lisp
-  (ido-mode)
-#+END_SRC
-
 ** Jiralib2
 
 Lisp bindings to JIRA REST API.
@@ -1532,16 +1480,6 @@ Lisp bindings to JIRA REST API.
     :defer t)
 #+END_SRC
 
-** Flx mode
-#+BEGIN_SRC emacs-lisp
-  (use-package flx-ido
-    :after ido
-    :init
-    (flx-ido-mode 1)
-    ;; disable ido faces to see flx highlights.
-    (setq ido-use-faces nil)
-    (setq gc-cons-threshold 20000000))
-#+END_SRC
 ** Kubel
 #+BEGIN_SRC emacs-lisp
   (use-package kubel
