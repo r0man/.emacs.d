@@ -1602,6 +1602,16 @@ SMTP service port number.
   (setq smtpmail-smtp-service 587)
 #+END_SRC
 
+Type of SMTP connections to use.
+
+This may be either nil (upgrade with STARTTLS if possible), ‘starttls’
+(refuse to send if STARTTLS isn’t available), ‘plain’ (never use
+STARTTLS), or ‘ssl’ (to use TLS/SSL).
+
+#+BEGIN_SRC emacs-lisp
+  (setq smtpmail-stream-type 'starttls)
+#+END_SRC
+
 ** Macrostep
 #+BEGIN_SRC emacs-lisp
   (use-package macrostep
