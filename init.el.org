@@ -1702,6 +1702,9 @@ SMTP service port number.
     (setq mu4e-get-mail-command "mbsync -a")
     (setq mu4e-maildir "~/Mail")
 
+    ;; Do not show colors in the HTML.
+    (setq shr-use-colors nil)
+
     ;; mu init --maildir=~/Mail --my-address=roman@burningswell.com --my-address=roman.scherer@burningswell.com --my-address=roman.scherer@nubank.com.br
     ;; mu index
 
