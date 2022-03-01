@@ -1625,19 +1625,6 @@ STARTTLS), or ‘ssl’ (to use TLS/SSL).
     (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode)))
 #+END_SRC
 
-** Markdown Preview Mode
-
-Preview Markdown in a web browser.
-
-#+begin_src emacs-lisp
-  (use-package markdown-preview-mode
-    :commands (markdown-preview-mode
-               markdown-preview-open-browser
-               markdown-preview-cleanup)
-    :custom
-    (markdown-preview-stylesheets (list "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css")))
-#+end_src
-
 ** Marginalia
 
 #+BEGIN_SRC emacs-lisp
