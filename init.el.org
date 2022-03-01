@@ -2024,6 +2024,15 @@ trees.
     :config
     (add-hook 'org-tree-slide-mode-hook (lambda () (org-display-inline-images))))
 #+END_SRC
+** Ox GFM
+
+Github Flavored Markdown exporter for Org Mode.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ox-gfm
+    :after (ox))
+#+END_SRC
+
 ** Ox Jira
 
 JIRA Backend for Org Export Engine.
