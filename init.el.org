@@ -508,6 +508,7 @@ JIRA integration to Emacs org-mode.
       (match? 0)
       (time! 1)
       (fdef 1)
+      (providing 1)
       ;; cljs.test
       (async 1)
       ;; ClojureScript
