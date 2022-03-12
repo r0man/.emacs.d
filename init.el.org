@@ -843,7 +843,8 @@ Enhanced Implementation of Emacs Interpreted Objects
 
 #+BEGIN_SRC emacs-lisp
   (use-package emacs-lisp
-    :bind ("C-c C-p " . pp-eval-last-sexp))
+    :bind (("C-c C-p " . pp-eval-last-sexp)
+           ("C-c C-j " . pp-json-eval-last-sexp)))
 #+END_SRC
 
 ** Emacs Refactor
@@ -2086,6 +2087,44 @@ The org-mode Pandoc exporter.
     :config
     (setq org-plantuml-jar-path "~/.guix-profile/share/java/plantuml.jar"))
 #+END_SRC
+** Pretty Print JSON
+
+#+begin_src emacs-lisp
+  (defun pp-json-display-expression (expression out-buffer-name)
+    "Prettify and display EXPRESSION in an appropriate way, depending on length.
+  If a temporary buffer is needed for representation, it will be named
+  after OUT-BUFFER-NAME."
+    (with-current-buffer (get-buffer-create out-buffer-name)
+      (switch-to-buffer-other-window (current-buffer))
+      (js-mode)
+      (erase-buffer)
+      (json-insert expression)
+      (json-pretty-print-buffer)
+      (beginning-of-buffer)))
+
+  (defun pp-json-eval-expression (expression)
+    "Evaluate EXPRESSION and pretty-print its value.
+  Also add the value to the front of the list in the variable `values'."
+    (interactive
+     (list (read--expression "Eval: ")))
+    (message "Evaluating...")
+    (let ((result (eval expression lexical-binding)))
+      (values--store-value result)
+      (pp-json-display-expression result "*Pp JSON Eval Output*")))
+
+  (defun pp-json-eval-last-sexp (arg)
+    "Run `pp-json-eval-expression' on sexp before point.
+  With ARG, pretty-print output into current buffer.
+  Ignores leading comment characters."
+    (interactive "P")
+    (if arg
+        (insert (pp-to-string (eval (elisp--eval-defun-1
+                                     (macroexpand (pp-last-sexp)))
+                                    lexical-binding)))
+      (pp-json-eval-expression (elisp--eval-defun-1
+                                (macroexpand (pp-last-sexp))))))
+#+end_src
+
 ** Projectile
 #+BEGIN_SRC emacs-lisp
   (use-package projectile
