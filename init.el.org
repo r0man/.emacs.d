@@ -1512,8 +1512,9 @@ Lisp bindings to JIRA REST API.
 ** Nubank
 #+BEGIN_SRC emacs-lisp
   (use-package nu
-    :commands (nu-datomic-query nu-session-switch)
-    :load-path ("~/workspace/nu/nudev/ides/emacs/")
+    :commands (nu nu-datomic-query nu-session-switch)
+    :load-path ("~/workspace/nu/nudev/ides/emacs/"
+                "~/workspace/nu/nudev/ides/emacs/test/")
     :config
     (require 'nu)
     (require 'nu-metapod)
