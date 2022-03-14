@@ -595,6 +595,8 @@ JIRA integration to Emacs org-mode.
 
     (setq cider-jdk-src-paths '("/usr/lib/jvm/java-11-openjdk/lib/src.zip"))
 
+    (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.4.1")
+
     ;; Fuzzy candidate matching
     (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
     (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion))
