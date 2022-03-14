@@ -610,6 +610,8 @@ JIRA integration to Emacs org-mode.
       (clj-refactor-mode 1)
       (cljr-add-keybindings-with-prefix "C-c C-R"))
     (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)
+    ;; Don't place a newline after the `:require` and `:import` tokens
+    (setq cljr-insert-newline-after-require nil)
     ;; Don't use prefix notation when cleaning the ns form.
     (setq cljr-favor-prefix-notation nil)
     ;; Don't warn when running an AST op.
