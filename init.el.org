@@ -2233,6 +2233,30 @@ excellent Paredit mode as editing substrate whenever possible.
     (prescient-persist-mode +1))
 #+END_SRC
 
+** Slack
+
+Slack client for emacs.
+
+#+begin_src emacs-lisp
+  (use-package slack
+    :disabled
+    :commands (slack-start)
+    :load-path ("/home/roman/.emacs.d/elpa/slack-20211129.310")
+    :init
+    (setq slack-buffer-emojify t)
+    (setq slack-prefer-current-team t)
+    :config
+    (setq slack-render-image-p nil)
+    (slack-register-team
+     :name "nubank"
+     :cookie (auth-source-pick-first-password
+              :host "nubank.slack.com"
+              :user "roman.scherer@nubank.com.br^cookie")
+     :token (auth-source-pick-first-password
+             :host "nubank.slack.com"
+             :user "roman.scherer@nubank.com.br")
+     :subscribed-channels '((stem))))
+#+end_src
 ** So Long
 #+BEGIN_SRC emacs-lisp
   (global-so-long-mode 1)
