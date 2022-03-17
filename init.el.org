@@ -908,6 +908,20 @@ typing. Automatically switches the spell checker and typo-mode.
   (use-package guix
     :hook ((scheme-mode . guix-devel-mode)))
 #+end_src
+** Helpful
+
+Helpful is an alternative to the built-in Emacs help that provides
+much more contextual information.
+
+#+begin_src emacs-lisp
+  (use-package helpful
+    :bind (("C-h f" . helpful-callable)
+	   ("C-h v" . helpful-variable)
+	   ("C-h k" . helpful-key)
+	   ("C-c C-d" . helpful-at-point)
+	   ("C-h F" . helpful-function)
+	   ("C-h C" . helpful-command)))
+#+end_src
 ** History
 
 If set to t when adding a new history element, all previous
