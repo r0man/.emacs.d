@@ -415,7 +415,10 @@ Display minutes to appointment and time on the mode line.
   (use-package eglot
     :disabled
     :hook ((clojure-mode . eglot-ensure)
-           (clojurescript-mode . eglot-ensure)))
+           (clojurescript-mode . eglot-ensure))
+    :config
+    (add-to-list 'eglot-server-programs '(clojure-mode . ("clojure-lsp")))
+    (add-to-list 'eglot-server-programs '(clojure-script-mode . ("clojure-lsp"))))
 #+end_src
 ** EJira
 
