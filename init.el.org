@@ -552,8 +552,8 @@ JIRA integration to Emacs org-mode.
     ;; ;; Disable showing eldoc, use lsp-mode.
     ;; (setq cider-eldoc-display-for-symbol-at-point nil)
 
-    ;; ;; Add Cider Xref backend to the end, use lsp-mode.
-    ;; (setq cider-xref-fn-depth 100)
+    ;; Add Cider Xref backend to the end, use lsp-mode.
+    (setq cider-xref-fn-depth 80)
 
     ;; Pretty print in the REPL.
     (setq cider-repl-use-pretty-printing t)
