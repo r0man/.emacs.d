@@ -1648,6 +1648,12 @@ STARTTLS), or ‘ssl’ (to use TLS/SSL).
   (setq smtpmail-stream-type 'starttls)
 #+END_SRC
 
+GPG sign messages
+
+#+begin_src emacs-lisp
+  (add-hook 'message-send-hook 'mml-secure-message-sign-pgpmime)
+#+end_src
+
 ** Macrostep
 #+BEGIN_SRC emacs-lisp
   (use-package macrostep
