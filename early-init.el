@@ -8,9 +8,7 @@
 ;;; Code:
 
 ;; Number of bytes of consing between garbage collections.
-(setq gc-cons-threshold 402653184)
-
-;; Portion of the heap used for allocation.
-(setq gc-cons-percentage 0.6)
+;; https://emacs-lsp.github.io/lsp-mode/page/performance/#adjust-gc-cons-threshold
+(setq gc-cons-threshold 100000000)
 
 ;;; early-init.el ends here
