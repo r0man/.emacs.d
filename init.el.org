@@ -35,6 +35,17 @@ Compile Elisp to native machine code.
   (setq comp-deferred-compilation t)
 #+END_SRC
 
+** Process output
+
+Maximum number of bytes to read from subprocess in a single chunk.
+
+Enlarge the value only if the subprocess generates very large
+(megabytes) amounts of data in one go.
+
+#+begin_src emacs-lisp
+  (setq read-process-output-max (* 1024 1024))
+#+end_src
+
 ** Scroll, tool and menu bar.
 
 Hide the scroll bar.
