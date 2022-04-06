@@ -1057,7 +1057,7 @@ Increase the number of messages in the *Messages* buffer.
 Answer questions with "y" or "n".
 
 #+BEGIN_SRC emacs-lisp
-  (defalias 'yes-or-no-p 'y-or-n-p)
+  (setq use-short-answers t)
 #+END_SRC
 
 Highlight matching parentheses when the point is on them.
