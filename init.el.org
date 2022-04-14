@@ -35,6 +35,12 @@ Compile Elisp to native machine code.
   (setq comp-deferred-compilation t)
 #+END_SRC
 
+Whether to report warnings and errors from asynchronous native compilation.
+
+#+BEGIN_SRC emacs-lisp
+  (setq native-comp-async-report-warnings-errors nil)
+#+END_SRC
+
 ** Process output
 
 Maximum number of bytes to read from subprocess in a single chunk.
