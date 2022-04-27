@@ -570,7 +570,8 @@ JIRA integration to Emacs org-mode.
     ;; (setq cider-eldoc-display-for-symbol-at-point nil)
 
     ;; Add Cider Xref backend to the end, use lsp-mode.
-    (setq cider-xref-fn-depth 80)
+    ;; (setq cider-xref-fn-depth -90)
+    (setq cider-xref-fn-depth 0)
 
     ;; Pretty print in the REPL.
     (setq cider-repl-use-pretty-printing t)
@@ -2329,6 +2330,7 @@ Emacs client for the Language Server Protocol.
   (use-package lsp-mode
     :bind-keymap ("C-c l" . lsp-command-map)
     :commands (lsp)
+    :load-path ("/home/roman/workspace/lsp-mode")
     :hook ((clojure-mode . lsp-deferred)
            (clojurec-mode . lsp-deferred)
            (clojurescript-mode . lsp-deferred)
@@ -2341,9 +2343,12 @@ Emacs client for the Language Server Protocol.
            (yaml-mode . lsp-deferred))
     :custom
     (lsp-file-watch-threshold nil)
+    (lsp-headerline-breadcrumb-enable nil)
     (lsp-keymap-prefix "C-c l")
+    (lsp-log-io t)
     (lsp-prefer-flymake nil)
-    (lsp-sqls-server "~/go/bin/sqls"))
+    (lsp-sqls-server "~/go/bin/sqls")
+    (lsp-ui-sideline-enable nil))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
