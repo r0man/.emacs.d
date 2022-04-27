@@ -561,7 +561,7 @@ JIRA integration to Emacs org-mode.
 #+BEGIN_SRC emacs-lisp
   (use-package cider
     :commands (cider-jack-in cider-jack-in-clojurescript)
-    ;; :load-path ("~/workspace/cider")
+    :load-path ("~/workspace/cider")
     :config
     ;; Enable eldoc in Clojure buffers
     (add-hook 'cider-mode-hook #'eldoc-mode)
