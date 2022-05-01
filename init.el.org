@@ -2083,6 +2083,16 @@ Use Jira in Emacs org-mode.
   (use-package ox-reveal
     :after (ox))
 #+END_SRC
+** Org Roam
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org-roam
+    :after (org)
+    :init
+    (org-roam-db-autosync-mode)
+    :custom
+    (org-roam-directory (file-truename "~/workspace/org-roam")))
+#+END_SRC
 
 ** Org Tree Slide
 
