@@ -5,14 +5,22 @@
       '(
         cider-load-current-buffer
         cleanup-buffer
+        cljr-slash
         forward-sexp
+        kill-region
+        paredit-backslash
+        paredit-backward
         paredit-backward-kill-word
         paredit-close-square
+        paredit-forward
         paredit-forward-barf-sexp
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
+        paredit-kill
         paredit-open-round
         paredit-open-square
+        paredit-splice-sexp
+        paredit-wrap-round
         sgml-slash
         smarter-move-beginning-of-line
         smex
