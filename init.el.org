@@ -430,6 +430,7 @@ Display minutes to appointment and time on the mode line.
 ** Eglot
 #+begin_src emacs-lisp
   (use-package eglot
+    :load-path ("~/workspace/eglot")
     :disabled
     :hook ((clojure-mode . eglot-ensure)
            (clojurescript-mode . eglot-ensure))
@@ -2303,7 +2304,7 @@ Slack client for emacs.
   (use-package slack
     :disabled
     :commands (slack-start)
-    :load-path ("/home/roman/.emacs.d/elpa/slack-20211129.310")
+    :load-path ("~/.emacs.d/elpa/slack-20211129.310")
     :init
     (setq slack-buffer-emojify t)
     (setq slack-prefer-current-team t)
@@ -2341,7 +2342,7 @@ Emacs client for the Language Server Protocol.
   (use-package lsp-mode
     :bind-keymap ("C-c l" . lsp-command-map)
     :commands (lsp)
-    :load-path ("/home/roman/workspace/lsp-mode")
+    :load-path ("~/workspace/lsp-mode")
     :hook ((clojure-mode . lsp-deferred)
            (clojurec-mode . lsp-deferred)
            (clojurescript-mode . lsp-deferred)
