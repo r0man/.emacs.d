@@ -2359,6 +2359,7 @@ Emacs client for the Language Server Protocol.
     (lsp-headerline-breadcrumb-enable nil)
     (lsp-keymap-prefix "C-c l")
     (lsp-log-io t)
+    (lsp-restart 'ignore)
     (lsp-modeline-code-actions-enable nil)
     (lsp-prefer-flymake nil)
     (lsp-sqls-server "~/go/bin/sqls")
