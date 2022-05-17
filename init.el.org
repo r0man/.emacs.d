@@ -1723,6 +1723,9 @@ Configure mu.
             (:name "Guix Devel"
                    :query "list:guix-devel.gnu.org"
                    :key ?g)
+            (:name "Guix Help"
+                   :query "list:help-guix.gnu.org"
+                   :key ?h)
             (:name "Unread messages"
                    :query "flag:unread AND NOT flag:trashed AND NOT list:itaipu.nubank.github.com"
                    :key ?u)
