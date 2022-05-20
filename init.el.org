@@ -1133,7 +1133,6 @@ Use Firefox as default browser.
 
 #+BEGIN_SRC emacs-lisp
   (setq browse-url-browser-function 'browse-url-firefox)
-
 #+END_SRC
 
 Clickable URLs.
@@ -1141,6 +1140,12 @@ Clickable URLs.
 #+BEGIN_SRC emacs-lisp
   (define-globalized-minor-mode global-goto-address-mode goto-address-mode goto-address-mode)
   (global-goto-address-mode)
+#+END_SRC
+
+Whether Emacs should confirm killing processes on exit.
+
+#+BEGIN_SRC emacs-lisp
+  (setq confirm-kill-processes nil)
 #+END_SRC
 
 ** Abbrev mode
