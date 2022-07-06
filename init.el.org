@@ -785,6 +785,14 @@ The Geiser implementation for Guile scheme.
     :config
     (setq graphql-url "http://localhost:7000/graphql"))
 #+END_SRC
+** GUIX
+#+BEGIN_SRC emacs-lisp
+  (defun guix-home-reconfigure ()
+    "Reconfigure Guix Home."
+    (interactive)
+    (let ((default-directory "~/workspace/guix-home"))
+      (async-shell-command "guix home -L . reconfigure r0man/home/config.scm")))
+#+END_SRC
 ** Company mode
 
 Enable company mode.
