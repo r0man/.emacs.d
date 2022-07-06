@@ -1,7 +1,7 @@
 * init.el
 
 #+BEGIN_SRC emacs-lisp
-  ;;; init.el --- my emacs configuration. -*- lexical-binding: t; -*-
+  ;;; init.el --- My Emacs configuration. -*- lexical-binding: t; -*-
 #+END_SRC
 
 ** Color theme
