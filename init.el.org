@@ -1705,7 +1705,7 @@ Configure mu.
                     (mu4e-refile-folder . "/burningswell/[Gmail]/All Mail")
                     (mu4e-sent-folder . "/burningswell/[Gmail]/Sent Mail")
                     (mu4e-trash-folder . "/burningswell/[Gmail]/Trash")
-                    (user-full-name . "r0man")
+                    (user-full-name . "Roman Scherer")
                     (user-mail-address . "roman.scherer@burningswell.com")))
            (make-mu4e-context
             :name "Nubank"
