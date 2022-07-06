@@ -788,10 +788,11 @@ The Geiser implementation for Guile scheme.
 ** GUIX
 #+BEGIN_SRC emacs-lisp
   (defun guix-home-reconfigure ()
-    "Reconfigure Guix Home."
+    "Run Guix Home reconfigure."
     (interactive)
-    (let ((default-directory "~/workspace/guix-home"))
-      (async-shell-command "guix home -L . reconfigure r0man/home/config.scm")))
+    (let ((buffer (get-buffer-create "*Guix Home Reconfigure*"))
+          (default-directory "~/workspace/guix-home"))
+      (async-shell-command "guix home -L . reconfigure r0man/home/config.scm" buffer)))
 #+END_SRC
 ** Company mode
 
