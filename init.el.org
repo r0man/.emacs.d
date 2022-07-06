@@ -785,7 +785,7 @@ The Geiser implementation for Guile scheme.
     :config
     (setq graphql-url "http://localhost:7000/graphql"))
 #+END_SRC
-** GUIX
+** Guix
 #+BEGIN_SRC emacs-lisp
   (defun guix-home-reconfigure ()
     "Run Guix Home reconfigure."
