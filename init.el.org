@@ -1336,7 +1336,7 @@ as well, leaving point between the two.
 #+END_SRC
 ** Emacs Lisp mode
 
-Unequivocally turn on ElDoc mode.
+Turn on ElDoc mode.
 
 #+BEGIN_SRC emacs-lisp
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
