@@ -1803,7 +1803,7 @@ Configure mu.
     ;; ;; Enable compilation-shell-minor-mode in multi term.
     ;; ;; http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/
 
-    ;; ;; TODO: WTF? Turns off colors in terminal.
+    ;; ;; TODO: This turns off colors in terminal?
     ;; ;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
     (add-hook 'term-mode-hook
               (lambda ()
@@ -1871,17 +1871,6 @@ Switch to the most recently used term-mode buffer, or create a new one.
     :load-path ("~/workspace/nu/nucli.el/src"
                 "~/workspace/nu/nucli.el/test"))
 
-#+END_SRC
-** Fuck the NSA
-
-http://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Amusements.html
-
-#+BEGIN_SRC emacs-lisp
-  (setq mail-signature
-        '(progn
-           (goto-char (point-max))
-           (insert "\n\n--------------------------------------------------------------------------------")
-           (spook)))
 #+END_SRC
 ** Save hist mode
 
