@@ -2102,6 +2102,7 @@ Use Jira in Emacs org-mode.
 
 #+BEGIN_SRC emacs-lisp
   (use-package org-roam
+    :disabled
     :after (org)
     :init
     (org-roam-db-autosync-mode)
