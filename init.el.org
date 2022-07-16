@@ -1,7 +1,7 @@
 * init.el
 
 #+BEGIN_SRC emacs-lisp
-  ;;; init.el --- my emacs configuration. -*- lexical-binding: t; -*-
+  ;;; init.el --- My Emacs configuration. -*- lexical-binding: t; -*-
 #+END_SRC
 
 ** Color theme
@@ -785,6 +785,15 @@ The Geiser implementation for Guile scheme.
     :config
     (setq graphql-url "http://localhost:7000/graphql"))
 #+END_SRC
+** Guix
+#+BEGIN_SRC emacs-lisp
+  (defun guix-home-reconfigure ()
+    "Run Guix Home reconfigure."
+    (interactive)
+    (let ((buffer (get-buffer-create "*Guix Home Reconfigure*"))
+          (default-directory "~/workspace/guix-home"))
+      (async-shell-command "guix home -L . reconfigure r0man/home/config.scm" buffer)))
+#+END_SRC
 ** Company mode
 
 Enable company mode.
@@ -1327,7 +1336,7 @@ as well, leaving point between the two.
 #+END_SRC
 ** Emacs Lisp mode
 
-Unequivocally turn on ElDoc mode.
+Turn on ElDoc mode.
 
 #+BEGIN_SRC emacs-lisp
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
@@ -1463,74 +1472,6 @@ Don't print messages when checking words.
   (use-package github-browse-file
     :commands (github-browse-file github-browse-file-blame))
 #+END_SRC
-** Gnus
-
-Write mail with Gnus.
-
-#+BEGIN_SRC emacs-lisp
-  (setq mail-user-agent 'gnus-user-agent)
-#+END_SRC
-
-The gnus-select-method variable says where Gnus should look for
-news. This variable should be a list where the first element says
-how and the second element says where. This method is your native
-method. All groups not fetched with this method are secondary or
-foreign groups.
-
-#+BEGIN_SRC emacs-lisp
-  (setq gnus-select-method
-        '(nnimap "gmail"
-                 (nnimap-address "imap.gmail.com")
-                 (nnimap-server-port 993)
-                 (nnimap-stream ssl)))
-#+END_SRC
-
-All Gmail system labels have a prefix [Gmail], which matches the
-default value of gnus-ignored-newsgroups. A workaround is to redefine
-it as follows.
-
-#+BEGIN_SRC emacs-lisp
-  (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
-#+END_SRC
-
-An integer that says how verbose Gnus should be. The higher the
-number, the more messages Gnus will flash to say what it's doing.
-At zero, Gnus will be totally mute; at five, Gnus will display most
-important messages; and at ten, Gnus will keep on jabbering all the
-time.
-
-#+BEGIN_SRC emacs-lisp
-  (setq gnus-verbose 10)
-#+END_SRC
-
-*** Gnus Demon
-
-Require the Gnus demon.
-
-#+BEGIN_SRC emacs-lisp
-  (require 'gnus-demon)
-#+END_SRC
-
-Add daemonic server disconnection to Gnus.
-
-#+BEGIN_SRC emacs-lisp
-  (gnus-demon-add-disconnection)
-#+END_SRC
-
-Add daemonic scanning of mail from the mail backends.
-
-#+BEGIN_SRC emacs-lisp
-  (gnus-demon-add-scanmail)
-#+END_SRC
-
-Add daemonic nntp server disconnection to Gnus. If no commands
-have gone out via nntp during the last five minutes, the
-connection is closed.
-
-#+BEGIN_SRC emacs-lisp
-  (gnus-demon-add-nntp-close-connection)
-#+END_SRC
-
 ** Jiralib2
 
 Lisp bindings to JIRA REST API.
@@ -1769,7 +1710,7 @@ Configure mu.
                     (mu4e-refile-folder . "/burningswell/[Gmail]/All Mail")
                     (mu4e-sent-folder . "/burningswell/[Gmail]/Sent Mail")
                     (mu4e-trash-folder . "/burningswell/[Gmail]/Trash")
-                    (user-full-name . "r0man")
+                    (user-full-name . "Roman Scherer")
                     (user-mail-address . "roman.scherer@burningswell.com")))
            (make-mu4e-context
             :name "Nubank"
@@ -1799,7 +1740,7 @@ Configure mu.
     ;; ;; Enable compilation-shell-minor-mode in multi term.
     ;; ;; http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/
 
-    ;; ;; TODO: WTF? Turns off colors in terminal.
+    ;; ;; TODO: This turns off colors in terminal?
     ;; ;; (add-hook 'term-mode-hook 'compilation-shell-minor-mode)
     (add-hook 'term-mode-hook
               (lambda ()
@@ -1867,17 +1808,6 @@ Switch to the most recently used term-mode buffer, or create a new one.
     :load-path ("~/workspace/nu/nucli.el/src"
                 "~/workspace/nu/nucli.el/test"))
 
-#+END_SRC
-** Fuck the NSA
-
-http://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Amusements.html
-
-#+BEGIN_SRC emacs-lisp
-  (setq mail-signature
-        '(progn
-           (goto-char (point-max))
-           (insert "\n\n--------------------------------------------------------------------------------")
-           (spook)))
 #+END_SRC
 ** Save hist mode
 
@@ -2107,6 +2037,7 @@ Use Jira in Emacs org-mode.
 
 #+BEGIN_SRC emacs-lisp
   (use-package org-roam
+    :disabled
     :after (org)
     :init
     (org-roam-db-autosync-mode)
