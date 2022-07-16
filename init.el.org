@@ -1453,6 +1453,11 @@ Don't print messages when checking words.
   (setq flyspell-issue-message-flag nil)
 #+END_SRC
 
+** Git Email
+#+BEGIN_SRC emacs-lisp
+  (use-package git-email
+    :commands (git-email-send-email git-email-format-patch))
+#+END_SRC
 ** Github browse file
 #+BEGIN_SRC emacs-lisp
   (use-package github-browse-file
