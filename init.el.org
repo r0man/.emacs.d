@@ -1467,6 +1467,13 @@ Don't print messages when checking words.
   (use-package github-browse-file
     :commands (github-browse-file github-browse-file-blame))
 #+END_SRC
+** isa.el
+#+BEGIN_SRC emacs-lisp
+  (use-package isa
+    :commands (isa)
+    :if (file-directory-p "~/workspace/nu/isa.el/")
+    :load-path "~/workspace/nu/isa.el/")
+#+END_SRC
 ** Jiralib2
 
 Lisp bindings to JIRA REST API.
