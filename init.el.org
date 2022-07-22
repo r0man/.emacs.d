@@ -619,6 +619,7 @@ JIRA integration to Emacs org-mode.
     ;; Don't show the `*cider-test-report*` buffer on passing tests.
     (setq cider-test-report-on-success nil)
 
+    (add-to-list 'cider-test-defining-forms "def-repl-test")
     (add-to-list 'cider-test-defining-forms "defflow")
     (add-to-list 'cider-test-defining-forms "defflow-as-of")
     (add-to-list 'cider-test-defining-forms "defflow-with-params")
