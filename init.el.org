@@ -2404,7 +2404,7 @@ Emacs client for the Language Server Protocol.
   (use-package stem
     :commands (stem)
     :if (file-directory-p "~/workspace/nu/stem.el/")
-    :load-path "~/workspace/nu/stem.el/")
+    :load-path "~/workspace/nu/stem.el/src/")
 #+END_SRC
 ** Tabs
 
