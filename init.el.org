@@ -624,8 +624,8 @@ JIRA integration to Emacs org-mode.
     (add-to-list 'cider-test-defining-forms "defflow-as-of")
     (add-to-list 'cider-test-defining-forms "defflow-with-params")
 
-    (add-to-list 'cider-jack-in-nrepl-middlewares "stem.nrepl/middleware")
-    (cider-add-to-alist 'cider-jack-in-dependencies "stem-nrepl/stem-nrepl" "1.0.9")
+    ;; (add-to-list 'cider-jack-in-nrepl-middlewares "stem.nrepl/middleware")
+    ;; (cider-add-to-alist 'cider-jack-in-dependencies "stem-nrepl/stem-nrepl" "1.0.13")
 
     ;; Whether to use git.io/JiJVX for adding sources and javadocs to the classpath.
     (setq cider-enrich-classpath t)
