@@ -1689,6 +1689,9 @@ Configure mu.
     ;; Do not show colors in the HTML.
     (setq shr-use-colors nil)
 
+    ;; The policy to determine the context when entering the mu4e main view.
+    (setq mu4e-context-policy 'pick-first)
+
     (setq mu4e-bookmarks
           '((:name "Burning Swell"
                    :query "maildir:/burningswell/* AND NOT list:guix-devel.gnu.org"
