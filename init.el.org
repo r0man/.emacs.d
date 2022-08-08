@@ -1587,10 +1587,10 @@ My email address.
   (setq user-mail-address "roman.scherer@burningswell.com")
 #+END_SRC
 
-Use message mode to send emails.
+Use mu4e to send emails.
 
 #+BEGIN_SRC emacs-lisp
-  (setq mail-user-agent 'message-user-agent)
+  (setq mail-user-agent 'mu4e-user-agent)
 #+END_SRC
 
 Load smtpmail
