@@ -1680,7 +1680,10 @@ Configure mu.
     :config
     (setq mu4e-maildir "~/Mail")
 
-    ;; This is set to 't' to avoid mail syncing issues when using mbsync
+    ;; Make sure that moving a message (like to Trash) causes the
+    ;; message to get a new file name.  This helps to avoid the
+    ;; dreaded "UID is N beyond highest assigned" error.
+    ;; See this link for more info: https://stackoverflow.com/a/43461973
     (setq mu4e-change-filenames-when-moving t)
 
     ;; Do not show colors in the HTML.
@@ -1710,8 +1713,8 @@ Configure mu.
                    ;; :hide-unread t
                    :key ?w)
             (:name "Messages with images"
-                 :query "mime:image/*"
-                 :key ?p)))
+                   :query "mime:image/*"
+                   :key ?p)))
 
     (setq mu4e-contexts
           (list
