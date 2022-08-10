@@ -1746,6 +1746,20 @@ Configure mu.
                     (user-full-name . "Roman Scherer")
                     (user-mail-address . "roman.scherer@nubank.com.br"))))))
 #+END_SRC
+** Mu4e Alert
+#+begin_src emacs-lisp
+  (use-package mu4e-alert
+    :disabled
+    ;; :after mu4e
+    :config
+    ;; Show unread emails from all inboxes
+    ;; (setq mu4e-alert-interesting-mail-query dw/mu4e-inbox-query)
+    ;; Show notifications for mails already notified
+    (setq mu4e-alert-notify-repeated-mails nil)
+    (setq mu4e-alert-style 'libnotify)
+    (mu4e-alert-enable-notifications)
+    (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display))
+#+end_src
 ** Multi term
 
 #+BEGIN_SRC emacs-lisp
