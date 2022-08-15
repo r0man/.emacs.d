@@ -1690,6 +1690,9 @@ Configure mu.
     ;; Do not show colors in the HTML.
     (setq shr-use-colors nil)
 
+    ;; Refresh mail every minute.
+    (setq mu4e-update-interval (* 1 60))
+
     ;; The policy to determine the context when entering the mu4e main view.
     (setq mu4e-context-policy 'pick-first)
 
