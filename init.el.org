@@ -2452,6 +2452,12 @@ Don't insert tabs.
     :mode "\\.tf$")
 #+END_SRC
 
+** Unfill
+
+#+BEGIN_SRC emacs-lisp
+  (use-package unfill
+    :commands (unfill-region unfill-paragraph unfill-toggle))
+#+END_SRC
 ** Undo Tree
 
 #+BEGIN_SRC emacs-lisp
