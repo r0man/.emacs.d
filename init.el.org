@@ -1646,6 +1646,12 @@ GPG sign messages
   (use-package macrostep
     :defer 1)
 #+END_SRC
+** Makem.sh
+#+BEGIN_SRC emacs-lisp
+  (use-package makem
+    :load-path ("~/workspace/makem.sh")
+    :commands (makem))
+#+END_SRC
 ** Markdown mode
 #+BEGIN_SRC emacs-lisp
   (use-package markdown-mode
