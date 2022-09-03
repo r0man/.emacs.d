@@ -2574,7 +2574,9 @@ The YASnippet collection.
 #+BEGIN_SRC emacs-lisp
   (use-package yasnippet-snippets
     :after (yasnippet)
-    :defer t)
+    :defer t
+    :config
+    (add-to-list 'yas-snippet-dirs "~/workspace/guix/etc/snippets/yas"))
 #+END_SRC
 ** After init hook
 #+BEGIN_SRC emacs-lisp
