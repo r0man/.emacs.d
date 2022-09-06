@@ -1010,7 +1010,6 @@ identical elements are deleted from the history list.
             ("test-set" . 1)
             ("test-set-fails" . 1))))
 #+END_SRC
-
 ** Auto Save
 
 Set the auto save directory.
@@ -2272,25 +2271,6 @@ excellent Paredit mode as editing substrate whenever possible.
     ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
     (setq sbt:program-options '("-Dsbt.supershell=false")))
 #+END_SRC
-** Selectrum
-
-#+BEGIN_SRC emacs-lisp
-  (use-package selectrum
-    :disabled
-    :config
-    (setq selectrum-display-action nil)
-    (setq selectrum-max-window-height (/ (frame-height) 3))
-    (selectrum-mode +1))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (use-package selectrum-prescient
-    :disabled
-    :config
-    (selectrum-prescient-mode +1)
-    (prescient-persist-mode +1))
-#+END_SRC
-
 ** Slack
 
 Slack client for emacs.
