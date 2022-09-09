@@ -432,11 +432,14 @@ Display minutes to appointment and time on the mode line.
   (use-package eglot
     :disabled
     :load-path ("~/workspace/eglot")
-    :hook ((elixir-mode . eglot-ensure))
+    :hook ((clojure-mode . eglot-ensure)
+           (elixir-mode . eglot-ensure)
+           (scala-mode . eglot-ensure))
     :config
     (add-to-list 'eglot-server-programs '(clojure-mode . ("clojure-lsp")))
     (add-to-list 'eglot-server-programs '(clojure-script-mode . ("clojure-lsp")))
-    (add-to-list 'eglot-server-programs '(elixir-mode . ("~/workspace/elixir-ls/release/language_server.sh"))))
+    (add-to-list 'eglot-server-programs '(elixir-mode . ("~/workspace/elixir-ls/release/language_server.sh")))
+    (add-to-list 'eglot-server-programs '(scala-mode . ("metals"))))
 #+end_src
 ** EJira
 
@@ -2328,6 +2331,7 @@ Emacs client for the Language Server Protocol.
            (python-mode . lsp-deferred)
            (scala-mode . lsp-deferred)
            ;; (sql-mode . lsp-deferred)
+           (terraform-mode . lsp-deferred)
            (yaml-mode . lsp-deferred))
     :custom
     (lsp-eldoc-enable-hover nil)
@@ -2340,6 +2344,7 @@ Emacs client for the Language Server Protocol.
     (lsp-prefer-flymake nil)
     (lsp-restart 'ignore)
     (lsp-sqls-server "~/go/bin/sqls")
+    (lsp-terraform-server "~/bin/terraform-lsp")
     (lsp-ui-doc-enable nil)
     (lsp-ui-sideline-enable nil))
 #+END_SRC
