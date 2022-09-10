@@ -912,6 +912,42 @@ Enhanced Implementation of Emacs Interpreted Objects
   (use-package emr
     :commands (emr-show-refactor-menu))
 #+END_SRC
+** Embark
+
+Emacs Mini-Buffer Actions Rooted in Key maps.
+
+Make sure the OS does not capture =C-.=.
+
+See: https://emacsnotes.wordpress.com/2022/08/16/who-stole-c-c-and-possibly-other-keys-from-my-emacs/
+
+#+BEGIN_SRC emacs-lisp
+  (use-package embark
+    :bind
+    (("C-." . embark-act)         ;; pick some comfortable binding
+     ("C-;" . embark-dwim)        ;; good alternative: M-.
+     ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+    :init
+    ;; Optionally replace the key help with a completing-read interface
+    (setq prefix-help-command #'embark-prefix-help-command)
+    :custom-face
+    (embark-keybinding ((t :inherit bold)))
+    :config
+    ;; Hide the mode line of the Embark live/completions buffers
+    (add-to-list 'display-buffer-alist
+                 '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                   nil
+                   (window-parameters (mode-line-format . none)))))
+#+END_SRC
+** Embark Consult
+#+begin_src emacs-lisp
+  (use-package embark-consult
+    :after (embark consult)
+    :demand t ; only necessary if you have the hook below
+    ;; if you want to have consult previews as you move around an
+    ;; auto-updating embark collect buffer
+    :hook
+    (embark-collect-mode . consult-preview-at-point-mode))
+#+end_src
 ** Flutter
 #+BEGIN_SRC emacs-lisp
   (use-package flutter
