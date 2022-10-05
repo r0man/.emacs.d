@@ -430,7 +430,13 @@ Display minutes to appointment and time on the mode line.
   (use-package bluetooth
     :commands bluetooth-list-devices)
 #+END_SRC
+** BNF Mode
 
+A GNU Emacs major mode for editing BNF grammars.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package bnf-mode)
+#+END_SRC
 ** Eglot
 #+begin_src emacs-lisp
   (use-package eglot
