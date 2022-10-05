@@ -2287,6 +2287,8 @@ The org-mode Pandoc exporter.
     (("C-c p" . projectile-command-map))
     :custom
     (projectile-completion-system 'default)
+    :init
+    (projectile-mode +1)
     :config
     (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
     (add-to-list 'projectile-project-root-files-bottom-up "BUILD"))
