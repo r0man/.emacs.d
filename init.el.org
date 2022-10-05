@@ -1059,6 +1059,11 @@ identical elements are deleted from the history list.
             ("test-set" . 1)
             ("test-set-fails" . 1))))
 #+END_SRC
+** Lisp Mode
+#+BEGIN_SRC emacs-lisp
+  (use-package lisp-mode
+    :mode (("source-registry.conf" . lisp-mode)))
+#+END_SRC
 ** Auto Save
 
 Set the auto save directory.
