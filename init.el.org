@@ -1931,6 +1931,7 @@ The Superior Lisp Interaction Mode for Emacs
 
 #+BEGIN_SRC emacs-lisp
   (use-package slime
+    :disabled
     :commands (slime))
 #+END_SRC
 
@@ -1938,10 +1939,21 @@ Slime Company
 
 #+BEGIN_SRC emacs-lisp
   (use-package slime-company
+    :disabled
     :after slime
     :config
     (slime-setup '(slime-fancy slime-company)))
 #+END_SRC
+
+** Sly
+
+SLY is Sylvester the Cat's Common Lisp IDE for Emacs
+
+#+BEGIN_SRC emacs-lisp
+  (use-package sly
+    :commands (sly))
+#+END_SRC
+
 
 ** Scheme
 
