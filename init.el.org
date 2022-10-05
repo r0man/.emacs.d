@@ -399,6 +399,10 @@ This variable describes the behavior of the command key.
     (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
     (add-hook 'clojure-mode-hook #'aggressive-indent-mode))
 #+END_SRC
+** Ascii Doc
+#+BEGIN_SRC emacs-lisp
+  (use-package adoc-mode)
+#+END_SRC
 ** Avy
 #+BEGIN_SRC emacs-lisp
   (use-package avy
