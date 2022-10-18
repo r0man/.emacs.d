@@ -437,6 +437,12 @@ A GNU Emacs major mode for editing BNF grammars.
 #+BEGIN_SRC emacs-lisp
   (use-package bnf-mode)
 #+END_SRC
+** Common Lisp Hyper Spec
+
+#+BEGIN_SRC emacs-lisp
+  (use-package clhs
+    :init (clhs-setup))
+#+END_SRC
 ** Eglot
 #+begin_src emacs-lisp
   (use-package eglot
