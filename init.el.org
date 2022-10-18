@@ -1539,6 +1539,16 @@ Don't print messages when checking words.
   (use-package github-browse-file
     :commands (github-browse-file github-browse-file-blame))
 #+END_SRC
+** Inspector
+#+BEGIN_SRC emacs-lisp
+  (use-package inspector
+    :commands (inspector-inspect-expression
+               inspector-inspect-last-sexp))
+
+  (use-package tree-inspector
+    :commands (tree-inspector-inspect-expression
+               tree-inspector-inspect-last-sexp))
+#+END_SRC
 ** isa.el
 #+BEGIN_SRC emacs-lisp
   (use-package isa
