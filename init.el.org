@@ -650,8 +650,7 @@ JIRA integration to Emacs org-mode.
     ;; Whether to use git.io/JiJVX for adding sources and javadocs to the classpath.
     (setq cider-enrich-classpath t)
 
-    (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.2.2")
-
+    (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.5.5")
 
     ;; Fuzzy candidate matching
     (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
