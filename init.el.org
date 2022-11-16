@@ -345,6 +345,14 @@ Run the current buffer through zprint.
     (deactivate-mark))
 #+END_SRC
 
+** Datomic.el
+#+BEGIN_SRC emacs-lisp
+  (use-package datomic
+    :commands (datomic)
+    :load-path
+    ("~/workspace/datomic.el/src"
+     "~/workspace/datomic.el/test"))
+#+END_SRC
 ** Docopt.el
 #+BEGIN_SRC emacs-lisp
   (use-package parsec
