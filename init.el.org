@@ -450,6 +450,12 @@ A GNU Emacs major mode for editing BNF grammars.
 #+BEGIN_SRC emacs-lisp
   (use-package clhs
     :init (clhs-setup))
+
+  (defun hyperspec-lookup--hyperspec-lookup-eww (orig-fun &rest args)
+    (let ((browse-url-browser-function 'eww-browse-url))
+      (apply orig-fun args)))
+
+  (advice-add 'hyperspec-lookup :around #'hyperspec-lookup--hyperspec-lookup-eww)
 #+END_SRC
 ** Eglot
 #+begin_src emacs-lisp
