@@ -2562,7 +2562,10 @@ Don't insert tabs.
     :custom
     (completion-styles '(orderless))
     (completion-category-defaults nil)
-    (completion-category-overrides '((file (styles partial-completion)))))
+    (completion-category-overrides '((command (styles partial-completion))
+                                     (file (styles partial-completion))
+                                     (symbol (styles partial-completion))
+                                     (variable (styles partial-completion)))))
 #+END_SRC
 
 ** Virtual Env Wrapper
