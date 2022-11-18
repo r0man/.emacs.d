@@ -1647,6 +1647,16 @@ Number of spaces for each indentation step in `js-mode'.
   (setq js-indent-level 2)
 #+END_SRC
 
+** JArchive
+
+Jarchive teaches emacs how to open project dependencies that reside inside jar files.
+
+#+begin_src emacs-lisp
+  (use-package jarchive
+    :config
+    (jarchive-setup)
+    :after (eglot))
+#+end_src
 ** IRC
 #+BEGIN_SRC emacs-lisp
   (load-if-exists "~/.rcirc.el")
