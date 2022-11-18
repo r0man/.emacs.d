@@ -1993,7 +1993,6 @@ SLY is Sylvester the Cat's Common Lisp IDE for Emacs
     :commands (sly))
 #+END_SRC
 
-
 ** Scheme
 
 Use Guile as scheme program.
