@@ -2069,13 +2069,6 @@ Support for indenting code in SQL files.
           (tramp-parse-hosts "/etc/hosts")))))
 #+END_SRC
 
-** Tramp Docker
-
-#+BEGIN_SRC emacs-lisp
-  (use-package docker-tramp
-    :load-path ("~/.emacs.d/vendor"))
-#+END_SRC
-
 ** Uniquify
 #+BEGIN_SRC emacs-lisp
   (require 'uniquify)
