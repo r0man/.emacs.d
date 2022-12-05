@@ -1037,12 +1037,13 @@ much more contextual information.
 
 #+begin_src emacs-lisp
   (use-package helpful
+    :disabled
     :bind (("C-h f" . helpful-callable)
-	   ("C-h v" . helpful-variable)
-	   ("C-h k" . helpful-key)
-	   ("C-c C-d" . helpful-at-point)
-	   ("C-h F" . helpful-function)
-	   ("C-h C" . helpful-command)))
+           ("C-h v" . helpful-variable)
+           ("C-h k" . helpful-key)
+           ("C-c C-d" . helpful-at-point)
+           ("C-h F" . helpful-function)
+           ("C-h C" . helpful-command)))
 #+end_src
 ** History
 
