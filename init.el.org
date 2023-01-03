@@ -366,6 +366,17 @@ Run the current buffer through zprint.
     ("~/workspace/docopt.el/src"
      "~/workspace/docopt.el/test"))
 #+END_SRC
+** Eldoc
+
+#+BEGIN_SRC emacs-lisp
+  (use-package eldoc
+    :hook ((emacs-lisp-mode . eldoc-mode))
+    :custom
+    (eldoc-echo-area-display-truncation-message nil)
+    (eldoc-echo-area-prefer-doc-buffer t)
+    (eldoc-echo-area-use-multiline-p 5))
+#+END_SRC
+
 ** Mac OSX
 
 Make Emacs use the $PATH set up by the user's shell.
@@ -1427,12 +1438,6 @@ as well, leaving point between the two.
   (electric-pair-mode t)
 #+END_SRC
 ** Emacs Lisp mode
-
-Turn on ElDoc mode.
-
-#+BEGIN_SRC emacs-lisp
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-#+END_SRC
 
 Auto load files.
 
