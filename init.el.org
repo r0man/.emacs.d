@@ -471,16 +471,26 @@ A GNU Emacs major mode for editing BNF grammars.
 ** Eglot
 #+begin_src emacs-lisp
   (use-package eglot
-    :disabled
-    :load-path ("~/workspace/eglot")
-    :hook ((clojure-mode . eglot-ensure)
+    :hook ((c-mode . eglot-ensure)
+           (c++-mode . eglot-ensure)
+           (clojure-mode . eglot-ensure)
            (elixir-mode . eglot-ensure)
-           (scala-mode . eglot-ensure))
+           ;; (scala-mode . eglot-ensure)
+           )
     :config
-    (add-to-list 'eglot-server-programs '(clojure-mode . ("clojure-lsp")))
-    (add-to-list 'eglot-server-programs '(clojure-script-mode . ("clojure-lsp")))
     (add-to-list 'eglot-server-programs '(elixir-mode . ("~/workspace/elixir-ls/release/language_server.sh")))
-    (add-to-list 'eglot-server-programs '(scala-mode . ("metals"))))
+    (add-to-list 'eglot-server-programs '(scala-mode . ("metals")))
+    ;; (add-hook 'eglot-managed-mode-hook
+    ;;           ;; This displays full docs for clojure functions.
+    ;;           ;; See https://github.com/joaotavora/eglot/discussions/894
+    ;;           #'(lambda ()
+    ;;               (setq-local eldoc-documentation-strategy
+    ;;                           #'eldoc-documentation-compose
+
+    ;;                           eldoc-echo-area-use-multiline-p
+    ;;                           5)))
+    :custom
+    (eglot-extend-to-xref t))
 #+end_src
 ** EJira
 
@@ -2438,9 +2448,9 @@ Emacs client for the Language Server Protocol.
     :commands (lsp)
     :load-path ("~/workspace/lsp-mode"
                 "~/workspace/lsp-mode/clients")
-    :hook ((clojure-mode . lsp-deferred)
-           (clojurec-mode . lsp-deferred)
-           (clojurescript-mode . lsp-deferred)
+    :hook (;; (clojure-mode . lsp-deferred)
+           ;; (clojurec-mode . lsp-deferred)
+           ;; (clojurescript-mode . lsp-deferred)
            (dart-mode . lsp-deferred)
            (elixir-mode . lsp-deferred)
            (lsp-mode . lsp-enable-which-key-integration)
