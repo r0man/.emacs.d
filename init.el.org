@@ -658,13 +658,19 @@ JIRA integration to Emacs org-mode.
     (add-to-list 'cider-test-defining-forms "defflow-as-of")
     (add-to-list 'cider-test-defining-forms "defflow-with-params")
 
+    ;; (setq cider-injected-middleware-version "0.0.0")
+    ;; (setq cider-required-middleware-version "0.0.0")
+
     ;; (add-to-list 'cider-jack-in-nrepl-middlewares "stem.nrepl/middleware")
-    ;; (cider-add-to-alist 'cider-jack-in-dependencies "stem-nrepl/stem-nrepl" "1.0.13")
+    ;; (cider-add-to-alist 'cider-jack-in-dependencies "stem/nrepl" "1.1.2-SNAPSHOT")
+
+    ;; (add-to-list 'cider-jack-in-nrepl-middlewares "nrepl-rebl.core/wrap-rebl")
+    ;; (cider-add-to-alist 'cider-jack-in-dependencies "nrepl-rebl/nrepl-rebl" "0.1.1")
 
     ;; Whether to use git.io/JiJVX for adding sources and javadocs to the classpath.
     (setq cider-enrich-classpath t)
 
-    (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.5.5")
+    (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.6.0")
 
     ;; Fuzzy candidate matching
     (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
