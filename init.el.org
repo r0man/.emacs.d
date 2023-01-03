@@ -2202,8 +2202,8 @@ trees.
   (use-package org-tree-slide
     :bind
     (:map org-tree-slide-mode-map
-          ("<f9>" . org-tree-slide-move-previous-tree)
-          ("<f10>" . org-tree-slide-move-next-tree))
+          ("<prior>" . org-tree-slide-move-previous-tree)
+          ("<next>" . org-tree-slide-move-next-tree))
     :config
     (add-hook 'org-tree-slide-mode-hook (lambda () (org-display-inline-images))))
 #+END_SRC
