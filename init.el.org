@@ -1826,10 +1826,10 @@ Configure mu.
 
     (setq mu4e-bookmarks
           '((:name "Burning Swell"
-                   :query "maildir:/burningswell/* AND NOT list:guix-devel.gnu.org"
+                   :query "maildir:/burningswell/* AND NOT flag:list"
                    :key ?b)
             (:name "Nubank"
-                   :query "maildir:/nubank/*"
+                   :query "maildir:/nubank/* AND NOT flag:list"
                    :key ?n)
             (:name "Guix Devel"
                    :query "list:guix-devel.gnu.org"
