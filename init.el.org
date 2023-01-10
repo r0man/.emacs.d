@@ -1968,6 +1968,10 @@ Switch to the most recently used term-mode buffer, or create a new one.
   (use-package multiple-cursors
     :defer 1)
 #+END_SRC
+** Mouse
+#+begin_src emacs-lisp
+  (set-mouse-color "white")
+#+end_src
 ** Nucli
 #+BEGIN_SRC emacs-lisp
   (use-package nucli
