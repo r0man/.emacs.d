@@ -2266,6 +2266,8 @@ The org-mode Pandoc exporter.
 ** Paredit
 #+BEGIN_SRC emacs-lisp
   (use-package paredit
+    ;; Bind RET to nil, to fix Cider REPL buffer eval issue
+    :bind (:map paredit-mode-map ("RET" . nil))
     :hook ((clojure-mode . paredit-mode)
            (clojurescript-mode . paredit-mode)
            (emacs-lisp-mode . paredit-mode)
