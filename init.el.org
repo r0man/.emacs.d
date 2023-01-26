@@ -561,7 +561,8 @@ JIRA integration to Emacs org-mode.
             "https://nullprogram.com/feed"
             "https://planet.emacslife.com/atom.xml"
             "https://sulami.github.io/atom.xml"
-            "http://planet.lisp.org/rss20.xml")))
+            "http://planet.lisp.org/rss20.xml"
+            "https://planet.scheme.org/atom.xml")))
 #+END_SRC
 ** Elixir
 #+BEGIN_SRC emacs-lisp
