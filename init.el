@@ -30,7 +30,6 @@
        (load-path (append (list org-dir org-contrib-dir)
                           (or load-path nil))))
   ;; load up Org-mode and Org-babel
-  (require 'org-install)
   (require 'ob-tangle)
   (message "Loaded Org Mode (%.03fs)" (float-time (time-since started-at))))
 
