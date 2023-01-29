@@ -847,6 +847,7 @@ The Geiser implementation for Guile scheme.
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-channel"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-home"))
+    (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-system"))
     ;; (add-to-list 'geiser-guile-load-path (expand-file-name "~/.config/guix/current/share/guile/site/3.0"))
     ;; (add-to-list 'geiser-guile-load-path (expand-file-name "~/.config/guix/current"))
     )
