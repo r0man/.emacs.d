@@ -16,7 +16,38 @@
  '(package-selected-packages
    '(org-plus-contrib timesheet plantuml plantuml-mode org org-ac terraform-mode flycheck-flow flycheck indium ensime haskell-mode helm-projectile avy-menu solarized-theme helm yaml-mode which-key web-mode virtualenvwrapper use-package soundklaus smooth-scrolling smex slime slamhound scss-mode sayid rainbow-mode projectile pretty-lambdada popwin multi-term markdown-preview-mode markdown-preview-eww magit ido-vertical-mode ido-ubiquitous hy-mode graphql-mode github-browse-file flymd flx-ido expand-region exec-path-from-shell engine-mode elpy elisp-slime-nav ein company-quickhelp color-theme clojure-mode-extra-font-locking clj-refactor cask avy auto-dictionary))
  '(safe-local-variable-values
-   '((eval modify-syntax-entry 43 "'")
+   '((eval progn
+           (require 'lisp-mode)
+           (defun emacs27-lisp-fill-paragraph
+               (&optional justify)
+             (interactive "P")
+             (or
+              (fill-comment-paragraph justify)
+              (let
+                  ((paragraph-start
+                    (concat paragraph-start "\\|\\s-*\\([(;\"]\\|\\s-:\\|`(\\|#'(\\)"))
+                   (paragraph-separate
+                    (concat paragraph-separate "\\|\\s-*\".*[,\\.]$"))
+                   (fill-column
+                    (if
+                        (and
+                         (integerp emacs-lisp-docstring-fill-column)
+                         (derived-mode-p 'emacs-lisp-mode))
+                        emacs-lisp-docstring-fill-column fill-column)))
+                (fill-paragraph justify))
+              t))
+           (setq-local fill-paragraph-function #'emacs27-lisp-fill-paragraph))
+     (eval with-eval-after-load 'yasnippet
+           (let
+               ((guix-yasnippets
+                 (expand-file-name "etc/snippets/yas"
+                                   (locate-dominating-file default-directory ".dir-locals.el"))))
+             (unless
+                 (member guix-yasnippets yas-snippet-dirs)
+               (add-to-list 'yas-snippet-dirs guix-yasnippets)
+               (yas-reload-all))))
+     (eval add-to-list 'completion-ignored-extensions ".go")
+     (eval modify-syntax-entry 43 "'")
      (eval modify-syntax-entry 36 "'")
      (eval modify-syntax-entry 126 "'")
      (eval let
