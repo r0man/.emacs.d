@@ -1528,19 +1528,17 @@ Start the Emacs server if it's not running.
 
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck
-    :init (global-flycheck-mode))
+    :hook ((after-init . global-flycheck-mode)))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck-elsa
-    :after flycheck
-    :init (add-hook 'emacs-lisp-mode-hook #'flycheck-elsa-setup))
+    :hook ((emacs-lisp-mode . flycheck-elsa-setup)))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck-clj-kondo
-    :after flycheck
-    :init (add-hook 'clojure-mode-hook (lambda () (require 'flycheck-clj-kondo))))
+    :hook ((clojure-mode . (lambda () (require 'flycheck-clj-kondo)))))
 #+END_SRC
 
 ** Fly Spell mode
