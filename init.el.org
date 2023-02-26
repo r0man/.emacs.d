@@ -842,6 +842,7 @@ The Geiser implementation for Guile scheme.
 
 #+BEGIN_SRC emacs-lisp
   (use-package geiser-guile
+    :after geiser
     :custom
     (geiser-default-implementation 'guile)
     :config
