@@ -455,7 +455,8 @@ Display minutes to appointment and time on the mode line.
 A GNU Emacs major mode for editing BNF grammars.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package bnf-mode)
+  (use-package bnf-mode
+    :mode (("\\.bnf$" . bnf-mode)))
 #+END_SRC
 ** Common Lisp Hyper Spec
 
