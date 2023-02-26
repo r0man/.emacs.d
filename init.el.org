@@ -1960,6 +1960,7 @@ Switch to the most recently used term-mode buffer, or create a new one.
 
 #+BEGIN_SRC emacs-lisp
   (use-package multi-vterm
+    :after vterm
     :bind (("C-x M" . multi-vterm)
            ("C-x m" . multi-vterm-next)
            ;; :map projectile-mode-map
@@ -2635,8 +2636,8 @@ Don't insert tabs.
 #+BEGIN_SRC emacs-lisp
   (use-package vterm
     :commands (vterm)
-    :config
-    (setq vterm-max-scrollback 100000))
+    :custom
+    (vterm-max-scrollback 100000))
 #+END_SRC
 ** Web mode
 #+BEGIN_SRC emacs-lisp
