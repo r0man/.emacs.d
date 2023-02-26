@@ -710,11 +710,9 @@ JIRA integration to Emacs org-mode.
 
 #+BEGIN_SRC emacs-lisp
   (use-package clj-refactor
-    :init
-    (defun enable-clj-refactor-mode ()
-      (clj-refactor-mode 1)
-      (cljr-add-keybindings-with-prefix "C-c C-R"))
-    (add-hook 'clojure-mode-hook 'enable-clj-refactor-mode)
+    :hook ((clojure-mode . clj-refactor-mode))
+    :config
+    (cljr-add-keybindings-with-prefix "C-c C-R")
     ;; Don't place a newline after the `:require` and `:import` tokens
     (setq cljr-insert-newline-after-require nil)
     ;; Don't use prefix notation when cleaning the ns form.
