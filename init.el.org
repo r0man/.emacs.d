@@ -2486,6 +2486,7 @@ Emacs client for the Language Server Protocol.
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-dart
+    :after lsp-mode
     :hook dart-mode
     :custom
     (lsp-dart-dap-flutter-hot-reload-on-save t)
@@ -2496,21 +2497,25 @@ Emacs client for the Language Server Protocol.
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-treemacs
+    :after lsp-mode
     :commands lsp-treemacs-errors-list)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-metals
+    :after lsp-mode
     :config (setq lsp-metals-treeview-show-when-views-received nil))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-java
+    :after lsp-mode
     :hook (java-mode . lsp-deferred))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-ui
+    :after lsp-mode
     :commands lsp-ui-mode)
 #+END_SRC
 
