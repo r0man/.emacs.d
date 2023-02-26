@@ -420,7 +420,8 @@ This variable describes the behavior of the command key.
 #+END_SRC
 ** Ascii Doc
 #+BEGIN_SRC emacs-lisp
-  (use-package adoc-mode)
+  (use-package adoc-mode
+    :mode (("\\.adoc$" . adoc-mode)))
 #+END_SRC
 ** Avy
 #+BEGIN_SRC emacs-lisp
