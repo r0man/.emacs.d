@@ -4,6 +4,20 @@
   ;;; init.el --- My Emacs configuration. -*- lexical-binding: t; -*-
 #+END_SRC
 
+** Custom
+
+Set location of custom file.
+
+#+BEGIN_SRC emacs-lisp
+  (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+#+END_SRC
+
+Load custom file.
+
+#+BEGIN_SRC emacs-lisp
+  (load custom-file)
+#+END_SRC
+
 ** Color theme
 
 #+BEGIN_SRC emacs-lisp
@@ -109,19 +123,6 @@ Set default value of various coding systems to UTF-8.
     "Set the default font for use with external monitor."
     (interactive)
     (set-frame-font "Inconsolata-12" nil t))
-#+END_SRC
-** Custom
-
-Set location of custom file.
-
-#+BEGIN_SRC emacs-lisp
-  (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
-#+END_SRC
-
-Load custom file.
-
-#+BEGIN_SRC emacs-lisp
-  (load custom-file)
 #+END_SRC
 
 ** Use package
