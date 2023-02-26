@@ -821,9 +821,8 @@ Enable company mode.
 
 #+BEGIN_SRC emacs-lisp
   (use-package company
-    :defer 1
+    :hook ((after-init . global-company-mode))
     :init
-    (global-company-mode)
     ;; No delay in showing suggestions.
     (setq company-idle-delay 0)
     ;; Show suggestions after entering one character.
@@ -841,7 +840,8 @@ Indent with TAB, then do completion.
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-  (use-package company-capf)
+  (use-package company-capf
+    :after company)
 #+END_SRC
 
 ** Company Quickhelp
