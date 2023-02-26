@@ -520,7 +520,7 @@ JIRA integration to Emacs org-mode.
 ** eval-expr
 #+BEGIN_SRC emacs-lisp
   (use-package eval-expr
-    :config (eval-expr-install))
+    :hook ((emacs-lisp-mode . eval-expr-install)))
 #+END_SRC
 ** Clojure mode
 #+BEGIN_SRC emacs-lisp
