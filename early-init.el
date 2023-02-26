@@ -9,6 +9,7 @@
 
 ;; Number of bytes of consing between garbage collections.
 ;; https://emacs-lsp.github.io/lsp-mode/page/performance/#adjust-gc-cons-threshold
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 64000000)
+(add-hook 'after-init-hook #'(lambda () (setq gc-cons-threshold 100000000)))
 
 ;;; early-init.el ends here
