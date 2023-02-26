@@ -2111,7 +2111,7 @@ Open files with external programs.
 
 #+BEGIN_SRC emacs-lisp
   (use-package openwith
-    :load-path ("~/.emacs.d/vendor")
+    :hook ((after-init . openwith-mode))
     :config
     (setq openwith-associations
           (list
@@ -2121,11 +2121,6 @@ Open files with external programs.
                     "ogm" "ogg" "mkv"))
                  "vlc"
                  '(file))
-           ;; (list (openwith-make-extension-regexp
-           ;;        '("xbm" "pbm" "pgm" "ppm" "pnm"
-           ;;          "png" "gif" "bmp" "tif" "jpeg" "jpg"))
-           ;;       "geeqie"
-           ;;       '(file))
            (list (openwith-make-extension-regexp
                   '("doc" "xls" "ppt" "odt" "ods" "odg" "odp"))
                  "libreoffice"
@@ -2133,8 +2128,7 @@ Open files with external programs.
            (list (openwith-make-extension-regexp
                   '("pdf" "ps" "ps.gz" "dvi"))
                  "evince"
-                 '(file))))
-    (openwith-mode 1))
+                 '(file)))))
 #+END_SRC
 
 ** Org GCal
