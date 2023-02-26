@@ -2294,8 +2294,12 @@ The org-mode Pandoc exporter.
 ** PlantUML
 #+BEGIN_SRC emacs-lisp
   (use-package plantuml-mode
-    :config
-    (setq org-plantuml-jar-path "~/.guix-profile/share/java/plantuml.jar"))
+    :mode (("\\.plantump$" . plantuml-mode)
+           ("\\.plu$" . plantuml-mode)
+           ("\\.pum$" . plantuml-mode)
+           ("\\.uml$" . plantuml-mode))
+    :custom
+    (org-plantuml-jar-path "~/.guix-profile/share/java/plantuml.jar"))
 #+END_SRC
 ** Pretty Print JSON
 
