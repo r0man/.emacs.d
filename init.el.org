@@ -677,6 +677,17 @@ JIRA integration to Emacs org-mode.
     ;; Print a message when the AST has been built.
     (setq cljr--debug-mode t))
 #+END_SRC
+** Code GPT
+
+This Emacs Code extension allows you to use the official OpenAI API to
+generate code or natural language responses from OpenAI's GPT-3 to
+your questions, right within the editor.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package codegpt
+    :commands (codegpt))
+#+END_SRC
+
 ** Consult
 
 #+BEGIN_SRC emacs-lisp
