@@ -320,6 +320,13 @@ Run the current buffer through zprint.
     (eldoc-echo-area-prefer-doc-buffer t)
     (eldoc-echo-area-use-multiline-p 5))
 #+END_SRC
+** Eldoc Box
+
+#+BEGIN_SRC emacs-lisp
+  (use-package eldoc-box
+    :disabled
+    :hook ((eglot-managed-mode . eldoc-box-hover-mode)))
+#+END_SRC
 
 ** Mac OSX
 
