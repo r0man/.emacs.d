@@ -132,6 +132,18 @@ See: [[https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing
   (use-package cask
     :disabled)
 #+END_SRC
+** ChatGPT
+
+  Use ChatGPT inside Emacs
+
+  This Emacs Code extension allows you to use the official OpenAI
+  API to generate code or natural language responses from OpenAI's
+  ChatGPT to your questions, right within the editor.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package chatgpt
+    :commands (chatgpt chatgpt-new))
+#+END_SRC
 ** Custom functions
 
 Load a file only if it exists.
