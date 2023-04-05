@@ -1,8 +1,14 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("X Resources"
+(("Kubernetes Configuration"
+ (filename . "~/.kube/config")
+ (front-context-string . "apiVersion: v1\nc")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25633 19830 110590 84000))
+("X Resources"
  (filename . "~/.dotfiles/x11/.Xresources")
  (front-context-string . "! Applications w")
  (rear-context-string)
