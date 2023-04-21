@@ -2079,6 +2079,12 @@ Support for indenting code in SQL files.
   (setq uniquify-after-kill-buffer-p t)
 #+END_SRC
 
+** Open AI
+#+begin_src emacs-lisp
+  (use-package openai
+    :init
+    (setq openai-key #'openai-key-auth-source))
+#+end_src
 ** Open With
 
 Open files with external programs.
