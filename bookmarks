@@ -3,44 +3,50 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("Kubernetes Configuration"
- (filename . "~/.kube/config")
- (front-context-string . "apiVersion: v1\nc")
- (rear-context-string)
- (position . 1)
- (last-modified 25633 19830 110590 84000))
-("X Resources"
- (filename . "~/.dotfiles/x11/.Xresources")
- (front-context-string . "! Applications w")
- (rear-context-string)
- (position . 1))
-("Stumpwm Configuration"
- (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
- (front-context-string . ";; Configure res")
- (rear-context-string . "rder-width* 1)\n\n")
- (position . 713))
-("Zsh Configuration"
- (filename . "~/.dotfiles/zsh/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
-("Xmonad Configuration"
- (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
- (front-context-string . "--\n-- xmonad exa")
- (rear-context-string)
- (position . 1))
-("Emacs Configuration"
- (filename . "~/.emacs.d/init.el.org")
- (front-context-string . "* init.el\n** Pac")
- (rear-context-string)
- (position . 1))
-("Leiningen Profiles"
- (filename . "~/.lein/profiles.clj")
- (front-context-string . "{;; :repl {:depe")
- (rear-context-string)
- (position . 1))
-("PostgreSQL Configuration"
- (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
- (front-context-string . "# --------------")
- (rear-context-string)
- (position . 1))
-)
+  (filename . "~/.kube/config")
+  (front-context-string . "apiVersion: v1\nc")
+  (rear-context-string)
+  (position . 1)
+  (last-modified 25633 19830 110590 84000))
+ ("System Logs"
+  (filename . "/sudo:root@localhost:/var/log/")
+  (front-context-string . "audit.log\n  -rw-")
+  (rear-context-string . "1K Mar 31 16:54 ")
+  (position . 171)
+  (last-modified 25638 62498 708387 467000))
+ ("X Resources"
+  (filename . "~/.dotfiles/x11/.Xresources")
+  (front-context-string . "! Applications w")
+  (rear-context-string)
+  (position . 1))
+ ("Stumpwm Configuration"
+  (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
+  (front-context-string . ";; Configure res")
+  (rear-context-string . "rder-width* 1)\n\n")
+  (position . 713))
+ ("Zsh Configuration"
+  (filename . "~/.dotfiles/zsh/.zshrc")
+  (front-context-string . "# Lines configur")
+  (rear-context-string)
+  (position . 1))
+ ("Xmonad Configuration"
+  (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
+  (front-context-string . "--\n-- xmonad exa")
+  (rear-context-string)
+  (position . 1))
+ ("Emacs Configuration"
+  (filename . "~/.emacs.d/init.el.org")
+  (front-context-string . "* init.el\n** Pac")
+  (rear-context-string)
+  (position . 1))
+ ("Leiningen Profiles"
+  (filename . "~/.lein/profiles.clj")
+  (front-context-string . "{;; :repl {:depe")
+  (rear-context-string)
+  (position . 1))
+ ("PostgreSQL Configuration"
+  (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
+  (front-context-string . "# --------------")
+  (rear-context-string)
+  (position . 1))
+ )
