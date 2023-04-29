@@ -2611,6 +2611,15 @@ Don't insert tabs.
     :custom
     (vterm-max-scrollback 100000))
 #+END_SRC
+** Warnings
+
+Log and display warnings.
+
+#+begin_src emacs-lisp
+  (use-package warnings                   ;
+    :custom
+    (warning-minimum-level :error))
+#+end_src
 ** Web mode
 #+BEGIN_SRC emacs-lisp
   (use-package web-mode
