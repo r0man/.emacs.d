@@ -1043,6 +1043,14 @@ typing. Automatically switches the spell checker and typo-mode.
   (use-package guix
     :hook ((scheme-mode . guix-devel-mode)))
 #+end_src
+** GPTel
+#+BEGIN_SRC emacs-lisp
+  (use-package gptel
+    :commands gptel
+    :load-path ("~/workspace/gptel")
+    :init
+    (setq gptel-openai-endpoint "http://localhost:3005/v1"))
+#+END_SRC
 ** Helpful
 
 Helpful is an alternative to the built-in Emacs help that provides
@@ -2093,6 +2101,8 @@ Support for indenting code in SQL files.
     :init
     (setq openai-key #'openai-key-auth-source)
     (when (file-exists-p "~/workspace/nu")
+      ;; (setq chatgpt-model "gpt-4")
+      ;; (setq codegpt-model "gpt-4")
       (setq openai-base-url "http://localhost:3005/v1")))
 #+end_src
 ** Open With
