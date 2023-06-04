@@ -134,11 +134,11 @@ See: [[https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing
 #+END_SRC
 ** ChatGPT
 
-  Use ChatGPT inside Emacs
+Use ChatGPT inside Emacs
 
-  This Emacs Code extension allows you to use the official OpenAI
-  API to generate code or natural language responses from OpenAI's
-  ChatGPT to your questions, right within the editor.
+This Emacs Code extension allows you to use the official OpenAI
+API to generate code or natural language responses from OpenAI's
+ChatGPT to your questions, right within the editor.
 
 #+BEGIN_SRC emacs-lisp
   (use-package chatgpt
@@ -479,31 +479,31 @@ JIRA integration to Emacs org-mode.
     :load-path ("~/workspace/ejira")
     :init
     (setq jiralib2-url "https://nubank.atlassian.net"
-	  jiralib2-auth 'basic
-	  jiralib2-user-login-name "roman.scherer@nubank.com.br"
-	  jiralib2-token nil
-	  ejira-org-directory "~/jira"
-	  ejira-projects '("DIEP")
+          jiralib2-auth 'basic
+          jiralib2-user-login-name "roman.scherer@nubank.com.br"
+          jiralib2-token nil
+          ejira-org-directory "~/jira"
+          ejira-projects '("DIEP")
 
-	  ;; Configure JIRA priorities
-	  ejira-priorities-alist '(("Highest" . ?A)
-				   ("High"    . ?B)
-				   ("Medium"  . ?C)
-				   ("Low"     . ?D)
-				   ("Lowest"  . ?E))
+          ;; Configure JIRA priorities
+          ejira-priorities-alist '(("Highest" . ?A)
+                                   ("High"    . ?B)
+                                   ("Medium"  . ?C)
+                                   ("Low"     . ?D)
+                                   ("Lowest"  . ?E))
 
-	  ;; Map JIRA states to org states.
-	  ejira-todo-states-alist '(("Unscheduled" . 1)
-				    ("Groomed" . 2)
-				    ("Ready For Development" . 3)
-				    ("In Development" . 4)
-				    ("Ready For Review" . 5)
-				    ("Ready For Deploy" . 6)
-				    ("Done" . 7))
+          ;; Map JIRA states to org states.
+          ejira-todo-states-alist '(("Unscheduled" . 1)
+                                    ("Groomed" . 2)
+                                    ("Ready For Development" . 3)
+                                    ("In Development" . 4)
+                                    ("Ready For Review" . 5)
+                                    ("Ready For Deploy" . 6)
+                                    ("Done" . 7))
 
-	  ;; Set the highest/lowest org priorities
-	  org-priority-highest ?A
-	  org-priority-lowest ?E)
+          ;; Set the highest/lowest org priorities
+          org-priority-highest ?A
+          org-priority-lowest ?E)
     :config
     ;; Tries to auto-set custom fields by looking into /editmeta
     ;; of an issue and an epic.
@@ -524,7 +524,7 @@ JIRA integration to Emacs org-mode.
     (org-add-agenda-custom-command
      '("j" "My JIRA issues"
        ((ejira-jql "resolution = unresolved and assignee = currentUser()"
-		   ((org-agenda-overriding-header "Assigned to me")))))))
+                   ((org-agenda-overriding-header "Assigned to me")))))))
 #+END_SRC
 
 ** ElFeed
@@ -565,36 +565,36 @@ JIRA integration to Emacs org-mode.
     (add-hook 'clojure-mode-hook #'paredit-mode)
     (define-key clojure-mode-map (kbd "C-c t") #'projectile-toggle-between-implementation-and-test)
     (define-clojure-indent
-      (match? 0)
-      (time! 1)
-      (fdef 1)
-      (providing 1)
-      ;; cljs.test
-      (async 1)
-      ;; ClojureScript
-      (this-as 1)
-      ;; COMPOJURE
-      (ANY 2)
-      (DELETE 2)
-      (GET 2)
-      (HEAD 2)
-      (POST 2)
-      (PUT 2)
-      (context 2)
-      ;; ALGO.MONADS
-      (domonad 1)
-      ;; Om.next
-      (defui '(1 nil nil (1)))
-      ;; CUSTOM
-      (api-test 1)
-      (web-test 1)
-      (database-test 1)
-      (defroutes 'defun)
-      (flow 'defun)
-      (for-all '(1 (2)))
-      (assoc-some 1)
-      (let-entities 2)
-      (functions/constraint-fn 2))
+     (match? 0)
+     (time! 1)
+     (fdef 1)
+     (providing 1)
+     ;; cljs.test
+     (async 1)
+     ;; ClojureScript
+     (this-as 1)
+     ;; COMPOJURE
+     (ANY 2)
+     (DELETE 2)
+     (GET 2)
+     (HEAD 2)
+     (POST 2)
+     (PUT 2)
+     (context 2)
+     ;; ALGO.MONADS
+     (domonad 1)
+     ;; Om.next
+     (defui '(1 nil nil (1)))
+     ;; CUSTOM
+     (api-test 1)
+     (web-test 1)
+     (database-test 1)
+     (defroutes 'defun)
+     (flow 'defun)
+     (for-all '(1 (2)))
+     (assoc-some 1)
+     (let-entities 2)
+     (functions/constraint-fn 2))
     (put 'defmixin 'clojure-backtracking-indent '(4 (2)))
     (require 'clojure-mode-extra-font-locking))
 #+END_SRC
