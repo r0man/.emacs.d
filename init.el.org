@@ -657,8 +657,8 @@ JIRA integration to Emacs org-mode.
     (add-to-list 'cider-test-defining-forms "defflow-as-of")
     (add-to-list 'cider-test-defining-forms "defflow-with-params")
 
-    ;; (setq cider-injected-middleware-version "0.0.0")
-    ;; (setq cider-required-middleware-version "0.0.0")
+    (setq cider-injected-middleware-version "0.0.0")
+    (setq cider-required-middleware-version "0.0.0")
 
     ;; (add-to-list 'cider-jack-in-nrepl-middlewares "stem.nrepl/middleware")
     ;; (cider-add-to-alist 'cider-jack-in-dependencies "stem/nrepl" "1.1.2-SNAPSHOT")
