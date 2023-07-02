@@ -307,9 +307,17 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
 
 #+BEGIN_SRC emacs-lisp
   (use-package copilot
-    :commands (copilot-login
-               copilot-diagnose
-               copilot-complete))
+    :hook ((clojure-mode . copilot-mode)
+           (clojure-ts-mode . copilot-mode)
+           (clojurec-mode . copilot-mode)
+           (clojurescript-mode . copilot-mode)
+           (emacs-lisp-mode . copilot-mode)
+           (prog-mode . copilot-mode))
+    :bind (:map copilot-completion-map
+                ("<tab>" . 'copilot-accept-completion)
+                ("TAB" . 'copilot-accept-completion)
+                ("C-TAB" . 'copilot-accept-completion-by-word)
+                ("C-<tab>" . 'copilot-accept-completion-by-word)))
 #+END_SRC
 
 ** Datomic.el
