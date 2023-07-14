@@ -461,6 +461,7 @@ A GNU Emacs major mode for editing BNF grammars.
            (clojure-ts-mode . eglot-ensure)
            (elixir-mode . eglot-ensure)
            ;; (scala-mode . eglot-ensure)
+           ;; (scheme-mode . eglot-ensure)
            )
     :config
     (add-to-list 'eglot-server-programs '(elixir-mode . ("~/workspace/elixir-ls/release/language_server.sh")))
