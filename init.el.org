@@ -565,6 +565,7 @@ JIRA integration to Emacs org-mode.
     (add-hook 'clojure-mode-hook #'paredit-mode)
     (define-key clojure-mode-map (kbd "C-c t") #'projectile-toggle-between-implementation-and-test)
     (define-clojure-indent
+     (assoc 1)
      (match? 0)
      (time! 1)
      (fdef 1)
