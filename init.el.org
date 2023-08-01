@@ -2298,6 +2298,14 @@ The org-mode Pandoc exporter.
     (setq pepita-splunk-url "https://localhost:8089/services/"))
 #+END_SRC
 
+** Pixel Scroll Precision Mode
+
+When enabled, this minor mode allows to scroll the display precisely,
+according to the turning of the mouse wheel.
+
+#+begin_src emacs-lisp
+  (pixel-scroll-precision-mode 1)
+#+end_src
 ** PlantUML
 #+BEGIN_SRC emacs-lisp
   (use-package plantuml-mode
