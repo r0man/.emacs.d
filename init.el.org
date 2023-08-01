@@ -309,9 +309,17 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
 
 #+BEGIN_SRC emacs-lisp
   (use-package copilot
-    :commands (copilot-login
-               copilot-diagnose
-               copilot-complete))
+    :hook ((clojure-mode . copilot-mode)
+           (clojure-ts-mode . copilot-mode)
+           (clojurec-mode . copilot-mode)
+           (clojurescript-mode . copilot-mode)
+           (emacs-lisp-mode . copilot-mode)
+           (prog-mode . copilot-mode))
+    :bind (:map copilot-completion-map
+                ("<tab>" . 'copilot-accept-completion)
+                ("TAB" . 'copilot-accept-completion)
+                ("C-TAB" . 'copilot-accept-completion-by-word)
+                ("C-<tab>" . 'copilot-accept-completion-by-word)))
 #+END_SRC
 
 ** Datomic.el
@@ -455,10 +463,12 @@ A GNU Emacs major mode for editing BNF grammars.
            (clojure-ts-mode . eglot-ensure)
            (elixir-mode . eglot-ensure)
            ;; (scala-mode . eglot-ensure)
+           ;; (scheme-mode . eglot-ensure)
            )
     :config
     (add-to-list 'eglot-server-programs '(elixir-mode . ("~/workspace/elixir-ls/release/language_server.sh")))
     (add-to-list 'eglot-server-programs '(scala-mode . ("metals")))
+    (add-to-list 'eglot-server-programs `(scheme-mode . ("guile-lsp-server")))
     ;; (add-hook 'eglot-managed-mode-hook
     ;;           ;; This displays full docs for clojure functions.
     ;;           ;; See https://github.com/joaotavora/eglot/discussions/894
