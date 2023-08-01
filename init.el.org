@@ -2153,6 +2153,7 @@ Use Jira in Emacs org-mode.
   (use-package org-jira
     :commands (org-jira-get-issues)
     :config
+    (make-directory org-jira-working-dir t)
     (setq jiralib-url "https://nubank.atlassian.net"))
 #+END_SRC
 
