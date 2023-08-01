@@ -161,7 +161,9 @@ Indent the whole buffer.
   (defun indent-buffer ()
     "Indent the whole buffer."
     (interactive)
-    (indent-region (point-min) (point-max)))
+    (if (member 'eglot--managed-mode minor-mode-list)
+        (eglot-format-buffer)
+      (indent-region (point-min) (point-max))))
 #+END_SRC
 
 Remove all tabs from the current buffer.
