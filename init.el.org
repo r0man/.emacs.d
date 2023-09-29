@@ -1043,6 +1043,7 @@ typing. Automatically switches the spell checker and typo-mode.
 
 #+begin_src emacs-lisp
   (use-package guess-language
+    :disabled
     :hook (text-mode . guess-language-mode)
     :config
     (setq guess-language-langcodes
