@@ -1611,6 +1611,22 @@ Lisp bindings to JIRA REST API.
     :defer t)
 #+END_SRC
 
+** Jinx
+
+Jinx is a fast just-in-time spell-checker for Emacs. Jinx highlights
+misspelled words in the text of the visible portion of the buffer. For
+efficiency, Jinx highlights misspellings lazily, recognizes window
+boundaries and text folding, if any. For example, when unfolding or
+scrolling, only the newly visible part of the text is checked if it
+has not been checked before. Each misspelling can be corrected from a
+list of dictionary words presented as a completion menu.
+
+#+begin_src emacs-lisp
+  (use-package jinx
+    :hook (emacs-startup . global-jinx-mode)
+    :bind (("M-$" . jinx-correct)
+           ("C-M-$" . jinx-languages)))
+#+end_src
 ** Kubel
 #+BEGIN_SRC emacs-lisp
   (use-package kubel
