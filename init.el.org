@@ -553,6 +553,17 @@ JIRA integration to Emacs org-mode.
             "http://planet.lisp.org/rss20.xml"
             "https://planet.scheme.org/atom.xml")))
 #+END_SRC
+** Ellama
+#+BEGIN_SRC emacs-lisp
+  (use-package ellama
+    :init
+    (require 'llm-openai)
+    (setopt ellama-provider
+            (make-llm-openai
+             :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
+             :chat-model "gpt-3.5-turbo"
+             :embedding-model "text-embedding-ada-002")))
+#+END_SRC
 ** Elixir
 #+BEGIN_SRC emacs-lisp
   (use-package elixir-mode
