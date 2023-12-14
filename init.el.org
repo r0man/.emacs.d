@@ -407,6 +407,14 @@ This variable describes the behavior of the command key.
   (use-package adoc-mode
     :mode (("\\.adoc$" . adoc-mode)))
 #+END_SRC
+** Arei
+
+Asynchronous Reliable Extensible IDE for Guile Scheme.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package arei)
+#+END_SRC
+
 ** Avy
 #+BEGIN_SRC emacs-lisp
   (use-package avy
