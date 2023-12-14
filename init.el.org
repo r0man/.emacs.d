@@ -848,6 +848,7 @@ The Geiser implementation for Guile scheme.
     (geiser-default-implementation 'guile)
     :config
     ;; (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix"))
+    (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/asahi-guix/src"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-channel"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-home"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-system")))
