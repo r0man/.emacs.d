@@ -710,7 +710,7 @@ JIRA integration to Emacs org-mode.
     ;; Don't use prefix notation when cleaning the ns form.
     (setq cljr-favor-prefix-notation nil)
     ;; Don't warn when running an AST op.
-    ;; (setq cljr-warn-on-eval nil)
+    (setq cljr-warn-on-eval nil)
     ;; ;; Don't build AST on startup.
     ;; (setq cljr-eagerly-build-asts-on-startup nil)
     ;; Print a message when the AST has been built.
