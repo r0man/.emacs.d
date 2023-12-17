@@ -838,6 +838,13 @@ your questions, right within the editor.
     (setq consult-project-root-function #'projectile-project-root))
 #+END_SRC
 
+** Consult Github
+
+#+BEGIN_SRC emacs-lisp
+  (use-package consult-gh
+    :after consult)
+#+END_SRC
+
 ** Geiser
 
 Emacs and Scheme talk to each other.
