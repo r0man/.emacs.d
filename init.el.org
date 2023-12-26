@@ -467,6 +467,7 @@ A GNU Emacs major mode for editing BNF grammars.
            )
     :config
     (add-to-list 'eglot-server-programs '(elixir-mode . ("~/workspace/elixir-ls/release/language_server.sh")))
+    (add-to-list 'eglot-server-programs '(java-mode . ("~/.emacs.d/share/eclipse.jdt.ls/bin/jdtls")))
     (add-to-list 'eglot-server-programs '(scala-mode . ("metals")))
     (add-to-list 'eglot-server-programs `(scheme-mode . ("guile-lsp-server")))
     ;; (add-hook 'eglot-managed-mode-hook
@@ -1644,11 +1645,11 @@ list of dictionary words presented as a completion menu.
 Indent Java annotations. See http://lists.gnu.org/archive/html/help-gnu-emacs/2011-04/msg00262.html
 
 #+BEGIN_SRC emacs-lisp
-  (add-hook
-   'java-mode-hook
-   (lambda ()
-     (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
-     (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
+  (use-package java-mode
+    :hook ((java-mode . eglot-ensure))
+    :config
+    (setq c-comment-start-regexp "\\(@\\|/\\(/\\|[*][*]?\\)\\)")
+    (modify-syntax-entry ?@ "< b" java-mode-syntax-table))
 #+END_SRC
 ** JavaScript
 
@@ -2511,8 +2512,8 @@ Emacs client for the Language Server Protocol.
 
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-java
-    :after lsp-mode
-    :hook (java-mode . lsp-deferred))
+    :disabled
+    :after lsp-mode)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
