@@ -407,6 +407,14 @@ This variable describes the behavior of the command key.
   (use-package adoc-mode
     :mode (("\\.adoc$" . adoc-mode)))
 #+END_SRC
+** Arei
+
+Asynchronous Reliable Extensible IDE for Guile Scheme.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package arei)
+#+END_SRC
+
 ** Avy
 #+BEGIN_SRC emacs-lisp
   (use-package avy
@@ -469,7 +477,7 @@ A GNU Emacs major mode for editing BNF grammars.
     (add-to-list 'eglot-server-programs '(elixir-mode . ("~/workspace/elixir-ls/release/language_server.sh")))
     (add-to-list 'eglot-server-programs '(java-mode . ("~/.emacs.d/share/eclipse.jdt.ls/bin/jdtls")))
     (add-to-list 'eglot-server-programs '(scala-mode . ("metals")))
-    (add-to-list 'eglot-server-programs `(scheme-mode . ("guile-lsp-server")))
+    ;; (add-to-list 'eglot-server-programs `(scheme-mode . ("guile-lsp-server")))
     ;; (add-hook 'eglot-managed-mode-hook
     ;;           ;; This displays full docs for clojure functions.
     ;;           ;; See https://github.com/joaotavora/eglot/discussions/894
@@ -554,6 +562,17 @@ JIRA integration to Emacs org-mode.
             "http://planet.lisp.org/rss20.xml"
             "https://planet.scheme.org/atom.xml")))
 #+END_SRC
+** Ellama
+#+BEGIN_SRC emacs-lisp
+  (use-package ellama
+    :init
+    (require 'llm-openai)
+    (setopt ellama-provider
+            (make-llm-openai
+             :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
+             :chat-model "gpt-3.5-turbo"
+             :embedding-model "text-embedding-ada-002")))
+#+END_SRC
 ** Elixir
 #+BEGIN_SRC emacs-lisp
   (use-package elixir-mode
@@ -626,7 +645,7 @@ JIRA integration to Emacs org-mode.
 
     ;; Add Cider Xref backend to the end, use lsp-mode.
     ;; (setq cider-xref-fn-depth -90)
-    (setq cider-xref-fn-depth 0)
+    ;; (setq cider-xref-fn-depth 0)
     ;; (setq cider-xref-fn-depth 90)
 
     ;; Pretty print in the REPL.
@@ -663,13 +682,8 @@ JIRA integration to Emacs org-mode.
     ;; Don't show the `*cider-test-report*` buffer on passing tests.
     (setq cider-test-report-on-success nil)
 
-    (add-to-list 'cider-test-defining-forms "def-repl-test")
-    (add-to-list 'cider-test-defining-forms "defflow")
-    (add-to-list 'cider-test-defining-forms "defflow-as-of")
-    (add-to-list 'cider-test-defining-forms "defflow-with-params")
-
-    (setq cider-injected-middleware-version "0.0.0")
-    (setq cider-required-middleware-version "0.0.0")
+    (setq cider-injected-middleware-version "0.44.0")
+    (setq cider-required-middleware-version "0.44.0")
 
     ;; (add-to-list 'cider-jack-in-nrepl-middlewares "stem.nrepl/middleware")
     ;; (cider-add-to-alist 'cider-jack-in-dependencies "stem/nrepl" "1.1.2-SNAPSHOT")
@@ -678,9 +692,9 @@ JIRA integration to Emacs org-mode.
     ;; (cider-add-to-alist 'cider-jack-in-dependencies "nrepl-rebl/nrepl-rebl" "0.1.1")
 
     ;; Whether to use git.io/JiJVX for adding sources and javadocs to the classpath.
-    (setq cider-enrich-classpath t)
+    (setq cider-enrich-classpath nil)
 
-    (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.6.0")
+    (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.9.0")
 
     ;; Fuzzy candidate matching
     (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
@@ -705,7 +719,7 @@ JIRA integration to Emacs org-mode.
     ;; Don't use prefix notation when cleaning the ns form.
     (setq cljr-favor-prefix-notation nil)
     ;; Don't warn when running an AST op.
-    ;; (setq cljr-warn-on-eval nil)
+    (setq cljr-warn-on-eval nil)
     ;; ;; Don't build AST on startup.
     ;; (setq cljr-eagerly-build-asts-on-startup nil)
     ;; Print a message when the AST has been built.
@@ -825,6 +839,13 @@ your questions, right within the editor.
     (setq consult-project-root-function #'projectile-project-root))
 #+END_SRC
 
+** Consult Github
+
+#+BEGIN_SRC emacs-lisp
+  (use-package consult-gh
+    :after consult)
+#+END_SRC
+
 ** Geiser
 
 Emacs and Scheme talk to each other.
@@ -843,6 +864,7 @@ The Geiser implementation for Guile scheme.
     (geiser-default-implementation 'guile)
     :config
     ;; (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix"))
+    (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/asahi-guix/channel/src"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-channel"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-home"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-system")))

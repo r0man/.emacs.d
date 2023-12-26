@@ -16,7 +16,8 @@
 ;; Load customization settings first.
 
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
-(load custom-file)
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; Load theme.
 
