@@ -490,6 +490,14 @@ A GNU Emacs major mode for editing BNF grammars.
     :custom
     (eglot-extend-to-xref t))
 #+end_src
+** Eglot Java
+
+Provides additional Java programming language support for Eglot.
+
+#+begin_src emacs-lisp
+  (use-package eglot-java
+    :hook ((java-mode . eglot-java-mode)))
+#+end_src
 ** EJira
 
 JIRA integration to Emacs org-mode.
