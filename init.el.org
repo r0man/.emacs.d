@@ -2691,6 +2691,15 @@ Log and display warnings.
   (use-package which-key
     :config (which-key-mode))
 #+END_SRC
+** Whisper
+#+BEGIN_SRC emacs-lisp
+  (use-package emacs-whisper
+    :bind ("C-H-r" . whisper-run)
+    :config
+    (setq whisper-model "base"
+          whisper-language "en"
+          whisper-translate nil))
+#+END_SRC
 ** Winner mode
 #+BEGIN_SRC emacs-lisp
   (winner-mode)
