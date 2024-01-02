@@ -574,6 +574,23 @@ JIRA integration to Emacs org-mode.
 ** Ellama
 #+begin_src emacs-lisp
   (use-package ellama
+    :commands (ellama
+               ellama-add-code
+               ellama-ask-about
+               ellama-ask-line
+               ellama-ask-selection
+               ellama-change
+               ellama-change-code
+               ellama-chat
+               ellama-code-review
+               ellama-complete-code
+               ellama-define-word
+               ellama-enhance-code
+               ellama-enhance-grammar-spelling
+               ellama-enhance-wording
+               ellama-make-concise
+               ellama-summarize
+               ellama-translate)
     :init
     (require 'llm-openai)
     (setopt ellama-provider
