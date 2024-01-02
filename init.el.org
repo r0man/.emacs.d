@@ -1583,11 +1583,6 @@ Start the Emacs server if it's not running.
     :hook ((emacs-lisp-mode . flycheck-elsa-setup)))
 #+end_src
 
-#+begin_src emacs-lisp
-  (use-package flycheck-clj-kondo
-    :hook ((clojure-mode . (lambda () (require 'flycheck-clj-kondo)))))
-#+end_src
-
 ** Git Email
 #+begin_src emacs-lisp
   (use-package git-email
