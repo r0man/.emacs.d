@@ -412,7 +412,8 @@ This variable describes the behavior of the command key.
 Asynchronous Reliable Extensible IDE for Guile Scheme.
 
 #+begin_src emacs-lisp
-  (use-package arei)
+  (use-package arei
+    :commands (arei))
 #+end_src
 
 ** Avy
