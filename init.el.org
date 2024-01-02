@@ -995,7 +995,8 @@ Enable company mode.
 Enhanced Implementation of Emacs Interpreted Objects
 
 #+begin_src emacs-lisp
-  (use-package eieio-datadebug)
+  (use-package eieio-datadebug
+    :after (eieio))
 #+end_src
 ** Emacs Lisp
 
