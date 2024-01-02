@@ -900,6 +900,7 @@ Enable company mode.
 
 #+BEGIN_SRC emacs-lisp
   (use-package company
+    :bind (("TAB" . company-indent-or-complete-common))
     :hook ((after-init . global-company-mode))
     :init
     ;; No delay in showing suggestions.
@@ -910,12 +911,6 @@ Enable company mode.
     (setq company-selection-wrap-around t)
     ;; Use tab key to cycle through suggestions.
     (company-tng-configure-default))
-#+END_SRC
-
-Indent with TAB, then do completion.
-
-#+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
