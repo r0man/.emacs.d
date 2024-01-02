@@ -2153,6 +2153,19 @@ Open files with external programs.
                  '(file)))))
 #+end_src
 
+** Orderless
+#+begin_src emacs-lisp
+  (use-package orderless
+    :after (vertico)
+    :custom
+    (completion-styles '(orderless))
+    (completion-category-defaults nil)
+    (completion-category-overrides
+     '((command (styles partial-completion))
+       (file (styles partial-completion))
+       (symbol (styles partial-completion))
+       (variable (styles partial-completion)))))
+#+end_src
 ** Org GCal
 #+begin_src emacs-lisp
   (use-package org-gcal
@@ -2635,19 +2648,6 @@ Don't insert tabs.
     :custom
     (vertico-cycle t))
 #+end_src
-
-#+begin_src emacs-lisp
-  (use-package orderless
-    :after (vertico)
-    :custom
-    (completion-styles '(orderless))
-    (completion-category-defaults nil)
-    (completion-category-overrides '((command (styles partial-completion))
-                                     (file (styles partial-completion))
-                                     (symbol (styles partial-completion))
-                                     (variable (styles partial-completion)))))
-#+end_src
-
 ** Virtual Env Wrapper
 #+begin_src emacs-lisp
   (use-package virtualenvwrapper
