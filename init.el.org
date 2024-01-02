@@ -161,7 +161,7 @@ Indent the whole buffer.
   (defun indent-buffer ()
     "Indent the whole buffer."
     (interactive)
-    (if (member 'eglot--managed-mode minor-mode-list)
+    (if (eglot-managed-p)
         (eglot-format-buffer)
       (indent-region (point-min) (point-max))))
 #+END_SRC
