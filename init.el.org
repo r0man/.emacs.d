@@ -2138,12 +2138,9 @@ Support for indenting code in SQL files.
 ** Open AI
 #+begin_src emacs-lisp
   (use-package openai
+    :defer t
     :init
-    (setq openai-key #'openai-key-auth-source)
-    (when (file-exists-p "~/workspace/nu")
-      ;; (setq chatgpt-model "gpt-4")
-      ;; (setq codegpt-model "gpt-4")
-      (setq openai-base-url "http://localhost:3005/v1")))
+    (setq openai-key #'openai-key-auth-source))
 #+end_src
 ** Open With
 
