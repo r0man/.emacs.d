@@ -2172,8 +2172,7 @@ Open files with external programs.
   (use-package orderless
     :after (vertico)
     :custom
-    (completion-styles '(orderless))
-    (completion-category-defaults nil)
+    (completion-styles '(basic partial-completion orderless))
     (completion-category-overrides
      '((command (styles partial-completion))
        (file (styles partial-completion))
