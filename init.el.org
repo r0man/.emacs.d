@@ -322,6 +322,12 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
                 ("M-p" . 'copilot-previous-completion)))
 #+end_src
 
+** Corfu
+#+begin_src emacs-lisp
+  (use-package corfu
+    :custom
+    (corfu-cycle t)
+    :hook ((after-init . global-corfu-mode)))
 #+end_src
 
 ** Datomic.el
@@ -724,10 +730,6 @@ JIRA integration to Emacs org-mode.
 
     (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.9.0")
 
-    ;; Fuzzy candidate matching
-    (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
-    (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
-
     ;; TODO: How to do this without printing a message?
     (defun custom/cider-inspector-mode-hook ()
       (visual-line-mode -1)
@@ -913,37 +915,6 @@ The Geiser implementation for Guile scheme.
     (let ((buffer (get-buffer-create "*Guix Home Reconfigure*"))
           (default-directory "~/workspace/guix-home"))
       (async-shell-command "guix home -L . reconfigure r0man/home/config.scm" buffer)))
-#+end_src
-** Company mode
-
-Enable company mode.
-
-#+begin_src emacs-lisp
-  (use-package company
-    :bind (("TAB" . company-indent-or-complete-common))
-    :hook ((after-init . global-company-mode))
-    :init
-    ;; No delay in showing suggestions.
-    (setq company-idle-delay 0)
-    ;; Show suggestions after entering one character.
-    (setq company-minimum-prefix-length 1)
-    ;; If enabled, selecting item before first or after last wraps around.
-    (setq company-selection-wrap-around t)
-    ;; Use tab key to cycle through suggestions.
-    (company-tng-configure-default))
-#+end_src
-
-#+begin_src emacs-lisp
-  (use-package company-capf
-    :after company)
-#+end_src
-
-** Company Quickhelp
-
-#+begin_src emacs-lisp
-  (use-package company-quickhelp
-    :defer 1
-    :init (company-quickhelp-mode 1))
 #+end_src
 
 ** Configure the full name of the user logged in.
@@ -2027,16 +1998,6 @@ The Superior Lisp Interaction Mode for Emacs
   (use-package slime
     :disabled
     :commands (slime))
-#+end_src
-
-Slime Company
-
-#+begin_src emacs-lisp
-  (use-package slime-company
-    :disabled
-    :after slime
-    :config
-    (slime-setup '(slime-fancy slime-company)))
 #+end_src
 
 ** Sly
