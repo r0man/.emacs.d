@@ -2134,12 +2134,14 @@ Open files with external programs.
   (use-package orderless
     :after (vertico)
     :custom
-    (completion-styles '(basic partial-completion orderless))
+    (completion-styles '(orderless basic))
     (completion-category-overrides
-     '((command (styles partial-completion))
-       (file (styles partial-completion))
-       (symbol (styles partial-completion))
-       (variable (styles partial-completion)))))
+     '(;; (command (styles partial-completion))
+       (file (styles basic partial-completion))
+       ;; (project-file (styles orderless partial-completion))
+       ;; (symbol (styles partial-completion))
+       ;; (variable (styles partial-completion))
+       )))
 #+end_src
 ** Org GCal
 #+begin_src emacs-lisp
