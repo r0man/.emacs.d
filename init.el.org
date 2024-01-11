@@ -328,7 +328,8 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
     :bind
     (:map corfu-map
           ("TAB" . corfu-next)
-          ([tab] . corfu-next))
+          ([tab] . corfu-next)
+          ("C-<tab>" . corfu-previous))
     :custom
     (corfu-cycle t)
     :hook ((after-init . global-corfu-mode)))
