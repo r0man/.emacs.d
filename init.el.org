@@ -335,6 +335,17 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
     :hook ((after-init . global-corfu-mode)))
 #+end_src
 
+** Cape
+#+begin_src emacs-lisp
+  (use-package cape
+    :init
+    (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+    (add-to-list 'completion-at-point-functions #'cape-file)
+    (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+    (add-to-list 'completion-at-point-functions #'cape-history)
+    (add-to-list 'completion-at-point-functions #'cape-keyword)
+    (add-to-list 'completion-at-point-functions #'cape-elisp-symbol))
+#+end_src
 ** Datomic.el
 #+begin_src emacs-lisp
   (use-package datomic
