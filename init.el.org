@@ -598,30 +598,42 @@ JIRA integration to Emacs org-mode.
 ** Ellama
 #+begin_src emacs-lisp
   (use-package ellama
-    :commands (ellama
-               ellama-add-code
-               ellama-ask-about
+    :commands (ellama-ask-about
                ellama-ask-line
                ellama-ask-selection
-               ellama-change
-               ellama-change-code
                ellama-chat
+               ellama-code-add
+               ellama-code-complete
+               ellama-code-edit
+               ellama-code-improve
                ellama-code-review
-               ellama-complete-code
+               ellama-complete
                ellama-define-word
-               ellama-enhance-code
-               ellama-enhance-grammar-spelling
-               ellama-enhance-wording
-               ellama-make-concise
+               ellama-improve-conciseness
+               ellama-improve-grammar
+               ellama-improve-wording
+               ellama-make-format
+               ellama-make-list
+               ellama-make-table
+               ellama-provider-select
                ellama-summarize
+               ellama-summarize-webpage
                ellama-translate)
     :init
+    (require 'llm-ollama)
     (require 'llm-openai)
-    (setopt ellama-provider
-            (make-llm-openai
-             :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
-             :chat-model "gpt-3.5-turbo"
-             :embedding-model "text-embedding-ada-002")))
+    (setq ellama-providers
+          '(("openai" . (make-llm-openai
+                         :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
+                         :chat-model "gpt-3.5-turbo"
+                         :embedding-model "text-embedding-ada-002"))
+            ("deepseek-coder" . (make-llm-ollama
+                                 :chat-model "deepseek-coder:latest"
+                                 :embedding-model "deepseek-coder:latest"))
+            ("llama2" . (make-llm-ollama
+                         :chat-model "llama2:latest"
+                         :embedding-model "llama2:latest"))))
+    (setq ellama-provider (cdar ellama-providers)))
 #+end_src
 ** Elixir
 #+begin_src emacs-lisp
