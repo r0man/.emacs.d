@@ -2192,6 +2192,7 @@ Use Jira in Emacs org-mode.
 
 #+begin_src emacs-lisp
   (use-package org-jira
+    :load-path ("~/workspace/org-jira")
     :commands (org-jira-get-issues)
     :config
     (make-directory org-jira-working-dir t)
