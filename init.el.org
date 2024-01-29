@@ -622,18 +622,12 @@ JIRA integration to Emacs org-mode.
     :init
     (require 'llm-ollama)
     (require 'llm-openai)
-    (setq ellama-providers
-          '(("openai" . (make-llm-openai
-                         :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
-                         :chat-model "gpt-3.5-turbo"
-                         :embedding-model "text-embedding-ada-002"))
-            ("deepseek-coder" . (make-llm-ollama
-                                 :chat-model "deepseek-coder:latest"
-                                 :embedding-model "deepseek-coder:latest"))
-            ("llama2" . (make-llm-ollama
-                         :chat-model "llama2:latest"
-                         :embedding-model "llama2:latest"))))
-    (setq ellama-provider (cdar ellama-providers)))
+    (setq ellama-language "German")
+    (setq ellama-provider
+          (make-llm-openai
+           :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
+           :chat-model "gpt-3.5-turbo"
+           :embedding-model "text-embedding-ada-002")))
 #+end_src
 ** Elixir
 #+begin_src emacs-lisp
