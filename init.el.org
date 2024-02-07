@@ -640,6 +640,21 @@ JIRA integration to Emacs org-mode.
   (use-package eval-expr
     :hook ((emacs-lisp-mode . eval-expr-install)))
 #+end_src
+** GPTel
+
+A simple LLM client for Emacs.
+
+#+begin_src emacs-lisp
+  (use-package gptel
+    :load-path ("~/workspace/gptel")
+    :commands (gptel)
+    :init
+    (gptel-make-ollama "Ollama"
+                       :host "localhost:11434"
+                       :stream t
+                       :models '("llama2:latest")))
+#+end_src
+
 ** Clojure mode
 #+begin_src emacs-lisp
   (use-package clojure-mode
