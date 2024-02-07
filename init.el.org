@@ -655,6 +655,13 @@ A simple LLM client for Emacs.
                        :models '("llama2:latest")))
 #+end_src
 
+#+begin_src emacs-lisp
+  (use-package nu-gptel
+    :after gptel
+    :load-path (lambda () (expand-file-name "nu-gptel" (getenv "NU_HOME")))
+    :config (setq-default gptel-backend nu-gptel-openai))
+#+end_src
+
 ** Clojure mode
 #+begin_src emacs-lisp
   (use-package clojure-mode
