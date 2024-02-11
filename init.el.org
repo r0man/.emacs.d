@@ -785,7 +785,6 @@ A simple LLM client for Emacs.
 
 #+begin_src emacs-lisp
   (use-package clj-refactor
-    :load-path ("~/workspace/clj-refactor.el")
     :hook ((clojure-mode . clj-refactor-mode))
     :config
     (cljr-add-keybindings-with-prefix "C-c C-R")
