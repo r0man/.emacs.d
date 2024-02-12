@@ -650,9 +650,9 @@ A simple LLM client for Emacs.
     :commands (gptel)
     :init
     (gptel-make-ollama "Ollama"
-                       :host "localhost:11434"
-                       :stream t
-                       :models '("llama2:latest")))
+      :host "localhost:11434"
+      :stream t
+      :models '("llama2:latest")))
 #+end_src
 
 #+begin_src emacs-lisp
