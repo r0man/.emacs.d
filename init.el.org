@@ -2360,6 +2360,15 @@ according to the turning of the mouse wheel.
     :custom
     (org-plantuml-jar-path "~/.guix-profile/share/java/plantuml.jar"))
 #+end_src
+** Plz
+
+An HTTP library for Emacs.
+
+#+begin_src emacs-lisp
+  (use-package plz
+    :custom
+    (plz-curl-program "/usr/bin/curl"))
+#+end_src
 ** Pretty Print JSON
 
 #+begin_src emacs-lisp
