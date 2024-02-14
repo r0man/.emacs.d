@@ -631,10 +631,15 @@ JIRA integration to Emacs org-mode.
 #+end_src
 ** LLM Nu
 #+begin_src emacs-lisp
-  (use-package llm-nu
-    :load-path ("/home/roman/workspace/nu/llm-nu.el"))
+  (use-package nu-llm
+    :after ellama
+    :load-path (lambda () (expand-file-name "nu-llm.el" (getenv "NU_HOME")))
+    :config
+    (add-to-list 'ellama-providers (cons "Nu OpenAI" (nu-llm-make-openai)))
+    (add-to-list 'ellama-providers (cons "Nu LLM" (nu-llm-make-api)))
+    :custom
+    (ellama-auto-scroll t))
 #+end_src
-
 ** Elixir
 #+begin_src emacs-lisp
   (use-package elixir-mode
