@@ -598,36 +598,24 @@ JIRA integration to Emacs org-mode.
 ** Ellama
 #+begin_src emacs-lisp
   (use-package ellama
-    :commands (ellama-ask-about
-               ellama-ask-line
-               ellama-ask-selection
-               ellama-chat
-               ellama-code-add
-               ellama-code-complete
-               ellama-code-edit
-               ellama-code-improve
-               ellama-code-review
-               ellama-complete
-               ellama-define-word
-               ellama-improve-conciseness
-               ellama-improve-grammar
-               ellama-improve-wording
-               ellama-make-format
-               ellama-make-list
-               ellama-make-table
-               ellama-provider-select
-               ellama-summarize
-               ellama-summarize-webpage
-               ellama-translate)
-    :init
-    (require 'llm-ollama)
+    :custom
+    (ellama-auto-scroll t)
+    (ellama-language "German")
+    :config
     (require 'llm-openai)
-    (setq ellama-language "German")
-    (setq ellama-provider
-          (make-llm-openai
-           :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
-           :chat-model "gpt-3.5-turbo"
-           :embedding-model "text-embedding-ada-002")))
+    (add-to-list 'ellama-providers
+                 (cons "Nu OpenAI Local Proxy"
+                       (make-llm-openai-compatible
+                        :url "http://127.0.0.1:8899/v1/"
+                        :chat-model "gpt-3.5-turbo"
+                        :embedding-model "text-embedding-ada-002")))
+    (add-to-list 'ellama-providers
+                 (cons "OpenAI"
+                       (make-llm-openai
+                        :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
+                        :chat-model "gpt-3.5-turbo"
+                        :embedding-model "text-embedding-ada-002")))
+    (setq ellama-provider (alist-get "OpenAI" ellama-providers nil nil #'string=)))
 #+end_src
 ** LLM Nu
 #+begin_src emacs-lisp
