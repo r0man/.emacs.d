@@ -645,7 +645,6 @@ A simple LLM client for Emacs.
 
 #+begin_src emacs-lisp
   (use-package gptel
-    :load-path ("~/workspace/gptel")
     :commands (gptel)
     :init
     (gptel-make-ollama "Ollama"
