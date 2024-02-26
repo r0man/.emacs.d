@@ -623,10 +623,10 @@ JIRA integration to Emacs org-mode.
     :after ellama
     :load-path (lambda () (expand-file-name "nu-llm.el" (getenv "NU_HOME")))
     :config
-    (add-to-list 'ellama-providers (cons "Nu OpenAI" (nu-llm-make-openai)))
-    (add-to-list 'ellama-providers (cons "Nu LLM" (nu-llm-make-api)))
-    :custom
-    (ellama-auto-scroll t))
+    (when (fboundp 'nu-llm-make-openai)
+      (add-to-list 'ellama-providers (cons "Nu OpenAI" (nu-llm-make-openai :chat-model "gpt-4-0125-preview"))))
+    (when (fboundp 'nu-llm-make-api)
+      (add-to-list 'ellama-providers (cons "Nu LLM" (nu-llm-make-api)))))
 #+end_src
 ** Elixir
 #+begin_src emacs-lisp
