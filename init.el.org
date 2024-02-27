@@ -618,6 +618,12 @@ JIRA integration to Emacs org-mode.
                         :embedding-model "text-embedding-ada-002")))
     (setq ellama-provider (alist-get "OpenAI" ellama-providers nil nil #'string=)))
 #+end_src
+** Elisa
+#+begin_src emacs-lisp
+  (use-package elisa
+    :disabled)
+#+end_src
+
 ** LLM Nu
 #+begin_src emacs-lisp
   (use-package nu-llm
