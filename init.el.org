@@ -513,6 +513,7 @@ A GNU Emacs major mode for editing BNF grammars.
     ;;                           eldoc-echo-area-use-multiline-p
     ;;                           5)))
     :custom
+    (eglot-connect-timeout 120)
     (eglot-extend-to-xref t))
 #+end_src
 ** Eglot Java
