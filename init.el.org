@@ -2726,10 +2726,9 @@ Log and display warnings.
 #+begin_src emacs-lisp
   (use-package emacs-whisper
     :bind ("C-H-r" . whisper-run)
-    :config
-    (setq whisper-model "base"
-          whisper-language "en"
-          whisper-translate nil))
+    :custom
+    (whisper-model "large")
+    (whisper-language "en"))
 #+end_src
 ** Winner mode
 #+begin_src emacs-lisp
