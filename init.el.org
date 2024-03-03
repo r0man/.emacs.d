@@ -2372,7 +2372,7 @@ An HTTP library for Emacs.
 #+begin_src emacs-lisp
   (use-package plz
     :custom
-    (plz-curl-program "/usr/bin/curl"))
+    (plz-curl-program "curl"))
 #+end_src
 ** Pretty Print JSON
 
