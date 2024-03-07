@@ -805,6 +805,9 @@ A simple LLM client for Emacs.
     ;; (add-to-list 'cider-jack-in-nrepl-middlewares "nrepl-rebl.core/wrap-rebl")
     ;; (cider-add-to-alist 'cider-jack-in-dependencies "nrepl-rebl/nrepl-rebl" "0.1.1")
 
+    ;; (add-to-list 'cider-jack-in-nrepl-middlewares "stateful-check.nrepl/middleware")
+    ;; (cider-add-to-alist 'cider-jack-in-dependencies "org.clojars.czan/stateful-check" "0.4.5.SNAPSHOT")
+
     ;; Whether to use git.io/JiJVX for adding sources and javadocs to the classpath.
     (setq cider-enrich-classpath nil)
 
