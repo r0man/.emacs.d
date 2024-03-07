@@ -2400,6 +2400,7 @@ An HTTP library for Emacs.
 
 #+begin_src emacs-lisp
   (use-package plz
+    ;; :load-path ("~/workspace/plz.el")
     :custom
     (plz-curl-program "curl"))
 #+end_src
