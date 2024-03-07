@@ -2724,10 +2724,10 @@ Log and display warnings.
 #+end_src
 ** Whisper
 #+begin_src emacs-lisp
-  (use-package emacs-whisper
+  (use-package whisper
     :bind ("C-H-r" . whisper-run)
     :custom
-    (whisper-model "large")
+    (whisper-model "small")
     (whisper-language "en"))
 #+end_src
 ** Winner mode
