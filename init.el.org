@@ -604,6 +604,12 @@ JIRA integration to Emacs org-mode.
     (ellama-language "German")
     :config
     (require 'llm-openai)
+    (require 'llm-vertex)
+    (add-to-list 'ellama-providers
+                 (cons "Nu Vertex"
+                       (make-llm-vertex
+                        :chat-model "gemini-1.5-pro-preview-0215"
+                        :project "iteng-itsystems")))
     (add-to-list 'ellama-providers
                  (cons "Nu OpenAI Local Proxy"
                        (make-llm-openai-compatible
