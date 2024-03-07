@@ -791,7 +791,7 @@ A simple LLM client for Emacs.
     (setq cider-repl-wrap-history t)
 
     ;; Don't log protocol messages to the `nrepl-message-buffer-name' buffer.
-    (setq nrepl-log-messages nil)
+    (setq nrepl-log-messages t)
 
     ;; Don't show the `*cider-test-report*` buffer on passing tests.
     (setq cider-test-report-on-success nil)
