@@ -1520,7 +1520,6 @@ User-defined alist of rules for suggested commands.
         '(("\\.mp4$" "mplayer")
           ("\\.mkv$" "mplayer")
           ("\\.mov$" "mplayer")
-          ("\\.pdf$" "evince")
           ("\\.xlsx?$" "libreoffice")))
 #+end_src
 
@@ -2202,10 +2201,6 @@ Open files with external programs.
            (list (openwith-make-extension-regexp
                   '("doc" "xls" "ppt" "odt" "ods" "odg" "odp"))
                  "libreoffice"
-                 '(file))
-           (list (openwith-make-extension-regexp
-                  '("pdf" "ps" "ps.gz" "dvi"))
-                 "evince"
                  '(file)))))
 #+end_src
 
