@@ -596,6 +596,14 @@ JIRA integration to Emacs org-mode.
             "http://planet.lisp.org/rss20.xml"
             "https://planet.scheme.org/atom.xml")))
 #+end_src
+** LLM
+#+begin_src emacs-lisp
+  (use-package llm
+    :load-path ("~/workspace/llm")
+    :custom
+    (llm-log t))
+#+end_src
+
 ** Ellama
 #+begin_src emacs-lisp
   (use-package ellama
