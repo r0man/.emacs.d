@@ -815,9 +815,6 @@ A simple LLM client for Emacs.
     ;; (add-to-list 'cider-jack-in-nrepl-middlewares "nrepl-rebl.core/wrap-rebl")
     ;; (cider-add-to-alist 'cider-jack-in-dependencies "nrepl-rebl/nrepl-rebl" "0.1.1")
 
-    ;; (add-to-list 'cider-jack-in-nrepl-middlewares "stateful-check.nrepl/middleware")
-    ;; (cider-add-to-alist 'cider-jack-in-dependencies "org.clojars.czan/stateful-check" "0.4.5.SNAPSHOT")
-
     ;; Whether to use git.io/JiJVX for adding sources and javadocs to the classpath.
     (setq cider-enrich-classpath nil)
 
@@ -2546,6 +2543,16 @@ Slack client for emacs.
              :host "nubank.slack.com"
              :user "roman.scherer@nubank.com.br")
      :subscribed-channels '((stem))))
+#+end_src
+** Stateful Check
+
+#+begin_src emacs-lisp
+  (use-package stateful-check
+    :after cider
+    :load-path "~/workspace/stateful-check"
+    :config
+    (add-to-list 'cider-jack-in-nrepl-middlewares "stateful-check.nrepl/middleware")
+    (cider-add-to-alist 'cider-jack-in-dependencies "org.clojars.czan/stateful-check" "0.4.5-SNAPSHOT"))
 #+end_src
 ** So Long
 #+begin_src emacs-lisp
