@@ -495,6 +495,7 @@ A GNU Emacs major mode for editing BNF grammars.
            (clojure-mode . eglot-ensure)
            (clojure-ts-mode . eglot-ensure)
            (elixir-mode . eglot-ensure)
+           (python-mode . eglot-ensure)
            ;; (scala-mode . eglot-ensure)
            ;; (scheme-mode . eglot-ensure)
            )
