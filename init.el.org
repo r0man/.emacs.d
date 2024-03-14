@@ -657,6 +657,36 @@ JIRA integration to Emacs org-mode.
           (while (not (equal ?\r (read-char)))
             (sit-for 0.5))
           (whisper-run)))))
+
+
+  (defun ellama-ask-about-whisper ()
+    "Record audio in a temporary buffer with the `whisper-run`
+  command. When the user presses a key, stop the recording with by
+  invoking `whisper-run` again.  The text in the temporary buffer
+  is then passwd to the ellama-chat command."
+    (interactive)
+    (require 'ellama)
+    (require 'whisper)
+    (let ((about-buffer (current-buffer))
+          (buffer (get-buffer-create whisper--stdout-buffer-name)))
+      (with-current-buffer buffer
+        (erase-buffer)
+        (make-local-variable 'whisper-after-transcription-hook)
+        (add-hook 'whisper-after-transcription-hook
+                  (lambda ()
+                    (let ((transcription (buffer-substring (line-beginning-position)
+                                                           (line-end-position))))
+                      (with-current-buffer about-buffer
+                        (if (region-active-p)
+                            (ellama-context-add-selection)
+                          (ellama-context-add-buffer (buffer-name (current-buffer)))))
+                      (ellama-chat transcription)))
+                  nil t)
+        (let ((recording-process (whisper-run)))
+          (message "Recording, then asking Ellama. Press RET to stop.")
+          (while (not (equal ?\r (read-char)))
+            (sit-for 0.5))
+          (whisper-run)))))
 #+end_src
 ** Elisa
 #+begin_src emacs-lisp
