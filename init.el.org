@@ -2112,6 +2112,17 @@ Save the mini buffer history.
     (savehist-file "~/.emacs.d/savehist"))
 #+end_src
 
+** Save buffer as is
+#+begin_src emacs-lisp
+  (defun save-buffer-as-is ()
+    "Save file \"as is\", that is in read-only-mode."
+    (interactive)
+    (if buffer-read-only
+	(save-buffer)
+      (read-only-mode 1)
+      (save-buffer)
+      (read-only-mode 0)))
+#+end_src
 ** Slime
 
 The Superior Lisp Interaction Mode for Emacs
