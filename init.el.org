@@ -615,7 +615,12 @@ JIRA integration to Emacs org-mode.
     (require 'llm-openai)
     (require 'llm-vertex)
     (add-to-list 'ellama-providers
-                 (cons "Nu Vertex"
+                 (cons "Nu Gemini 1.0"
+                       (make-llm-vertex
+                        :chat-model "gemini-pro"
+                        :project "iteng-itsystems")))
+    (add-to-list 'ellama-providers
+                 (cons "Nu Gemini 1.5"
                        (make-llm-vertex
                         :chat-model "gemini-1.5-pro-preview-0215"
                         :project "iteng-itsystems")))
@@ -623,15 +628,21 @@ JIRA integration to Emacs org-mode.
                  (cons "Nu OpenAI Local Proxy"
                        (make-llm-openai-compatible
                         :url "http://127.0.0.1:8899/v1/"
-                        :chat-model "gpt-3.5-turbo"
+                        :chat-model "gpt-4-turbo-preview"
                         :embedding-model "text-embedding-ada-002")))
     (add-to-list 'ellama-providers
-                 (cons "OpenAI"
+                 (cons "OpenAI GPT-3"
                        (make-llm-openai
                         :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
                         :chat-model "gpt-3.5-turbo"
                         :embedding-model "text-embedding-ada-002")))
-    (setq ellama-provider (alist-get "OpenAI" ellama-providers nil nil #'string=)))
+    (add-to-list 'ellama-providers
+                 (cons "OpenAI GPT-4"
+                       (make-llm-openai
+                        :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
+                        :chat-model "gpt-4-turbo-preview"
+                        :embedding-model "text-embedding-ada-002")))
+    (setq ellama-provider (alist-get "OpenAI GTP-3" ellama-providers nil nil #'string=)))
 
   (defun ellama-chat-whisper ()
     "Record audio in a temporary buffer with the `whisper-run`
