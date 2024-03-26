@@ -127,6 +127,22 @@ See: [[https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing
       (ansi-color-apply-on-region (point-min) (point-max))))
 #+end_src
 
+** Calendar
+
+The calendar and diary by default display times of day in the
+conventional American style with the hours from 1 through 12, minutes,
+and either ‘am’ or ‘pm’. If you prefer the European style, also known
+in the US as military, in which the hours go from 00 to 23, you can
+alter the variable calendar-time-display-form. This variable is a list
+of expressions that can involve the variables 12-hours, 24-hours, and
+minutes, which are all numbers in string form, and am-pm and
+time-zone, which are both alphabetic strings.
+
+#+begin_src emacs-lisp
+  (setq calendar-time-display-form
+        '(24-hours ":" minutes
+                   (if time-zone " (") time-zone (if time-zone ")")))
+#+end_src
 ** Cask
 #+begin_src emacs-lisp
   (use-package cask
