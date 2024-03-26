@@ -2129,7 +2129,7 @@ Save the mini buffer history.
     "Save file \"as is\", that is in read-only-mode."
     (interactive)
     (if buffer-read-only
-	(save-buffer)
+        (save-buffer)
       (read-only-mode 1)
       (save-buffer)
       (read-only-mode 0)))
