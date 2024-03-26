@@ -2334,6 +2334,7 @@ Use Jira in Emacs org-mode.
     :mode ("\\.org\\'" . org-mode)
     :config
     (require 'ob-clojure)
+    (setq org-agenda-include-diary t)
     (setq org-babel-clojure-backend 'cider)
     (setq org-src-fontify-natively t)
     (setq org-confirm-babel-evaluate
