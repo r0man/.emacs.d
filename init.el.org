@@ -1737,6 +1737,7 @@ list of dictionary words presented as a completion menu.
 
 #+begin_src emacs-lisp
   (use-package jinx
+    :disabled
     :hook (emacs-startup . global-jinx-mode)
     :bind (("M-$" . jinx-correct)
            ("C-M-$" . jinx-languages)))
