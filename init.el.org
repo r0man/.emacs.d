@@ -885,7 +885,7 @@ A simple LLM client for Emacs.
     ;; Don't warn when running an AST op.
     (setq cljr-warn-on-eval nil)
     ;; ;; Don't build AST on startup.
-    ;; (setq cljr-eagerly-build-asts-on-startup nil)
+    (setq cljr-eagerly-build-asts-on-startup nil)
     ;; Print a message when the AST has been built.
     (setq cljr--debug-mode t))
 #+end_src
