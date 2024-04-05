@@ -539,6 +539,7 @@ Provides additional Java programming language support for Eglot.
 
 #+begin_src emacs-lisp
   (use-package eglot-java
+    :disabled
     :hook ((java-mode . eglot-java-mode)))
 #+end_src
 ** EJira
