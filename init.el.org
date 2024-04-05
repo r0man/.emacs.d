@@ -1364,6 +1364,11 @@ Increase the number of messages in the *Messages* buffer.
 #+begin_src emacs-lisp
   (setq message-log-max 10000)
 #+end_src
+
+** Mermaid
+#+begin_src emacs-lisp
+  (use-package mermaid-mode)
+#+end_src
 ** Misc
 
 Answer questions with "y" or "n".
