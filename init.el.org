@@ -506,11 +506,15 @@ A GNU Emacs major mode for editing BNF grammars.
 ** Eglot
 #+begin_src emacs-lisp
   (use-package eglot
-    :hook ((c++-mode . eglot-ensure)
-           (c-mode . eglot-ensure)
+    :hook ((c-mode . eglot-ensure)
+           (c++-mode . eglot-ensure)
            (clojure-mode . eglot-ensure)
+           (clojure-ts-mode . eglot-ensure)
            (elixir-mode . eglot-ensure)
-           (python-mode . eglot-ensure))
+           (python-mode . eglot-ensure)
+           ;; (scala-mode . eglot-ensure)
+           ;; (scheme-mode . eglot-ensure)
+           )
     :config
     (add-to-list 'eglot-server-programs '(elixir-mode . ("~/workspace/elixir-ls/release/language_server.sh")))
     (add-to-list 'eglot-server-programs '(java-mode . ("~/.emacs.d/share/eclipse.jdt.ls/bin/jdtls")))
@@ -811,14 +815,6 @@ A simple LLM client for Emacs.
      (functions/constraint-fn 2))
     (put 'defmixin 'clojure-backtracking-indent '(4 (2)))
     (require 'clojure-mode-extra-font-locking))
-#+end_src
-** Clojure TS mode
-#+begin_src emacs-lisp
-  (use-package clojure-ts-mode
-    :hook
-    ((clojure-ts-mode . cider-mode)
-     (clojure-ts-mode . clj-refactor-mode)
-     (clojure-ts-mode . enable-paredit-mode)))
 #+end_src
 ** Cider
 #+begin_src emacs-lisp
