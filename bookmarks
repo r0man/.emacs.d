@@ -1,405 +1,61 @@
-;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8; mode: lisp-data -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("Asahi Guix - Root Home (Dired)"
- (filename . "/ssh:root@www.asahi-guix.org:~/")
- (front-context-string . ".Xdefaults\n  -rw")
- (rear-context-string . "47 Dec 17 12:47 ")
- (position . 176)
- (last-modified 25982 64604 348241 763000))
-("Kubernetes Configuration"
- (filename . "~/.kube/config")
- (front-context-string . "apiVersion: v1\nc")
- (rear-context-string)
- (position . 1)
- (last-modified 25633 19830 110590 84000))
-("System Logs"
- (filename . "/sudo:root@localhost:/var/log/")
- (front-context-string . "audit.log\n  -rw-")
- (rear-context-string . "1K Mar 31 16:54 ")
- (position . 171)
- (last-modified 25638 62498 708387 467000))
-("X Resources"
- (filename . "~/.dotfiles/x11/.Xresources")
- (front-context-string . "! Applications w")
- (rear-context-string)
- (position . 1))
-("Stumpwm Configuration"
- (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
- (front-context-string . ";; Configure res")
- (rear-context-string . "rder-width* 1)\n\n")
- (position . 713))
-("Zsh Configuration"
- (filename . "~/.dotfiles/zsh/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
-("Xmonad Configuration"
- (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
- (front-context-string . "--\n-- xmonad exa")
- (rear-context-string)
- (position . 1))
-("Emacs Configuration"
- (filename . "~/.emacs.d/init.el.org")
- (front-context-string . "* init.el\n** Pac")
- (rear-context-string)
- (position . 1))
-("Leiningen Profiles"
- (filename . "~/.lein/profiles.clj")
- (front-context-string . "{;; :repl {:depe")
- (rear-context-string)
- (position . 1))
-("PostgreSQL Configuration"
- (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
- (front-context-string . "# --------------")
- (rear-context-string)
- (position . 1))
-("Bombaclaat - Root Home"
- (filename . "/ssh:root@bombaclaat:/"))
-("Kubernetes Configuration<2>"
- (filename . "~/.kube/config")
- (front-context-string . "apiVersion: v1\nc")
- (rear-context-string)
- (position . 1)
- (last-modified 25633 19830 110590 84000))
-("System Logs<2>"
- (filename . "/sudo:root@localhost:/var/log/")
- (front-context-string . "audit.log\n  -rw-")
- (rear-context-string . "1K Mar 31 16:54 ")
- (position . 171)
- (last-modified 25638 62498 708387 467000))
-("X Resources<2>"
- (filename . "~/.dotfiles/x11/.Xresources")
- (front-context-string . "! Applications w")
- (rear-context-string)
- (position . 1))
-("Stumpwm Configuration<2>"
- (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
- (front-context-string . ";; Configure res")
- (rear-context-string . "rder-width* 1)\n\n")
- (position . 713))
-("Zsh Configuration<2>"
- (filename . "~/.dotfiles/zsh/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
-("Xmonad Configuration<2>"
- (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
- (front-context-string . "--\n-- xmonad exa")
- (rear-context-string)
- (position . 1))
-("Emacs Configuration<2>"
- (filename . "~/.emacs.d/init.el.org")
- (front-context-string . "* init.el\n** Pac")
- (rear-context-string)
- (position . 1))
-("Leiningen Profiles<2>"
- (filename . "~/.lein/profiles.clj")
- (front-context-string . "{;; :repl {:depe")
- (rear-context-string)
- (position . 1))
-("PostgreSQL Configuration<2>"
- (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
- (front-context-string . "# --------------")
- (rear-context-string)
- (position . 1))
-("Kubernetes Configuration<3>"
- (filename . "~/.kube/config")
- (front-context-string . "apiVersion: v1\nc")
- (rear-context-string)
- (position . 1)
- (last-modified 25633 19830 110590 84000))
-("System Logs<3>"
- (filename . "/sudo:root@localhost:/var/log/")
- (front-context-string . "audit.log\n  -rw-")
- (rear-context-string . "1K Mar 31 16:54 ")
- (position . 171)
- (last-modified 25638 62498 708387 467000))
-("X Resources<3>"
- (filename . "~/.dotfiles/x11/.Xresources")
- (front-context-string . "! Applications w")
- (rear-context-string)
- (position . 1))
-("Stumpwm Configuration<3>"
- (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
- (front-context-string . ";; Configure res")
- (rear-context-string . "rder-width* 1)\n\n")
- (position . 713))
-("Zsh Configuration<3>"
- (filename . "~/.dotfiles/zsh/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
-("Xmonad Configuration<3>"
- (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
- (front-context-string . "--\n-- xmonad exa")
- (rear-context-string)
- (position . 1))
-("Emacs Configuration<3>"
- (filename . "~/.emacs.d/init.el.org")
- (front-context-string . "* init.el\n** Pac")
- (rear-context-string)
- (position . 1))
-("Leiningen Profiles<3>"
- (filename . "~/.lein/profiles.clj")
- (front-context-string . "{;; :repl {:depe")
- (rear-context-string)
- (position . 1))
-("PostgreSQL Configuration<3>"
- (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
- (front-context-string . "# --------------")
- (rear-context-string)
- (position . 1))
-("Bombaclaat - Root Home<2>"
- (filename . "/ssh:root@bombaclaat:/"))
-("Asahi Guix - Root Home<2>"
- (filename . "/ssh:root@ci.asahi-guix.org:/"))
-("Kubernetes Configuration<2><2>"
- (filename . "~/.kube/config")
- (front-context-string . "apiVersion: v1\nc")
- (rear-context-string)
- (position . 1)
- (last-modified 25633 19830 110590 84000))
-("System Logs<2><2>"
- (filename . "/sudo:root@localhost:/var/log/")
- (front-context-string . "audit.log\n  -rw-")
- (rear-context-string . "1K Mar 31 16:54 ")
- (position . 171)
- (last-modified 25638 62498 708387 467000))
-("X Resources<2><2>"
- (filename . "~/.dotfiles/x11/.Xresources")
- (front-context-string . "! Applications w")
- (rear-context-string)
- (position . 1))
-("Stumpwm Configuration<2><2>"
- (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
- (front-context-string . ";; Configure res")
- (rear-context-string . "rder-width* 1)\n\n")
- (position . 713))
-("Zsh Configuration<2><2>"
- (filename . "~/.dotfiles/zsh/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
-("Xmonad Configuration<2><2>"
- (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
- (front-context-string . "--\n-- xmonad exa")
- (rear-context-string)
- (position . 1))
-("Emacs Configuration<2><2>"
- (filename . "~/.emacs.d/init.el.org")
- (front-context-string . "* init.el\n** Pac")
- (rear-context-string)
- (position . 1))
-("Leiningen Profiles<2><2>"
- (filename . "~/.lein/profiles.clj")
- (front-context-string . "{;; :repl {:depe")
- (rear-context-string)
- (position . 1))
-("PostgreSQL Configuration<2><2>"
- (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
- (front-context-string . "# --------------")
- (rear-context-string)
- (position . 1))
-("Asahi Guix - Root Home (Dired)<2>"
- (filename . "/ssh:root@www.asahi-guix.org:~/")
- (front-context-string . ".Xdefaults\n  -rw")
- (rear-context-string . "47 Dec 17 12:47 ")
- (position . 176)
- (last-modified 25982 64604 348241 763000))
-("Kubernetes Configuration<4>"
- (filename . "~/.kube/config")
- (front-context-string . "apiVersion: v1\nc")
- (rear-context-string)
- (position . 1)
- (last-modified 25633 19830 110590 84000))
-("System Logs<4>"
- (filename . "/sudo:root@localhost:/var/log/")
- (front-context-string . "audit.log\n  -rw-")
- (rear-context-string . "1K Mar 31 16:54 ")
- (position . 171)
- (last-modified 25638 62498 708387 467000))
-("X Resources<4>"
- (filename . "~/.dotfiles/x11/.Xresources")
- (front-context-string . "! Applications w")
- (rear-context-string)
- (position . 1))
-("Stumpwm Configuration<4>"
- (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
- (front-context-string . ";; Configure res")
- (rear-context-string . "rder-width* 1)\n\n")
- (position . 713))
-("Zsh Configuration<4>"
- (filename . "~/.dotfiles/zsh/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
-("Xmonad Configuration<4>"
- (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
- (front-context-string . "--\n-- xmonad exa")
- (rear-context-string)
- (position . 1))
-("Emacs Configuration<4>"
- (filename . "~/.emacs.d/init.el.org")
- (front-context-string . "* init.el\n** Pac")
- (rear-context-string)
- (position . 1))
-("Leiningen Profiles<4>"
- (filename . "~/.lein/profiles.clj")
- (front-context-string . "{;; :repl {:depe")
- (rear-context-string)
- (position . 1))
-("PostgreSQL Configuration<4>"
- (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
- (front-context-string . "# --------------")
- (rear-context-string)
- (position . 1))
-("Bombaclaat - Root Home<3>"
- (filename . "/ssh:root@bombaclaat:/"))
-("Kubernetes Configuration<2><3>"
- (filename . "~/.kube/config")
- (front-context-string . "apiVersion: v1\nc")
- (rear-context-string)
- (position . 1)
- (last-modified 25633 19830 110590 84000))
-("System Logs<2><3>"
- (filename . "/sudo:root@localhost:/var/log/")
- (front-context-string . "audit.log\n  -rw-")
- (rear-context-string . "1K Mar 31 16:54 ")
- (position . 171)
- (last-modified 25638 62498 708387 467000))
-("X Resources<2><3>"
- (filename . "~/.dotfiles/x11/.Xresources")
- (front-context-string . "! Applications w")
- (rear-context-string)
- (position . 1))
-("Stumpwm Configuration<2><3>"
- (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
- (front-context-string . ";; Configure res")
- (rear-context-string . "rder-width* 1)\n\n")
- (position . 713))
-("Zsh Configuration<2><3>"
- (filename . "~/.dotfiles/zsh/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
-("Xmonad Configuration<2><3>"
- (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
- (front-context-string . "--\n-- xmonad exa")
- (rear-context-string)
- (position . 1))
-("Emacs Configuration<2><3>"
- (filename . "~/.emacs.d/init.el.org")
- (front-context-string . "* init.el\n** Pac")
- (rear-context-string)
- (position . 1))
-("Leiningen Profiles<2><3>"
- (filename . "~/.lein/profiles.clj")
- (front-context-string . "{;; :repl {:depe")
- (rear-context-string)
- (position . 1))
-("PostgreSQL Configuration<2><3>"
- (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
- (front-context-string . "# --------------")
- (rear-context-string)
- (position . 1))
-("Kubernetes Configuration<3><2>"
- (filename . "~/.kube/config")
- (front-context-string . "apiVersion: v1\nc")
- (rear-context-string)
- (position . 1)
- (last-modified 25633 19830 110590 84000))
-("System Logs<3><2>"
- (filename . "/sudo:root@localhost:/var/log/")
- (front-context-string . "audit.log\n  -rw-")
- (rear-context-string . "1K Mar 31 16:54 ")
- (position . 171)
- (last-modified 25638 62498 708387 467000))
-("X Resources<3><2>"
- (filename . "~/.dotfiles/x11/.Xresources")
- (front-context-string . "! Applications w")
- (rear-context-string)
- (position . 1))
-("Stumpwm Configuration<3><2>"
- (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
- (front-context-string . ";; Configure res")
- (rear-context-string . "rder-width* 1)\n\n")
- (position . 713))
-("Zsh Configuration<3><2>"
- (filename . "~/.dotfiles/zsh/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
-("Xmonad Configuration<3><2>"
- (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
- (front-context-string . "--\n-- xmonad exa")
- (rear-context-string)
- (position . 1))
-("Emacs Configuration<3><2>"
- (filename . "~/.emacs.d/init.el.org")
- (front-context-string . "* init.el\n** Pac")
- (rear-context-string)
- (position . 1))
-("Leiningen Profiles<3><2>"
- (filename . "~/.lein/profiles.clj")
- (front-context-string . "{;; :repl {:depe")
- (rear-context-string)
- (position . 1))
-("PostgreSQL Configuration<3><2>"
- (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
- (front-context-string . "# --------------")
- (rear-context-string)
- (position . 1))
-("Bombaclaat - Root Home<2><2>"
- (filename . "/ssh:root@bombaclaat:/"))
-("Asahi Guix - Root Home<2><2>"
- (filename . "/ssh:root@ci.asahi-guix.org:/"))
-("Kubernetes Configuration<2><2><2>"
- (filename . "~/.kube/config")
- (front-context-string . "apiVersion: v1\nc")
- (rear-context-string)
- (position . 1)
- (last-modified 25633 19830 110590 84000))
-("System Logs<2><2><2>"
- (filename . "/sudo:root@localhost:/var/log/")
- (front-context-string . "audit.log\n  -rw-")
- (rear-context-string . "1K Mar 31 16:54 ")
- (position . 171)
- (last-modified 25638 62498 708387 467000))
-("X Resources<2><2><2>"
- (filename . "~/.dotfiles/x11/.Xresources")
- (front-context-string . "! Applications w")
- (rear-context-string)
- (position . 1))
-("Stumpwm Configuration<2><2><2>"
- (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
- (front-context-string . ";; Configure res")
- (rear-context-string . "rder-width* 1)\n\n")
- (position . 713))
-("Zsh Configuration<2><2><2>"
- (filename . "~/.dotfiles/zsh/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
-("Xmonad Configuration<2><2><2>"
- (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
- (front-context-string . "--\n-- xmonad exa")
- (rear-context-string)
- (position . 1))
-("Emacs Configuration<2><2><2>"
- (filename . "~/.emacs.d/init.el.org")
- (front-context-string . "* init.el\n** Pac")
- (rear-context-string)
- (position . 1))
-("Leiningen Profiles<2><2><2>"
- (filename . "~/.lein/profiles.clj")
- (front-context-string . "{;; :repl {:depe")
- (rear-context-string)
- (position . 1))
-("PostgreSQL Configuration<2><2><2>"
- (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
- (front-context-string . "# --------------")
- (rear-context-string)
- (position . 1))
-)
+  (filename . "/ssh:root@www.asahi-guix.org:~/")
+  (front-context-string . ".Xdefaults\n  -rw")
+  (rear-context-string . "47 Dec 17 12:47 ")
+  (position . 176)
+  (last-modified 25982 64604 348241 763000))
+ ("Asahi Guix - Roman Home (Dired)"
+  (filename . "/ssh:roman@www.asahi-guix.org:~/"))
+ ("Kubernetes Configuration"
+  (filename . "~/.kube/config")
+  (front-context-string . "apiVersion: v1\nc")
+  (rear-context-string)
+  (position . 1)
+  (last-modified 25633 19830 110590 84000))
+ ("System Logs"
+  (filename . "/sudo:root@localhost:/var/log/")
+  (front-context-string . "audit.log\n  -rw-")
+  (rear-context-string . "1K Mar 31 16:54 ")
+  (position . 171)
+  (last-modified 25638 62498 708387 467000))
+ ("X Resources"
+  (filename . "~/.dotfiles/x11/.Xresources")
+  (front-context-string . "! Applications w")
+  (rear-context-string)
+  (position . 1))
+ ("Stumpwm Configuration"
+  (filename . "~/.dotfiles/stumpwm/.stumpwmrc")
+  (front-context-string . ";; Configure res")
+  (rear-context-string . "rder-width* 1)\n\n")
+  (position . 713))
+ ("Zsh Configuration"
+  (filename . "~/.dotfiles/zsh/.zshrc")
+  (front-context-string . "# Lines configur")
+  (rear-context-string)
+  (position . 1))
+ ("Xmonad Configuration"
+  (filename . "~/.dotfiles/xmonad/.xmonad/xmonad.hs")
+  (front-context-string . "--\n-- xmonad exa")
+  (rear-context-string)
+  (position . 1))
+ ("Emacs Configuration"
+  (filename . "~/.emacs.d/init.el.org")
+  (front-context-string . "* init.el\n** Pac")
+  (rear-context-string)
+  (position . 1))
+ ("Leiningen Profiles"
+  (filename . "~/.lein/profiles.clj")
+  (front-context-string . "{;; :repl {:depe")
+  (rear-context-string)
+  (position . 1))
+ ("PostgreSQL Configuration"
+  (filename . "/sudo:root@localhost:/var/lib/postgres/data/postgresql.conf")
+  (front-context-string . "# --------------")
+  (rear-context-string)
+  (position . 1))
+ ("Bombaclaat - Root Home"
+  (filename . "/ssh:root@bombaclaat:/")))
