@@ -1499,52 +1499,28 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 #+end_src
 ** Desktop save mode
 
-Verbose reporting of lazily created buffers.
-
 #+begin_src emacs-lisp
-  (setq desktop-lazy-verbose nil)
-#+end_src
-
-Always save desktop.
-
-#+begin_src emacs-lisp
-  (setq desktop-save t)
-#+end_src
-
-Load desktop even if it is locked.
-
-#+begin_src emacs-lisp
-  (setq desktop-load-locked-desktop t)
-#+end_src
-
-Number of buffers to restore immediately.
-
-#+begin_src emacs-lisp
-  (setq desktop-restore-eager 4)
-#+end_src
-
-Don't save some buffers.
-
-#+begin_src emacs-lisp
-  (setq desktop-buffers-not-to-save
-        (concat "\\("
-                "\\.bbdb|\\.gz"
-                "\\)$"))
-#+end_src
-
-Enable desktop save mode.
-
-#+begin_src emacs-lisp
-  (desktop-save-mode 1)
-#+end_src
-
-Don't save certain modes..
-
-#+begin_src emacs-lisp
-  (add-to-list 'desktop-modes-not-to-save 'Info-mode)
-  (add-to-list 'desktop-modes-not-to-save 'dired-mode)
-  (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
-  (add-to-list 'desktop-modes-not-to-save 'info-lookup-mode)
+  (use-package desktop
+    :hook (after-init . (lambda () (desktop-save-mode 1)))
+    :config
+    ;; Disable Verbose reporting of lazily created buffers.
+    (setq desktop-lazy-verbose nil)
+    ;; Always save desktop.
+    (setq desktop-save t)
+    ;; Load desktop even if it is locked.
+    (setq desktop-load-locked-desktop t)
+    ;; Number of buffers to restore immediately.
+    (setq desktop-restore-eager 4)
+    ;; Don't save some buffers.
+    (setq desktop-buffers-not-to-save
+          (concat "\\("
+                  "\\.bbdb|\\.gz"
+                  "\\)$"))
+    ;; Don't save certain modes.
+    (add-to-list 'desktop-modes-not-to-save 'Info-mode)
+    (add-to-list 'desktop-modes-not-to-save 'dired-mode)
+    (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
+    (add-to-list 'desktop-modes-not-to-save 'info-lookup-mode))
 #+end_src
 
 ** Inferior Lisp mode
