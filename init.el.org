@@ -464,19 +464,6 @@ Asynchronous Reliable Extensible IDE for Guile Scheme.
            ("C-'" . avy-search)))
 
 #+end_src
-** Appointments
-
-Enable appointments.
-
-#+begin_src emacs-lisp
-  (appt-activate -1)
-#+end_src
-
-Display minutes to appointment and time on the mode line.
-
-#+begin_src emacs-lisp
-  (setq appt-display-mode-line t)
-#+end_src
 ** Bluetooth
 
 #+begin_src emacs-lisp
