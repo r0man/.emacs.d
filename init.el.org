@@ -2923,9 +2923,6 @@ The YASnippet collection.
      ;; Load system specific config.
      (load-if-exists (concat user-emacs-directory system-name ".el"))
 
-     ;; Start a terminal.
-     (multi-vterm)
-
      ;; Load keyboard bindings.
      (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
      (global-set-key (kbd "C-c n") 'cleanup-buffer)
