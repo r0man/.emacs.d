@@ -1496,10 +1496,11 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 ** Inferior Lisp mode
 
-Use Steel Bank Common Lisp (SBCL) as inferior-lisp-program.
-
 #+begin_src emacs-lisp
-  (setq inferior-lisp-program "sbcl")
+  (use-package inf-lisp
+    :commands (inferior-lisp)
+    :custom
+    (inferior-lisp-program "sbcl"))
 #+end_src
 
 ** Dired mode
