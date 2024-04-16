@@ -1073,22 +1073,6 @@ The Geiser implementation for Guile scheme.
     :bind (("M-:" . data-debug-eval-expression)))
 #+end_src
 
-** Dim parentheses
-#+begin_src emacs-lisp
-  (defface paren-face
-    '((((class color) (background dark))
-       (:foreground "grey20"))
-      (((class color) (background light))
-       (:foreground "grey80")))
-    "Face used to dim parentheses.")
-
-  (defun dim-parens ()
-    (font-lock-add-keywords nil '(("(\\|)" . 'paren-face))))
-
-  (add-hook 'clojure-mode-hook 'dim-parens)
-  (add-hook 'emacs-lisp-mode-hook 'dim-parens)
-#+end_src
-
 ** Delete trailing whitespace
 
 #+begin_src emacs-lisp
