@@ -2742,6 +2742,8 @@ Don't insert tabs.
 #+end_src
 ** Undo Tree
 
+Treat undo history as a tree.
+
 #+begin_src emacs-lisp
   (use-package undo-tree
     :hook (after-init . global-undo-tree-mode)
@@ -2750,6 +2752,8 @@ Don't insert tabs.
 #+end_src
 ** Vertico
 
+Vertical Interactive Completion.
+
 #+begin_src emacs-lisp
   (use-package vertico
     :hook (after-init . vertico-mode)
@@ -2757,13 +2761,19 @@ Don't insert tabs.
     (vertico-cycle t))
 #+end_src
 ** Virtual Env Wrapper
+
+Virtualenv tool for Emacs.
+
 #+begin_src emacs-lisp
   (use-package virtualenvwrapper
     :commands (venv-workon)
-    :config
-    (setq venv-location "~/.virtualenv"))
+    :custom
+    (venv-location "~/.virtualenv"))
 #+end_src
 ** Vterm
+
+Fully-fledged terminal emulator inside Emacs.
+
 #+begin_src emacs-lisp
   (use-package vterm
     :commands (vterm)
