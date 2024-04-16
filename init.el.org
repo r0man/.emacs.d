@@ -1819,45 +1819,11 @@ Use mu4e to send emails.
   (setq mail-user-agent 'mu4e-user-agent)
 #+end_src
 
-Load smtpmail
-
-#+begin_src emacs-lisp
-  (require 'smtpmail)
-#+end_src
-
 Send mail via smtpmail.
 
 #+begin_src emacs-lisp
   (setq send-mail-function 'smtpmail-send-it)
   (setq message-send-mail-function 'smtpmail-send-it)
-#+end_src
-
-Whether to print info in debug buffer.
-
-#+begin_src emacs-lisp
-  (setq smtpmail-debug-info t)
-#+end_src
-
-The name of the host running SMTP server.
-
-#+begin_src emacs-lisp
-  (setq smtpmail-smtp-server "smtp.gmail.com")
-#+end_src
-
-SMTP service port number.
-
-#+begin_src emacs-lisp
-  (setq smtpmail-smtp-service 587)
-#+end_src
-
-Type of SMTP connections to use.
-
-This may be either nil (upgrade with STARTTLS if possible), ‘starttls’
-(refuse to send if STARTTLS isn’t available), ‘plain’ (never use
-STARTTLS), or ‘ssl’ (to use TLS/SSL).
-
-#+begin_src emacs-lisp
-  (setq smtpmail-stream-type 'starttls)
 #+end_src
 
 GPG sign messages
@@ -2580,6 +2546,19 @@ Slack client for emacs.
     :config
     (add-to-list 'cider-jack-in-nrepl-middlewares "stateful-check.nrepl/middleware")
     (cider-add-to-alist 'cider-jack-in-dependencies "org.clojars.czan/stateful-check" "0.4.5-SNAPSHOT"))
+#+end_src
+** SMTP Mail
+#+begin_src emacs-lisp
+  (use-package smtpmail
+    :custom
+    ;; Whether to print info in debug buffer.
+    (smtpmail-debug-info t)
+    ;; The name of the host running SMTP server.
+    (smtpmail-smtp-server "smtp.gmail.com")
+    ;; SMTP service port number.
+    (smtpmail-smtp-service 587)
+    ;; Type of SMTP connections to use.
+    (smtpmail-stream-type 'starttls))
 #+end_src
 ** So Long
 #+begin_src emacs-lisp
