@@ -2192,18 +2192,18 @@ Support for indenting code in SQL files.
 
 ** Tramp
 #+begin_src emacs-lisp
-  (eval-after-load "tramp"
-    '(progn
-       (tramp-set-completion-function
-        "ssh"
-        '((tramp-parse-shosts "~/.ssh/known_hosts")
-          (tramp-parse-hosts "/etc/hosts")))))
+  (use-package tramp
+    :config
+    (setq tramp-verbose 10)
+    (tramp-set-completion-function
+     "ssh"
+     '((tramp-parse-shosts "~/.ssh/known_hosts")
+       (tramp-parse-hosts "/etc/hosts"))))
 #+end_src
 
 ** Uniquify
 #+begin_src emacs-lisp
   (use-package uniquify
-    :ensure nil
     :init
     (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
     (setq uniquify-separator "|")
