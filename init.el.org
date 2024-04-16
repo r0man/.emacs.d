@@ -2788,8 +2788,12 @@ Log and display warnings.
     (whisper-language "en"))
 #+end_src
 ** Winner mode
+
+Restore old window configurations.
+
 #+begin_src emacs-lisp
-  (winner-mode)
+  (use-package winner
+    :hook ((after-init . winner-mode)))
 #+end_src
 
 ** WSD Mode
