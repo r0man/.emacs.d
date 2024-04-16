@@ -2416,8 +2416,10 @@ When enabled, this minor mode allows to scroll the display precisely,
 according to the turning of the mouse wheel.
 
 #+begin_src emacs-lisp
-  (pixel-scroll-precision-mode 1)
+  (use-package pixel-scroll
+    :hook (after-init . (lambda () (pixel-scroll-precision-mode 1))))
 #+end_src
+
 ** PlantUML
 #+begin_src emacs-lisp
   (use-package plantuml-mode
