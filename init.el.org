@@ -469,7 +469,7 @@ Asynchronous Reliable Extensible IDE for Guile Scheme.
 Enable appointments.
 
 #+begin_src emacs-lisp
-  (appt-activate 1)
+  (appt-activate -1)
 #+end_src
 
 Display minutes to appointment and time on the mode line.
