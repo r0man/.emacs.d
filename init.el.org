@@ -2784,10 +2784,10 @@ Log and display warnings.
   (use-package web-mode
     :mode (("\\.jsx$" . web-mode)
            ("\\.html$" . web-mode))
-    :config
-    (setq web-mode-code-indent-offset 2
-          web-mode-css-indent-offset 2
-          web-mode-markup-indent-offset 2))
+    :custom
+    (web-mode-code-indent-offset 2)
+    (web-mode-css-indent-offset 2)
+    (web-mode-markup-indent-offset 2))
 #+end_src
 ** Which Key
 #+begin_src emacs-lisp
