@@ -1855,14 +1855,21 @@ GPG sign messages
 
 ** Marginalia
 
+This package adds marginalia to the minibuffer completions. Marginalia
+are marks or annotations placed at the margin of the page of a book or
+in this case helpful colorful annotations placed at the margin of the
+minibuffer for your completion candidates. Marginalia can only add
+annotations to the completion candidates. It cannot modify the
+appearance of the candidates themselves, which are shown unaltered as
+supplied by the original command.
+
 #+begin_src emacs-lisp
   (use-package marginalia
     ;; Either bind `marginalia-cycle` globally or only in the minibuffer
     :bind (("M-A" . marginalia-cycle)
            :map minibuffer-local-map
            ("M-A" . marginalia-cycle))
-    :init
-    (marginalia-mode))
+    :hook (after-init . marginalia-mode))
 #+end_src
 
 ** Mu4e
