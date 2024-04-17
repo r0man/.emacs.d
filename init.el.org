@@ -612,6 +612,30 @@ JIRA integration to Emacs org-mode.
 ** Ellama
 #+begin_src emacs-lisp
   (use-package ellama
+    :commands (ellama-ask-about
+               ellama-ask-line
+               ellama-ask-selection
+               ellama-code-complete
+               ellama-code-edit
+               ellama-code-improve
+               ellama-code-review
+               ellama-complete
+               ellama-context-add-buffer
+               ellama-context-add-file
+               ellama-context-add-info-node
+               ellama-context-add-selection
+               ellama-define-word
+               ellama-improve-conciseness
+               ellama-improve-grammar
+               ellama-improve-wording
+               ellama-load-session
+               ellama-provider-select
+               ellama-session-switch
+               ellama-summarize
+               ellama-summarize-killring
+               ellama-summarize-webpage
+               ellama-translate
+               ellama-translate-buffer)
     :custom
     (ellama-auto-scroll t)
     (ellama-language "German")
