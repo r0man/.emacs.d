@@ -1805,31 +1805,39 @@ Jarchive teaches emacs how to open project dependencies that reside inside jar f
               (rcirc-track-minor-mode 1)))
 #+end_src
 
-** Mail
-
-My email address.
-
+** Message
 #+begin_src emacs-lisp
-  (setq user-mail-address "roman.scherer@burningswell.com")
+  (use-package message
+    :custom
+    ;; Send mail via smtpmail.
+    (message-send-mail-function 'smtpmail-send-it)
+    :init
+    ;; GPG sign messages
+    (add-hook 'message-send-hook 'mml-secure-message-sign-pgpmime))
 #+end_src
 
-Use mu4e to send emails.
-
+** Sendmail
 #+begin_src emacs-lisp
-  (setq mail-user-agent 'mu4e-user-agent)
+  (use-package sendmail
+    :custom
+    ;; Send mail via smtpmail.
+    (send-mail-function 'smtpmail-send-it))
 #+end_src
 
-Send mail via smtpmail.
-
+** Simple
 #+begin_src emacs-lisp
-  (setq send-mail-function 'smtpmail-send-it)
-  (setq message-send-mail-function 'smtpmail-send-it)
+  (use-package simple
+    :custom
+    ;; Use mu4e to send emails.
+    (mail-user-agent 'mu4e-user-agent))
 #+end_src
 
-GPG sign messages
-
+** Startup
 #+begin_src emacs-lisp
-  (add-hook 'message-send-hook 'mml-secure-message-sign-pgpmime)
+  (use-package startup
+    :custom
+    ;; My email address.
+    (user-mail-address "roman.scherer@burningswell.com"))
 #+end_src
 
 ** Macrostep
