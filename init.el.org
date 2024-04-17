@@ -1505,16 +1505,14 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 ** Dired mode
 
-Switches passed to `ls' for Dired. MUST contain the `l' option.
-
 #+begin_src emacs-lisp
-  (setq dired-listing-switches "-alh")
-#+end_src
-
-Try to guess a default target directory.
-
-#+begin_src emacs-lisp
-  (setq dired-dwim-target t)
+  (use-package dired
+    :commands (dired)
+    :custom
+    ;; Try to guess a default target directory.
+    (dired-dwim-target t)
+    ;; Switches passed to `ls' for Dired. MUST contain the `l' option.
+    (dired-listing-switches "-alh"))
 #+end_src
 
 Find Clojure files in dired mode.
