@@ -1833,9 +1833,12 @@ GPG sign messages
 #+end_src
 
 ** Macrostep
+
+Interactive macro-expander for Emacs.
+
 #+begin_src emacs-lisp
   (use-package macrostep
-    :defer 1)
+    :commands (macrostep-expand))
 #+end_src
 ** Makem.sh
 #+begin_src emacs-lisp
