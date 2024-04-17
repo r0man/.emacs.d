@@ -1844,6 +1844,7 @@ An Emacs IRC client.
 ** Message
 #+begin_src emacs-lisp
   (use-package message
+    :defer t
     :custom
     ;; Send mail via smtpmail.
     (message-send-mail-function 'smtpmail-send-it)
@@ -1855,6 +1856,7 @@ An Emacs IRC client.
 ** Sendmail
 #+begin_src emacs-lisp
   (use-package sendmail
+    :defer t
     :custom
     ;; Send mail via smtpmail.
     (send-mail-function 'smtpmail-send-it))
@@ -1863,6 +1865,7 @@ An Emacs IRC client.
 ** Simple
 #+begin_src emacs-lisp
   (use-package simple
+    :defer t
     :custom
     ;; Use mu4e to send emails.
     (mail-user-agent 'mu4e-user-agent))
