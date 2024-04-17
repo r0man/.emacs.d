@@ -1571,37 +1571,36 @@ delimiter, the matching closing delimiter is automatically inserted
 as well, leaving point between the two.
 
 #+begin_src emacs-lisp
-  (electric-pair-mode t)
-#+end_src
-** Emacs Lisp mode
-
-Auto load files.
-
-#+begin_src emacs-lisp
-  (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+  (use-package elec-pair
+    :hook (after-init . electric-pair-mode))
 #+end_src
 
-Pretty symbols.
+* Prog Mode
 
 #+begin_src emacs-lisp
-  (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
+  (use-package prog-mode
+    :hook (emacs-lisp-mode . prettify-symbols-mode))
 #+end_src
 
-Key bindings.
+* Elisp
+
+The major mode for editing Emacs Lisp code.
 
 #+begin_src emacs-lisp
-  (let ((mode emacs-lisp-mode-map))
-    (define-key mode (kbd "C-c m") 'macrostep-expand)
-    (define-key mode (kbd "C-c e E") 'elint-current-buffer)
-    (define-key mode (kbd "C-c e c") 'cancel-debug-on-entry)
-    (define-key mode (kbd "C-c e d") 'debug-on-entry)
-    (define-key mode (kbd "C-c e e") 'toggle-debug-on-error)
-    (define-key mode (kbd "C-c e f") 'emacs-lisp-byte-compile-and-load)
-    (define-key mode (kbd "C-c e l") 'find-library)
-    (define-key mode (kbd "C-c e r") 'eval-region)
-    (define-key mode (kbd "C-c C-k") 'eval-buffer)
-    (define-key mode (kbd "C-c ,") 'ert)
-    (define-key mode (kbd "C-c C-,") 'ert))
+  (use-package elisp-mode
+    :mode ("\\.el\\'" "Cask")
+    :bind (:map emacs-lisp-mode-map
+                ("C-c ," . ert)
+                ("C-c C-," . ert)
+                ("C-c C-k" . eval-buffer)
+                ("C-c e E" . elint-current-buffer)
+                ("C-c e c" . cancel-debug-on-entry)
+                ("C-c e d" . debug-on-entry)
+                ("C-c e e" . toggle-debug-on-error)
+                ("C-c e f" . emacs-lisp-byte-compile-and-load)
+                ("C-c e l" . find-library)
+                ("C-c e r" . eval-region)
+                ("C-c m" . macrostep-expand)))
 #+end_src
 
 ** Elisp slime navigation
