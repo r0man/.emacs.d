@@ -54,29 +54,12 @@
 
 (setq dotfiles-dir (file-name-directory (or (buffer-file-name) load-file-name)))
 
-(defun my/org-untangled-filename (filename)
-  "Return the untangled filename of Org Mode FILENAME."
-  (string-replace ".org" ".el" filename))
-
-(defun my/org-load-untangled-p (filename)
-  "Return non-nil if the untangled file for FILENAME should be loaded."
-  (let ((untangled-filename (my/org-untangled-filename filename)))
-    (and (file-exists-p untangled-filename)
-         (time-less-p (nth 5 (file-attributes filename))
-                      (nth 5 (file-attributes untangled-filename))))))
-
 ;; Load up all literate org-mode files in this directory
 (mapc (lambda (org-filename)
         (let ((started-at (current-time)))
-          (if (my/org-load-untangled-p org-filename)
-              (let ((filename (my/org-untangled-filename org-filename)))
-                (load-file filename)
-                (message "Loaded untangled file: %s (%.03fs)." filename
-                         (float-time (time-since started-at))))
-            (progn
-              (org-babel-load-file org-filename)
-              (message "Loaded tangled file: %s (%.03fs)." org-filename
-                       (float-time (time-since started-at)))))))
+          (org-babel-load-file org-filename)
+          (message "Loaded Org Babel file: %s (%.03fs)." org-filename
+                   (float-time (time-since started-at)))))
       (directory-files dotfiles-dir t "\\.org$"))
 
 ;;; init.el ends here
