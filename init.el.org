@@ -445,7 +445,7 @@ This variable describes the behavior of the command key.
 ** Ascii Doc
 #+begin_src emacs-lisp
   (use-package adoc-mode
-    :mode (("\\.adoc$" . adoc-mode)))
+    :mode (("\\.adoc\\'" . adoc-mode)))
 #+end_src
 ** Arei
 
@@ -476,7 +476,7 @@ A GNU Emacs major mode for editing BNF grammars.
 
 #+begin_src emacs-lisp
   (use-package bnf-mode
-    :mode (("\\.bnf$" . bnf-mode)))
+    :mode (("\\.bnf\\'" . bnf-mode)))
 #+end_src
 ** Common Lisp Hyper Spec
 
@@ -760,10 +760,10 @@ A simple LLM client for Emacs.
 #+begin_src emacs-lisp
   (use-package clojure-mode
     :after (nu)
-    :mode (("\\.edn$" . clojure-mode)
-           ("\\.cljs$" . clojurescript-mode)
-           ("\\.cljx$" . clojurex-mode)
-           ("\\.cljc$" . clojurec-mode))
+    :mode (("\\.edn\\'" . clojure-mode)
+           ("\\.cljs\\'" . clojurescript-mode)
+           ("\\.cljx\\'" . clojurex-mode)
+           ("\\.cljc\\'" . clojurec-mode))
     :config
     (add-hook 'clojure-mode-hook #'subword-mode)
     (add-hook 'clojure-mode-hook #'paredit-mode)
@@ -1236,7 +1236,7 @@ identical elements are deleted from the history list.
 ** Hy Mode
 #+begin_src emacs-lisp
   (use-package hy-mode
-    :mode (("\\.hy$" . hy-mode))
+    :mode (("\\.hy\\'" . hy-mode))
     :config
     (add-hook 'hy-mode-hook 'paredit-mode)
     (setq hy-indent-specform
@@ -1541,10 +1541,10 @@ User-defined alist of rules for suggested commands.
 
 #+begin_src emacs-lisp
   (setq dired-guess-shell-alist-user
-        '(("\\.mp4$" "mplayer")
-          ("\\.mkv$" "mplayer")
-          ("\\.mov$" "mplayer")
-          ("\\.xlsx?$" "libreoffice")))
+        '(("\\.mp4\\'" "mplayer")
+          ("\\.mkv\\'" "mplayer")
+          ("\\.mov\\'" "mplayer")
+          ("\\.xlsx?\\'" "libreoffice")))
 #+end_src
 
 Run shell command in background.
@@ -2388,10 +2388,10 @@ according to the turning of the mouse wheel.
 ** PlantUML
 #+begin_src emacs-lisp
   (use-package plantuml-mode
-    :mode (("\\.plantump$" . plantuml-mode)
-           ("\\.plu$" . plantuml-mode)
-           ("\\.pum$" . plantuml-mode)
-           ("\\.uml$" . plantuml-mode))
+    :mode (("\\.plantump\\'" . plantuml-mode)
+           ("\\.plu\\'" . plantuml-mode)
+           ("\\.pum\\'" . plantuml-mode)
+           ("\\.uml\\'" . plantuml-mode))
     :custom
     (org-plantuml-jar-path "~/.guix-profile/share/java/plantuml.jar"))
 #+end_src
@@ -2463,14 +2463,14 @@ An HTTP library for Emacs.
 ** Ruby mode
 #+begin_src emacs-lisp
   (use-package ruby-mode
-    :mode (("Capfile$" . ruby-mode)
-           ("Gemfile$" . ruby-mode)
-           ("Guardfile$" . ruby-mode)
-           ("Rakefile$" . ruby-mode)
-           ("Vagrantfile$" . ruby-mode)
-           ("\\.gemspec$" . ruby-mode)
-           ("\\.rake$" . ruby-mode)
-           ("\\.ru$" . ruby-mode)))
+    :mode (("Capfile\\'" . ruby-mode)
+           ("Gemfile\\'" . ruby-mode)
+           ("Guardfile\\'" . ruby-mode)
+           ("Rakefile\\'" . ruby-mode)
+           ("Vagrantfile\\'" . ruby-mode)
+           ("\\.gemspec\\'" . ruby-mode)
+           ("\\.rake\\'" . ruby-mode)
+           ("\\.ru\\'" . ruby-mode)))
 #+end_src
 ** Rainbow mode
 #+begin_src emacs-lisp
@@ -2706,7 +2706,7 @@ Don't insert tabs.
 
 #+begin_src emacs-lisp
   (use-package terraform-mode
-    :mode "\\.tf$")
+    :mode "\\.tf\\'")
 #+end_src
 
 ** Unfill
@@ -2767,8 +2767,8 @@ Log and display warnings.
 ** Web mode
 #+begin_src emacs-lisp
   (use-package web-mode
-    :mode (("\\.jsx$" . web-mode)
-           ("\\.html$" . web-mode))
+    :mode (("\\.jsx\\'" . web-mode)
+           ("\\.html\\'" . web-mode))
     :custom
     (web-mode-code-indent-offset 2)
     (web-mode-css-indent-offset 2)
@@ -2822,9 +2822,9 @@ ASN.1 using OpenSSL.
 ** YAML mode
 #+begin_src emacs-lisp
   (use-package yaml-mode
-    :mode (("\\.yaml$" . yaml-mode)
-           ("\\.yaml.tmpl$" . yaml-mode)
-           ("\\.yml$" . yaml-mode)))
+    :mode (("\\.yaml\\'" . yaml-mode)
+           ("\\.yaml.tmpl\\'" . yaml-mode)
+           ("\\.yml\\'" . yaml-mode)))
 #+end_src
 ** YASnippet
 
