@@ -1785,24 +1785,29 @@ Jarchive teaches emacs how to open project dependencies that reside inside jar f
     (jarchive-setup)
     :after (eglot))
 #+end_src
-** IRC
+** RCIRC
+
+An Emacs IRC client.
+
 #+begin_src emacs-lisp
-  (load-if-exists "~/.rcirc.el")
-
-  (setq rcirc-default-nick "r0man"
-        rcirc-default-user-name "r0man"
-        rcirc-default-full-name "r0man"
-        rcirc-server-alist '(("irc.libera.chat"
-                              :channels ("#clojure" "#guix")
-                              :encryption tls
-                              :port 6697))
-        rcirc-private-chat t
-        rcirc-debug-flag t)
-
-  (add-hook 'rcirc-mode-hook
-            (lambda ()
-              (set (make-local-variable 'scroll-conservatively) 8192)
-              (rcirc-track-minor-mode 1)))
+  (use-package rcirc
+    :commands (rcirc)
+    :custom
+    (rcirc-default-nick "r0man")
+    (rcirc-default-user-name "r0man")
+    (rcirc-default-full-name "r0man")
+    (rcirc-server-alist '(("irc.libera.chat"
+                           :channels ("#clojure" "#guix")
+                           :encryption tls
+                           :port 6697)))
+    (rcirc-private-chat t)
+    (rcirc-debug-flag t)
+    :config
+    (load-if-exists "~/.rcirc.el")
+    (add-hook 'rcirc-mode-hook
+              (lambda ()
+                (set (make-local-variable 'scroll-conservatively) 8192)
+                (rcirc-track-minor-mode 1))))
 #+end_src
 
 ** Message
