@@ -742,7 +742,7 @@ A simple LLM client for Emacs.
 #+begin_src emacs-lisp
   (use-package gptel
     :commands (gptel)
-    :init
+    :config
     (gptel-make-ollama "Ollama"
       :host "localhost:11434"
       :stream t
@@ -753,7 +753,8 @@ A simple LLM client for Emacs.
   (use-package nu-gptel
     :after gptel
     :load-path (lambda () (expand-file-name "nu-gptel" (getenv "NU_HOME")))
-    :config (setq-default gptel-backend nu-gptel-openai))
+    :config
+    (setq-default gptel-backend nu-gptel-openai))
 #+end_src
 
 ** Clojure mode
@@ -1199,8 +1200,8 @@ typing. Automatically switches the spell checker and typo-mode.
   (use-package gptel
     :commands gptel
     :load-path ("~/workspace/gptel")
-    :init
-    (setq gptel-openai-endpoint "http://localhost:3005/v1"))
+    :custom
+    (gptel-openai-endpoint "http://localhost:3005/v1"))
 #+end_src
 ** Helpful
 
