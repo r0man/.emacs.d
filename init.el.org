@@ -2502,7 +2502,7 @@ excellent Paredit mode as editing substrate whenever possible.
 ** SBT Mode
 #+begin_src emacs-lisp
   (use-package sbt-mode
-    :commands sbt-start sbt-command
+    :commands (sbt-start sbt-command)
     :config
     ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
     ;; allows using SPACE when in the minibuffer
