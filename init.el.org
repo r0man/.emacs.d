@@ -1604,14 +1604,14 @@ as well, leaving point between the two.
     :hook (after-init . electric-pair-mode))
 #+end_src
 
-* Prog Mode
+** Prog Mode
 
 #+begin_src emacs-lisp
   (use-package prog-mode
     :hook (emacs-lisp-mode . prettify-symbols-mode))
 #+end_src
 
-* Elisp
+** Elisp
 
 The major mode for editing Emacs Lisp code.
 
