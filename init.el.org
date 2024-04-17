@@ -2094,7 +2094,10 @@ SLY is Sylvester the Cat's Common Lisp IDE for Emacs
 Use Guile as scheme program.
 
 #+begin_src emacs-lisp
-  (setq scheme-program-name "guile")
+  (use-package scheme
+    :mode (("\\.scm\\'" . scheme-mode))
+    :custom
+    (scheme-program-name "guile"))
 #+end_src
 
 ** Smarter beginning of line
