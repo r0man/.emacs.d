@@ -2169,18 +2169,18 @@ Support for indenting code in SQL files.
 ** Uniquify
 #+begin_src emacs-lisp
   (use-package uniquify
-    :init
-    (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-    (setq uniquify-separator "|")
-    (setq uniquify-ignore-buffers-re "^\\*")
-    (setq uniquify-after-kill-buffer-p t))
+    :custom
+    (uniquify-after-kill-buffer-p t)
+    (uniquify-buffer-name-style 'post-forward-angle-brackets)
+    (uniquify-ignore-buffers-re "^\\*")
+    (uniquify-separator "|"))
 #+end_src
 
 ** Open AI
 #+begin_src emacs-lisp
   (use-package openai
     :defer t
-    :init
+    :config
     (setq openai-key #'openai-key-auth-source))
 #+end_src
 ** Open With
