@@ -1537,16 +1537,6 @@ Find Elisp files in dired mode.
 
 ** Dired-x mode
 
-User-defined alist of rules for suggested commands.
-
-#+begin_src emacs-lisp
-  (setq dired-guess-shell-alist-user
-        '(("\\.mp4\\'" "mplayer")
-          ("\\.mkv\\'" "mplayer")
-          ("\\.mov\\'" "mplayer")
-          ("\\.xlsx?\\'" "libreoffice")))
-#+end_src
-
 Run shell command in background.
 
 #+begin_src emacs-lisp
@@ -1556,11 +1546,19 @@ Run shell command in background.
     (interactive
      (list (dired-read-shell-command (concat "& on " "%s: ") nil (list (dired-get-filename)))))
     (call-process command nil 0 nil (dired-get-filename)))
+#+end_src
 
-  (add-hook 'dired-load-hook
-            (lambda ()
-              (load "dired-x")
-              (define-key dired-mode-map "&" 'dired-do-shell-command-in-background)))
+#+begin_src emacs-lisp
+  (use-package dired-x
+    :after dired
+    :bind (:map dired-mode-map
+                ("&" . dired-do-shell-command-in-background))
+    :custom
+    (dired-guess-shell-alist-user
+     '(("\\.mp4\\'" "mplayer")
+       ("\\.mkv\\'" "mplayer")
+       ("\\.mov\\'" "mplayer")
+       ("\\.xlsx?\\'" "libreoffice"))))
 #+end_src
 
 ** Electric pair mode
