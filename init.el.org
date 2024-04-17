@@ -1853,32 +1853,6 @@ An Emacs IRC client.
     (add-hook 'message-send-hook 'mml-secure-message-sign-pgpmime))
 #+end_src
 
-** Sendmail
-#+begin_src emacs-lisp
-  (use-package sendmail
-    :defer t
-    :custom
-    ;; Send mail via smtpmail.
-    (send-mail-function 'smtpmail-send-it))
-#+end_src
-
-** Simple
-#+begin_src emacs-lisp
-  (use-package simple
-    :defer t
-    :custom
-    ;; Use mu4e to send emails.
-    (mail-user-agent 'mu4e-user-agent))
-#+end_src
-
-** Startup
-#+begin_src emacs-lisp
-  (use-package startup
-    :custom
-    ;; My email address.
-    (user-mail-address "roman.scherer@burningswell.com"))
-#+end_src
-
 ** Macrostep
 
 Interactive macro-expander for Emacs.
@@ -2523,6 +2497,24 @@ excellent Paredit mode as editing substrate whenever possible.
     ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
     (setq sbt:program-options '("-Dsbt.supershell=false")))
 #+end_src
+** Sendmail
+#+begin_src emacs-lisp
+  (use-package sendmail
+    :defer t
+    :custom
+    ;; Send mail via smtpmail.
+    (send-mail-function 'smtpmail-send-it))
+#+end_src
+
+** Simple
+#+begin_src emacs-lisp
+  (use-package simple
+    :defer t
+    :custom
+    ;; Use mu4e to send emails.
+    (mail-user-agent 'mu4e-user-agent))
+#+end_src
+
 ** Slack
 
 Slack client for emacs.
@@ -2547,6 +2539,14 @@ Slack client for emacs.
              :user "roman.scherer@nubank.com.br")
      :subscribed-channels '((stem))))
 #+end_src
+** Startup
+#+begin_src emacs-lisp
+  (use-package startup
+    :custom
+    ;; My email address.
+    (user-mail-address "roman.scherer@burningswell.com"))
+#+end_src
+
 ** Stateful Check
 
 #+begin_src emacs-lisp
