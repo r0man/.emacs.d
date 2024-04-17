@@ -1772,7 +1772,10 @@ Indent Java annotations. See http://lists.gnu.org/archive/html/help-gnu-emacs/20
 Number of spaces for each indentation step in `js-mode'.
 
 #+begin_src emacs-lisp
-  (setq js-indent-level 2)
+  (use-package js
+    :mode "\\.js\\'"
+    :custom
+    (js-indent-level 2))
 #+end_src
 
 ** JArchive
