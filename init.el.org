@@ -1338,8 +1338,12 @@ Increase the number of messages in the *Messages* buffer.
 #+end_src
 
 ** Mermaid
+
+Emacs major mode for working with mermaid graphs.
+
 #+begin_src emacs-lisp
-  (use-package mermaid-mode)
+  (use-package mermaid-mode
+    :mode ("\\.mermaid\\'" "\\.mmd\\'"))
 #+end_src
 ** Misc
 
