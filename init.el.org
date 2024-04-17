@@ -1438,12 +1438,6 @@ Silently save word abbrevs too when files are saved.
 
 ** Compilation mode
 
-Auto scroll compilation buffer.
-
-#+begin_src emacs-lisp
-  (setq compilation-scroll-output 't)
-#+end_src
-
 Enable colors in compilation mode.
 http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emacs-compilation-buffer
 
@@ -1451,22 +1445,31 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
   (defun colorize-compilation-buffer ()
     (let ((inhibit-read-only t))
       (ansi-color-apply-on-region (point-min) (point-max))))
+#+end_src
 
-  (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+#+begin_src emacs-lisp
+  (use-package compile
+    :commands (compile)
+    :hooks (compilation-filter-hook . colorize-compilation-buffer)
+    :custom
+    ;; Auto scroll compilation buffer.
+    (compilation-scroll-output 't))
 #+end_src
 
 ** CSS mode
 #+begin_src emacs-lisp
   (use-package css-mode
     :mode ("\\.css\\'" . css-mode)
-    :config (setq css-indent-offset 2))
+    :custom
+    (css-indent-offset 2))
 #+end_src
 ** SCSS mode
 #+begin_src emacs-lisp
   (use-package scss-mode
     :mode (("\\.sass\\'" . scss-mode)
            ("\\.scss\\'" . scss-mode))
-    :config (setq scss-compile-at-save nil))
+    :custom
+    (scss-compile-at-save nil))
 #+end_src
 ** Desktop save mode
 
