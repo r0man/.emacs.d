@@ -2159,6 +2159,7 @@ Support for indenting code in SQL files.
 ** Tramp
 #+begin_src emacs-lisp
   (use-package tramp
+    :defer t
     :config
     (setq tramp-verbose 10)
     (tramp-set-completion-function
