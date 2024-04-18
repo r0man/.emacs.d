@@ -1589,25 +1589,46 @@ as well, leaving point between the two.
     :hook (emacs-lisp-mode . prettify-symbols-mode))
 #+end_src
 
+** Elint
+
+A linter for Emacs Lisp.
+
+#+begin_src emacs-lisp
+  (use-package elint
+    :commands (elint-initialize elint-current-buffer)
+    :bind (:map emacs-lisp-mode-map
+                ("C-c e E" . elint-current-buffer)))
+#+end_src
+
 ** Elisp
 
 The major mode for editing Emacs Lisp code.
 
 #+begin_src emacs-lisp
-  (use-package elisp-mode
+  (use-package emacs-lisp-mode
+    :no-require t
     :mode ("\\.el\\'" "Cask")
     :bind (:map emacs-lisp-mode-map
-                ("C-c ," . ert)
-                ("C-c C-," . ert)
                 ("C-c C-k" . eval-buffer)
-                ("C-c e E" . elint-current-buffer)
                 ("C-c e c" . cancel-debug-on-entry)
                 ("C-c e d" . debug-on-entry)
                 ("C-c e e" . toggle-debug-on-error)
                 ("C-c e f" . emacs-lisp-byte-compile-and-load)
                 ("C-c e l" . find-library)
-                ("C-c e r" . eval-region)
-                ("C-c m" . macrostep-expand)))
+                ("C-c e r" . eval-region)))
+#+end_src
+
+** ERT
+
+The major mode for editing Emacs Lisp code.
+
+#+begin_src emacs-lisp
+  (use-package ert
+    ;; :no-require t
+    ;; :mode ("\\.el\\'")
+    :bind (:map emacs-lisp-mode-map
+                ("C-c ," . ert)
+                ("C-c C-," . ert)))
 #+end_src
 
 ** Elisp slime navigation
@@ -1683,9 +1704,9 @@ A simple LLM client for Emacs.
     :commands (gptel)
     :config
     (gptel-make-ollama "Ollama"
-      :host "localhost:11434"
-      :stream t
-      :models '("llama2:latest")))
+                       :host "localhost:11434"
+                       :stream t
+                       :models '("llama2:latest")))
 #+end_src
 
 #+begin_src emacs-lisp
@@ -1859,7 +1880,9 @@ Interactive macro-expander for Emacs.
 
 #+begin_src emacs-lisp
   (use-package macrostep
-    :commands (macrostep-expand))
+    :commands (macrostep-expand)
+    :bind (:map emacs-lisp-mode-map
+                ("C-c m" . macrostep-expand)))
 #+end_src
 ** Makem.sh
 #+begin_src emacs-lisp
