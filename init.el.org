@@ -127,6 +127,16 @@ See: [[https://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing
       (ansi-color-apply-on-region (point-min) (point-max))))
 #+end_src
 
+** Auto revert mode
+
+Reload files when they change on disk.
+
+#+begin_src emacs-lisp
+  (use-package autorevert
+    :config
+    (global-auto-revert-mode t))
+#+end_src
+
 ** Calendar
 
 The calendar and diary by default display times of day in the
@@ -1169,13 +1179,6 @@ See: https://emacsnotes.wordpress.com/2022/08/16/who-stole-c-c-and-possibly-othe
   ;;   (setq gif-screencast-scale-factor 1.0)
   ;;   (define-key gif-screencast-mode-map (kbd "<f8>") 'gif-screencast-toggle-pause)
   ;;   (global-set-key (kbd "<f9>") 'gif-screencast-start-or-stop))
-#+end_src
-** Global auto revert mode
-
-Reload files when they change on disk.
-
-#+begin_src emacs-lisp
-  (global-auto-revert-mode 1)
 #+end_src
 ** Guess Language
 
