@@ -103,6 +103,19 @@ system.
     "Return t if MONITOR is connected, otherwise nil."
     (not (string= "" (shell-command-to-string (format "xrandr --listmonitors | grep %s" monitor)))))
 #+end_src
+** Abbrev mode
+
+#+begin_src emacs-lisp
+  (use-package abbrev
+    :diminish
+    :hook ((text-mode prog-mode) . abbrev-mode)
+    :custom
+    ;; Set the name of file from which to read abbrevs.
+    (abbrev-file-name "~/.emacs.d/abbrev_defs")
+    ;; Silently save word abbrevs too when files are saved.
+    (save-abbrevs 'silently))
+#+end_src
+
 ** Aide.el
 #+begin_src emacs-lisp
   (use-package aide
@@ -397,11 +410,12 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
 
 #+begin_src emacs-lisp
   (use-package eldoc
-    :hook ((emacs-lisp-mode . eldoc-mode))
+    :diminish
+    :hook ((c-mode-common emacs-lisp-mode) . eldoc-mode)
     :custom
     (eldoc-echo-area-display-truncation-message nil)
     (eldoc-echo-area-prefer-doc-buffer t)
-    (eldoc-echo-area-use-multiline-p 5))
+    (eldoc-echo-area-use-multiline-p 3))
 #+end_src
 ** Eldoc Box
 
@@ -1433,20 +1447,6 @@ Whether Emacs should confirm killing processes on exit.
   (setq confirm-kill-processes nil)
 #+end_src
 
-** Abbrev mode
-
-Set the name of file from which to read abbrevs.
-
-#+begin_src emacs-lisp
-  (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
-#+end_src
-
-Silently save word abbrevs too when files are saved.
-
-#+begin_src emacs-lisp
-  (setq save-abbrevs 'silently)
-#+end_src
-
 ** Compilation mode
 
 Enable colors in compilation mode.
@@ -1641,6 +1641,7 @@ Slime-style navigation for Emacs Lisp.
 
 #+begin_src emacs-lisp
   (use-package elisp-slime-nav
+    :diminish
     :hook (emacs-lisp-mode . elisp-slime-nav-mode))
 #+end_src
 ** Emacs server
@@ -2356,6 +2357,7 @@ The org-mode Pandoc exporter.
 ** Paredit
 #+begin_src emacs-lisp
   (use-package paredit
+    :diminish
     ;; Bind RET to nil, to fix Cider REPL buffer eval issue
     :bind (:map paredit-mode-map ("RET" . nil))
     :hook ((clojure-mode . paredit-mode)
@@ -2501,6 +2503,7 @@ excellent Paredit mode as editing substrate whenever possible.
 
 #+begin_src emacs-lisp
   (use-package redshank
+    :diminish
     :hook ((emacs-lisp-mode . redshank-mode)
            (lisp-mode . redshank-mode)))
 #+end_src
@@ -2826,6 +2829,7 @@ Emacs package that displays available keybindings in popup.
 
 #+begin_src emacs-lisp
   (use-package which-key
+    :diminish
     :config (which-key-mode))
 #+end_src
 ** Whisper
