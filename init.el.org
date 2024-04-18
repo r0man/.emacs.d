@@ -1518,6 +1518,7 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 #+begin_src emacs-lisp
   (use-package dired
+    :bind (("C-x C-d" . dired))
     :commands (dired)
     :custom
     ;; Try to guess a default target directory.
@@ -2036,10 +2037,10 @@ Configure mu.
 ** Nucli
 #+begin_src emacs-lisp
   (use-package nucli
+    :bind (("C-x N" . nucli))
     :commands (nucli)
     :load-path ("~/workspace/nu/nucli.el/src"
                 "~/workspace/nu/nucli.el/test"))
-
 #+end_src
 ** Save hist mode
 
@@ -2913,9 +2914,7 @@ The YASnippet collection.
      (global-set-key (kbd "C-c n") 'cleanup-buffer)
      (global-set-key (kbd "C-c r") 'rotate-buffers)
      (global-set-key (kbd "C-x C-b") 'list-buffers)
-     (global-set-key (kbd "C-x C-d") 'dired)
      (global-set-key (kbd "C-x C-o") 'delete-blank-lines)
-     (global-set-key (kbd "C-x N") 'nucli)
      (global-set-key (kbd "C-x TAB") 'indent-rigidly)
      (global-set-key (kbd "C-x ^") 'enlarge-window)
      (global-set-key (kbd "C-x f") 'find-file)
