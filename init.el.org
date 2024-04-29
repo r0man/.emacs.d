@@ -1461,10 +1461,11 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 #+begin_src emacs-lisp
   (use-package compile
     :commands (compile)
-    :hooks (compilation-filter-hook . colorize-compilation-buffer)
     :custom
     ;; Auto scroll compilation buffer.
-    (compilation-scroll-output 't))
+    (compilation-scroll-output 't)
+    :config
+    (add-hook 'compilation-filter-hook #'colorize-compilation-buffer))
 #+end_src
 
 ** CSS mode
