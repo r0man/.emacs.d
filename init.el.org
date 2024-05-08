@@ -2583,6 +2583,7 @@ Slack client for emacs.
 
 #+begin_src emacs-lisp
   (use-package stateful-check
+    :disabled
     :after cider
     :load-path "~/workspace/stateful-check"
     :config
