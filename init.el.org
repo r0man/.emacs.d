@@ -483,7 +483,7 @@ Asynchronous Reliable Extensible IDE for Guile Scheme.
 ** Avy
 #+begin_src emacs-lisp
   (use-package avy
-    :bind (("M-j" . avy-goto-char-2)
+    :bind (("M-j" . avy-goto-char-timer)
            :map isearch-mode-map
            ("C-'" . avy-search)))
 
