@@ -695,7 +695,7 @@ JIRA integration to Emacs org-mode.
                         :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
                         :chat-model "gpt-4-turbo-preview"
                         :embedding-model "text-embedding-ada-002")))
-    (setq ellama-provider (alist-get "OpenAI GTP-3" ellama-providers nil nil #'string=)))
+    (setq ellama-provider (alist-get "OpenAI GPT-3" ellama-providers nil nil #'string=)))
 
   (defun ellama-chat-whisper ()
     "Record audio in a temporary buffer with the `whisper-run`
