@@ -629,7 +629,6 @@ JIRA integration to Emacs org-mode.
 #+begin_src emacs-lisp
   (use-package llm
     :defer t
-    :load-path ("~/workspace/llm")
     :custom
     (llm-log t))
 #+end_src
