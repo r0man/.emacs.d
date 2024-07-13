@@ -435,6 +435,37 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
     ("~/workspace/datomic.el/src"
      "~/workspace/datomic.el/test"))
 #+end_src
+** Debbugs
+
+Access the GNU Bug Tracker from within Emacs.
+
+https://elpa.gnu.org/packages/doc/debbugs-ug.html
+
+#+begin_src emacs-lisp
+  (use-package debbugs
+    :custom
+    ;; Open the issue directly within Emacs.
+    (debbugs-browse-url-regexp
+     (rx line-start
+         "http" (zero-or-one "s") "://"
+         (or "debbugs" "issues.guix" "bugs")
+         ".gnu.org" (one-or-more "/")
+         (group (zero-or-one "cgi/bugreport.cgi?bug="))
+         (group-n 3 (one-or-more digit))
+         line-end))
+    ;; Change the default when run as 'M-x debbugs-gnu'.
+    (debbugs-gnu-default-packages '("guix" "guix-patches"))
+    ;; Show feature requests.
+    (debbugs-gnu-default-severities
+     '("serious" "important" "normal" "minor" "wishlist")))
+#+end_src
+
+#+begin_src emacs-lisp
+  (use-package debbugs-browse
+    :hook
+    ((bug-reference-mode . debbugs-browse-mode)
+     (bug-reference-prog-mode . debbugs-browse-mode)))
+#+end_src
 ** Docopt.el
 #+begin_src emacs-lisp
   (use-package parsec
