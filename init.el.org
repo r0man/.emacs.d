@@ -150,6 +150,48 @@ Reload files when they change on disk.
     (global-auto-revert-mode t))
 #+end_src
 
+** Bug Reference
+
+Viewing Bugs within Emacs
+
+https://guix.gnu.org/en/manual/devel/en/html_node/Viewing-Bugs-within-Emacs.html
+
+#+begin_src emacs-lisp
+  (use-package bug-reference
+    :hook ((erc-mode . bug-reference-mode)
+           (gnus-article-mode . bug-reference-mode)
+           (gnus-mode . bug-reference-mode)
+           (gnus-summary-mode . bug-reference-mode)
+           (prog-mode . bug-reference-prog-mode))
+    :custom
+    (bug-reference-bug-regexp
+     (rx (group (or (seq word-boundary
+                         (or (seq (char "Bb") "ug"
+                                  (zero-or-one " ")
+                                  (zero-or-one "#"))
+                             (seq (char "Pp") "atch"
+                                  (zero-or-one " ")
+                                  "#")
+                             (seq (char "Ff") "ixes"
+                                  (zero-or-one ":")
+                                  (zero-or-one " ") "#")
+                             (seq "RFE"
+                                  (zero-or-one " ") "#")
+                             (seq "PR "
+                                  (one-or-more (char "a-z+-")) "/"))
+                         (group (one-or-more (char "0-9"))
+                                (zero-or-one
+                                 (seq "#" (one-or-more
+                                           (char "0-9"))))))
+                    (seq (? "<") "https://bugs.gnu.org/"
+                         (group-n 2 (one-or-more (char "0-9")))
+                         (? ">"))
+                    (seq (? "<") "https://issues.guix.gnu.org/"
+                         (? "issue/")
+                         (group-n 2 (one-or-more (char "0-9")))
+                         (? ">"))))))
+    (bug-reference-url-format "https://issues.guix.gnu.org/%s"))
+#+end_src
 ** Calendar
 
 The calendar and diary by default display times of day in the
