@@ -594,8 +594,8 @@ A GNU Emacs major mode for editing BNF grammars.
   (use-package eglot
     :hook ((c-mode . eglot-ensure)
            (c++-mode . eglot-ensure)
-           (clojure-mode . eglot-ensure)
-           (clojure-ts-mode . eglot-ensure)
+           ;; (clojure-mode . eglot-ensure)
+           ;; (clojure-ts-mode . eglot-ensure)
            (elixir-mode . eglot-ensure)
            (python-mode . eglot-ensure)
            ;; (scala-mode . eglot-ensure)
