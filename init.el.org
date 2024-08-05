@@ -2124,6 +2124,10 @@ Configure mu.
     :load-path ("~/workspace/nu/nucli.el/src"
                 "~/workspace/nu/nucli.el/test"))
 #+end_src
+** Mouse
+#+begin_src emacs-lisp
+  (add-to-list 'default-frame-alist '(mouse-color . "white"))
+#+end_src
 ** Save hist mode
 
 Save the mini buffer history.
@@ -3001,9 +3005,6 @@ The YASnippet collection.
   (add-hook
    'after-init-hook
    (lambda ()
-
-     (set-mouse-color "white")
-
      ;; Load system specific config.
      (load-if-exists (concat user-emacs-directory system-name ".el"))
 
