@@ -1147,6 +1147,11 @@ The Geiser implementation for Guile scheme.
 #+end_src
 ** Guix
 #+begin_src emacs-lisp
+  (defun guix-system-p ()
+    (interactive)
+    (file-exists-p "/run/current-system/configuration.scm"))
+#+end_src
+#+begin_src emacs-lisp
   (defun guix-home-reconfigure ()
     "Run Guix Home reconfigure."
     (interactive)
@@ -2829,6 +2834,14 @@ Major mode of Terraform configuration files.
     :mode "\\.tf\\'")
 #+end_src
 
+** Transient
+#+begin_src emacs-lisp
+  (use-package transient
+    :config
+    (when (guix-system-p)
+      ;; TODO: Fix broken transient on Guix System :'
+      (load "/gnu/store/mfdfzvb0midlfbqz0pds724azimq31lz-emacs-transient-0.7.3/share/emacs/site-lisp/transient-0.7.3/transient.el")))
+#+end_src
 ** Unfill
 
 Functions providing the inverse of Emacs fill-paragraph and fill-region.
