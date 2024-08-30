@@ -2349,7 +2349,7 @@ Use Jira in Emacs org-mode.
      '((clojure . t)
        (gnuplot . t)
        (emacs-lisp . t)
-       (mermaid . t)
+       ;; (mermaid . t)
        (plantuml . t)
        (ruby . t)
        (shell . t)
