@@ -2843,7 +2843,7 @@ Major mode of Terraform configuration files.
   (use-package transient
     :config
     (when (guix-system-p)
-      ;; TODO: Fix broken transient on Guix System :'
+      ;; TODO: Fix broken transient on Guix System :/
       (load "/gnu/store/mfdfzvb0midlfbqz0pds724azimq31lz-emacs-transient-0.7.3/share/emacs/site-lisp/transient-0.7.3/transient.el")))
 #+end_src
 ** Unfill
