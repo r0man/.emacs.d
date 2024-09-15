@@ -1515,7 +1515,7 @@ The maximum size in lines for term buffers.
 Use Firefox as default browser.
 
 #+begin_src emacs-lisp
-  (setq browse-url-browser-function 'browse-url-firefox)
+  (setq browse-url-browser-function 'browse-url-xdg-open)
 #+end_src
 
 Clickable URLs.
