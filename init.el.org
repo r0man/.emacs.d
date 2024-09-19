@@ -1160,6 +1160,13 @@ The Geiser implementation for Guile scheme.
       (async-shell-command "guix home -L . reconfigure r0man/home/config.scm" buffer)))
 #+end_src
 
+Enable global minor-mode for prettifying Guix store files.
+
+#+begin_src emacs-lisp
+  (use-package guix-prettify
+    :hook ((after-init . global-guix-prettify-mode)))
+#+end_src
+
 ** Configure the full name of the user logged in.
 
 #+begin_src emacs-lisp
