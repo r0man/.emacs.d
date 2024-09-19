@@ -843,6 +843,7 @@ JIRA integration to Emacs org-mode.
       (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-3.5" (nu-llm-make-openai :chat-model "gpt-3.5-turbo")))
       (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-4" (nu-llm-make-openai :chat-model "gpt-4-turbo")))
       (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-4o" (nu-llm-make-openai :chat-model "gpt-4o")))
+      (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-O1" (nu-llm-make-openai :chat-model "o1-preview")))
       (setq ellama-provider (alist-get "Nu OpenAI GPT-4o" ellama-providers nil nil #'string=))))
 #+end_src
 ** Elixir
