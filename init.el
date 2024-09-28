@@ -29,7 +29,7 @@
      ;; Use dark theme in winter
      ((member month '(1 2 3 10 11 12))
       'solarized-dark)
-     ((member hour '(10 11 12 13 14 15 16 17 18 19))
+     ((member hour '(10 11 12 13 14 15 16))
       'solarized-light)
      (t 'solarized-dark))))
 
