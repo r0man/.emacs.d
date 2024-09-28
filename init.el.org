@@ -2630,6 +2630,14 @@ excellent Paredit mode as editing substrate whenever possible.
     (send-mail-function 'smtpmail-send-it))
 #+end_src
 
+** Show Fonts
+
+Show font features in an Emacs buffer.
+
+#+begin_src emacs-lisp
+  (use-package show-fonts
+    :commands (show-font-list show-font-select-preview))
+#+end_src
 ** Simple
 #+begin_src emacs-lisp
   (use-package simple
