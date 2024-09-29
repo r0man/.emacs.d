@@ -50,6 +50,18 @@ Set default value of various coding systems to UTF-8.
   (set-default-coding-systems 'utf-8)
 #+end_src
 
+** Resize Frame Pixelwise
+
+If this option is nil, resizing a frame rounds its sizes to the
+frame’s current values of ‘frame-char-height’ and ‘frame-char-width’.
+If this is non-nil, no rounding occurs, hence frame sizes can
+increase/decrease by one pixel.
+
+This prevents StumpWM from graching when using gaps.
+
+#+begin_src emacs-lisp
+  (setq frame-resize-pixelwise t)
+#+end_src
 ** Transparency
 #+begin_src emacs-lisp
   (set-frame-parameter (selected-frame) 'alpha '(85 50))
