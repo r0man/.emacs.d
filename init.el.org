@@ -66,6 +66,13 @@ Set default value of various coding systems to UTF-8.
     "Set the default font for use with external monitor."
     (interactive)
     (set-frame-font "Inconsolata-12" nil t))
+
+  (cond
+   ((and (equal "m1" (system-name)))
+    (if (getenv "WAYLAND_DISPLAY")
+        (set-frame-font "Inconsolata-23" nil t)
+      (set-frame-font "Inconsolata-14" nil t)))
+   (t (set-frame-font "Inconsolata-14" nil t)))
 #+end_src
 
 ** Use package
