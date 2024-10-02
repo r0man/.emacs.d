@@ -2693,7 +2693,7 @@ Slack client for emacs.
 #+end_src
 ** Startup
 #+begin_src emacs-lisp
-  (use-package startup
+  (use-package emacs
     :custom
     ;; My email address.
     (user-mail-address "roman.scherer@burningswell.com"))
