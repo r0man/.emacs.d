@@ -84,6 +84,8 @@ This prevents StumpWM from graching when using gaps.
     (if (getenv "WAYLAND_DISPLAY")
         (set-frame-font "Inconsolata-23" nil t)
       (set-frame-font "Inconsolata-14" nil t)))
+   ((and (equal "precision" (system-name)))
+    (set-frame-font "Inconsolata-12" nil t))
    (t (set-frame-font "Inconsolata-14" nil t)))
 #+end_src
 
