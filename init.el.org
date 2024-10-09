@@ -4,37 +4,6 @@
   ;;; init.el --- My Emacs configuration. -*- lexical-binding: t; -*-
 #+end_src
 
-** Menu Bar
-
-Disable the menu bar.
-
-#+begin_src emacs-lisp
-  (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-#+end_src
-
-** Tool Bar
-
-Disable the tool bar.
-
-#+begin_src emacs-lisp
-  (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-#+end_src
-
-** Scroll Bars
-
-Disable =scroll-bar-mode= and =horizontal-scroll-bar-mode=.
-
-#+begin_src emacs-lisp
-  (if (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
-  (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-#+end_src
-
-Don't show scrollbars in new frames.
-
-#+begin_src emacs-lisp
-  (add-to-list 'default-frame-alist '(horizontal-scroll-bars . nil))
-  (add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
-#+end_src
 
 ** Emacs native compiler
 
