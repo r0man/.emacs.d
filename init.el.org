@@ -2697,6 +2697,12 @@ Slack client for emacs.
              :user "roman.scherer@nubank.com.br")
      :subscribed-channels '((stem))))
 #+end_src
+** Slite
+#+begin_src emacs-lisp
+  (use-package slite
+    :commands (slite-run))
+#+end_src
+
 ** Startup
 #+begin_src emacs-lisp
   (use-package emacs
