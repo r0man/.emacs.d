@@ -84,7 +84,7 @@ This prevents StumpWM from graching when using gaps.
     "Get the font size for the current system."
     (cond ((and (equal "m1" (system-name)))
            (if (getenv "WAYLAND_DISPLAY")
-               23
+               14
              14))
           ((and (equal "precision" (system-name)))
            12)
