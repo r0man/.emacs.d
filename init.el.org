@@ -147,6 +147,16 @@ system.
     :commands (aide-openai-completion-region-insert)
     :load-path ("~/workspace/aide.el"))
 #+end_src
+
+** Aider.el
+
+Aider is AI pair programming in your terminal.
+
+#+begin_src emacs-lisp
+  (use-package aider
+    :custom
+    (aider-args '("--openai-api-key=dummy" "--openai-api-base=http://127.0.0.1:8899/v1")))
+#+end_src
 ** Aio
 #+begin_src emacs-lisp
   (use-package aio
