@@ -865,7 +865,10 @@ JIRA integration to Emacs org-mode.
 ** Elisa
 #+begin_src emacs-lisp
   (use-package elisa
-    :disabled)
+    :load-path "/home/roman/workspace/elisa"
+    :custom
+    (elisa-sqlite-vss-path "/gnu/store/i86ri2wsdjkis8z8na12my4j4qvy4k0g-sqlite-vss-0.1.2/lib/vss0.so")
+    (elisa-sqlite-vector-path "/gnu/store/i86ri2wsdjkis8z8na12my4j4qvy4k0g-sqlite-vss-0.1.2/lib/vector0.so"))
 #+end_src
 
 ** LLM Nu
