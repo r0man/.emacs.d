@@ -3081,6 +3081,13 @@ The YASnippet collection.
     :config
     (add-to-list 'yas-snippet-dirs "~/workspace/guix/etc/snippets/yas"))
 #+end_src
+
+** Window Scrolling
+
+#+begin_src emacs-lisp
+  ;; (add-hook 'window-scroll-functions (lambda (window startp) (redraw-frame)))
+#+end_src
+
 ** After init hook
 #+begin_src emacs-lisp
   (add-hook
