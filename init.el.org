@@ -2308,7 +2308,14 @@ Support for indenting code in SQL files.
     (tramp-set-completion-function
      "ssh"
      '((tramp-parse-shosts "~/.ssh/known_hosts")
-       (tramp-parse-hosts "/etc/hosts"))))
+       (tramp-parse-hosts "/etc/hosts")))
+    (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+    (setq tramp-remote-path
+          (append tramp-remote-path
+                  '("~/.guix-profile/bin"
+                    "~/.guix-profile/sbin"
+                    "/run/current-system/profile/bin"
+                    "/run/current-system/profile/sbin"))))
 #+end_src
 
 ** Uniquify
