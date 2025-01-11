@@ -2980,7 +2980,7 @@ Fully-fledged terminal emulator inside Emacs.
 Log and display warnings.
 
 #+begin_src emacs-lisp
-  (use-package warnings                   ;
+  (use-package warnings
     :custom
     (warning-minimum-level :emergency))
 #+end_src
