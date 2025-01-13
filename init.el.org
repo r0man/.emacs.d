@@ -154,6 +154,7 @@ Aider is AI pair programming in your terminal.
 
 #+begin_src emacs-lisp
   (use-package aider
+    :commands (aider-run-aider)
     :custom
     (aider-args '("--openai-api-key=dummy" "--openai-api-base=http://127.0.0.1:8899/v1")))
 #+end_src
