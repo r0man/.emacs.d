@@ -110,6 +110,12 @@ Report details about loading and configuration.
   (setq use-package-verbose t)
 #+end_src
 
+Show load time of all packages.
+
+#+begin_src emacs-lisp
+  (setq use-package-minimum-reported-time 0)
+#+end_src
+
 Always ensure packages are installed when running on a non-guix
 system.
 
