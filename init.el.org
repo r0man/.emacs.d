@@ -1647,12 +1647,7 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
     (setq desktop-buffers-not-to-save
           (concat "\\("
                   "\\.bbdb|\\.gz"
-                  "\\)$"))
-    ;; Don't save certain modes.
-    (add-to-list 'desktop-modes-not-to-save 'Info-mode)
-    (add-to-list 'desktop-modes-not-to-save 'dired-mode)
-    (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
-    (add-to-list 'desktop-modes-not-to-save 'info-lookup-mode))
+                  "\\)$")))
 #+end_src
 
 ** Inferior Lisp mode
