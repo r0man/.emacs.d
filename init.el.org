@@ -4,6 +4,31 @@
   ;;; init.el --- My Emacs configuration. -*- lexical-binding: t; -*-
 #+end_src
 
+** Fonts
+#+begin_src emacs-lisp
+  (defun set-font-laptop ()
+    "Set the default font for use without external monitor."
+    (interactive)
+    (set-frame-font "Inconsolata-14" nil t))
+
+  (defun set-font-monitor ()
+    "Set the default font for use with external monitor."
+    (interactive)
+    (set-frame-font "Inconsolata-12" nil t))
+
+  (defun current-font-size ()
+    "Get the font size for the current system."
+    (cond ((and (equal "m1" (system-name)))
+           (if (getenv "WAYLAND_DISPLAY")
+               14
+             14))
+          ((and (equal "precision" (system-name)))
+           12)
+          14))
+
+  (add-to-list 'default-frame-alist `(font . ,(format "Inconsolata-%s" (current-font-size))))
+#+end_src
+
 ** Emacs native compiler
 
 Compile Elisp to native machine code.
@@ -66,30 +91,6 @@ This prevents StumpWM from graching when using gaps.
 #+begin_src emacs-lisp
   (set-frame-parameter (selected-frame) 'alpha '(85 50))
   (add-to-list 'default-frame-alist '(alpha 85 50))
-#+end_src
-** Fonts
-#+begin_src emacs-lisp
-  (defun set-font-laptop ()
-    "Set the default font for use without external monitor."
-    (interactive)
-    (set-frame-font "Inconsolata-14" nil t))
-
-  (defun set-font-monitor ()
-    "Set the default font for use with external monitor."
-    (interactive)
-    (set-frame-font "Inconsolata-12" nil t))
-
-  (defun current-font-size ()
-    "Get the font size for the current system."
-    (cond ((and (equal "m1" (system-name)))
-           (if (getenv "WAYLAND_DISPLAY")
-               14
-             14))
-          ((and (equal "precision" (system-name)))
-           12)
-          14))
-
-  (add-to-list 'default-frame-alist `(font . ,(format "Inconsolata-%s" (current-font-size))))
 #+end_src
 
 ** Use package
