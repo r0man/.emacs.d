@@ -435,8 +435,6 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
   (use-package copilot
     :hook ((clojure-mode . copilot-mode)
            (clojure-ts-mode . copilot-mode)
-           (clojurec-mode . copilot-mode)
-           (clojurescript-mode . copilot-mode)
            (emacs-lisp-mode . copilot-mode)
            (prog-mode . copilot-mode))
     :bind (:map copilot-completion-map
@@ -908,10 +906,10 @@ JIRA integration to Emacs org-mode.
 #+begin_src emacs-lisp
   (use-package clojure-mode
     :after (nu)
-    :mode (("\\.edn\\'" . clojure-mode)
-           ("\\.cljs\\'" . clojurescript-mode)
-           ("\\.cljx\\'" . clojurex-mode)
-           ("\\.cljc\\'" . clojurec-mode))
+    ;; :mode (("\\.edn\\'" . clojure-mode)
+    ;;        ("\\.cljs\\'" . clojurescript-mode)
+    ;;        ("\\.cljx\\'" . clojurex-mode)
+    ;;        ("\\.cljc\\'" . clojurec-mode))
     :config
     (add-hook 'clojure-mode-hook #'subword-mode)
     (add-hook 'clojure-mode-hook #'paredit-mode)
@@ -951,10 +949,31 @@ JIRA integration to Emacs org-mode.
     (put 'defmixin 'clojure-backtracking-indent '(4 (2)))
     (require 'clojure-mode-extra-font-locking))
 #+end_src
+
+** Clojure Treesitter Mode
+
+Major mode that provides font-lock (syntax highlighting), indentation,
+and navigation support for the Clojure(Script) programming language,
+powered by the [[https://github.com/sogaiu/tree-sitter-clojure][tree-sitter-clojure]] [[https://tree-sitter.github.io/tree-sitter/][tree-sitter]] grammar.
+
+#+begin_src emacs-lisp
+  (use-package clojure-ts-mode
+    :bind (:map clojure-ts-mode-map
+                ("C-c t" . 'projectile-toggle-between-implementation-and-test))
+    :mode (("\\.edn\\'" . clojure-ts-mode)
+           ("\\.clj\\'" . clojure-ts-mode)
+           ("\\.cljs\\'" . clojure-ts-clojurescript-mode)
+           ("\\.cljc\\'" . clojure-ts-clojurec-mode))
+    :custom
+    ;; Highlight entire rich comment expression with the comment font face
+    (clojure-ts-comment-macro-font-lock-body t))
+#+end_src
+
 ** Cider
 #+begin_src emacs-lisp
   (use-package cider
     :commands (cider-jack-in cider-jack-in-clojurescript)
+    ;; :hook (clojure-ts-mode . #'cider-mode)
     :load-path ("~/workspace/cider")
     :config
     ;; Enable eldoc in Clojure buffers
@@ -2515,7 +2534,7 @@ The org-mode Pandoc exporter.
     ;; Bind RET to nil, to fix Cider REPL buffer eval issue
     :bind (:map paredit-mode-map ("RET" . nil))
     :hook ((clojure-mode . paredit-mode)
-           (clojurescript-mode . paredit-mode)
+           (clojure-ts-mode . paredit-mode)
            (emacs-lisp-mode . paredit-mode)
            (lisp-mode . paredit-mode)
            (scheme-mode . paredit-mode)))
