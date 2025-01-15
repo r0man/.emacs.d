@@ -1633,7 +1633,8 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 #+begin_src emacs-lisp
   (use-package desktop
-    :hook (after-init . (lambda () (desktop-save-mode 1)))
+    :init
+    (desktop-save-mode 1)
     :config
     ;; Disable Verbose reporting of lazily created buffers.
     (setq desktop-lazy-verbose nil)
