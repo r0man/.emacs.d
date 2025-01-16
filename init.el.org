@@ -4,6 +4,30 @@
   ;;; init.el --- My Emacs configuration. -*- lexical-binding: t; -*-
 #+end_src
 
+** Fonts
+#+begin_src emacs-lisp
+  (defun set-font-laptop ()
+    "Set the default font for use without external monitor."
+    (interactive)
+    (set-frame-font "Inconsolata-14" nil t))
+
+  (defun set-font-monitor ()
+    "Set the default font for use with external monitor."
+    (interactive)
+    (set-frame-font "Inconsolata-12" nil t))
+
+  (defun current-font-size ()
+    "Get the font size for the current system."
+    (cond ((and (equal "m1" (system-name)))
+           (if (getenv "WAYLAND_DISPLAY")
+               14
+             14))
+          ((and (equal "precision" (system-name)))
+           12)
+          14))
+
+  (add-to-list 'default-frame-alist `(font . ,(format "Inconsolata-%s" (current-font-size))))
+#+end_src
 
 ** Emacs native compiler
 
@@ -68,30 +92,6 @@ This prevents StumpWM from graching when using gaps.
   (set-frame-parameter (selected-frame) 'alpha '(85 50))
   (add-to-list 'default-frame-alist '(alpha 85 50))
 #+end_src
-** Fonts
-#+begin_src emacs-lisp
-  (defun set-font-laptop ()
-    "Set the default font for use without external monitor."
-    (interactive)
-    (set-frame-font "Inconsolata-14" nil t))
-
-  (defun set-font-monitor ()
-    "Set the default font for use with external monitor."
-    (interactive)
-    (set-frame-font "Inconsolata-12" nil t))
-
-  (defun current-font-size ()
-    "Get the font size for the current system."
-    (cond ((and (equal "m1" (system-name)))
-           (if (getenv "WAYLAND_DISPLAY")
-               14
-             14))
-          ((and (equal "precision" (system-name)))
-           12)
-          14))
-
-  (add-to-list 'default-frame-alist `(font . ,(format "Inconsolata-%s" (current-font-size))))
-#+end_src
 
 ** Use package
 
@@ -108,6 +108,12 @@ Report details about loading and configuration.
 
 #+begin_src emacs-lisp
   (setq use-package-verbose t)
+#+end_src
+
+Show load time of all packages.
+
+#+begin_src emacs-lisp
+  (setq use-package-minimum-reported-time 0)
 #+end_src
 
 Always ensure packages are installed when running on a non-guix
@@ -154,6 +160,7 @@ Aider is AI pair programming in your terminal.
 
 #+begin_src emacs-lisp
   (use-package aider
+    :commands (aider-run-aider)
     :custom
     (aider-args '("--openai-api-key=dummy" "--openai-api-base=http://127.0.0.1:8899/v1")))
 #+end_src
@@ -478,6 +485,7 @@ https://elpa.gnu.org/packages/doc/debbugs-ug.html
 
 #+begin_src emacs-lisp
   (use-package debbugs
+    :commands (debbugs-gnu)
     :custom
     ;; Open the issue directly within Emacs.
     (debbugs-browse-url-regexp
@@ -865,6 +873,7 @@ JIRA integration to Emacs org-mode.
 ** Elisa
 #+begin_src emacs-lisp
   (use-package elisa
+    :after ellama
     :load-path "/home/roman/workspace/elisa"
     :custom
     (elisa-sqlite-vss-path "/gnu/store/i86ri2wsdjkis8z8na12my4j4qvy4k0g-sqlite-vss-0.1.2/lib/vss0.so")
@@ -1638,12 +1647,7 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
     (setq desktop-buffers-not-to-save
           (concat "\\("
                   "\\.bbdb|\\.gz"
-                  "\\)$"))
-    ;; Don't save certain modes.
-    (add-to-list 'desktop-modes-not-to-save 'Info-mode)
-    (add-to-list 'desktop-modes-not-to-save 'dired-mode)
-    (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
-    (add-to-list 'desktop-modes-not-to-save 'info-lookup-mode))
+                  "\\)$")))
 #+end_src
 
 ** Inferior Lisp mode
