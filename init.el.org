@@ -1633,7 +1633,8 @@ http://stackoverflow.com/questions/3072648/cucumbers-ansi-colors-messing-up-emac
 
 #+begin_src emacs-lisp
   (use-package desktop
-    :hook (after-init . (lambda () (desktop-save-mode 1)))
+    :init
+    (desktop-save-mode 1)
     :config
     ;; Disable Verbose reporting of lazily created buffers.
     (setq desktop-lazy-verbose nil)
@@ -2406,15 +2407,28 @@ Use Jira in Emacs org-mode.
 
 #+begin_src emacs-lisp
   (use-package org
-    :mode ("\\.org\\'" . org-mode)
-    :config
-    (require 'ob-clojure)
-    (setq org-agenda-include-diary t)
-    (setq org-babel-clojure-backend 'cider)
-    (setq org-src-fontify-natively t)
-    (setq org-confirm-babel-evaluate
-          (lambda (lang body)
-            (not (member lang '("plantuml")))))
+    :mode (("\\.org\\'" . org-mode)))
+#+end_src
+
+** Org Agenda
+
+#+begin_src emacs-lisp
+  (use-package org-agenda
+    :after (org)
+    :custom
+    (org-agenda-include-diary t))
+#+end_src
+
+** Org Babel
+
+#+begin_src emacs-lisp
+  (use-package ob
+    :after (org)
+    :custom
+    (org-confirm-babel-evaluate
+     (lambda (lang body)
+       (not (member lang '("plantuml")))))
+    :init
     (org-babel-do-load-languages
      'org-babel-load-languages
      '((clojure . t)
@@ -2428,11 +2442,20 @@ Use Jira in Emacs org-mode.
        (sqlite . t))))
 #+end_src
 
+** Org Babel Clojure
+
+#+begin_src emacs-lisp
+  (use-package ob-clojure
+    :after (ob)
+    :custom
+    (org-babel-clojure-backend 'cider))
+#+end_src
+
 ** Org Plus Contrib
 
 #+begin_src emacs-lisp
   (use-package org-plus-contrib
-    :commands org-invoice-report
+    :commands (org-invoice-report)
     :init (require 'org-invoice)
     :no-require t)
 #+end_src
@@ -2443,19 +2466,23 @@ Use Jira in Emacs org-mode.
   (use-package org-present
     :commands org-present)
 #+end_src
+
 ** Org Reveal
 
 #+begin_src emacs-lisp
   (use-package ox-reveal
     :after (ox))
 #+end_src
+
 ** Org Roam
 
 #+begin_src emacs-lisp
   (use-package org-roam
-    :disabled
     :after (org)
-    :init
+    :commands (org-roam-capture
+               org-roam-node-find
+               org-roam-node-insert)
+    :config
     (org-roam-db-autosync-mode)
     :custom
     (org-roam-directory (file-truename "~/workspace/org-roam")))
