@@ -455,6 +455,7 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
           ("C-<tab>" . corfu-previous))
     :custom
     (corfu-cycle t)
+    (corfu-preselect 'first)
     :hook ((after-init . global-corfu-mode)))
 #+end_src
 
