@@ -1185,7 +1185,23 @@ The Geiser implementation for Guile scheme.
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/asahi-guix/channel/modules"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/asahi-guix/maintenance/modules"))
     (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-channel"))
-    (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-home/modules")))
+    (add-to-list 'geiser-guile-load-path (expand-file-name "~/workspace/guix-home/modules"))
+    (defun geiser-con--tq-filter (tq in)
+      (when (buffer-live-p (tq-buffer tq))
+        (with-current-buffer (tq-buffer tq)
+          (if (tq-queue-empty tq)
+              (progn (geiser-log--error "Unexpected queue input:\n %s" in)
+                     (delete-region (point-min) (point-max)))
+            (goto-char (point-max))
+            (insert in)
+            (goto-char (point-min))
+            (when (re-search-forward (tq-queue-head-regexp tq) nil t)
+              (unwind-protect
+                  (funcall (tq-queue-head-fn tq)
+                           (tq-queue-head-closure tq)
+                           (buffer-substring (point-min) (point)))
+                (delete-region (point-min) (point-max))
+                (tq-queue-pop tq))))))))
 #+end_src
 
 ** GraphQL Mode
