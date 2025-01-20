@@ -972,6 +972,10 @@ JIRA integration to Emacs org-mode.
     ;; Pretty print in the REPL.
     (setq cider-repl-use-pretty-printing t)
 
+    ;; Whether to automatically download source artifacts for 3rd-party
+    ;; Java classes.
+    (setq cider-download-java-sources t)
+
     ;; Hide *nrepl-connection* and *nrepl-server* buffers from appearing
     ;; in some buffer switching commands like switch-to-buffer
     (setq nrepl-hide-special-buffers nil)
