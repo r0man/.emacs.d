@@ -865,6 +865,7 @@ JIRA integration to Emacs org-mode.
 ** Elisa
 #+begin_src emacs-lisp
   (use-package elisa
+    :disabled
     :after ellama
     :load-path "/home/roman/workspace/elisa"
     :custom
