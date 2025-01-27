@@ -1334,6 +1334,11 @@ See: https://emacsnotes.wordpress.com/2022/08/16/who-stole-c-c-and-possibly-othe
     :hook
     (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
+** Erlang
+#+begin_src emacs-lisp
+  (use-package erlang
+    :mode (("\\.erl\\'" . erlang-mode)))
+#+end_src
 ** Flutter
 #+begin_src emacs-lisp
   (use-package flutter
