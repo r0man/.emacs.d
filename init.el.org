@@ -794,24 +794,18 @@ JIRA integration to Emacs org-mode.
                         :chat-model "gpt-4-turbo-preview"
                         :embedding-model "text-embedding-ada-002")))
     (add-to-list 'ellama-providers
-                 (cons "OpenAI GPT-3"
+                 (cons "OpenAI GPT-4o"
                        (make-llm-openai
                         :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
-                        :chat-model "gpt-3.5-turbo"
+                        :chat-model "gpt-4o"
                         :embedding-model "text-embedding-ada-002")))
     (add-to-list 'ellama-providers
-                 (cons "OpenAI GPT-4"
-                       (make-llm-openai
-                        :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
-                        :chat-model "gpt-4-turbo-preview"
-                        :embedding-model "text-embedding-ada-002")))
-    (add-to-list 'ellama-providers
-                 (cons "OpenAI GPT-O1-MINI"
+                 (cons "OpenAI o1-mini"
                        (make-llm-openai
                         :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
                         :chat-model "o1-mini"
                         :embedding-model "text-embedding-ada-002")))
-    (setq ellama-provider (alist-get "OpenAI GPT-O1-MINI" ellama-providers nil nil #'string=)))
+    (setq ellama-provider (alist-get "OpenAI GPT-4o" ellama-providers nil nil #'string=)))
 
   (defun ellama-chat-whisper ()
     "Record audio in a temporary buffer with the `whisper-run`
@@ -886,10 +880,8 @@ JIRA integration to Emacs org-mode.
     :load-path (lambda () (expand-file-name "nu-llm.el" (getenv "NU_HOME")))
     :config
     (when (fboundp 'nu-llm-make-openai)
-      (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-3.5" (nu-llm-make-openai :chat-model "gpt-3.5-turbo")))
-      (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-4" (nu-llm-make-openai :chat-model "gpt-4-turbo")))
       (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-4o" (nu-llm-make-openai :chat-model "gpt-4o")))
-      (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-O1" (nu-llm-make-openai :chat-model "o1-preview")))
+      (add-to-list 'ellama-providers (cons "Nu OpenAI o1-mini" (nu-llm-make-openai :chat-model "o1-mini")))
       (setq ellama-provider (alist-get "Nu OpenAI GPT-4o" ellama-providers nil nil #'string=))))
 #+end_src
 ** Elixir
