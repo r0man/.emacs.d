@@ -13,10 +13,28 @@
    '("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default))
  '(display-time-mode t)
  '(foreground-color "#839496")
+ '(mml-secure-openpgp-sign-with-sender t)
  '(package-selected-packages
    '(company org-plus-contrib timesheet plantuml plantuml-mode org org-ac terraform-mode flycheck-flow flycheck indium ensime haskell-mode helm-projectile avy-menu solarized-theme helm yaml-mode which-key web-mode virtualenvwrapper use-package soundklaus smooth-scrolling smex slime slamhound scss-mode sayid rainbow-mode projectile pretty-lambdada popwin multi-term markdown-preview-mode markdown-preview-eww magit ido-vertical-mode ido-ubiquitous hy-mode graphql-mode github-browse-file flymd flx-ido expand-region exec-path-from-shell engine-mode elpy elisp-slime-nav ein company-quickhelp color-theme clojure-mode-extra-font-locking clj-refactor cask avy auto-dictionary))
  '(safe-local-variable-values
-   '((elisp-lint-indent-specs
+   '((cider-clojure-cli-aliases . "-A:test")
+     (projectile-project-test-cmd . "lein test")
+     (geiser-insert-actual-lambda)
+     (eval with-eval-after-load 'tempel
+           (if
+               (stringp tempel-path)
+               (setq tempel-path
+                     (list tempel-path)))
+           (let
+               ((guix-tempel-snippets
+                 (concat
+                  (expand-file-name "etc/snippets/tempel"
+                                    (locate-dominating-file default-directory ".dir-locals.el"))
+                  "/*.eld")))
+             (unless
+                 (member guix-tempel-snippets tempel-path)
+               (add-to-list 'tempel-path guix-tempel-snippets))))
+     (elisp-lint-indent-specs
       (if-let* . 2)
       (when-let* . 1)
       (let* . defun)
