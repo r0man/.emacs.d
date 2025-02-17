@@ -2500,7 +2500,7 @@ Use Jira in Emacs org-mode.
     :config
     (org-roam-db-autosync-mode)
     :custom
-    (org-roam-directory (file-truename "~/workspace/org-roam")))
+    (org-roam-directory (file-truename "~/org-roam")))
 #+end_src
 
 ** Org Tree Slide
