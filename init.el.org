@@ -905,7 +905,6 @@ JIRA integration to Emacs org-mode.
            ("\\.cljc\\'" . clojurec-mode))
     :config
     (add-hook 'clojure-mode-hook #'subword-mode)
-    (add-hook 'clojure-mode-hook #'paredit-mode)
     (define-key clojure-mode-map (kbd "C-c t") #'projectile-toggle-between-implementation-and-test)
     (define-clojure-indent
      (assoc 1)
@@ -975,12 +974,6 @@ JIRA integration to Emacs org-mode.
     ;; to deal with Java class and method names. The built-in Emacs minor
     ;; mode subword-mode provides such functionality
     (add-hook 'cider-repl-mode-hook #'subword-mode)
-
-    ;; The use of paredit when editing Clojure (or any other Lisp) code is
-    ;; highly recommended. You're probably using it already in your
-    ;; clojure-mode buffers (if you're not you probably should). You might
-    ;; also want to enable paredit in the REPL buffer as well.
-    (add-hook 'cider-repl-mode-hook #'paredit-mode)
 
     ;; Auto-select the error buffer when it's displayed:
     (setq cider-auto-select-error-buffer t)
@@ -1421,7 +1414,6 @@ identical elements are deleted from the history list.
   (use-package hy-mode
     :mode (("\\.hy\\'" . hy-mode))
     :config
-    (add-hook 'hy-mode-hook 'paredit-mode)
     (setq hy-indent-specform
           '(("for" . 1)
             ("for*" . 1)
@@ -2562,9 +2554,11 @@ The org-mode Pandoc exporter.
     :diminish
     ;; Bind RET to nil, to fix Cider REPL buffer eval issue
     :bind (:map paredit-mode-map ("RET" . nil))
-    :hook ((clojure-mode . paredit-mode)
+    :hook ((cider-repl-mode . paredit-mode)
+           (clojure-mode . paredit-mode)
            (clojurescript-mode . paredit-mode)
            (emacs-lisp-mode . paredit-mode)
+           (hy-mode . paredit-mode)
            (lisp-mode . paredit-mode)
            (scheme-mode . paredit-mode)))
 #+end_src
