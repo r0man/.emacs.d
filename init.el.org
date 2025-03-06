@@ -444,6 +444,13 @@ Copilot.el is an Emacs plugin for GitHub Copilot.
                 ("M-n" . 'copilot-next-completion)
                 ("M-p" . 'copilot-previous-completion)))
 #+end_src
+** Copilot Chat
+
+Chat with Github copilot in Emacs.
+
+#+begin_src emacs-lisp
+  (use-package copilot-chat)
+#+end_src
 
 ** Corfu
 #+begin_src emacs-lisp
