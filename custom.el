@@ -17,7 +17,9 @@
  '(package-selected-packages
    '(company org-plus-contrib timesheet plantuml plantuml-mode org org-ac terraform-mode flycheck-flow flycheck indium ensime haskell-mode helm-projectile avy-menu solarized-theme helm yaml-mode which-key web-mode virtualenvwrapper use-package soundklaus smooth-scrolling smex slime slamhound scss-mode sayid rainbow-mode projectile pretty-lambdada popwin multi-term markdown-preview-mode markdown-preview-eww magit ido-vertical-mode ido-ubiquitous hy-mode graphql-mode github-browse-file flymd flx-ido expand-region exec-path-from-shell engine-mode elpy elisp-slime-nav ein company-quickhelp color-theme clojure-mode-extra-font-locking clj-refactor cask avy auto-dictionary))
  '(safe-local-variable-values
-   '((cider-clojure-cli-aliases . "-A:test")
+   '((eval with-eval-after-load 'git-commit
+           (add-to-list 'git-commit-trailers "Change-Id"))
+     (cider-clojure-cli-aliases . "-A:test")
      (projectile-project-test-cmd . "lein test")
      (geiser-insert-actual-lambda)
      (eval with-eval-after-load 'tempel
