@@ -753,7 +753,6 @@ JIRA integration to Emacs org-mode.
 ** Ellama
 #+begin_src emacs-lisp
   (use-package ellama
-    :load-path ("~/workspace/ellama")
     :commands (ellama-ask-about
                ellama-ask-line
                ellama-ask-selection
