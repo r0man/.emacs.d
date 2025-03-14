@@ -2017,7 +2017,7 @@ An Emacs IRC client.
     (rcirc-default-user-name "r0man")
     (rcirc-default-full-name "r0man")
     (rcirc-server-alist '(("irc.libera.chat"
-                           :channels ("#clojure" "#guix")
+                           :channels ("#clojure" "#guix" "#spritely")
                            :encryption tls
                            :port 6697)))
     (rcirc-private-chat t)
