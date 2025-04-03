@@ -797,7 +797,7 @@ JIRA integration to Emacs org-mode.
                  (cons "Nu OpenAI Local Proxy"
                        (make-llm-openai-compatible
                         :url "http://127.0.0.1:8899/v1/"
-                        :chat-model "gpt-4-turbo-preview"
+                        :chat-model "gpt-4o"
                         :embedding-model "text-embedding-ada-002")))
     (add-to-list 'ellama-providers
                  (cons "OpenAI GPT-4o"
