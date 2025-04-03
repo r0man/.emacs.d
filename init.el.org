@@ -1903,6 +1903,15 @@ A simple LLM client for Emacs.
     :if (file-directory-p "~/workspace/nu/isa.el/")
     :load-path "~/workspace/nu/isa.el/")
 #+end_src
+** Jira
+#+begin_src emacs-lisp
+  (use-package jira
+    :load-path "/gnu/store/598fs53cpm095xzci19qh1irnwh0v192-emacs-jira-20250324.1926/share/emacs/site-lisp/jira-20250324.1926"
+    :custom
+    (jira-api-version 3)
+    (jira-base-url "https://nubank.atlassian.net")
+    (jira-username "roman.scherer@nubank.com.br"))
+#+end_src
 ** Jiralib2
 
 Lisp bindings to JIRA REST API.
