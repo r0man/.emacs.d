@@ -164,6 +164,17 @@ Aider is AI pair programming in your terminal.
     :custom
     (aider-args '("--openai-api-key=dummy" "--openai-api-base=http://127.0.0.1:8899/v1")))
 #+end_src
+** Aidermacs
+#+begin_src emacs-lisp
+  (use-package aidermacs
+    :bind (("C-c a" . aidermacs-transient-menu))
+    :config
+    (setenv "OPENAI_API_BASE" "http://127.0.0.1:8899/v1")
+    (setenv "OPENAI_API_KEY" "dummy")
+    :custom
+    (aidermacs-use-architect-mode t)
+    (aidermacs-default-model "gpt-4o"))
+#+end_src
 ** Aio
 #+begin_src emacs-lisp
   (use-package aio
