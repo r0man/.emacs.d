@@ -897,6 +897,7 @@ JIRA integration to Emacs org-mode.
     :load-path (lambda () (expand-file-name "nu-llm.el" (getenv "NU_HOME")))
     :config
     (when (fboundp 'nu-llm-make-openai)
+      (require 'nu-llm-knowledge-base)
       (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-4o" (nu-llm-make-openai :chat-model "gpt-4o")))
       (add-to-list 'ellama-providers (cons "Nu OpenAI o1-mini" (nu-llm-make-openai :chat-model "o1-mini")))
       (setq ellama-provider (alist-get "Nu OpenAI GPT-4o" ellama-providers nil nil #'string=))))
