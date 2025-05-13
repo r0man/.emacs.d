@@ -1921,7 +1921,6 @@ A simple LLM client for Emacs.
 ** Jira
 #+begin_src emacs-lisp
   (use-package jira
-    :load-path "/gnu/store/598fs53cpm095xzci19qh1irnwh0v192-emacs-jira-20250324.1926/share/emacs/site-lisp/jira-20250324.1926"
     :custom
     (jira-api-version 3)
     (jira-base-url "https://nubank.atlassian.net")
