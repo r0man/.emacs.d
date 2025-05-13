@@ -172,6 +172,7 @@ Aider is AI pair programming in your terminal.
     (setenv "OPENAI_API_BASE" "http://127.0.0.1:8899/v1")
     (setenv "OPENAI_API_KEY" "dummy")
     :custom
+    (aidermacs-backend 'vterm)
     (aidermacs-use-architect-mode t)
     (aidermacs-default-model "gpt-4o"))
 #+end_src
