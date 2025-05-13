@@ -2633,11 +2633,10 @@ An HTTP library for Emacs.
 
 #+begin_src emacs-lisp
   (use-package plz
-    :defer t
     :config
     ;; When not on a Guix system, use curl from host
     (unless (file-exists-p "/run/current-system")
-      (setq plz-curl-program "curl")))
+      (setq plz-curl-program "/home/roman/.guix-profile/bin/curl")))
 #+end_src
 ** Pretty Print JSON
 
