@@ -899,9 +899,10 @@ JIRA integration to Emacs org-mode.
     :config
     (when (fboundp 'nu-llm-make-openai)
       (require 'nu-llm-knowledge-base)
-      (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-4o" (nu-llm-make-openai :chat-model "gpt-4o")))
-      (add-to-list 'ellama-providers (cons "Nu OpenAI o1-mini" (nu-llm-make-openai :chat-model "o1-mini")))
-      (setq ellama-provider (alist-get "Nu OpenAI GPT-4o" ellama-providers nil nil #'string=))))
+      (add-to-list 'ellama-providers (cons "Nu OpenAI GPT-4.1" (nu-llm-make-openai :chat-model "gpt-4.1")))
+      (add-to-list 'ellama-providers (cons "Nu OpenAI o4-mini" (nu-llm-make-openai :chat-model "o4-mini")))
+      (add-to-list 'ellama-providers (cons "Nu OpenAI o3" (nu-llm-make-openai :chat-model "o3")))
+      (setq ellama-provider (alist-get "Nu OpenAI GPT-4.1" ellama-providers nil nil #'string=))))
 #+end_src
 ** Elixir
 #+begin_src emacs-lisp
