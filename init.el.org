@@ -1024,9 +1024,6 @@ JIRA integration to Emacs org-mode.
     ;; (add-to-list 'cider-jack-in-nrepl-middlewares "nrepl-rebl.core/wrap-rebl")
     ;; (cider-add-to-alist 'cider-jack-in-dependencies "nrepl-rebl/nrepl-rebl" "0.1.1")
 
-    ;; Whether to use git.io/JiJVX for adding sources and javadocs to the classpath.
-    (setq cider-enrich-classpath nil)
-
     (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.10.0")
 
     ;; TODO: How to do this without printing a message?
