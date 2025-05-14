@@ -809,21 +809,23 @@ JIRA integration to Emacs org-mode.
                  (cons "Nu OpenAI Local Proxy"
                        (make-llm-openai-compatible
                         :url "http://127.0.0.1:8899/v1/"
-                        :chat-model "gpt-4o"
-                        :embedding-model "text-embedding-ada-002")))
+                        :chat-model "gpt-4.1")))
     (add-to-list 'ellama-providers
-                 (cons "OpenAI GPT-4o"
+                 (cons "OpenAI GPT-4.1"
                        (make-llm-openai
                         :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
-                        :chat-model "gpt-4o"
-                        :embedding-model "text-embedding-ada-002")))
+                        :chat-model "gpt-4.1")))
     (add-to-list 'ellama-providers
-                 (cons "OpenAI o1-mini"
+                 (cons "OpenAI o4-mini"
                        (make-llm-openai
                         :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
-                        :chat-model "o1-mini"
-                        :embedding-model "text-embedding-ada-002")))
-    (setq ellama-provider (alist-get "OpenAI GPT-4o" ellama-providers nil nil #'string=)))
+                        :chat-model "o4-mini")))
+    (add-to-list 'ellama-providers
+                 (cons "OpenAI o3"
+                       (make-llm-openai
+                        :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
+                        :chat-model "o3")))
+    (setq ellama-provider (alist-get "OpenAI GPT-4.1" ellama-providers nil nil #'string=)))
 
   (defun ellama-chat-whisper ()
     "Record audio in a temporary buffer with the `whisper-run`
