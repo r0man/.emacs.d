@@ -2510,7 +2510,12 @@ Use Jira in Emacs org-mode.
 
 #+begin_src emacs-lisp
   (use-package org-present
-    :commands org-present)
+    :commands org-present
+    :bind (:map org-present-mode-keymap
+                ([left] . 'left-char)
+                ([right] . 'right-char)
+                (">" . 'org-present-next)
+                ("<" . 'org-present-prev)))
 #+end_src
 
 ** Org Reveal
