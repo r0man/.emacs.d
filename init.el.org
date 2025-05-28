@@ -1981,6 +1981,14 @@ list of dictionary words presented as a completion menu.
     (setq magit-unstage-all-confirm nil)
     (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 #+end_src
+** MCP
+
+Client for interfacing with MCP servers.
+
+#+begin_src emacs-lisp
+  (use-package mcp
+    :commands (mcp-hub))
+#+end_src
 ** Nubank
 #+begin_src emacs-lisp
   (use-package nu
