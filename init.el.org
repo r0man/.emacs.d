@@ -1987,7 +1987,13 @@ Client for interfacing with MCP servers.
 
 #+begin_src emacs-lisp
   (use-package mcp
-    :commands (mcp-hub))
+    :commands (mcp-hub)
+    :config
+    (setq mcp-hub-servers
+          `(("apistemic" . (:command "/bin/sh"
+                                     :args ("-c"
+                                            ,(concat "cd /home/roman/workspace/nu/apistemic && "
+                                                     "clojure -X:mcp :port 7888")))))))
 #+end_src
 ** Nubank
 #+begin_src emacs-lisp
