@@ -1404,9 +1404,12 @@ typing. Automatically switches the spell checker and typo-mode.
 #+begin_src emacs-lisp
   (use-package gptel
     :commands gptel
-    :load-path ("~/workspace/gptel")
+    :config
+    (require 'gptel-integrations)
     :custom
-    (gptel-openai-endpoint "http://localhost:3005/v1"))
+    (gptel-use-curl "/home/roman/.guix-profile/bin/curl")
+    ;; (gptel-openai-endpoint "http://localhost:3005/v1")
+    )
 #+end_src
 ** Helpful
 
