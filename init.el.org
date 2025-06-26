@@ -542,6 +542,13 @@ https://elpa.gnu.org/packages/doc/debbugs-ug.html
     ("~/workspace/docopt.el/src"
      "~/workspace/docopt.el/test"))
 #+end_src
+** Editor Code Assistent
+#+begin_src emacs-lisp
+  (use-package eca
+    ;; :load-path ("~/workspace/workspace/eca-emacs")
+    :custom
+    (eca-custom-command '("eca" "server" "--log-level" "debug")))
+#+end_src
 ** Eldoc
 
 #+begin_src emacs-lisp
