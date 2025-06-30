@@ -439,6 +439,12 @@ Run the current buffer through zprint.
     (deactivate-mark))
 #+end_src
 
+** Claude Code
+#+begin_src emacs-lisp
+  (use-package claude-code
+    :config (claude-code-mode)
+    :bind-keymap ("C-c c" . claude-code-command-map))
+#+end_src
 ** Copilot.el
 
 Copilot.el is an Emacs plugin for GitHub Copilot.
