@@ -555,10 +555,10 @@ https://elpa.gnu.org/packages/doc/debbugs-ug.html
 #+end_src
 ** Editor Code Assistent
 #+begin_src emacs-lisp
-  (use-package eca
-    ;; :load-path ("~/workspace/workspace/eca-emacs")
-    :custom
-    (eca-custom-command '("eca" "server" "--log-level" "debug")))
+    (use-package eca
+      :load-path ("~/workspace/eca-emacs")
+      :custom
+      (eca-custom-command '("~/workspace/eca/eca" "server" "--log-level" "debug")))
 #+end_src
 ** Eldoc
 
