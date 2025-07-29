@@ -706,64 +706,6 @@ Provides additional Java programming language support for Eglot.
     :disabled
     :hook ((java-mode . eglot-java-mode)))
 #+end_src
-** EJira
-
-JIRA integration to Emacs org-mode.
-
-#+begin_src emacs-lisp
-  (use-package ejira
-    :disabled
-    :load-path ("~/workspace/ejira")
-    :init
-    (setq jiralib2-url "https://nubank.atlassian.net"
-          jiralib2-auth 'basic
-          jiralib2-user-login-name "roman.scherer@nubank.com.br"
-          jiralib2-token nil
-          ejira-org-directory "~/jira"
-          ejira-projects '("QT")
-
-          ;; Configure JIRA priorities
-          ejira-priorities-alist '(("Highest" . ?A)
-                                   ("High"    . ?B)
-                                   ("Medium"  . ?C)
-                                   ("Low"     . ?D)
-                                   ("Lowest"  . ?E))
-
-          ;; Map JIRA states to org states.
-          ejira-todo-states-alist '(("Unscheduled" . 1)
-                                    ("Groomed" . 2)
-                                    ("Ready For Development" . 3)
-                                    ("In Development" . 4)
-                                    ("Ready For Review" . 5)
-                                    ("Ready For Deploy" . 6)
-                                    ("Done" . 7))
-
-          ;; Set the highest/lowest org priorities
-          org-priority-highest ?A
-          org-priority-lowest ?E)
-    :config
-    ;; Tries to auto-set custom fields by looking into /editmeta
-    ;; of an issue and an epic.
-    (add-hook 'jiralib2-post-login-hook #'ejira-guess-epic-sprint-fields)
-
-    ;; They can also be set manually if autoconfigure is not used.
-    ;; (setq ejira-sprint-field       'customfield_10001
-    ;;       ejira-epic-field         'customfield_10002
-    ;;       ejira-epic-summary-field 'customfield_10004)
-
-    (require 'ejira-agenda)
-
-    ;; Make the issues visisble in your agenda by adding `ejira-org-directory'
-    ;; into your `org-agenda-files'.
-    (add-to-list 'org-agenda-files ejira-org-directory)
-
-    ;; Add an agenda view to browse the issues that
-    (org-add-agenda-custom-command
-     '("j" "My JIRA issues"
-       ((ejira-jql "resolution = unresolved and assignee = currentUser()"
-                   ((org-agenda-overriding-header "Assigned to me")))))))
-#+end_src
-
 ** ElFeed
 #+begin_src emacs-lisp
   (use-package elfeed
