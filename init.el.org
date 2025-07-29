@@ -2747,6 +2747,13 @@ Project Interaction Library for Emacs.
     :config
     (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
     (add-to-list 'projectile-project-root-files-bottom-up "BUILD")
+    (projectile-register-project-type 'guix '("guix.scm")
+                                      :project-file "guix.scm"
+                                      :compile "make"
+                                      :src-dir "modules/"
+                                      :test "make test"
+                                      :test-dir "tests/"
+                                      :test-suffix "")
     :hook
     ((after-init . projectile-mode)))
 #+end_src
