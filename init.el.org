@@ -448,7 +448,10 @@ Run the current buffer through zprint.
 ** Claude Code IDE
 #+begin_src emacs-lisp
   (use-package claude-code-ide
-    :commands (claude-code-ide))
+    :commands (claude-code-ide)
+    :bind ("C-c C-'" . claude-code-ide-menu)
+    :config
+    (claude-code-ide-emacs-tools-setup))
 #+end_src
 ** Claudemacs
 #+begin_src emacs-lisp
