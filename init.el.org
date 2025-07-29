@@ -2027,7 +2027,12 @@ Client for interfacing with MCP servers.
           `(("apistemic" . (:command "/bin/sh"
                                      :args ("-c"
                                             ,(concat "cd /home/roman/workspace/nu/apistemic && "
-                                                     "clojure -X:mcp :port 7888")))))))
+                                                     "clojure -X:mcp :port 45525")))))))
+#+end_src
+** MCP Tools
+#+begin_src emacs-lisp
+  (use-package emacs-mcp
+    :commands (emacs-mcp-run-stdio))
 #+end_src
 ** Nubank
 #+begin_src emacs-lisp
