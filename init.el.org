@@ -450,6 +450,12 @@ Run the current buffer through zprint.
   (use-package claude-code-ide
     :commands (claude-code-ide))
 #+end_src
+** Claudemacs
+#+begin_src emacs-lisp
+  (use-package claudemacs
+    :config (claudemacs))
+#+end_src
+
 ** Copilot.el
 
 Copilot.el is an Emacs plugin for GitHub Copilot.
