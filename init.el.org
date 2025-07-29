@@ -1430,10 +1430,16 @@ typing. Automatically switches the spell checker and typo-mode.
     :commands gptel
     :config
     (require 'gptel-integrations)
+    (setq-default gptel-backend
+                  (gptel-make-openai
+                   "NuLLM Open AI"
+                   :stream t
+                   :models '(o1-mini o3-mini o4-mini o1 o3 gpt-4.1-nano gpt-4.1-mini gpt-4.1)
+                   :host "ist-prod-litellm.nullmplatform.com"
+                   :key (lambda ()
+                          (auth-source-pick-first-password :host "ist-prod-litellm.nullmplatform.com" :user "apikey"))))
     :custom
-    (gptel-use-curl "/home/roman/.guix-profile/bin/curl")
-    ;; (gptel-openai-endpoint "http://localhost:3005/v1")
-    )
+    (gptel-use-curl "/home/roman/.guix-profile/bin/curl"))
 #+end_src
 ** Helpful
 
@@ -1914,22 +1920,10 @@ Start the Emacs server if it's not running.
   (use-package github-browse-file
     :commands (github-browse-file github-browse-file-blame))
 #+end_src
-** GPTel
-
-A simple LLM client for Emacs.
-
-#+begin_src emacs-lisp
-  (use-package gptel
-    :commands (gptel)
-    :config
-    (gptel-make-ollama "Ollama"
-                       :host "localhost:11434"
-                       :stream t
-                       :models '("llama2:latest")))
-#+end_src
-
+** Nu GPTel
 #+begin_src emacs-lisp
   (use-package nu-gptel
+    :disabled
     :after gptel
     :load-path (lambda () (expand-file-name "nu-gptel" (getenv "NU_HOME")))
     :config
