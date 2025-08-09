@@ -880,6 +880,7 @@ Provides additional Java programming language support for Eglot.
 ** LLM Nu
 #+begin_src emacs-lisp
   (use-package nu-llm
+    :disabled
     :after ellama
     :load-path (lambda () (expand-file-name "nu-llm.el" (getenv "NU_HOME")))
     :config
