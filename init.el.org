@@ -3100,10 +3100,12 @@ whisper.cpp as inference engine.
 
 #+begin_src emacs-lisp
   (use-package whisper
-    :bind ("C-H-r" . whisper-run)
+    :bind ("C-s-r" . whisper-run)
     :custom
-    (whisper-model "small")
-    (whisper-language "en"))
+    (whisper-install-directory "~/workspace/")
+    (whisper-install-whispercpp 'manual)
+    (whisper-language "en")
+    (whisper-model "large-v3-turbo"))
 #+end_src
 ** Winner mode
 
