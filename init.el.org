@@ -805,13 +805,13 @@ Provides additional Java programming language support for Eglot.
                         :key (auth-source-pick-first-password :host "openai.com" :user "ellama")
                         :chat-model "o3")))
     (add-to-list 'ellama-providers
-                 (cons "Nu LiteLLM OpenAI GPT-4.1"
+                 (cons "Nu LiteLLM OpenAI GPT-5"
                        (make-llm-openai-compatible
                         :url "https://ist-prod-litellm.nullmplatform.com/"
                         :key (auth-source-pick-first-password :host "ist-prod-litellm.nullmplatform.com" :user "apikey")
-                        :chat-model "gpt-4.1"
+                        :chat-model "gpt-5"
                         :embedding-model "text-embedding-3-small")))
-    (setq ellama-provider (alist-get "Nu LiteLLM OpenAI GPT-4.1" ellama-providers nil nil #'string=)))
+    (setq ellama-provider (alist-get "Nu LiteLLM OpenAI GPT-5" ellama-providers nil nil #'string=)))
 
   (defun ellama-chat-whisper ()
     "Record audio in a temporary buffer with the `whisper-run`
