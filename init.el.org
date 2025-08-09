@@ -459,6 +459,7 @@ Run the current buffer through zprint.
 ** Claudemacs
 #+begin_src emacs-lisp
   (use-package claudemacs
+    :disabled
     :config (claudemacs))
 #+end_src
 
