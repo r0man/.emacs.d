@@ -442,6 +442,7 @@ Run the current buffer through zprint.
 ** Claude Code
 #+begin_src emacs-lisp
   (use-package claude-code
+    :disabled
     :config (claude-code-mode)
     :bind-keymap ("C-c c" . claude-code-command-map))
 #+end_src
