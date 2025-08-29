@@ -876,7 +876,7 @@ Provides additional Java programming language support for Eglot.
   (use-package elisa
     :disabled
     :after ellama
-    :load-path "/home/roman/workspace/elisa"
+    :load-path "~/workspace/elisa"
     :custom
     (elisa-sqlite-vss-path "/gnu/store/i86ri2wsdjkis8z8na12my4j4qvy4k0g-sqlite-vss-0.1.2/lib/vss0.so")
     (elisa-sqlite-vector-path "/gnu/store/i86ri2wsdjkis8z8na12my4j4qvy4k0g-sqlite-vss-0.1.2/lib/vector0.so"))
@@ -1225,7 +1225,7 @@ The Geiser implementation for Guile scheme.
         (pop-to-buffer (current-buffer))
         (erase-buffer)
         (let ((default-directory "~/workspace/guix-home"))
-          (async-shell-command "/home/roman/.config/guix/current/bin/guix home reconfigure -L modules modules/r0man/guix/home/systems/precision.scm" (current-buffer)))))
+          (async-shell-command "~/.config/guix/current/bin/guix home reconfigure -L modules modules/r0man/guix/home/systems/precision.scm" (current-buffer)))))
 #+end_src
 #+begin_src emacs-lisp
   (defun guix-system-reconfigure ()
@@ -1236,7 +1236,7 @@ The Geiser implementation for Guile scheme.
       (erase-buffer)
       (let ((default-directory "~/workspace/guix-home"))
         (cd (format "/sudo::%s" (expand-file-name default-directory)))
-        (async-shell-command "/home/roman/.config/guix/current/bin/guix system reconfigure -L modules modules/r0man/guix/system/m1.scm --allow-downgrades --no-offload" (current-buffer)))))
+        (async-shell-command "~/.config/guix/current/bin/guix system reconfigure -L modules modules/r0man/guix/system/m1.scm --allow-downgrades --no-offload" (current-buffer)))))
 #+end_src
 
 Enable global minor-mode for prettifying Guix store files.
@@ -1398,7 +1398,7 @@ typing. Automatically switches the spell checker and typo-mode.
                    :key (lambda ()
                           (auth-source-pick-first-password :host "ist-prod-litellm.nullmplatform.com" :user "apikey"))))
     :custom
-    (gptel-use-curl "/home/roman/.guix-profile/bin/curl"))
+    (gptel-use-curl "~/.guix-profile/bin/curl"))
 #+end_src
 ** Helpful
 
@@ -1979,7 +1979,7 @@ Client for interfacing with MCP servers.
     (setq mcp-hub-servers
           `(("apistemic" . (:command "/bin/sh"
                                      :args ("-c"
-                                            ,(concat "cd /home/roman/workspace/nu/apistemic && "
+                                            ,(concat "cd ~/workspace/nu/apistemic && "
                                                      "clojure -X:mcp :port 45525")))))))
 #+end_src
 ** MCP Tools
@@ -2648,7 +2648,7 @@ An HTTP library for Emacs.
     :config
     ;; When not on a Guix system, use curl from host
     (unless (file-exists-p "/run/current-system")
-      (setq plz-curl-program "/home/roman/.guix-profile/bin/curl")))
+      (setq plz-curl-program "~/.guix-profile/bin/curl")))
 #+end_src
 ** Pretty Print JSON
 
