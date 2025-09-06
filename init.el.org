@@ -3112,7 +3112,7 @@ whisper.cpp as inference engine.
     (whisper-install-directory "~/workspace/")
     (whisper-install-whispercpp 'manual)
     (whisper-language "en")
-    (whisper-model "large-v3-turbo"))
+    (whisper-model "medium"))
 #+end_src
 ** Winner mode
 
