@@ -34,7 +34,7 @@
       'solarized-light)
      (t 'solarized-dark))))
 
-(let ((theme 'solarized-dark))
+(let ((theme 'nord))
   (if (daemonp)
       (add-hook 'after-make-frame-functions
                 (lambda (frame)
