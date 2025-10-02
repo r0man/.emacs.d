@@ -3117,6 +3117,9 @@ whisper.cpp as inference engine.
 #+begin_src emacs-lisp
   (use-package whisper
     :bind ("C-s-r" . whisper-run)
+    :config
+    (when (file-exists-p "/usr/share/vulkan/icd.d/nvidia_icd.json")
+      (setenv "VK_ICD_FILENAMES" "/usr/share/vulkan/icd.d/nvidia_icd.json"))
     :custom
     (whisper-install-directory "~/workspace/")
     (whisper-install-whispercpp 'manual)
