@@ -147,6 +147,15 @@ system.
     (save-abbrevs 'silently))
 #+end_src
 
+** Agent Shell
+#+begin_src emacs-lisp
+  (use-package agent-shell
+    :commands (agent-shell-anthropic-start-claude-code)
+    :custom
+    (agent-shell-anthropic-authentication
+     (agent-shell-anthropic-make-authentication
+      :api-key (lambda () (auth-source-pick-first-password :host "api.anthropic.com" :user "personal")))))
+#+end_src
 ** Aide.el
 #+begin_src emacs-lisp
   (use-package aide
