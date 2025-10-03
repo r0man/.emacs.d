@@ -24,7 +24,7 @@
              14))
           ((and (equal "precision" (system-name)))
            14)
-          14))
+          (t 14)))
 
   (add-to-list 'default-frame-alist `(font . ,(format "Inconsolata-%s" (current-font-size))))
 #+end_src
